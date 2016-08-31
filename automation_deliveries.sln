@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "automation_deliveries_master", "automation_deliveries_master\automation_deliveries_master.csproj", "{3837322E-126C-4626-958E-7055E7AA667E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PublishScripts", "PublishScripts", "{4E63323A-7C4B-4678-B83A-4F73A5BECF56}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{9AE640FA-0B83-41A3-8A03-F599FA84C71B}"
+	ProjectSection(SolutionItems) = preProject
+		PublishScripts\Scripts\Deploy-AzureResourceGroup.ps1 = PublishScripts\Scripts\Deploy-AzureResourceGroup.ps1
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Templates", "Templates", "{1DE9216C-D753-4F8F-891B-F43428550D90}"
+	ProjectSection(SolutionItems) = preProject
+		PublishScripts\Templates\automationdeliveriesmaster.json = PublishScripts\Templates\automationdeliveriesmaster.json
+		PublishScripts\Templates\automationdeliveriesmaster.param.dev.json = PublishScripts\Templates\automationdeliveriesmaster.param.dev.json
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3837322E-126C-4626-958E-7055E7AA667E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3837322E-126C-4626-958E-7055E7AA667E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3837322E-126C-4626-958E-7055E7AA667E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3837322E-126C-4626-958E-7055E7AA667E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9AE640FA-0B83-41A3-8A03-F599FA84C71B} = {4E63323A-7C4B-4678-B83A-4F73A5BECF56}
+		{1DE9216C-D753-4F8F-891B-F43428550D90} = {4E63323A-7C4B-4678-B83A-4F73A5BECF56}
+	EndGlobalSection
+EndGlobal
