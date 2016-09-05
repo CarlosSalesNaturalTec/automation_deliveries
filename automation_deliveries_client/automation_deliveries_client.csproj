@@ -9,15 +9,15 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{3837322E-126C-4626-958E-7055E7AA667E}</ProjectGuid>
+    <ProjectGuid>{5FE7BE75-A002-42FC-8CDA-69CB2B1B5D29}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>automation_deliveries_master</RootNamespace>
-    <AssemblyName>automation_deliveries_master</AssemblyName>
+    <RootNamespace>automation_deliveries_client</RootNamespace>
+    <AssemblyName>automation_deliveries_client</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
-    <IISExpressSSLPort>44319</IISExpressSSLPort>
+    <IISExpressSSLPort>44383</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -25,7 +25,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <WebProject_DirectoryAccessLevelKey>0</WebProject_DirectoryAccessLevelKey>
-    <ApplicationInsightsResourceId>/subscriptions/53dd64d2-3498-477c-b41e-ad0b13323070/resourcegroups/Default-ApplicationInsights-CentralUS/providers/microsoft.insights/components/automation_deliveries_master</ApplicationInsightsResourceId>
+    <ApplicationInsightsResourceId>/subscriptions/53dd64d2-3498-477c-b41e-ad0b13323070/resourcegroups/Default-ApplicationInsights-CentralUS/providers/microsoft.insights/components/automation_deliveries_client</ApplicationInsightsResourceId>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -45,6 +45,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AjaxControlToolkit, Version=16.1.1.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <HintPath>..\packages\AjaxControlToolkit.16.1.1.0\lib\net40\AjaxControlToolkit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.1\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
       <Private>True</Private>
@@ -163,14 +167,17 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Account\SignOut.aspx" />
-    <Content Include="Assets\js\admin.js" />
-    <Content Include="Cad_Clientes.aspx" />
-    <Content Include="Cad_Funcionario.aspx" />
+    <Content Include="Cad_Entregas.aspx" />
+    <Content Include="Cad_Funcionarios.aspx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\flexslider.css" />
     <Content Include="Content\font-style.css" />
+    <Content Include="Content\login.css" />
     <Content Include="Content\main.css" />
+    <Content Include="Content\register.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\table.css" />
     <Content Include="Default.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -179,8 +186,10 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="Properties\PublishProfiles\automationdeliveriesmaster.pubxml" />
+    <None Include="Properties\PublishProfiles\automationdeliveriesclient.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="img\calendar.png" />
+    <Content Include="Scripts\admin.js" />
     <Content Include="Scripts\ai.0.22.19-build00125.js" />
     <Content Include="Scripts\ai.0.22.19-build00125.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -240,19 +249,19 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\StartupAuth.cs" />
-    <Compile Include="Cad_Clientes.aspx.cs">
-      <DependentUpon>Cad_Clientes.aspx</DependentUpon>
+    <Compile Include="Cad_Entregas.aspx.cs">
+      <DependentUpon>Cad_Entregas.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Cad_Clientes.aspx.designer.cs">
-      <DependentUpon>Cad_Clientes.aspx</DependentUpon>
+    <Compile Include="Cad_Entregas.aspx.designer.cs">
+      <DependentUpon>Cad_Entregas.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Cad_Funcionario.aspx.cs">
-      <DependentUpon>Cad_Funcionario.aspx</DependentUpon>
+    <Compile Include="Cad_Funcionarios.aspx.cs">
+      <DependentUpon>Cad_Funcionarios.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Cad_Funcionario.aspx.designer.cs">
-      <DependentUpon>Cad_Funcionario.aspx</DependentUpon>
+    <Compile Include="Cad_Funcionarios.aspx.designer.cs">
+      <DependentUpon>Cad_Funcionarios.aspx</DependentUpon>
     </Compile>
     <Compile Include="ConexaoBancoSQL.cs" />
     <Compile Include="Default.aspx.cs">
@@ -310,9 +319,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>49786</DevelopmentServerPort>
+          <DevelopmentServerPort>50329</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost:44319/</IISUrl>
+          <IISUrl>https://localhost:44383/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
