@@ -12,8 +12,8 @@ namespace automation_deliveries_client
             {
                 if (!IsPostBack)
                 {
-                    txtData.Text = DateTime.Today.ToString("dd/MM/yy");
-                    txt_data.Text = DateTime.Today.ToString("dd/MM/yy");
+                    txtData.Text = DateTime.Today.ToString("dd/MM/yyyy");
+                    txt_data.Text = DateTime.Today.ToString("dd/MM/yyyy");
 
                     Preenche_Combo();                    
                     atualiza_grid();
@@ -281,7 +281,7 @@ namespace automation_deliveries_client
         protected void GridView_SelectedIndexChanged(object sender, EventArgs e)
         {
             //modal edit delete  - preenche campos
-            cmb_edit_func.SelectedItem.Text = GridView2.SelectedRow.Cells[0].Text;
+            //cmb_edit_func.SelectedItem.Text = GridView2.SelectedRow.Cells[0].Text;
             
             txt_edit_nome.Text = GridView2.SelectedRow.Cells[1].Text;
             txt_edit_end.Text = GridView2.SelectedRow.Cells[2].Text;

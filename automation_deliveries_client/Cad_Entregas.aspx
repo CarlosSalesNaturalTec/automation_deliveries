@@ -36,28 +36,15 @@
             <div class="dash-unitb">                
                 <dtitle>FILTRO</dtitle>
                 <hr>
-                 <h1><asp:TextBox ID="txtData" runat="server"  AutoPostBack="True" OnTextChanged="txtData_TextChanged"/>
+                 <h2><asp:TextBox ID="txtData" runat="server"  AutoPostBack="True" OnTextChanged="txtData_TextChanged"/>
                      <ajaxToolkit:MaskedEditExtender ID="MaskedEditExtender5" runat="server"
-                         TargetControlID="txtData"
-                         Mask="99/99/99"
-                         MessageValidatorTip="true"
-                         OnFocusCssClass="MaskedEditFocus"
-                         OnInvalidCssClass="MaskedEditError"
-                         MaskType="Date"
-                         DisplayMoney="Left"
-                         AcceptNegative="Left"
-                         ErrorTooltipEnabled="True" />
+                         TargetControlID="txtData" Mask="99/99/9999" MessageValidatorTip="true" OnFocusCssClass="MaskedEditFocus"
+                         OnInvalidCssClass="MaskedEditError" MaskType="Date" DisplayMoney="Left" AcceptNegative="Left" ErrorTooltipEnabled="True" />
                      <ajaxToolkit:MaskedEditValidator ID="MaskedEditValidator5" runat="server"
-                         ControlExtender="MaskedEditExtender5"
-                         ControlToValidate="txtData"
-                         EmptyValueMessage="Informe Data"
-                         InvalidValueMessage="Data Invalida"
-                         Display="Dynamic"
-                         TooltipMessage="Data da Entrega"
-                         EmptyValueBlurredText="*"
-                         InvalidValueBlurredMessage="*"
-                         ValidationGroup="MKE" />
-                 </h1>
+                         ControlExtender="MaskedEditExtender5" ControlToValidate="txtData" EmptyValueMessage="Informe Data"
+                         InvalidValueMessage="Data Invalida" Display="Dynamic" TooltipMessage="Data da Entrega" EmptyValueBlurredText="*"
+                         InvalidValueBlurredMessage="*" ValidationGroup="MKE" />
+                 </h2>
                 <asp:DropDownList ID="cmb_funcionario" runat="server" class="dash-unitc" Width="80%" AutoPostBack="True" OnSelectedIndexChanged="cmb_funcionario_SelectedIndexChanged"></asp:DropDownList>
                 <p><asp:Label ID="lbl_mensagem" runat="server" Text=""></asp:Label>    </p>
             </div>
@@ -105,8 +92,17 @@
                     <p><asp:TextBox id="txt_cidade" runat="server" CssClass="input-lg"/></p>
                     <p>Cod.Encom:</p>
                     <p><asp:TextBox id="txt_encom" runat="server" CssClass="input-lg"/></p>
+                    
                     <p>Data:</p>
                     <p><asp:TextBox id="txt_data" runat="server" CssClass="input-lg"/></p>
+                    <ajaxToolkit:MaskedEditExtender ID="MaskedEditExtender2" runat="server"
+                         TargetControlID="txt_data" Mask="99/99/9999" MessageValidatorTip="true" OnFocusCssClass="MaskedEditFocus"
+                         OnInvalidCssClass="MaskedEditError" MaskType="Date" DisplayMoney="Left" AcceptNegative="Left" ErrorTooltipEnabled="True" />
+                     <ajaxToolkit:MaskedEditValidator ID="MaskedEditValidator2" runat="server"
+                         ControlExtender="MaskedEditExtender2" ControlToValidate="txt_data" EmptyValueMessage="Informe Data"
+                         InvalidValueMessage="Data Invalida" Display="Dynamic" TooltipMessage="Data da Entrega" EmptyValueBlurredText="*"
+                         InvalidValueBlurredMessage="*" ValidationGroup="MKE" />
+
                     <p>Telefone</p>
                     <p><asp:TextBox id="txt_telefone" runat="server" CssClass="input-lg"/></p>
                     <p>Observações:</p>
@@ -147,8 +143,17 @@
                     <p><asp:TextBox id="txt_edit_cidade" runat="server" CssClass="input-lg"/></p>
                     <p>Cod.Encom:</p>
                     <p><asp:TextBox id="txt_edit_encom" runat="server" CssClass="input-lg"/></p>
+                    
                     <p>Data:</p>
                     <p><asp:TextBox id="txt_edit_data" runat="server" CssClass="input-lg"/></p>
+                    <ajaxToolkit:MaskedEditExtender ID="MaskedEditExtender1" runat="server"
+                         TargetControlID="txt_edit_data" Mask="99/99/9999" MessageValidatorTip="true" OnFocusCssClass="MaskedEditFocus"
+                         OnInvalidCssClass="MaskedEditError" MaskType="Date" DisplayMoney="Left" AcceptNegative="Left" ErrorTooltipEnabled="True" />
+                     <ajaxToolkit:MaskedEditValidator ID="MaskedEditValidator1" runat="server"
+                         ControlExtender="MaskedEditExtender1" ControlToValidate="txt_edit_data" EmptyValueMessage="Informe Data"
+                         InvalidValueMessage="Data Invalida" Display="Dynamic" TooltipMessage="Data da Entrega" EmptyValueBlurredText="*"
+                         InvalidValueBlurredMessage="*" ValidationGroup="MKE" />
+
                     <p>Telefone</p>
                     <p><asp:TextBox id="txt_edit_tel" runat="server" CssClass="input-lg"/></p>
                     <p>Observações:</p>
