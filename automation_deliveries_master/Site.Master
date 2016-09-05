@@ -5,7 +5,8 @@
 <html lang="en">
 
 <!-- Automation Deliveries - Web App para automação de entrega de encomendas  -->
-<!-- Criação    : Carlos Sales https://github.com/CarlosSalesNaturalTec  / 2016's-->
+<!-- Criação    : Carlos Sales https://github.com/CarlosSalesNaturalTec -->
+<!-- Copyright  : 2016 -->
 <!-- Recursos   : ASP.NET / JAVASCRIPT / CSS Bootstrap / SQL / Windows Azure -->
 <!-- Módulo     : SITE MASTER  - MENU PRINCIPAL -->
 <!---------------------------------------------------------------------------------------------------------------------------------->
@@ -31,6 +32,37 @@
         
         window.appInsights=appInsights;
         appInsights.trackPageView();
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $("#btn-blog-next").click(function () {
+                $('#blogCarousel').carousel('next')
+            });
+            $("#btn-blog-prev").click(function () {
+                $('#blogCarousel').carousel('prev')
+            });
+
+            $("#btn-client-next").click(function () {
+                $('#clientCarousel').carousel('next')
+            });
+            $("#btn-client-prev").click(function () {
+                $('#clientCarousel').carousel('prev')
+            });
+
+        });
+
+        $(window).load(function () {
+
+            $('.flexslider').flexslider({
+                animation: "slide",
+                slideshow: true,
+                start: function (slider) {
+                    $('body').removeClass('loading');
+                }
+            });
+        });
     </script>
 
 </head>
@@ -65,7 +97,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a id="A1" class="navbar-brand" runat="server" href="~/">Log Transportes</a>
+                    <a id="A1" class="navbar-brand" runat="server" href="~/">LogTransportes</a>
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">

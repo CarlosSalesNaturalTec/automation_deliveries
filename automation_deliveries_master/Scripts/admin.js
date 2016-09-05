@@ -1,12 +1,6 @@
-// Interactiveness now
-
 // DIGICLOCK
 (function () {
 	var clock = document.querySelector('digiclock');
-	
-	// But there is a little problem
-	// we need to pad 0-9 with an extra
-	// 0 on the left for hours, seconds, minutes
 	
 	var pad = function(x) {
 		return x < 10 ? '0'+x : x;
@@ -165,3 +159,4 @@
 	        }]
 	    });
 	});
+

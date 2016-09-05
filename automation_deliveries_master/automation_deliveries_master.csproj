@@ -163,14 +163,17 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Account\SignOut.aspx" />
-    <Content Include="Assets\js\admin.js" />
     <Content Include="Cad_Clientes.aspx" />
     <Content Include="Cad_Funcionario.aspx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\flexslider.css" />
     <Content Include="Content\font-style.css" />
+    <Content Include="Content\login.css" />
     <Content Include="Content\main.css" />
+    <Content Include="Content\register.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\table.css" />
     <Content Include="Default.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -181,6 +184,7 @@
     </Content>
     <None Include="Properties\PublishProfiles\automationdeliveriesmaster.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\admin.js" />
     <Content Include="Scripts\ai.0.22.19-build00125.js" />
     <Content Include="Scripts\ai.0.22.19-build00125.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -292,6 +296,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="img\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

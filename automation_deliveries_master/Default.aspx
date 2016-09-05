@@ -60,8 +60,8 @@
         </div>
     </div>
     
-    <!-- SCRIPTS RESPONSAVEIS PELA CONSTRUÇÃO DOS GRÁFICOS -->
-    <script type="text/javascript" src="assets/js/admin.js"></script>
+    <!-- SCRIPTS e Stylos RESPONSAVEIS PELA CONSTRUÇÃO DOS GRÁFICOS -->
+    <script type="text/javascript" src="Scripts/admin.js"></script>
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
 
