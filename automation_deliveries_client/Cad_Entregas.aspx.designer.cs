@@ -103,15 +103,6 @@ namespace automation_deliveries_client {
         protected global::System.Web.UI.WebControls.TextBox txt_end;
         
         /// <summary>
-        /// txt_ref control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_ref;
-        
-        /// <summary>
         /// txt_bairro control.
         /// </summary>
         /// <remarks>
@@ -119,6 +110,15 @@ namespace automation_deliveries_client {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txt_bairro;
+        
+        /// <summary>
+        /// txt_ref control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_ref;
         
         /// <summary>
         /// txt_cidade control.

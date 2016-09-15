@@ -85,10 +85,10 @@
                     <p><asp:TextBox id="txt_nome" runat="server" CssClass="input-lg"/></p>
                     <p>Endereco:</p>
                     <p><asp:TextBox id="txt_end" runat="server" CssClass="input-lg"/></p>
-                    <p>P.Ref.:</p>
-                    <p><asp:TextBox id="txt_ref" runat="server" CssClass="input-lg"/></p>
                     <p>Bairro:</p>
                     <p><asp:TextBox id="txt_bairro" runat="server" CssClass="input-lg"/></p>
+                    <p>P.Ref.:</p>
+                    <p><asp:TextBox id="txt_ref" runat="server" CssClass="input-lg"/></p>
                     <p>Cidade:</p>
                     <p><asp:TextBox id="txt_cidade" runat="server" CssClass="input-lg"/></p>
                     <p>Cod.Encom:</p>

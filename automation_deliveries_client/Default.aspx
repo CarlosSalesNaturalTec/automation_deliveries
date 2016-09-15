@@ -48,17 +48,38 @@
 
     <!-- LINHA 02 -->
     <div class="row">
+
+        <!-- DATA -->
         <div class="col-sm-4 col-lg-4">
-            <!-- HORA LOCAL-->
+            <div class="half-unit">
+                <dtitle>Data</dtitle>
+                <hr>
+                <div class="clockcenter">
+                     <h2><asp:Label ID="lbl_data" runat="server" Text=""></asp:Label></h2>
+                </div>
+            </div>
+        </div>
+
+        <!-- HORA LOCAL-->
+        <div class="col-sm-4 col-lg-4">
             <div class="half-unit">
                 <dtitle>Hora Local</dtitle>
                 <hr>
                 <div class="clockcenter">
-                     <h3><digiclock>12:45:25</digiclock></h3>
+                     <h3><digiclock>99:99:99</digiclock></h3>
                 </div>
             </div>
         </div>
-    </div>
+
+        <!-- OUTRAS INFORMAÇÕES -->
+        <div class="col-sm-4 col-lg-4">
+            <div class="half-unit">
+                <dtitle>Outras Informações</dtitle>
+                <hr>
+            </div>
+        </div>
+
+    </div>  
     
     <!-- SCRIPTS e Stylos RESPONSAVEIS PELA CONSTRUÇÃO DOS GRÁFICOS -->
     <script type="text/javascript" src="Scripts/admin.js"></script>

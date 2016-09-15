@@ -7,8 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace automation_deliveries_client
-{    
+namespace automation_deliveries_client {
+    
+    
     public partial class _Default {
+        
+        /// <summary>
+        /// lbl_data control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_data;
     }
 }
