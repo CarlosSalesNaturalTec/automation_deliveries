@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Entregas a Realizar" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" EnableEventValidation="false" Inherits="automation_deliveries._Default" %>
+﻿<%@ Page Title="Entregas Realizadas" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Realizadas.aspx.cs" EnableEventValidation="false" Inherits="automation_deliveries.Realizadas" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
@@ -6,7 +6,7 @@
     <!-- Criação    : Carlos Sales https://github.com/CarlosSalesNaturalTec  -->
     <!-- Ano        : 2016 -->
     <!-- Recursos   : ASP.NET / JAVASCRIPT / CSS / SQL / Windows Azure -->
-    <!-- Módulo     : DELIVERIES - ENTREGAS À REALIZAR-->
+    <!-- Módulo     : DELIVERIES: ENTREGAS REALIZADAS -->
     <!--------------------------------------------------------------------------------->
 
     <!-- Script Modal Detalhes -->
@@ -24,7 +24,7 @@
         </li>
     </ul>
 
-    <h3 class="text-warning">ENTREGAS À REALIZAR</h3>
+    <h3 class="text-success">ENTREGAS REALIZADAS</h3>
     <br />
 
     <!-- Grid -->
@@ -32,7 +32,7 @@
         <Columns>
             <asp:BoundField DataField="Bairro" HeaderText="BAIRRO"/>
             <asp:BoundField DataField="Endereco" HeaderText="ENDEREÇO" />
-            <asp:BoundField DataField="Ponto_Ref" HeaderText="P.REFERENCIA" />
+            <asp:BoundField DataField="Status_Entrega" HeaderText="STATUS" />
             <asp:BoundField DataField="ID_Entrega" HeaderText="ID"/>
         </Columns>
     </asp:GridView>
@@ -53,8 +53,10 @@
                     <p><asp:Label ID="lbl_bairro" runat="server"></asp:Label></p>
                     <p>Tel: <asp:Label ID="lbl_telefone" runat="server"></asp:Label> - Cod: <asp:Label ID="lbl_cod" runat="server"></asp:Label> </p>
                     <p><asp:Label ID="lbl_obs" runat="server"></asp:Label></p>
+                    <p><asp:Label ID="lbl_status_registrado" runat="server"></asp:Label></p>
                     <div class="page-header"></div>
                     <asp:RadioButtonList ID="RadioButtonList1" runat="server" RepeatDirection="Horizontal" RepeatColumns="2">
+                        <asp:ListItem>CANCELAR</asp:ListItem>
                         <asp:ListItem>ENTREGUE</asp:ListItem>
                         <asp:ListItem>MUDOU-SE</asp:ListItem>
                         <asp:ListItem>AUSENTE</asp:ListItem>

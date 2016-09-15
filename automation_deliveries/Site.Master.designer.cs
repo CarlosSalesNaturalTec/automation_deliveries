@@ -49,12 +49,12 @@ namespace automation_deliveries {
         protected global::System.Web.UI.WebControls.ContentPlaceHolder MainContent;
         
         /// <summary>
-        /// lbl_id_funcionario control.
+        /// lbl_mensagem control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_id_funcionario;
+        protected global::System.Web.UI.WebControls.Label lbl_mensagem;
     }
 }

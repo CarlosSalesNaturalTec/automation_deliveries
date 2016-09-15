@@ -4,7 +4,7 @@ using System.Web.UI.WebControls;
 
 namespace automation_deliveries
 {
-    public partial class _Default : Page
+    public partial class Realizadas : Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -53,7 +53,7 @@ namespace automation_deliveries
             string stringSelect = @"select Bairro, Endereco, Ponto_Ref, Id_Entrega, ID_Motoboy, Data_Encomenda, Entregue, Status_Entrega, Data_Entrega from Tbl_Entregas " +
                     " where ID_Motoboy = " + Session["ID_Funcionario"].ToString() +
                     " and Data_Encomenda = '" + date_formated + "'" +
-                    " and Entregue <> 1" +
+                    " and Entregue = 1" +
                     " order by Bairro";
 
             // atualiza grid com listagem de ENTREGAS 
@@ -94,10 +94,22 @@ namespace automation_deliveries
             string date_formated = dt2.ToString("yyyy-MM-dd");
 
             //string update
-            string stringupdate = "update Tbl_Entregas set Entregue = 1, Status_Entrega = '" + RadioButtonList1.SelectedItem.ToString() +  "', " + 
-                " Data_Entrega = '" + date_formated + "'" +
-                " where ID_Entrega = " + Session["ID_Entrega"].ToString();
+            string stringupdate = "";
+            if (RadioButtonList1.SelectedItem.ToString()== "CANCELAR")
+            {
+                stringupdate = "update Tbl_Entregas set Entregue = 0, Status_Entrega = Null, " +
+                    " Data_Entrega = Null" +
+                    " where ID_Entrega = " + Session["ID_Entrega"].ToString();
+            }
+            else
+            {
+                stringupdate = "update Tbl_Entregas set Entregue = 1, Status_Entrega = '" + RadioButtonList1.SelectedItem.ToString() + "', " +
+                    " Data_Entrega = '" + date_formated + "'" +
+                    " where ID_Entrega = " + Session["ID_Entrega"].ToString();
+            }
+            
 
+            // atualiza
             OperacaoBanco operacao = new OperacaoBanco();
             Boolean update = operacao.Update(stringupdate);
             ConexaoBancoSQL.fecharConexao();
@@ -113,7 +125,7 @@ namespace automation_deliveries
             //detalhes da entrega
             OperacaoBanco operacao = new OperacaoBanco();
             System.Data.SqlClient.SqlDataReader dados = operacao.Select("select ID_Entrega, Nome_Destinatario, Endereco, Ponto_Ref, Bairro, " +
-                " Cod_Encomenda, Telefone, Observacoes" +
+                " Cod_Encomenda, Telefone, Observacoes, Status_Entrega" +
                 " from Tbl_Entregas where Id_Entrega = " + IDEntrega);
             while (dados.Read())
             {
@@ -124,6 +136,8 @@ namespace automation_deliveries
                 lbl_cod.Text = Convert.ToString(dados[5]);
                 lbl_telefone.Text = Convert.ToString(dados[6]);
                 lbl_obs.Text = Convert.ToString(dados[7]);
+                lbl_status_registrado.Text = "Status: " + Convert.ToString(dados[8]);
+
             }
             ConexaoBancoSQL.fecharConexao();
         }

@@ -33,6 +33,7 @@
         window.appInsights=appInsights;
         appInsights.trackPageView();
     </script>
+
 </head>
 
 <body>
@@ -72,7 +73,7 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li><a id="A2" runat="server" href="~/">A Realizar</a></li>
-                        <li><a id="A3" runat="server" href="~/">Realizadas</a></li>
+                        <li><a id="A3" runat="server" href="~/Realizadas.aspx">Realizadas</a></li>
                     </ul>
 
                     <asp:LoginView runat="server" ViewStateMode="Disabled">
@@ -105,7 +106,7 @@
             </asp:ContentPlaceHolder>
             <hr />
             <footer>
-                <asp:label ID="lbl_id_funcionario" runat="server" Text =""> </asp:label>
+                <asp:label ID="lbl_mensagem" runat="server" Text =""> </asp:label>
             </footer>
         </div>
     </form>

@@ -63,6 +63,7 @@
             <asp:BoundField DataField="Telefone" HeaderText="TELEFONE"/>
             <asp:BoundField DataField="Data_Encomenda" HeaderText="DATA"/>
             <asp:BoundField DataField="Cod_Encomenda" HeaderText="COD.ENCOMENDA"/>
+            <asp:BoundField DataField="Status_Entrega" HeaderText="STATUS"/>
             <asp:BoundField DataField="ID_Entrega" HeaderText="ID"/>
         </Columns>
     </asp:GridView>

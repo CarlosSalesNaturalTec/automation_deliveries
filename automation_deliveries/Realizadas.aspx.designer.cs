@@ -10,7 +10,7 @@
 namespace automation_deliveries {
     
     
-    public partial class _Default {
+    public partial class Realizadas {
         
         /// <summary>
         /// lbl_data control.
@@ -101,6 +101,15 @@ namespace automation_deliveries {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbl_obs;
+        
+        /// <summary>
+        /// lbl_status_registrado control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_status_registrado;
         
         /// <summary>
         /// RadioButtonList1 control.
