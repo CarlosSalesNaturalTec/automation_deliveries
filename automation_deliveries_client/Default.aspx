@@ -2,10 +2,11 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
-    <!-- Automation Deliveries CLIENT - Web App para automação de entrega de encomendas - Módulo Cliente -->
-    <!-- Criação    : Carlos Sales https://github.com/CarlosSalesNaturalTec  / 2016's-->
-    <!-- Recursos   : ASP.NET / JAVASCRIPT / CSS Bootstrap / SQL / Windows Azure -->
-    <!-- Módulo     : PAINEL PRINCIPAL -->
+    <!-- Automation Deliveries CLIENT - Web App para automação de entrega de encomendas -->
+    <!-- Criação    : Carlos Sales https://github.com/CarlosSalesNaturalTec  -->
+    <!-- Ano        : 2016 -->
+    <!-- Recursos   : ASP.NET / JAVASCRIPT / CSS / SQL / Windows Azure -->
+    <!-- Módulo     : CLIENTE - PAINEL PRINCIPAL -->
     <!---------------------------------------------------------------------------------------------------------------------------------->
 
     <style type="text/css">
@@ -14,6 +15,8 @@
         }
     </style>
      
+    <p class="text-danger"><asp:Label ID="lbl_msg" runat="server"></asp:Label></p>
+
     <!-- LINHA 01 -->
      <div class="row">
 
