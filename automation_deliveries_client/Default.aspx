@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Painel Principal" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="automation_deliveries_client._Default" %>
+﻿<%@ Page Title="Painel Principal" Language="C#" Culture="auto" UICulture="auto" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" EnableEventValidation="false" Inherits="automation_deliveries_client._Default" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
@@ -15,6 +15,44 @@
     </style>
      
     <!-- LINHA 01 -->
+     <div class="row">
+
+        <!-- DATA -->
+        <div class="col-sm-4 col-lg-4">
+            <div class="half-unit">
+                <dtitle>Data</dtitle>
+                <hr>
+                <div class="clockcenter">
+                     <h3><asp:Label ID="lbl_data" runat="server" Text=""></asp:Label></h3>
+                </div>
+            </div>
+        </div>
+
+        <!-- HORA LOCAL-->
+        <div class="col-sm-4 col-lg-4">
+            <div class="half-unit">
+                <dtitle>Hora Local</dtitle>
+                <hr>
+                <div class="clockcenter">
+                     <h3><digiclock>10:10:10</digiclock></h3>
+                </div>
+            </div>
+        </div>
+
+        <!-- TOTAL DE ENTREGAS DO DIA -->
+        <div class="col-sm-4 col-lg-4">
+            <div class="half-unit">
+                <dtitle>Total de Entregas do Dia</dtitle>
+                <hr>
+                <div class="clockcenter">
+                    <h3><asp:Label ID="lbl_total_entregas_dia" runat="server"></asp:Label></h3>
+                </div>
+            </div>
+        </div>
+
+    </div>  
+
+    <!-- LINHA 02 -->
     <div class="row">
 
         <!-- FUNCIONARIOS EM CAMPO-->
@@ -41,41 +79,6 @@
                 <dtitle>% Entregas no Período</dtitle>
                 <hr>
                 <div id="container_painel3" style="min-width: 280px; height: 280px; margin: 0 auto"></div>
-            </div>
-        </div>
-
-    </div>
-
-    <!-- LINHA 02 -->
-    <div class="row">
-
-        <!-- DATA -->
-        <div class="col-sm-4 col-lg-4">
-            <div class="half-unit">
-                <dtitle>Data</dtitle>
-                <hr>
-                <div class="clockcenter">
-                     <h2><asp:Label ID="lbl_data" runat="server" Text=""></asp:Label></h2>
-                </div>
-            </div>
-        </div>
-
-        <!-- HORA LOCAL-->
-        <div class="col-sm-4 col-lg-4">
-            <div class="half-unit">
-                <dtitle>Hora Local</dtitle>
-                <hr>
-                <div class="clockcenter">
-                     <h3><digiclock>99:99:99</digiclock></h3>
-                </div>
-            </div>
-        </div>
-
-        <!-- OUTRAS INFORMAÇÕES -->
-        <div class="col-sm-4 col-lg-4">
-            <div class="half-unit">
-                <dtitle>Outras Informações</dtitle>
-                <hr>
             </div>
         </div>
 

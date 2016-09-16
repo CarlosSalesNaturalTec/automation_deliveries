@@ -20,5 +20,14 @@ namespace automation_deliveries_client {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbl_data;
+        
+        /// <summary>
+        /// lbl_total_entregas_dia control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_total_entregas_dia;
     }
 }

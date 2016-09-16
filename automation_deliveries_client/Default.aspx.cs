@@ -10,26 +10,24 @@ namespace automation_deliveries_client
             if (!IsPostBack)
             {
                 lbl_data.Text = DateTime.Today.ToString("dd/MM/yyyy");
+                lbl_total_entregas_dia.Text = "999";
             }
         }
 
-        private void Funcionarios_em_Campo()
+        public void Total_Entregas()
         {
-            // string data local
-            IFormatProvider culture = new System.Globalization.CultureInfo("pt-BR", true);
-            DateTime dt2 = DateTime.Parse(lbl_data.Text, culture, System.Globalization.DateTimeStyles.AssumeLocal);
-            string date_formated = dt2.ToString("yyyy-MM-dd");
+            string stringSelect = @"SELECT COUNT(*) AS totalderegistros FROM Tbl_Entregas where " +
+                "ID_Cliente= " + Session["ID_Cliente"].ToString() + " and Data_Encomenda=null";
 
-            // total de funcionarios cadastrados
+            // total de entregas cadastradas no dia
             OperacaoBanco operacao = new OperacaoBanco();
-            System.Data.SqlClient.SqlDataReader dados = operacao.Select(@"SELECT COUNT(*) AS totalderegistros FROM Tbl_Motoboys" +
-                " where ID_Cliente = " + Session["ID_Cliente"].ToString());
+            System.Data.SqlClient.SqlDataReader dados = operacao.Select(stringSelect);
             String totalderegistros = "";
             try
             {
                 while (dados.Read())
                 {
-                    totalderegistros = Convert.ToString(dados[0]);
+                    totalderegistros = Convert.ToString(dados[0]);                    
                 }
             }
             catch (Exception)
@@ -37,6 +35,7 @@ namespace automation_deliveries_client
                 throw;
             }
             ConexaoBancoSQL.fecharConexao();
+            lbl_total_entregas_dia.Text = totalderegistros;
         }
     }
 }
