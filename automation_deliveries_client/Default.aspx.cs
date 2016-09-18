@@ -1,21 +1,28 @@
 ﻿using System;
+using System.Text;
 using System.Web.UI;
 
 namespace automation_deliveries_client
 {
     public partial class _Default : Page
     {
-        // ID do cliente
-        string ID_Cli = "0";
+        // Variáveis de apoio
+        string ID_Cli = "0";  // ID do cliente
+        StringBuilder str = new StringBuilder();    // string construtora do literal
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 lbl_data.Text = DateTime.Today.ToString("dd/MM/yyyy");
+
                 Id_Cliente();
                 entregasdia();
                 funcionariosemcampo();
+
+                // monta e carrega script responsável pelo gráfico : % funcionários em campo
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "MyScript", str.ToString(),true);
+
             }
         }
 
@@ -72,10 +79,17 @@ namespace automation_deliveries_client
 
         private void funcionariosemcampo()
         {
+            // variáveis de apoio
+            string t1 = "0";
+            decimal t2 = 0;
+            decimal  t3 = 0;
+            int t4 = 0;
+            int contador = 0;
+            int faltantes = 0;
+
             // total de funcionários
             try
             {
-                string t1 = "0";
                 string stringselect = "select count(*) as totalregistros from tbl_motoboys where id_cliente = " + ID_Cli ;
                 OperacaoBanco operacao = new OperacaoBanco();
                 System.Data.SqlClient.SqlDataReader dados = operacao.Select(stringselect);
@@ -84,7 +98,6 @@ namespace automation_deliveries_client
                     t1 = Convert.ToString(dados[0]);
                 }
                 ConexaoBancoSQL.fecharConexao();
-                lbl_msg.Text = "total de funcionários: " + t1;
             }
             catch (Exception)
             {
@@ -104,8 +117,6 @@ namespace automation_deliveries_client
                 string stringselect = "select ID_Motoboy from tbl_entregas " +
                         " where id_cliente = " + ID_Cli + " and Entregue = 1 and Data_Entrega = '" + date_formated + "' group by ID_Motoboy";
 
-                int contador = 0;
-
                 OperacaoBanco operacao = new OperacaoBanco();
                 System.Data.SqlClient.SqlDataReader dados = operacao.Select(stringselect);
                 while (dados.Read())
@@ -113,7 +124,17 @@ namespace automation_deliveries_client
                     contador = contador + 1;
                 }
                 ConexaoBancoSQL.fecharConexao();
-                lbl_msg.Text = lbl_msg.Text + " / quant func. realizaram entregas:" + contador.ToString();
+
+                //% total de funcionários em campo
+                t2 = Convert.ToDecimal(t1);
+                t3 = (contador / t2) * 100;
+                t4 = Convert.ToInt16(t3);
+
+                // % total de faltantes = funcionários que ainda não realizaram entregas
+                faltantes = 100 - t4;
+
+                montagrafico1(t4,faltantes);
+
             }
             catch (Exception)
             {
@@ -121,5 +142,59 @@ namespace automation_deliveries_client
                 throw;
             }
         }
+
+        private void montagrafico1(int  v1, int v2)
+        {
+            str.Append(@"$(function() {
+            $('#container_painel2').highcharts({
+                    chart:
+                    {
+                        renderTo: 'load',
+                    margin: [0, 0, 0, 0],
+                    backgroundColor: null,
+                    plotBackgroundColor: 'none',
+
+                },
+
+                title:
+                    {
+                        text: null
+                },
+
+                tooltip:
+                    {
+                        formatter: function() {
+                            return this.point.name + ': ' + this.y + '%';
+
+                        }
+                    },
+                series: [
+                    {
+                        borderWidth: 2,
+                        borderColor: '#F1F3EB',
+                        shadow: false,
+                        type: 'pie',
+                        name: 'Income',
+                        innerSize: '65%',
+                        data: [
+                            { name: 'Funcionarios em campo', y: " + v1.ToString());
+
+            str.Append(@", color: '#b2c831' },
+                            { name: 'Func.sem entregas realiz.', y: " + v2.ToString());
+
+            str.Append(@", color: '#3d3d3d' }
+                        ],
+                        dataLabels:
+                        {
+                            enabled: false,
+                            color: '#000000',
+                            connectorColor: '#000000'
+                        }
+                    }]
+            });
+            });");
+
+        }
+
     }
 }

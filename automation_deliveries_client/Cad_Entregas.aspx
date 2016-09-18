@@ -2,8 +2,9 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
-    <!-- Automation Deliveries CLIENT - Web App para automação de entrega de encomendas - Módulo Cliente -->
+    <!-- Automation Deliveries CLIENT - Web App para automação de entrega de encomendas -->
     <!-- Criação    : Carlos Sales https://github.com/CarlosSalesNaturalTec  / 2016's-->
+    <!-- Ano        : 2016 -->
     <!-- Recursos   : ASP.NET / JAVASCRIPT / CSS / SQL / Windows Azure -->
     <!-- Módulo     : CADASTRO DE ENTREGAS -->
     <!--------------------------------------------------------------------------------->

@@ -31,24 +31,6 @@ namespace automation_deliveries_client {
         protected global::System.Web.UI.WebControls.TextBox txtData;
         
         /// <summary>
-        /// MaskedEditExtender5 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.MaskedEditExtender MaskedEditExtender5;
-        
-        /// <summary>
-        /// MaskedEditValidator5 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.MaskedEditValidator MaskedEditValidator5;
-        
-        /// <summary>
         /// cmb_funcionario control.
         /// </summary>
         /// <remarks>
@@ -146,24 +128,6 @@ namespace automation_deliveries_client {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txt_data;
-        
-        /// <summary>
-        /// MaskedEditExtender2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.MaskedEditExtender MaskedEditExtender2;
-        
-        /// <summary>
-        /// MaskedEditValidator2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.MaskedEditValidator MaskedEditValidator2;
         
         /// <summary>
         /// txt_telefone control.
@@ -272,24 +236,6 @@ namespace automation_deliveries_client {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txt_edit_data;
-        
-        /// <summary>
-        /// MaskedEditExtender1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.MaskedEditExtender MaskedEditExtender1;
-        
-        /// <summary>
-        /// MaskedEditValidator1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.MaskedEditValidator MaskedEditValidator1;
         
         /// <summary>
         /// txt_edit_tel control.

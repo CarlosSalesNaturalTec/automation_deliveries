@@ -15,6 +15,7 @@
         }
     </style>
      
+    <!-- Mensagens do sistema  -->
     <p class="text-danger"><asp:Label ID="lbl_msg" runat="server"></asp:Label></p>
 
     <!-- LINHA 01 -->
@@ -34,7 +35,7 @@
         <!-- HORA LOCAL-->
         <div class="col-sm-4 col-lg-4">
             <div class="half-unit">
-                <dtitle>Hora Local</dtitle>
+                <dtitle>Hora</dtitle>
                 <hr>
                 <div class="clockcenter">
                      <h3><digiclock>10:10:10</digiclock></h3>
@@ -88,7 +89,7 @@
     </div>  
     
     <!-- SCRIPTS e Stylos RESPONSAVEIS PELA CONSTRUÇÃO DOS GRÁFICOS -->
-    <script type="text/javascript" src="Scripts/admin.js"></script>
+    <script type="text/javascript" src="Scripts/scrpadmin.js"></script> 
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
 

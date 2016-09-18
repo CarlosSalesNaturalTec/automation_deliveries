@@ -189,7 +189,7 @@
     <None Include="Properties\PublishProfiles\automationdeliveriesclient.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="img\calendar.png" />
-    <Content Include="Scripts\admin.js" />
+    <Content Include="Scripts\scrpadmin.js" />
     <Content Include="Scripts\ai.0.22.19-build00125.js" />
     <Content Include="Scripts\ai.0.22.19-build00125.min.js" />
     <Content Include="Scripts\bootstrap.js" />
