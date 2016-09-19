@@ -7,8 +7,36 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace automation_deliveries_master
-{    
+namespace automation_deliveries_master {
+    
+    
     public partial class _Default {
+        
+        /// <summary>
+        /// lbl_msg control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_msg;
+        
+        /// <summary>
+        /// lbl_data control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_data;
+        
+        /// <summary>
+        /// lbl_total_entregas_dia control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_total_entregas_dia;
     }
 }

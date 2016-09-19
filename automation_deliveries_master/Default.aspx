@@ -3,9 +3,10 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
     <!-- Automation Deliveries - Web App para automação de entrega de encomendas  -->
-    <!-- Criação    : Carlos Sales https://github.com/CarlosSalesNaturalTec  / 2016's-->
+    <!-- Autor      : Carlos Sales https://github.com/CarlosSalesNaturalTec  -->
+    <!-- Ano        : 2016 -->
     <!-- Recursos   : ASP.NET / JAVASCRIPT / CSS Bootstrap / SQL / Windows Azure -->
-    <!-- Módulo     : PAINEL PRINCIPAL -->
+    <!-- Módulo     : MASTER - PAINEL PRINCIPAL -->
     <!---------------------------------------------------------------------------------------------------------------------------------->
 
     <style type="text/css">
@@ -14,10 +15,56 @@
         }
     </style>
      
+    <!-- Mensagens do sistema  -->
+    <p class="text-danger">
+        <asp:Label ID="lbl_msg" runat="server"></asp:Label></p>
+
     <!-- LINHA 01 -->
     <div class="row">
 
-        <!-- FUNCIONARIOS EM CAMPO-->
+        <!-- DATA -->
+        <div class="col-sm-4 col-lg-4">
+            <div class="half-unit">
+                <dtitle>Data</dtitle>
+                <hr>
+                <div class="clockcenter">
+                    <h3>
+                        <asp:Label ID="lbl_data" runat="server" Text=""></asp:Label></h3>
+                </div>
+            </div>
+        </div>
+
+        <!-- HORA -->
+        <div class="col-sm-4 col-lg-4">
+            <div class="half-unit">
+                <dtitle>Hora</dtitle>
+                <hr>
+                <div class="clockcenter">
+                    <h3>
+                        <digiclock>10:10:10</digiclock>
+                    </h3>
+                </div>
+            </div>
+        </div>
+
+        <!-- TOTAL DE ENTREGAS DO DIA -->
+        <div class="col-sm-4 col-lg-4">
+            <div class="half-unit">
+                <dtitle>Total de Entregas do Dia</dtitle>
+                <hr>
+                <div class="clockcenter">
+                    <h3>
+                        <asp:Label ID="lbl_total_entregas_dia" runat="server"></asp:Label></h3>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- LINHA 02 -->
+    <div class="row">
+
+        <!-- % DE FUNCIONARIOS EM CAMPO-->
         <div class="col-sm-4 col-lg-4">
             <div class="dash-unit">
                 <dtitle>% Funcionários em Campo</dtitle>
@@ -26,7 +73,7 @@
             </div>
         </div>
 
-        <!-- ENTREGAS EFETUADAS  -->
+        <!-- % DE ENTREGAS EFETUADAS  -->
         <div class="col-sm-4 col-lg-4">
             <div class="dash-unit">
                 <dtitle>% Entregas Efetuadas</dtitle>
@@ -46,21 +93,7 @@
 
     </div>
 
-    <!-- LINHA 02 -->
-    <div class="row">
-        <div class="col-sm-4 col-lg-4">
-            <!-- HORA LOCAL-->
-            <div class="half-unit">
-                <dtitle>Hora Local</dtitle>
-                <hr>
-                <div class="clockcenter">
-                     <h3><digiclock>12:45:25</digiclock></h3>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <!-- SCRIPTS e Stylos RESPONSAVEIS PELA CONSTRUÇÃO DOS GRÁFICOS -->
+    <!-- SCRIPTS RESPONSAVEIS PELA CONSTRUÇÃO DOS GRÁFICOS -->
     <script type="text/javascript" src="Scripts/admin.js"></script>
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>

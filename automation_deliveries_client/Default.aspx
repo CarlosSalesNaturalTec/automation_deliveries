@@ -2,12 +2,11 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
-    <!-- Automation Deliveries CLIENT - Web App para automação de entrega de encomendas -->
-    <!-- Criação    : Carlos Sales https://github.com/CarlosSalesNaturalTec  -->
+    <!-- Automation Deliveries - Web App para automação de entrega de encomendas  -->
+    <!-- Autor      : Carlos Sales https://github.com/CarlosSalesNaturalTec  -->
     <!-- Ano        : 2016 -->
     <!-- Recursos   : ASP.NET / JAVASCRIPT / CSS / SQL / Windows Azure -->
     <!-- Módulo     : CLIENTE - PAINEL PRINCIPAL -->
-    <!---------------------------------------------------------------------------------------------------------------------------------->
 
     <style type="text/css">
         body {
@@ -32,13 +31,13 @@
             </div>
         </div>
 
-        <!-- HORA LOCAL-->
+        <!-- HORA -->
         <div class="col-sm-4 col-lg-4">
             <div class="half-unit">
                 <dtitle>Hora</dtitle>
                 <hr>
                 <div class="clockcenter">
-                     <h3><digiclock>10:10:10</digiclock></h3>
+                     <h3><digiclock>11:11:11</digiclock></h3>
                 </div>
             </div>
         </div>
@@ -59,7 +58,7 @@
     <!-- LINHA 02 -->
     <div class="row">
 
-        <!-- FUNCIONARIOS EM CAMPO-->
+        <!-- % DE FUNCIONARIOS EM CAMPO-->
         <div class="col-sm-4 col-lg-4">
             <div class="dash-unit">
                 <dtitle>% Funcionários em Campo</dtitle>
@@ -68,7 +67,7 @@
             </div>
         </div>
 
-        <!-- ENTREGAS EFETUADAS  -->
+        <!-- % DE ENTREGAS EFETUADAS  -->
         <div class="col-sm-4 col-lg-4">
             <div class="dash-unit">
                 <dtitle>% Entregas Efetuadas</dtitle>
@@ -88,7 +87,7 @@
 
     </div>  
     
-    <!-- SCRIPTS e Stylos RESPONSAVEIS PELA CONSTRUÇÃO DOS GRÁFICOS -->
+    <!-- SCRIPTS RESPONSAVEIS PELA CONSTRUÇÃO DOS GRÁFICOS -->
     <script type="text/javascript" src="Scripts/scrpadmin.js"></script> 
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
