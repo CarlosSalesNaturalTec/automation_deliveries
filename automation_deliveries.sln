@@ -28,6 +28,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "delivmaster", "delivmaster\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "delivcli", "delivcli\delivcli.csproj", "{6523F4AE-A5F3-4E72-99D1-ECB8C8EA98A7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "deliv", "deliv\deliv.csproj", "{FAB4D116-2281-4651-8FAF-AC3691357F71}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -46,6 +48,10 @@ Global
 		{6523F4AE-A5F3-4E72-99D1-ECB8C8EA98A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6523F4AE-A5F3-4E72-99D1-ECB8C8EA98A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6523F4AE-A5F3-4E72-99D1-ECB8C8EA98A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FAB4D116-2281-4651-8FAF-AC3691357F71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FAB4D116-2281-4651-8FAF-AC3691357F71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FAB4D116-2281-4651-8FAF-AC3691357F71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FAB4D116-2281-4651-8FAF-AC3691357F71}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
