@@ -3,9 +3,10 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
     <!-- Automation Deliveries - Web App para automação de entrega de encomendas  -->
-    <!-- Criação    : Carlos Sales https://github.com/CarlosSalesNaturalTec  / 2016's-->
-    <!-- Recursos   : ASP.NET / JAVASCRIPT / CSS / SQL / Windows Azure -->
-    <!-- Módulo     : CADASTRO DE CLIENTES -->
+    <!-- Criação    : Carlos Sales https://github.com/CarlosSalesNaturalTec  -->
+    <!-- Ano        : 2016 -->
+    <!-- Recursos   : ASP.NET / C# / JAVASCRIPT / CSS / SQL / Windows Azure -->
+    <!-- Módulo     : CADASTRO DE FUNCIONARIOS -->
     <!--------------------------------------------------------------------------------->
 
 
@@ -46,12 +47,12 @@
     <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" Width="80%" OnRowDataBound="GridView_RowDataBound" OnSelectedIndexChanged="GridView_SelectedIndexChanged">
         <Columns>
             <asp:BoundField DataField="Nome" HeaderText="NOME" />
-            <asp:BoundField DataField="email" HeaderText="EMAIL" />
             <asp:BoundField DataField="Telefone" HeaderText="TELEFONE"/>
             <asp:BoundField DataField="WhatsApp" HeaderText="WHATSAPP"/>
             <asp:BoundField DataField="Veiculo" HeaderText="VEICULO"/>
             <asp:BoundField DataField="Modelo" HeaderText="MODELO"/>
             <asp:BoundField DataField="Placa" HeaderText="PLACA"/>
+            <asp:BoundField DataField="Usuario" HeaderText="USUÁRIO"/>
             <asp:BoundField DataField="ID_Motoboy" HeaderText="ID"/>
         </Columns>
     </asp:GridView>
@@ -71,8 +72,6 @@
                     <p><asp:TextBox id="txt_cliente_modal_novo" runat="server" Enabled="false" CssClass="input-lg"/></p>
                     <p>Nome:</p>
                     <p><asp:TextBox id="txt_nome" runat="server" CssClass="input-lg"/></p>
-                    <p>e-mail:</p>
-                    <p><asp:TextBox id="txt_email" runat="server" CssClass="input-lg"/></p>
                     <p>Telefone:</p>
                     <p><asp:TextBox id="txt_telefone" runat="server" CssClass="input-lg"/></p>
                     <p>WhatsApp:</p>
@@ -83,6 +82,8 @@
                     <p><asp:TextBox id="txt_modelo" runat="server" CssClass="input-lg"/></p>
                     <p>Placa:</p>
                     <p><asp:TextBox id="txt_placa" runat="server" CssClass="input-lg"/></p>
+                    <p>Usuário:</p>
+                    <p><asp:TextBox id="txt_user" runat="server" CssClass="input-lg"/></p>
                 </div>
 
                 <div class="modal-footer">
@@ -107,8 +108,6 @@
                 <div class="modal-body">
                     <p>Nome:</p>
                     <p><asp:TextBox id="txt_edit_nome" runat="server" CssClass="input-lg"/></p>
-                    <p>e-mail:</p>
-                    <p><asp:TextBox id="txt_edit_email" runat="server" CssClass="input-lg"/></p>
                     <p>Telefone:</p>
                     <p><asp:TextBox id="txt_edit_telefone" runat="server" CssClass="input-lg"/></p>
                     <p>WhatsApp:</p>
@@ -119,6 +118,9 @@
                     <p><asp:TextBox id="txt_edit_modelo" runat="server" CssClass="input-lg"/></p>
                     <p>Placa:</p>
                     <p><asp:TextBox id="txt_edit_placa" runat="server" CssClass="input-lg"/></p>
+                    <p>Usuário:</p>
+                    <p><asp:TextBox id="txt_edit_user" runat="server" CssClass="input-lg"/></p>
+
                     <p>ID: <asp:Label ID="lbl_id" runat="server" Text=""></asp:Label></p>
                 </div>
 

@@ -67,15 +67,6 @@ namespace delivmaster {
         protected global::System.Web.UI.WebControls.TextBox txt_nome;
         
         /// <summary>
-        /// txt_email control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_email;
-        
-        /// <summary>
         /// txt_telefone control.
         /// </summary>
         /// <remarks>
@@ -121,6 +112,15 @@ namespace delivmaster {
         protected global::System.Web.UI.WebControls.TextBox txt_placa;
         
         /// <summary>
+        /// txt_user control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_user;
+        
+        /// <summary>
         /// bt_novo_fechar control.
         /// </summary>
         /// <remarks>
@@ -146,15 +146,6 @@ namespace delivmaster {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txt_edit_nome;
-        
-        /// <summary>
-        /// txt_edit_email control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_edit_email;
         
         /// <summary>
         /// txt_edit_telefone control.
@@ -200,6 +191,15 @@ namespace delivmaster {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txt_edit_placa;
+        
+        /// <summary>
+        /// txt_edit_user control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_edit_user;
         
         /// <summary>
         /// lbl_id control.

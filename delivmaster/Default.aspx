@@ -6,7 +6,7 @@
     <!-- Autor      : Carlos Sales https://github.com/CarlosSalesNaturalTec  -->
     <!-- Ano        : 2016 -->
     <!-- Recursos   : ASP.NET / C# / JAVASCRIPT / CSS / SQL / Windows Azure -->
-    <!-- Módulo     : MASTER - LOGIN -->
+    <!-- Módulo     : LOGIN -->
     <!---------------------------------------------------------------------------------------------------------------------------------->
 
     <!-- Mensagens do sistema  -->

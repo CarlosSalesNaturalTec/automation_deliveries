@@ -45,6 +45,7 @@
             <asp:BoundField DataField="Telefone" HeaderText="TELEFONES"/>
             <asp:BoundField DataField="Responsavel" HeaderText="RESPONSAVEL"/>
             <asp:BoundField DataField="Area_Unidade" HeaderText="ÁREA/UNIDADE"/>
+            <asp:BoundField DataField="Usuario" HeaderText="USUÁRIO"/>
             <asp:BoundField DataField="ID_Cliente" HeaderText="ID"/>
         </Columns>
     </asp:GridView>
@@ -70,6 +71,8 @@
                     <p><asp:TextBox id="txt_responsavel" runat="server" CssClass="input-lg"/></p>
                     <p>Área/Unidade:</p>
                     <p><asp:TextBox id="txt_area_und" runat="server" CssClass="input-lg"/></p>
+                    <p>Usuário:</p>
+                    <p><asp:TextBox id="txt_user" runat="server" CssClass="input-lg"/></p>
                 </div>
 
                 <div class="modal-footer">
@@ -102,6 +105,9 @@
                     <p><asp:TextBox id="txt_edit_responsavel" runat="server" CssClass="input-lg"/></p>
                     <p>Área/Unidade:</p>
                     <p><asp:TextBox id="txt_edit_area_und" runat="server" CssClass="input-lg"/></p>
+                    <p>Usuário:</p>
+                    <p><asp:TextBox id="txt_edit_user" runat="server" CssClass="input-lg"/></p>
+
                     <p>ID: <asp:Label ID="lbl_id" runat="server" Text=""></asp:Label></p>
                 </div>
 

@@ -22,11 +22,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Templates", "Templates", "{
 		PublishScripts\Templates\automationdeliveriesmaster.param.dev.json = PublishScripts\Templates\automationdeliveriesmaster.param.dev.json
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "automation_deliveries_client", "automation_deliveries_client\automation_deliveries_client.csproj", "{5FE7BE75-A002-42FC-8CDA-69CB2B1B5D29}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "automation_deliveries", "automation_deliveries\automation_deliveries.csproj", "{70AF5EBB-5159-4384-AB38-5D8E90E913F5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "delivmaster", "delivmaster\delivmaster.csproj", "{10E53A5B-1CEF-45EB-8716-543982361B33}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "delivcli", "delivcli\delivcli.csproj", "{6523F4AE-A5F3-4E72-99D1-ECB8C8EA98A7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -34,10 +34,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{5FE7BE75-A002-42FC-8CDA-69CB2B1B5D29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5FE7BE75-A002-42FC-8CDA-69CB2B1B5D29}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5FE7BE75-A002-42FC-8CDA-69CB2B1B5D29}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5FE7BE75-A002-42FC-8CDA-69CB2B1B5D29}.Release|Any CPU.Build.0 = Release|Any CPU
 		{70AF5EBB-5159-4384-AB38-5D8E90E913F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{70AF5EBB-5159-4384-AB38-5D8E90E913F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{70AF5EBB-5159-4384-AB38-5D8E90E913F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -46,6 +42,10 @@ Global
 		{10E53A5B-1CEF-45EB-8716-543982361B33}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{10E53A5B-1CEF-45EB-8716-543982361B33}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{10E53A5B-1CEF-45EB-8716-543982361B33}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6523F4AE-A5F3-4E72-99D1-ECB8C8EA98A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6523F4AE-A5F3-4E72-99D1-ECB8C8EA98A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6523F4AE-A5F3-4E72-99D1-ECB8C8EA98A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6523F4AE-A5F3-4E72-99D1-ECB8C8EA98A7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

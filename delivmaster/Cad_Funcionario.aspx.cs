@@ -8,6 +8,8 @@ namespace delivmaster
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            // tenta identificar se houve login. caso contrário vai para página de erro
+            string v_id_user = Session["ID_User"].ToString();
             try
             {
                 if (!IsPostBack)
@@ -98,20 +100,20 @@ namespace delivmaster
             try
             {   
                 OperacaoBanco operacao = new OperacaoBanco();
-                bool inserir = operacao.Insert(@"INSERT INTO Tbl_Motoboys (ID_Cliente, Nome, email, Telefone, " +
-                    "WhatsApp, Veiculo, Modelo, Placa) VALUES (" + cmb_cliente.SelectedItem.Value + 
-                    ",'" + txt_nome.Text + "', '" + txt_email.Text + "', '" + txt_telefone.Text + 
+                bool inserir = operacao.Insert(@"INSERT INTO Tbl_Motoboys (ID_Cliente, Nome, Telefone, " +
+                    "WhatsApp, Veiculo, Modelo, Placa, usuario, senha) VALUES (" + cmb_cliente.SelectedItem.Value + 
+                    ",'" + txt_nome.Text + "', '" + txt_telefone.Text + 
                     "', '" + txt_whatsapp.Text + "', '" + txt_veiculo.Text + "', '" + txt_modelo.Text + 
-                    "', '" + txt_placa.Text + "')");
+                    "', '" + txt_placa.Text + "', '" + txt_user.Text + "', '123456')");
                 ConexaoBancoSQL.fecharConexao();
 
                 txt_nome.Text = "";
-                txt_email.Text = "";
                 txt_telefone.Text = "";
                 txt_whatsapp.Text = "";
                 txt_veiculo.Text = "";
                 txt_modelo.Text = "";
                 txt_placa.Text = "";
+                txt_user.Text = "";
 
                 if (inserir == true)
                 {
@@ -130,9 +132,10 @@ namespace delivmaster
             {
                 OperacaoBanco operacao = new OperacaoBanco();
                 Boolean update = operacao.Update(@"UPDATE Tbl_Motoboys SET Nome='" + txt_edit_nome.Text + "', " + 
-                    "email = '" + txt_edit_email.Text + "', telefone = '" + txt_edit_telefone.Text + "', " +
+                    "telefone = '" + txt_edit_telefone.Text + "', " +
                     "WhatsApp = '" + txt_edit_whatsapp.Text + "', Veiculo = '" + txt_edit_veiculo.Text + "', " +
-                    "Modelo = '" + txt_edit_modelo.Text + "', Placa = '" + txt_edit_placa.Text + "' WHERE ID_Motoboy=" + lbl_id.Text + ";");
+                    "Modelo = '" + txt_edit_modelo.Text + "', Placa = '" + txt_edit_placa.Text + "', " +
+                    "usuario = '" + txt_edit_user.Text + "' WHERE ID_Motoboy=" + lbl_id.Text + ";");
                 ConexaoBancoSQL.fecharConexao();
                 if (update == true)
                 {
@@ -176,12 +179,12 @@ namespace delivmaster
         {
             //modal edit delete  - preenche campos
             txt_edit_nome.Text = GridView2.SelectedRow.Cells[0].Text;
-            txt_edit_email.Text = GridView2.SelectedRow.Cells[1].Text;
-            txt_edit_telefone.Text = GridView2.SelectedRow.Cells[2].Text;
-            txt_edit_whatsapp.Text = GridView2.SelectedRow.Cells[3].Text;
-            txt_edit_veiculo.Text = GridView2.SelectedRow.Cells[4].Text;
-            txt_edit_modelo.Text = GridView2.SelectedRow.Cells[5].Text;
-            txt_edit_placa.Text = GridView2.SelectedRow.Cells[6].Text;
+            txt_edit_telefone.Text = GridView2.SelectedRow.Cells[1].Text;
+            txt_edit_whatsapp.Text = GridView2.SelectedRow.Cells[2].Text;
+            txt_edit_veiculo.Text = GridView2.SelectedRow.Cells[3].Text;
+            txt_edit_modelo.Text = GridView2.SelectedRow.Cells[4].Text;
+            txt_edit_placa.Text = GridView2.SelectedRow.Cells[5].Text;
+            txt_edit_user.Text = GridView2.SelectedRow.Cells[6].Text;
             lbl_id.Text = GridView2.SelectedRow.Cells[7].Text;
 
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openModal();", true);

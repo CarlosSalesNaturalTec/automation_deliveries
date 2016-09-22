@@ -8,6 +8,9 @@ namespace delivmaster
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            // tenta identificar se houve login. caso contrário vai para página de erro
+            string v_id_user = Session["ID_User"].ToString();
+
             try
             {
                total_registros();

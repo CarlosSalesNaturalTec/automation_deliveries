@@ -8,6 +8,8 @@ namespace delivmaster
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            // tenta identificar se houve login. caso contrário vai para página de erro
+            string v_id_user = Session["ID_User"].ToString();
             try
             {
                total_clientes();
@@ -47,9 +49,9 @@ namespace delivmaster
             try
             {   
                 OperacaoBanco operacao = new OperacaoBanco();
-                Boolean inserir = operacao.Insert(@"INSERT INTO Tbl_Clientes (Nome, email, Telefone, Responsavel, Area_Unidade) " +
+                Boolean inserir = operacao.Insert(@"INSERT INTO Tbl_Clientes (Nome, email, Telefone, Responsavel, Area_Unidade, usuario, senha) " +
                     "VALUES ('"+ txt_nome.Text + "', '" + txt_email.Text + "', '" + txt_telefone.Text 
-                    + "', '"+ txt_responsavel.Text + "', '" + txt_area_und.Text + "');");
+                    + "', '"+ txt_responsavel.Text + "', '" + txt_area_und.Text + "', '" + txt_user.Text + "','123456');");
                 ConexaoBancoSQL.fecharConexao();
 
                 txt_nome.Text = "";
@@ -57,6 +59,7 @@ namespace delivmaster
                 txt_telefone.Text = "";
                 txt_responsavel.Text = "";
                 txt_area_und.Text = "";
+                txt_user.Text = "";
 
                 if (inserir == true)
                 {
@@ -76,7 +79,7 @@ namespace delivmaster
                 OperacaoBanco operacao = new OperacaoBanco();
                 Boolean update = operacao.Update(@"UPDATE Tbl_Clientes SET Nome='" + txt_edit_nome.Text + "', Responsavel='" + 
                     txt_edit_responsavel.Text + "', email = '" + txt_edit_email.Text + "', telefone = '" + txt_edit_telefone.Text + 
-                    "', Area_Unidade = '" + txt_edit_area_und.Text + "' WHERE ID_Cliente=" + lbl_id.Text + ";");
+                    "', Area_Unidade = '" + txt_edit_area_und.Text + "', usuario = '" + txt_edit_user.Text + "' WHERE ID_Cliente=" + lbl_id.Text + ";");
                 ConexaoBancoSQL.fecharConexao();
                 if (update == true)
                 {
@@ -125,7 +128,8 @@ namespace delivmaster
             txt_edit_telefone.Text = GridView2.SelectedRow.Cells[2].Text;
             txt_edit_responsavel.Text = GridView2.SelectedRow.Cells[3].Text;
             txt_edit_area_und.Text = GridView2.SelectedRow.Cells[4].Text;
-            lbl_id.Text = GridView2.SelectedRow.Cells[5].Text;
+            txt_edit_user.Text = GridView2.SelectedRow.Cells[5].Text;
+            lbl_id.Text = GridView2.SelectedRow.Cells[6].Text;
 
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openModal();", true);
         }
