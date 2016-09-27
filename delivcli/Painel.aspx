@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="Painel Principal" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Painel.aspx.cs" Inherits="delivcli.Painel" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    
+
     <!-- Automation Deliveries - Web App para automação de entrega de encomendas  -->
     <!-- Autor      : Carlos Sales https://github.com/CarlosSalesNaturalTec  -->
     <!-- Ano        : 2016 -->
@@ -10,7 +10,8 @@
     <!---------------------------------------------------------------------------------------------------------------------------------->
 
     <!-- Mensagens do sistema  -->
-    <p class="text-danger"> <asp:Label ID="lbl_msg" runat="server"></asp:Label></p>
+    <p class="text-danger">
+        <asp:Label ID="lbl_msg" runat="server"></asp:Label></p>
 
     <!-- LINHA 01 -->
     <div class="row">
