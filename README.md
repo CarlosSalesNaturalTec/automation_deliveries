@@ -1,2 +1,3 @@
 # automation_deliveries
-Automação entrega de encomendas.
+Automação de entrega de encomendas com Geolocalização.
+Acompanhamento de Ativos.
