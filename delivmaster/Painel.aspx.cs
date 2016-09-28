@@ -7,9 +7,9 @@ namespace delivmaster
     public partial class Painel : Page
     {
         // Variáveis de apoio
-        string periodo = "";
-        string serie_entregues = "";
-        string serie_nao_entregues = "";
+        string periodo = "0";
+        string serie_entregues = "0";
+        string serie_nao_entregues = "0";
         StringBuilder str = new StringBuilder();
 
         protected void Page_Load(object sender, EventArgs e)
@@ -292,9 +292,9 @@ namespace delivmaster
         private void entregasnoperiodo()
         {
             // variáveis de apoio
-            string per = "";
-            string per1 = "";
-            string per2 = "";
+            string per = "0";
+            string per1 = "0";
+            string per2 = "0";
             int contador = 0;
             int len = 0;
 
@@ -324,7 +324,7 @@ namespace delivmaster
                     if (contador == 5) { break; }
                 }
                 ConexaoBancoSQL.fecharConexao();
-
+                
                 len = per.Length - 1;
                 periodo = per.Substring(0, len);
 

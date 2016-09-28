@@ -8,9 +8,9 @@ namespace delivcli
     {
         // Variáveis de apoio
         string ID_Cli = "0";  // ID do cliente
-        string periodo = "";
-        string serie_entregues = "";
-        string serie_nao_entregues = "";
+        string periodo = "0";
+        string serie_entregues = "0";
+        string serie_nao_entregues = "0";
         StringBuilder str = new StringBuilder();
 
         protected void Page_Load(object sender, EventArgs e)
@@ -293,9 +293,9 @@ namespace delivcli
         private void entregasnoperiodo()
         {
             // variáveis de apoio
-            string per = "";
-            string per1 = "";
-            string per2 = "";
+            string per = "0";
+            string per1 = "0";
+            string per2 = "0";
             int contador = 0;
             int len = 0;
 

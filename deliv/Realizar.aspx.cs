@@ -17,6 +17,7 @@ namespace deliv
             {
                 lbl_data.Text = DateTime.Today.ToString("dd/MM/yyyy");
                 atualiza_grid();
+                salvaGeoLocalizacao();
             }
         }
 
@@ -28,7 +29,9 @@ namespace deliv
             string date_formated = dt2.ToString("yyyy-MM-dd");
 
             // string SELECT
-            string stringSelect = @"select Bairro, Endereco, Ponto_Ref, Id_Entrega, ID_Motoboy, Data_Encomenda, Entregue, Status_Entrega, Data_Entrega from Tbl_Entregas " +
+            string stringSelect = @"select Bairro, Endereco, Ponto_Ref, Id_Entrega, ID_Motoboy, " +
+                    " Data_Encomenda, Entregue, Status_Entrega, Data_Entrega " +
+                    " from Tbl_Entregas " +
                     " where ID_Motoboy = " + ID_Func +
                     " and Data_Encomenda = '" + date_formated + "'" +
                     " and Entregue <> 1" +
@@ -106,5 +109,9 @@ namespace deliv
             ConexaoBancoSQL.fecharConexao();
         }
 
+        private void salvaGeoLocalizacao()
+        {
+            
+        }
     }
 }

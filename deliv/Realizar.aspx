@@ -5,7 +5,7 @@
     <!-- Automation Deliveries ENTREGAS - Web App para automação de entrega de encomendas -->
     <!-- Criação    : Carlos Sales https://github.com/CarlosSalesNaturalTec  -->
     <!-- Ano        : 2016 -->
-    <!-- Recursos   : ASP.NET / JAVASCRIPT / CSS / SQL / Windows Azure -->
+    <!-- Recursos   : JAVASCRIPT / GOOGLE MAPS API´s / ASP.NET / C# / CSS / SQL / Windows Azure -->
     <!-- Módulo     : DELIVERIES - ENTREGAS À REALIZAR-->
     <!--------------------------------------------------------------------------------->
 
@@ -16,16 +16,28 @@
         }
     </script>
 
+    <!-- Requisição de Geolocalização (Google Geolocation API) via Jquery/Ajax POST-->
+    <script type="text/javascript">
+        $.ajax({
+            url: "https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyCOmedP-f3N7W7CPxaRoCZJ5mTMm6g0Ycc",
+            type: "POST",
+            success: function (data) {
+                document.getElementById("input1").value = data.location.lat
+                document.getElementById("input2").value = data.location.lng
+                document.getElementById("input3").value = data.accuracy
+            }
+        });
+    </script>
+
      <!-- data corrente e nome do funcionário -->
-    <br />
-    <ul class="breadcrumb">
+    <br /><ul class="breadcrumb">
         <li class="active">
             <asp:Label ID="lbl_data" runat="server"></asp:Label> - <asp:Label ID="lbl_ID_Funcionario" runat="server"></asp:Label>
         </li>
     </ul>
 
-    <h3 class="text-warning">ENTREGAS À REALIZAR</h3>
-    <br />
+    <!-- Cabeçalho -->
+    <h3 class="text-warning">ENTREGAS À REALIZAR</h3>   <br />
 
     <!-- Grid -->
     <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" Width="100%" OnRowDataBound="GridView_RowDataBound" OnSelectedIndexChanged="GridView_SelectedIndexChanged">
@@ -36,6 +48,13 @@
             <asp:BoundField DataField="ID_Entrega" HeaderText="ID"/>
         </Columns>
     </asp:GridView>
+
+    <!-- inputs que recebem coordenadas de geolocalização-->
+    <div>
+    <input id="input1" name="txtlat" type="hidden"/>
+    <input id="input2" name="txtlng" type="hidden"/>
+    <input id="input3" name="txtacrcy" type="hidden"/>
+    </div>
 
     <!-- modal DETALHES -->
     <div id="Modal_Detalhes" class="modal fade" role="dialog">
@@ -73,5 +92,8 @@
             </div>
         </div>
     </div>
+    
+    <!-- Script p/ envio de requisição HTTPS sobre geolocalização -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
 </asp:Content>
