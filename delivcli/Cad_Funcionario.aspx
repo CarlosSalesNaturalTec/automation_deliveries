@@ -17,8 +17,7 @@
         function openModal() {
             $('#Modal_Edit_Delete').modal('show');
         }
-    </script>
-    
+    </script>    
     <br />
 
     <!-- quadro TOTAL DE REGISTROS  / OUTRAS INFORMAÇÕES-->
@@ -42,7 +41,7 @@
     </div>
 
     <!-- Grid -->
-    <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" Width="80%" OnRowDataBound="GridView_RowDataBound" OnSelectedIndexChanged="GridView_SelectedIndexChanged">
+    <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" Width="100%" OnRowDataBound="GridView_RowDataBound" OnSelectedIndexChanged="GridView_SelectedIndexChanged">
         <Columns>
             <asp:BoundField DataField="Nome" HeaderText="NOME" />
             <asp:BoundField DataField="Telefone" HeaderText="TELEFONE"/>
@@ -52,6 +51,8 @@
             <asp:BoundField DataField="Placa" HeaderText="PLACA"/>
             <asp:BoundField DataField="Usuario" HeaderText="USUÁRIO"/>
             <asp:BoundField DataField="ID_Motoboy" HeaderText="ID"/>
+            <asp:BoundField DataField="GeoLatitude" HeaderText="LATITUDE"/>
+            <asp:BoundField DataField="GeoDataLoc" HeaderText="DATAGEO"/>
         </Columns>
     </asp:GridView>
 

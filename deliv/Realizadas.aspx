@@ -24,7 +24,7 @@
         </li>
     </ul>
 
-    <h3 class="text-success">ENTREGAS REALIZADAS</h3>
+    <h2 class="text-success">ENTREGAS REALIZADAS</h2>
     <br />
 
     <!-- Grid -->

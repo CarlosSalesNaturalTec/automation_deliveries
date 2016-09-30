@@ -9,6 +9,19 @@
     <!-- Módulo     : LOGIN -->
     <!---------------------------------------------------------------------------------------------------------------------------------->
     
+    <!-- Requisição de Geolocalização (Google Geolocation API) via Jquery/Ajax POST-->
+    <script type="text/javascript">
+        $.ajax({
+            url: "https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyCOmedP-f3N7W7CPxaRoCZJ5mTMm6g0Ycc",
+            type: "POST",
+            success: function (data) {
+                document.getElementById("input1").value = data.location.lat
+                document.getElementById("input2").value = data.location.lng
+                document.getElementById("input3").value = data.accuracy
+            }
+        });
+    </script>
+
     <!-- Mensagens do sistema  -->
     <br /><p class="text-danger"><asp:Label ID="lbl_msg" runat="server"></asp:Label></p><br />
 
@@ -45,5 +58,13 @@
 
         </div>
     </div>
+
+    <!-- inputs que recebem coordenadas de geolocalização-->
+    <input id="input1" name="txtlat" type="hidden" value="0"/>
+    <input id="input2" name="txtlng" type="hidden" value="0"/>
+    <input id="input3" name="txtacrcy" type="hidden" value="0"/>
+
+    <!-- Script p/ envio de requisição HTTPS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
 </asp:Content>

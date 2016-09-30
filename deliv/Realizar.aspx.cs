@@ -16,8 +16,8 @@ namespace deliv
             if (!IsPostBack)
             {
                 lbl_data.Text = DateTime.Today.ToString("dd/MM/yyyy");
-                atualiza_grid();
-                salvaGeoLocalizacao();
+
+                atualiza_grid();               
             }
         }
 
@@ -111,7 +111,7 @@ namespace deliv
 
         private void salvaGeoLocalizacao()
         {
-            
+
         }
     }
 }

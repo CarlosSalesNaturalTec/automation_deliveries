@@ -11,22 +11,23 @@
 
     <!-- Script Modal Detalhes -->
     <script type="text/javascript">
+
         function openModal() {
             $('#Modal_Detalhes').modal('show');
         }
-    </script>
 
-    <!-- Requisição de Geolocalização (Google Geolocation API) via Jquery/Ajax POST-->
-    <script type="text/javascript">
-        $.ajax({
-            url: "https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyCOmedP-f3N7W7CPxaRoCZJ5mTMm6g0Ycc",
-            type: "POST",
-            success: function (data) {
-                document.getElementById("input1").value = data.location.lat
-                document.getElementById("input2").value = data.location.lng
-                document.getElementById("input3").value = data.accuracy
-            }
-        });
+        function GeoLoc() {
+            $.ajax({
+                url: "https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyCOmedP-f3N7W7CPxaRoCZJ5mTMm6g0Ycc",
+                type: "POST",
+                success: function (data) {
+                    document.getElementById("input1").value = data.location.lat
+                    document.getElementById("input2").value = data.location.lng
+                    document.getElementById("input3").value = data.accuracy
+                }
+            });
+        }
+
     </script>
 
      <!-- data corrente e nome do funcionário -->
@@ -37,7 +38,7 @@
     </ul>
 
     <!-- Cabeçalho -->
-    <h3 class="text-warning">ENTREGAS À REALIZAR</h3>   <br />
+    <h2 class="text-warning">ENTREGAS À REALIZAR</h2>   <br />
 
     <!-- Grid -->
     <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" Width="100%" OnRowDataBound="GridView_RowDataBound" OnSelectedIndexChanged="GridView_SelectedIndexChanged">
@@ -48,13 +49,6 @@
             <asp:BoundField DataField="ID_Entrega" HeaderText="ID"/>
         </Columns>
     </asp:GridView>
-
-    <!-- inputs que recebem coordenadas de geolocalização-->
-    <div>
-    <input id="input1" name="txtlat" type="hidden"/>
-    <input id="input2" name="txtlng" type="hidden"/>
-    <input id="input3" name="txtacrcy" type="hidden"/>
-    </div>
 
     <!-- modal DETALHES -->
     <div id="Modal_Detalhes" class="modal fade" role="dialog">
@@ -85,15 +79,17 @@
                  </div>
 
                 <div class="modal-footer">
-                    <asp:Button ID="bt_atualizar" runat="server" Text="ATUALIZAR" CssClass="btn btn-success" OnClick="bt_atualizar_click" UseSubmitBehavior="false" data-dismiss="modal" />
+                    <asp:Button ID="bt_atualizar" runat="server" Text="ATUALIZAR" CssClass="btn btn-success" OnClick="bt_atualizar_click"  UseSubmitBehavior="false" data-dismiss="modal" />
                     <asp:Button ID="bt_fechar" runat="server" Text="FECHAR" CssClass="btn btn-default" data-dismiss="modal" />
                 </div>
 
             </div>
         </div>
     </div>
-    
-    <!-- Script p/ envio de requisição HTTPS sobre geolocalização -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
-</asp:Content>
+    <!-- inputs que recebem coordenadas de geolocalização-->
+    <input id="input1" name="txtlat" type="hidden" value="0"/>
+    <input id="input2" name="txtlng" type="hidden" value="0"/>
+    <input id="input3" name="txtacrcy" type="hidden" value="0"/>
+    
+ </asp:Content>
