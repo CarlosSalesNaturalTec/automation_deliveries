@@ -159,12 +159,16 @@
     </Content>
     <None Include="Properties\PublishProfiles\delivcli.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Mapa.aspx" />
+    <Content Include="Mapa1.aspx" />
     <Content Include="Painel.aspx" />
     <Content Include="Scripts\admin.js" />
     <Content Include="Scripts\ai.0.22.19-build00125.js" />
     <Content Include="Scripts\ai.0.22.19-build00125.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\exporting.js" />
+    <Content Include="Scripts\highcharts.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
@@ -244,6 +248,20 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Mapa.aspx.cs">
+      <DependentUpon>Mapa.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mapa.aspx.designer.cs">
+      <DependentUpon>Mapa.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mapa1.aspx.cs">
+      <DependentUpon>Mapa1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mapa1.aspx.designer.cs">
+      <DependentUpon>Mapa1.aspx</DependentUpon>
     </Compile>
     <Compile Include="OperacaoBanco.cs" />
     <Compile Include="Painel.aspx.cs">

@@ -24,6 +24,7 @@ namespace delivcli
                 if (inputSenha.Text == Convert.ToString(rcrdset[2]))
                 {
                     Session["Cli_ID"] = Convert.ToString(rcrdset[0]);
+                    Session["CLI_ID_FUNC"] ="0";
                     Response.Redirect("Painel.aspx");
                 }
                 else

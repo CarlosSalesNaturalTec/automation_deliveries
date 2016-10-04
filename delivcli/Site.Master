@@ -74,6 +74,7 @@
                     <ul class="nav navbar-nav">
                         <li><a runat="server" href="~/">Conectar</a></li>
                         <li><a id="A2" runat="server" href="~/Painel.aspx">Painel</a></li>
+                        <li><a id="A1" runat="server" href="~/Mapa.aspx">Mapa</a></li>
                         <li><a id="A4" runat="server" href="~/Cad_Funcionario.aspx">Funcionarios</a></li>
                         <li><a id="A3" runat="server" href="~/Cad_Entregas.aspx">Entregas</a></li>
                     </ul>

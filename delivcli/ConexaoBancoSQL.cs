@@ -25,7 +25,7 @@ namespace delivcli
         public ConexaoBancoSQL()
         {
             // *** STRING DE CONEXÃO COM BANCO DE DADOS - Atenção! Alterar dados conforme seu servidor
-           stringconnection1 = @"Server=tcp:logtransportesserver.database.windows.net,1433;Initial Catalog=logtransportes;Persist Security Info=False;User ID=admlogtransporte;Password=pwd@1973;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+           stringconnection1 = @"Server=tcp:deliveriesdbserver.database.windows.net,1433;Initial Catalog=dados;Persist Security Info=False;User ID=admserver;Password=pwd@2016;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
             try
             {
                 tentarAbrirConexaoRemota();

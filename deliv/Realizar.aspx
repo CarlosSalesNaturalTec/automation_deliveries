@@ -9,28 +9,31 @@
     <!-- Módulo     : DELIVERIES - ENTREGAS À REALIZAR-->
     <!--------------------------------------------------------------------------------->
 
+    <asp:Timer ID="Timer1" runat="server" Interval="60000"></asp:Timer>
+    <asp:UpdatePanel ID="UpdatePanel1" runat="server"></asp:UpdatePanel>
+
+    <!-- Requisição de Geolocalização (Google Geolocation API) via Jquery/Ajax POST-->
+    <script type="text/javascript">
+        $.ajax({
+            url: "https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyCOmedP-f3N7W7CPxaRoCZJ5mTMm6g0Ycc",
+            type: "POST",
+            success: function (data) {
+                document.getElementById("input1").value = data.location.lat
+                document.getElementById("input2").value = data.location.lng
+                document.getElementById("input3").value = data.accuracy
+            }
+        });
+    </script>
+
+
     <!-- Script Modal Detalhes -->
     <script type="text/javascript">
-
         function openModal() {
             $('#Modal_Detalhes').modal('show');
         }
-
-        function GeoLoc() {
-            $.ajax({
-                url: "https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyCOmedP-f3N7W7CPxaRoCZJ5mTMm6g0Ycc",
-                type: "POST",
-                success: function (data) {
-                    document.getElementById("input1").value = data.location.lat
-                    document.getElementById("input2").value = data.location.lng
-                    document.getElementById("input3").value = data.accuracy
-                }
-            });
-        }
-
     </script>
 
-     <!-- data corrente e nome do funcionário -->
+     <!-- data corrente e ID do funcionário -->
     <br /><ul class="breadcrumb">
         <li class="active">
             <asp:Label ID="lbl_data" runat="server"></asp:Label> - <asp:Label ID="lbl_ID_Funcionario" runat="server"></asp:Label>
@@ -88,6 +91,7 @@
     </div>
 
     <!-- inputs que recebem coordenadas de geolocalização-->
+    <br />
     <input id="input1" name="txtlat" type="hidden" value="0"/>
     <input id="input2" name="txtlng" type="hidden" value="0"/>
     <input id="input3" name="txtacrcy" type="hidden" value="0"/>

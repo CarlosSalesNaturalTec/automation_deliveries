@@ -11,13 +11,13 @@
 
     <!-- Script para exibição de ícones -->
     <script src="https://use.fontawesome.com/8c3712a1dd.js"></script>
-    
+
     <!-- Script para abertura de Modal  -->
     <script type="text/javascript">
         function openModal() {
             $('#Modal_Edit_Delete').modal('show');
         }
-    </script>    
+    </script>
     <br />
 
     <!-- quadro TOTAL DE REGISTROS  / OUTRAS INFORMAÇÕES-->
@@ -27,7 +27,8 @@
                 <dtitle>TOTAL DE FUNCIONÁRIOS CADASTRADOS</dtitle>
                 <hr>
                 <h1><i class="fa fa-user" style="font-size: 40px" aria-hidden="true"></i>
-                    <asp:Label ID="lbl_total_motoboys" runat="server" Text="999"></asp:Label> </h1>
+                    <asp:Label ID="lbl_total_motoboys" runat="server" Text="999"></asp:Label>
+                </h1>
                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#Modal_Novo">Inserir Novo</button>
             </div>
         </div>
@@ -44,15 +45,16 @@
     <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" Width="100%" OnRowDataBound="GridView_RowDataBound" OnSelectedIndexChanged="GridView_SelectedIndexChanged">
         <Columns>
             <asp:BoundField DataField="Nome" HeaderText="NOME" />
-            <asp:BoundField DataField="Telefone" HeaderText="TELEFONE"/>
-            <asp:BoundField DataField="WhatsApp" HeaderText="WHATSAPP"/>
-            <asp:BoundField DataField="Veiculo" HeaderText="VEICULO"/>
-            <asp:BoundField DataField="Modelo" HeaderText="MODELO"/>
-            <asp:BoundField DataField="Placa" HeaderText="PLACA"/>
-            <asp:BoundField DataField="Usuario" HeaderText="USUÁRIO"/>
-            <asp:BoundField DataField="ID_Motoboy" HeaderText="ID"/>
-            <asp:BoundField DataField="GeoLatitude" HeaderText="LATITUDE"/>
-            <asp:BoundField DataField="GeoDataLoc" HeaderText="DATAGEO"/>
+            <asp:BoundField DataField="Telefone" HeaderText="TELEFONE" />
+            <asp:BoundField DataField="WhatsApp" HeaderText="WHATSAPP" />
+            <asp:BoundField DataField="Veiculo" HeaderText="VEICULO" />
+            <asp:BoundField DataField="Modelo" HeaderText="MODELO" />
+            <asp:BoundField DataField="Placa" HeaderText="PLACA" />
+            <asp:BoundField DataField="Usuario" HeaderText="USUÁRIO" />
+            <asp:BoundField DataField="ID_Motoboy" HeaderText="ID" />
+            <asp:BoundField DataField="GeoLatitude" HeaderText="LAT" />
+            <asp:BoundField DataField="GeoLongitude" HeaderText="LNG" />
+            <asp:BoundField DataField="GeoDataLoc" HeaderText="ATUALIZADO" />
         </Columns>
     </asp:GridView>
 
@@ -68,19 +70,33 @@
 
                 <div class="modal-body">
                     <p>Nome:</p>
-                    <p><asp:TextBox id="txt_nome" runat="server" CssClass="input-lg"/></p>
+                    <p>
+                        <asp:TextBox ID="txt_nome" runat="server" CssClass="input-lg" />
+                    </p>
                     <p>Telefone:</p>
-                    <p><asp:TextBox id="txt_telefone" runat="server" CssClass="input-lg"/></p>
+                    <p>
+                        <asp:TextBox ID="txt_telefone" runat="server" CssClass="input-lg" />
+                    </p>
                     <p>WhatsApp:</p>
-                    <p><asp:TextBox id="txt_whatsapp" runat="server" CssClass="input-lg"/></p>
+                    <p>
+                        <asp:TextBox ID="txt_whatsapp" runat="server" CssClass="input-lg" />
+                    </p>
                     <p>Veiculo:</p>
-                    <p><asp:TextBox id="txt_veiculo" runat="server" CssClass="input-lg"/></p>
+                    <p>
+                        <asp:TextBox ID="txt_veiculo" runat="server" CssClass="input-lg" />
+                    </p>
                     <p>Modelo:</p>
-                    <p><asp:TextBox id="txt_modelo" runat="server" CssClass="input-lg"/></p>
+                    <p>
+                        <asp:TextBox ID="txt_modelo" runat="server" CssClass="input-lg" />
+                    </p>
                     <p>Placa:</p>
-                    <p><asp:TextBox id="txt_placa" runat="server" CssClass="input-lg"/></p>
+                    <p>
+                        <asp:TextBox ID="txt_placa" runat="server" CssClass="input-lg" />
+                    </p>
                     <p>Usuário:</p>
-                    <p><asp:TextBox id="txt_user" runat="server" CssClass="input-lg"/></p>
+                    <p>
+                        <asp:TextBox ID="txt_user" runat="server" CssClass="input-lg" />
+                    </p>
                 </div>
 
                 <div class="modal-footer">
@@ -92,7 +108,7 @@
         </div>
     </div>
 
-     <!-- modal EDIT,DELETE -->
+    <!-- modal EDIT,DELETE -->
     <div id="Modal_Edit_Delete" class="modal fade" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -104,21 +120,38 @@
 
                 <div class="modal-body">
                     <p>Nome:</p>
-                    <p><asp:TextBox id="txt_edit_nome" runat="server" CssClass="input-lg"/></p>
+                    <p>
+                        <asp:TextBox ID="txt_edit_nome" runat="server" CssClass="input-lg" />
+                    </p>
                     <p>Telefone:</p>
-                    <p><asp:TextBox id="txt_edit_telefone" runat="server" CssClass="input-lg"/></p>
+                    <p>
+                        <asp:TextBox ID="txt_edit_telefone" runat="server" CssClass="input-lg" />
+                    </p>
                     <p>WhatsApp:</p>
-                    <p><asp:TextBox id="txt_edit_whatsapp" runat="server" CssClass="input-lg"/></p>
+                    <p>
+                        <asp:TextBox ID="txt_edit_whatsapp" runat="server" CssClass="input-lg" />
+                    </p>
                     <p>Veiculo:</p>
-                    <p><asp:TextBox id="txt_edit_veiculo" runat="server" CssClass="input-lg"/></p>
+                    <p>
+                        <asp:TextBox ID="txt_edit_veiculo" runat="server" CssClass="input-lg" />
+                    </p>
                     <p>Modelo:</p>
-                    <p><asp:TextBox id="txt_edit_modelo" runat="server" CssClass="input-lg"/></p>
+                    <p>
+                        <asp:TextBox ID="txt_edit_modelo" runat="server" CssClass="input-lg" />
+                    </p>
                     <p>Placa:</p>
-                    <p><asp:TextBox id="txt_edit_placa" runat="server" CssClass="input-lg"/></p>
+                    <p>
+                        <asp:TextBox ID="txt_edit_placa" runat="server" CssClass="input-lg" />
+                    </p>
                     <p>Usuário:</p>
-                    <p><asp:TextBox id="txt_edit_user" runat="server" CssClass="input-lg"/></p>
+                    <p>
+                        <asp:TextBox ID="txt_edit_user" runat="server" CssClass="input-lg" />
+                    </p>
 
-                    <p>ID: <asp:Label ID="lbl_id" runat="server" Text=""></asp:Label></p>
+                    <p>
+                        ID:
+                        <asp:Label ID="lbl_id" runat="server" Text=""></asp:Label>
+                    </p>
                 </div>
 
                 <div class="modal-footer">

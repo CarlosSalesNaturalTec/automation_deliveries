@@ -16,9 +16,11 @@ namespace deliv
             if (!IsPostBack)
             {
                 lbl_data.Text = DateTime.Today.ToString("dd/MM/yyyy");
-
-                atualiza_grid();               
+                lbl_ID_Funcionario.Text = ID_Func;
+                atualiza_grid();
             }
+
+            salvaGeoLocalizacao();
         }
 
         public void atualiza_grid()
@@ -111,7 +113,20 @@ namespace deliv
 
         private void salvaGeoLocalizacao()
         {
+            string vlat = Request.Form["txtlat"];
+            if (vlat == null) { return; }
 
+            //string update
+            string stringupdate = "update Tbl_Motoboys set " +
+                " GeoLatitude = '" + Request.Form["txtlat"] + "' , " +
+                " GeoLongitude = '" + Request.Form["txtlng"] + "' , " +
+                " GeoAccuracy = '" + Request.Form["txtacrcy"] + "' , " +
+                " GeoDataLoc = '" + DateTime.Now.ToString() + "'" +
+                " where ID_Motoboy = " + ID_Func;
+
+            OperacaoBanco operacao = new OperacaoBanco();
+            Boolean update = operacao.Update(stringupdate);
+            ConexaoBancoSQL.fecharConexao();
         }
     }
 }

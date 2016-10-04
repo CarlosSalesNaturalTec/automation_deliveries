@@ -48,7 +48,7 @@ namespace delivcli
                 string date_formated = dt2.ToString("yyyy-MM-dd");
 
                 // total de entregas no dia
-                string stringselect = "select count(*) as totalregistros from tbl_entregas where id_cliente = " + ID_Cli + 
+                string stringselect = "select count(*) as totalregistros from tbl_entregas where id_cliente = " + ID_Cli +
                     " and Data_Encomenda = '" + date_formated + "'";
                 OperacaoBanco operacao = new OperacaoBanco();
                 System.Data.SqlClient.SqlDataReader dados = operacao.Select(stringselect);
@@ -143,19 +143,15 @@ namespace delivcli
                     margin: [0, 0, 0, 0],
                     backgroundColor: null,
                     plotBackgroundColor: 'none',
-
                 },
-
                 title:
                     {
                         text: null
                 },
-
                 tooltip:
                     {
                         formatter: function() {
                             return this.point.name + ': ' + this.y + ' %';
-
                         }
                     },
                 series: [
@@ -252,15 +248,12 @@ namespace delivcli
 	            backgroundColor: null,
 	            plotBackgroundColor: 'none'
 	        },
-
 	        title: {
 	            text: null
 	        },
-
 	        tooltip: {
 	            formatter: function () {
 	                return this.point.name + ': ' + this.y + ' %';
-
 	            }
 	        },
 	        series: [
@@ -293,9 +286,9 @@ namespace delivcli
         private void entregasnoperiodo()
         {
             // variáveis de apoio
-            string per = "0";
-            string per1 = "0";
-            string per2 = "0";
+            string per = " ";
+            string per1 = " ";
+            string per2 = " ";
             int contador = 0;
             int len = 0;
 
