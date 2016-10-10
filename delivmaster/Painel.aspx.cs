@@ -292,9 +292,9 @@ namespace delivmaster
         private void entregasnoperiodo()
         {
             // variáveis de apoio
-            string per = "0";
-            string per1 = "0";
-            string per2 = "0";
+            string per = " ";
+            string per1 = " ";
+            string per2 = " ";
             int contador = 0;
             int len = 0;
 

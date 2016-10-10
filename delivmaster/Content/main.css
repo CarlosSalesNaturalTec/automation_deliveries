@@ -1,8 +1,9 @@
 /*!
  
 /* COLOR REFERENCE
-- #1f1f1f (Background Color)
-- #3d3d3d (Dash-unit and half-unit Section) 
+- #1f1f1f (Background Color) ALTERADO PARA #ffffff
+    
+- #3d3d3d (Dash-unit and half-unit Section)  ALTERADO para 8f3535
 - #262626 (Footer) 
 - #fa1d2d (Red - Used in selectors, parragraphs, bars and other) 
 - #b2c831 (Green - Used in titles, badges, bars and other) 
@@ -11,7 +12,7 @@
 
 /**********BASE CONFIGURATIONS**********/   
 body {
-	background:#1f1f1f;
+	background:#ffffff;
     font-family: 'Open Sans', sans-serif;
 }
 
@@ -45,7 +46,7 @@ h5 {
 	padding-bottom:10px;
 	border: 1px solid #383737;
 	background-image:url('../img/sep-half.png');
-	background-color: #3d3d3d;
+	background-color: #8f3535;
 	color:white;
 	height:390px;
 }
@@ -55,7 +56,7 @@ h5 {
 	padding-bottom:10px;
 	border: 1px solid #383737;
 	background-image:url('../images/sep-half.png');
-	background-color: #3d3d3d;
+	background-color: #8f3535;
 	color:white;
 	height:180px;
     text-align:center;
@@ -63,14 +64,14 @@ h5 {
 
 .dash-unitc{
 	border: 1px solid #383737;
-	background-color: #3d3d3d;
+	background-color: #8f3535;
     height:40px;
 	color:white;
     text-align:center;
 }
 
 .dash-unit:hover {
-	background-color: #4f4f4f;
+	background-color: #8d2828;
 	-moz-box-shadow:    3px 3px 2px 0px #151515;
     -webkit-box-shadow: 3px 3px 2px 0px #151515;
     box-shadow:         3px 3px 2px 0px #151515;
@@ -78,7 +79,7 @@ h5 {
 }
 
 .dash-unitb:hover {
-	background-color: #4f4f4f;
+	background-color: #8d2828;
 	-moz-box-shadow:    3px 3px 2px 0px #151515;
     -webkit-box-shadow: 3px 3px 2px 0px #151515;
     box-shadow:         3px 3px 2px 0px #151515;
@@ -213,13 +214,13 @@ h5 {
 	padding-bottom: 4px;
 	border: 1px solid #383737;
 	background-image:url('../img/sep-half.png');
-	background-color: #3d3d3d;
+	background-color: #8f3535;
 	color:white;
 	height:130px;
 }
 
 .half-unit:hover {
-	background-color: #4f4f4f;
+	background-color: #8d2828;
 	-moz-box-shadow:    3px 3px 2px 0px #151515;
     -webkit-box-shadow: 3px 3px 2px 0px #151515;
     box-shadow:         3px 3px 2px 0px #151515;
