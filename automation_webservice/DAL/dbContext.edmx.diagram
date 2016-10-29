@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8269e75e14904274a5cc67069424d749" Name="Diagram1">
+        <EntityTypeShape EntityType="dblogModel.Tbl_Clientes" Width="2.75" PointX="0.625" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="dblogModel.Tbl_Entregas" Width="3.125" PointX="8.125" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="dblogModel.Tbl_Motoboys" Width="2.625" PointX="4.5" PointY="0.875" IsExpanded="true" />
+        <AssociationConnector Association="dblogModel.FK__Tbl_Entre__ID_Cl__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="dblogModel.FK__Tbl_Motob__ID_Cl__38996AB5" ManuallyRouted="false" />
+        <AssociationConnector Association="dblogModel.FK__Tbl_Entre__ID_Mo__4222D4EF" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

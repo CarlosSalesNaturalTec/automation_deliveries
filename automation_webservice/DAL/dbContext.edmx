@@ -1,0 +1,352 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="dblogModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Tbl_Clientes">
+          <Key>
+            <PropertyRef Name="ID_Cliente" />
+          </Key>
+          <Property Name="ID_Cliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nome" Type="varchar" MaxLength="100" />
+          <Property Name="email" Type="varchar" MaxLength="100" />
+          <Property Name="Telefone" Type="varchar" MaxLength="30" />
+          <Property Name="Responsavel" Type="varchar" MaxLength="30" />
+          <Property Name="Area_Unidade" Type="varchar" MaxLength="30" />
+          <Property Name="usuario" Type="varchar" MaxLength="10" />
+          <Property Name="senha" Type="varchar" MaxLength="6" />
+        </EntityType>
+        <EntityType Name="Tbl_Entregas">
+          <Key>
+            <PropertyRef Name="ID_Entrega" />
+          </Key>
+          <Property Name="ID_Entrega" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Cliente" Type="int" />
+          <Property Name="ID_Motoboy" Type="int" />
+          <Property Name="Nome_Destinatario" Type="varchar" MaxLength="100" />
+          <Property Name="Endereco" Type="varchar" MaxLength="100" />
+          <Property Name="Ponto_Ref" Type="varchar" MaxLength="100" />
+          <Property Name="Bairro" Type="varchar" MaxLength="100" />
+          <Property Name="Cidade" Type="varchar" MaxLength="100" />
+          <Property Name="Cod_Encomenda" Type="varchar" MaxLength="100" />
+          <Property Name="Data_Encomenda" Type="datetime" />
+          <Property Name="Data_Entrega" Type="datetime" />
+          <Property Name="Telefone" Type="varchar" MaxLength="100" />
+          <Property Name="Observacoes" Type="varchar" MaxLength="512" />
+          <Property Name="Entregue" Type="bit" />
+          <Property Name="Status_Entrega" Type="varchar" MaxLength="50" />
+          <Property Name="Latitude" Type="varchar" MaxLength="30" />
+          <Property Name="Longitude" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Tbl_Motoboys">
+          <Key>
+            <PropertyRef Name="ID_Motoboy" />
+          </Key>
+          <Property Name="ID_Motoboy" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Cliente" Type="int" />
+          <Property Name="Nome" Type="varchar" MaxLength="100" />
+          <Property Name="email" Type="varchar" MaxLength="100" />
+          <Property Name="Telefone" Type="varchar" MaxLength="30" />
+          <Property Name="WhatsApp" Type="varchar" MaxLength="30" />
+          <Property Name="Veiculo" Type="varchar" MaxLength="30" />
+          <Property Name="Modelo" Type="varchar" MaxLength="30" />
+          <Property Name="Placa" Type="varchar" MaxLength="10" />
+          <Property Name="usuario" Type="varchar" MaxLength="10" />
+          <Property Name="senha" Type="varchar" MaxLength="6" />
+          <Property Name="GeoLatitude" Type="varchar" MaxLength="20" />
+          <Property Name="GeoLongitude" Type="varchar" MaxLength="20" />
+          <Property Name="GeoAccuracy" Type="varchar" MaxLength="20" />
+          <Property Name="GeoDataLoc" Type="datetime" />
+        </EntityType>
+        <Association Name="FK__Tbl_Entre__ID_Cl__412EB0B6">
+          <End Role="Tbl_Clientes" Type="Self.Tbl_Clientes" Multiplicity="0..1" />
+          <End Role="Tbl_Entregas" Type="Self.Tbl_Entregas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Clientes">
+              <PropertyRef Name="ID_Cliente" />
+            </Principal>
+            <Dependent Role="Tbl_Entregas">
+              <PropertyRef Name="ID_Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tbl_Entre__ID_Mo__4222D4EF">
+          <End Role="Tbl_Motoboys" Type="Self.Tbl_Motoboys" Multiplicity="0..1" />
+          <End Role="Tbl_Entregas" Type="Self.Tbl_Entregas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Motoboys">
+              <PropertyRef Name="ID_Motoboy" />
+            </Principal>
+            <Dependent Role="Tbl_Entregas">
+              <PropertyRef Name="ID_Motoboy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tbl_Motob__ID_Cl__38996AB5">
+          <End Role="Tbl_Clientes" Type="Self.Tbl_Clientes" Multiplicity="0..1" />
+          <End Role="Tbl_Motoboys" Type="Self.Tbl_Motoboys" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Clientes">
+              <PropertyRef Name="ID_Cliente" />
+            </Principal>
+            <Dependent Role="Tbl_Motoboys">
+              <PropertyRef Name="ID_Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="uspConsultarEntregas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="INintIDMotoboy" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="dblogModelStoreContainer">
+          <EntitySet Name="Tbl_Clientes" EntityType="Self.Tbl_Clientes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Entregas" EntityType="Self.Tbl_Entregas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Motoboys" EntityType="Self.Tbl_Motoboys" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Tbl_Entre__ID_Cl__412EB0B6" Association="Self.FK__Tbl_Entre__ID_Cl__412EB0B6">
+            <End Role="Tbl_Clientes" EntitySet="Tbl_Clientes" />
+            <End Role="Tbl_Entregas" EntitySet="Tbl_Entregas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tbl_Entre__ID_Mo__4222D4EF" Association="Self.FK__Tbl_Entre__ID_Mo__4222D4EF">
+            <End Role="Tbl_Motoboys" EntitySet="Tbl_Motoboys" />
+            <End Role="Tbl_Entregas" EntitySet="Tbl_Entregas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tbl_Motob__ID_Cl__38996AB5" Association="Self.FK__Tbl_Motob__ID_Cl__38996AB5">
+            <End Role="Tbl_Clientes" EntitySet="Tbl_Clientes" />
+            <End Role="Tbl_Motoboys" EntitySet="Tbl_Motoboys" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dblogModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Tbl_Clientes">
+          <Key>
+            <PropertyRef Name="ID_Cliente" />
+          </Key>
+          <Property Name="ID_Cliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Telefone" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Responsavel" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Area_Unidade" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="usuario" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="senha" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Tbl_Entregas" Relationship="Self.FK__Tbl_Entre__ID_Cl__412EB0B6" FromRole="Tbl_Clientes" ToRole="Tbl_Entregas" />
+          <NavigationProperty Name="Tbl_Motoboys" Relationship="Self.FK__Tbl_Motob__ID_Cl__38996AB5" FromRole="Tbl_Clientes" ToRole="Tbl_Motoboys" />
+        </EntityType>
+        <EntityType Name="Tbl_Entregas">
+          <Key>
+            <PropertyRef Name="ID_Entrega" />
+          </Key>
+          <Property Name="ID_Entrega" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Cliente" Type="Int32" />
+          <Property Name="ID_Motoboy" Type="Int32" />
+          <Property Name="Nome_Destinatario" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Endereco" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Ponto_Ref" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Bairro" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Cidade" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Cod_Encomenda" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Data_Encomenda" Type="DateTime" Precision="3" />
+          <Property Name="Data_Entrega" Type="DateTime" Precision="3" />
+          <Property Name="Telefone" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Observacoes" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="Entregue" Type="Boolean" />
+          <Property Name="Status_Entrega" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Latitude" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Longitude" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Tbl_Clientes" Relationship="Self.FK__Tbl_Entre__ID_Cl__412EB0B6" FromRole="Tbl_Entregas" ToRole="Tbl_Clientes" />
+          <NavigationProperty Name="Tbl_Motoboys" Relationship="Self.FK__Tbl_Entre__ID_Mo__4222D4EF" FromRole="Tbl_Entregas" ToRole="Tbl_Motoboys" />
+        </EntityType>
+        <EntityType Name="Tbl_Motoboys">
+          <Key>
+            <PropertyRef Name="ID_Motoboy" />
+          </Key>
+          <Property Name="ID_Motoboy" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Cliente" Type="Int32" />
+          <Property Name="Nome" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Telefone" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="WhatsApp" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Veiculo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Modelo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Placa" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="usuario" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="senha" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="GeoLatitude" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="GeoLongitude" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="GeoAccuracy" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="GeoDataLoc" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Tbl_Clientes" Relationship="Self.FK__Tbl_Motob__ID_Cl__38996AB5" FromRole="Tbl_Motoboys" ToRole="Tbl_Clientes" />
+          <NavigationProperty Name="Tbl_Entregas" Relationship="Self.FK__Tbl_Entre__ID_Mo__4222D4EF" FromRole="Tbl_Motoboys" ToRole="Tbl_Entregas" />
+        </EntityType>
+        <Association Name="FK__Tbl_Entre__ID_Cl__412EB0B6">
+          <End Role="Tbl_Clientes" Type="Self.Tbl_Clientes" Multiplicity="0..1" />
+          <End Role="Tbl_Entregas" Type="Self.Tbl_Entregas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Clientes">
+              <PropertyRef Name="ID_Cliente" />
+            </Principal>
+            <Dependent Role="Tbl_Entregas">
+              <PropertyRef Name="ID_Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tbl_Motob__ID_Cl__38996AB5">
+          <End Role="Tbl_Clientes" Type="Self.Tbl_Clientes" Multiplicity="0..1" />
+          <End Role="Tbl_Motoboys" Type="Self.Tbl_Motoboys" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Clientes">
+              <PropertyRef Name="ID_Cliente" />
+            </Principal>
+            <Dependent Role="Tbl_Motoboys">
+              <PropertyRef Name="ID_Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tbl_Entre__ID_Mo__4222D4EF">
+          <End Role="Tbl_Motoboys" Type="Self.Tbl_Motoboys" Multiplicity="0..1" />
+          <End Role="Tbl_Entregas" Type="Self.Tbl_Entregas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Motoboys">
+              <PropertyRef Name="ID_Motoboy" />
+            </Principal>
+            <Dependent Role="Tbl_Entregas">
+              <PropertyRef Name="ID_Motoboy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dblogEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Tbl_Clientes" EntityType="Self.Tbl_Clientes" />
+          <EntitySet Name="Tbl_Entregas" EntityType="Self.Tbl_Entregas" />
+          <EntitySet Name="Tbl_Motoboys" EntityType="Self.Tbl_Motoboys" />
+          <AssociationSet Name="FK__Tbl_Entre__ID_Cl__412EB0B6" Association="Self.FK__Tbl_Entre__ID_Cl__412EB0B6">
+            <End Role="Tbl_Clientes" EntitySet="Tbl_Clientes" />
+            <End Role="Tbl_Entregas" EntitySet="Tbl_Entregas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tbl_Motob__ID_Cl__38996AB5" Association="Self.FK__Tbl_Motob__ID_Cl__38996AB5">
+            <End Role="Tbl_Clientes" EntitySet="Tbl_Clientes" />
+            <End Role="Tbl_Motoboys" EntitySet="Tbl_Motoboys" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tbl_Entre__ID_Mo__4222D4EF" Association="Self.FK__Tbl_Entre__ID_Mo__4222D4EF">
+            <End Role="Tbl_Motoboys" EntitySet="Tbl_Motoboys" />
+            <End Role="Tbl_Entregas" EntitySet="Tbl_Entregas" />
+          </AssociationSet>
+          <FunctionImport Name="uspConsultarEntregas" ReturnType="Collection(dblogModel.uspConsultarEntregas_Result)">
+            <Parameter Name="INintIDMotoboy" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="uspConsultarEntregas_Result">
+          <Property Type="Int32" Name="ID_Cliente" Nullable="true" />
+          <Property Type="Int32" Name="ID_Motoboy" Nullable="true" />
+          <Property Type="String" Name="Nome_Destinatario" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Endereco" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Bairro" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Cidade" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Latitude" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Longitude" Nullable="true" MaxLength="30" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="dblogModelStoreContainer" CdmEntityContainer="dblogEntities">
+          <EntitySetMapping Name="Tbl_Clientes">
+            <EntityTypeMapping TypeName="dblogModel.Tbl_Clientes">
+              <MappingFragment StoreEntitySet="Tbl_Clientes">
+                <ScalarProperty Name="ID_Cliente" ColumnName="ID_Cliente" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="Telefone" ColumnName="Telefone" />
+                <ScalarProperty Name="Responsavel" ColumnName="Responsavel" />
+                <ScalarProperty Name="Area_Unidade" ColumnName="Area_Unidade" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="senha" ColumnName="senha" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Entregas">
+            <EntityTypeMapping TypeName="dblogModel.Tbl_Entregas">
+              <MappingFragment StoreEntitySet="Tbl_Entregas">
+                <ScalarProperty Name="ID_Entrega" ColumnName="ID_Entrega" />
+                <ScalarProperty Name="ID_Cliente" ColumnName="ID_Cliente" />
+                <ScalarProperty Name="ID_Motoboy" ColumnName="ID_Motoboy" />
+                <ScalarProperty Name="Nome_Destinatario" ColumnName="Nome_Destinatario" />
+                <ScalarProperty Name="Endereco" ColumnName="Endereco" />
+                <ScalarProperty Name="Ponto_Ref" ColumnName="Ponto_Ref" />
+                <ScalarProperty Name="Bairro" ColumnName="Bairro" />
+                <ScalarProperty Name="Cidade" ColumnName="Cidade" />
+                <ScalarProperty Name="Cod_Encomenda" ColumnName="Cod_Encomenda" />
+                <ScalarProperty Name="Data_Encomenda" ColumnName="Data_Encomenda" />
+                <ScalarProperty Name="Data_Entrega" ColumnName="Data_Entrega" />
+                <ScalarProperty Name="Telefone" ColumnName="Telefone" />
+                <ScalarProperty Name="Observacoes" ColumnName="Observacoes" />
+                <ScalarProperty Name="Entregue" ColumnName="Entregue" />
+                <ScalarProperty Name="Status_Entrega" ColumnName="Status_Entrega" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Motoboys">
+            <EntityTypeMapping TypeName="dblogModel.Tbl_Motoboys">
+              <MappingFragment StoreEntitySet="Tbl_Motoboys">
+                <ScalarProperty Name="ID_Motoboy" ColumnName="ID_Motoboy" />
+                <ScalarProperty Name="ID_Cliente" ColumnName="ID_Cliente" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="Telefone" ColumnName="Telefone" />
+                <ScalarProperty Name="WhatsApp" ColumnName="WhatsApp" />
+                <ScalarProperty Name="Veiculo" ColumnName="Veiculo" />
+                <ScalarProperty Name="Modelo" ColumnName="Modelo" />
+                <ScalarProperty Name="Placa" ColumnName="Placa" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="senha" ColumnName="senha" />
+                <ScalarProperty Name="GeoLatitude" ColumnName="GeoLatitude" />
+                <ScalarProperty Name="GeoLongitude" ColumnName="GeoLongitude" />
+                <ScalarProperty Name="GeoAccuracy" ColumnName="GeoAccuracy" />
+                <ScalarProperty Name="GeoDataLoc" ColumnName="GeoDataLoc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="uspConsultarEntregas" FunctionName="dblogModel.Store.uspConsultarEntregas">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dblogModel.uspConsultarEntregas_Result">
+                <ScalarProperty Name="ID_Cliente" ColumnName="ID_Cliente" />
+                <ScalarProperty Name="ID_Motoboy" ColumnName="ID_Motoboy" />
+                <ScalarProperty Name="Nome_Destinatario" ColumnName="Nome_Destinatario" />
+                <ScalarProperty Name="Endereco" ColumnName="Endereco" />
+                <ScalarProperty Name="Bairro" ColumnName="Bairro" />
+                <ScalarProperty Name="Cidade" ColumnName="Cidade" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
