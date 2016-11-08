@@ -9,7 +9,7 @@ namespace WebService2
     /// <summary>
     /// Summary description for wservice
     /// </summary>
-    [WebService(Namespace = "http://webservice21214.azurewebsites.net/")]
+    [WebService(Namespace = "return")]
     [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
     [System.ComponentModel.ToolboxItem(false)]
     // To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
@@ -20,7 +20,7 @@ namespace WebService2
         [WebMethod(Description = "Mensagem aos visitantes. Retorno em XML")]
         public string Bem_Vindo()
         {
-            return "Olá, Sejam Bem Vindos. Jesus Cristo tem sido nossa companhia, fonte de proteção, provisão e prosperidade!";
+            return "Olá, Bem Vindo. Jesus Cristo tem sido minha companhia, fonte de proteção, provisão e prosperidade!";
         }
 
         [WebMethod(Description = "Receber Coordenadas de Geolocalização e armazenar em base de dados. Retorno em XML")]
@@ -30,19 +30,19 @@ namespace WebService2
 
             try
             {
+                // lança dados em tabela de histórico de localização
                 OperacaoBanco operacao = new OperacaoBanco();
                 Boolean inserir = operacao.Insert(@"insert into Tbl_Historico (ID_Motoboy, Id_Entrega, Data_Coleta, Latitude, Longitude)
-	                                                values (" + IdMotoboy + ", " + IdEntrega + ", '" + dataLeitura + "', '" + latitude + "','" + longitude + "')");
-                if (inserir == true)
-                {
-                    Resultado = "OK";
-                }
-                else
-                {
-                    Resultado = "NÃO FOI POSSIVEL INSERIR REGISTRO";
-                }
-
+	                                                values (" + IdMotoboy + ", " + IdEntrega + ", '" + dataLeitura + "', '" + latitude + "','" + longitude + "')");                
                 ConexaoBancoSQL.fecharConexao();
+
+                // lança dados em tabela de motoboy
+                operacao = new OperacaoBanco();
+                Boolean atualizar = operacao.Update(@"update Tbl_Motoboys set GeoLatitude = '" + latitude + "', GeoLongitude = '" + longitude + "', GeoDataLoc = '" + dataLeitura + "' where ID_motoboy = " + IdMotoboy);
+                ConexaoBancoSQL.fecharConexao();
+
+                if (atualizar == true) { Resultado = "OK"; } else { Resultado = "NÃO FOI POSSIVEL INSERIR REGISTRO"; }
+
             }
             catch (Exception)
             {
@@ -61,23 +61,17 @@ namespace WebService2
             try
             {
                 OperacaoBanco operacao = new OperacaoBanco();
-                System.Data.SqlClient.SqlDataReader dados = operacao.Select("SELECT Nome_Destinatario,Endereco,Ponto_Ref,Bairro,Cidade,Telefone," 
-                        + "Observacoes,Latitude,Longitude,Id_Motoboy "
-                        + "FROM Tbl_Entregas " 
-                        + "where Entregue<>1 and ID_Motoboy = " + IdMotoboy);
+                System.Data.SqlClient.SqlDataReader dados = operacao.Select("SELECT ID_Entrega,Bairro,Endereco,Id_Motoboy,Entregue "
+                        + "FROM Tbl_Entregas "
+                        + "where (Entregue<>1 and ID_Motoboy = " + IdMotoboy 
+                        + ") order by Bairro");
                 while (dados.Read())
                 {
                     resultado.Add(new
                     {
-                        Nome = dados[0].ToString(),
-                        Endereco = dados[1].ToString(),
-                        Ponto_Ref = dados[2].ToString(),
-                        Bairro = dados[3].ToString(),
-                        Cidade = dados[4].ToString(),
-                        Telefone = dados[5].ToString(),
-                        Observacoes = dados[6].ToString(),
-                        Latitude = dados[7].ToString(),
-                        Longitude = dados[8].ToString(),
+                        ID_Entrega= dados[0].ToString(),
+                        Bairro = dados[1].ToString(),
+                        Endereco = dados[2].ToString()
                     });
                 }
                 ConexaoBancoSQL.fecharConexao();

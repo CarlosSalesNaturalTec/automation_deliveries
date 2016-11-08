@@ -8,6 +8,8 @@ namespace delivcli
         StringBuilder str = new StringBuilder();
         StringBuilder coordenadas = new StringBuilder();
         string tipoMapa = "";
+        string centromapa = "";
+        int contagem = 1;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -17,8 +19,7 @@ namespace delivcli
                 if (Session["CLI_ID_FUNC"].ToString() == "0") { tipoMapa = "T"; } else { tipoMapa = "I"; }
 
                 obtemcoordenadas();
-                if (tipoMapa == "T") { montaScript(); } else { montaScriptindividual(); }
-
+                if (tipoMapa == "T") { montaScript(); } else { montaScriptindividual2(); }
                 
                 Literal1.Text = str.ToString();
             }
@@ -29,14 +30,18 @@ namespace delivcli
             try
             {
                 string stringselect = "";
+                string dataformatada = DateTime.Today.ToString("yyyy-MM-dd");
 
-                // Motoboys e respectivas coordenadas de localização
                 if (tipoMapa == "T")
                 {
+                    // Motoboys e respectivas coordenadas de localização
                     stringselect = "select usuario, GeoLatitude, GeoLongitude , GeoDataLoc from Tbl_Motoboys order by usuario";
                 }else
                 {
-                    stringselect = "select usuario, GeoLatitude, GeoLongitude , GeoDataLoc, ID_Motoboy from Tbl_Motoboys where ID_Motoboy=" + Session["CLI_ID_FUNC"].ToString();
+                    // Histórico localização do Motoboy (no dia)
+                    stringselect = "select ID_Motoboy, Latitude, Longitude, Data_Coleta from Tbl_Historico"
+                                    + " where ID_Motoboy = " + Session["CLI_ID_FUNC"].ToString()
+                                    + " and format(data_coleta,'yyyy-MM-dd')= '" + dataformatada + "' order by data_coleta desc";
                 }
                 OperacaoBanco operacao = new OperacaoBanco();
                 System.Data.SqlClient.SqlDataReader dados = operacao.Select(stringselect);
@@ -51,11 +56,16 @@ namespace delivcli
                     {
                     }else
                     {
+                        // pega somente o primeiro valor para servir como centro do mapa
+                        if (contagem == 1) { centromapa = "{ lat: " + Convert.ToString(dados[1]) + ", lng: " + Convert.ToString(dados[2]) + " }"; }
+
+                        //obtem coordenadas
                         coordenadas.Append("{ lat: " + Convert.ToString(dados[1]) + ", lng: " + Convert.ToString(dados[2]) + " },");
                     }
                 }
                 ConexaoBancoSQL.fecharConexao();
                 coordenadas.Length--;  //remove ultimo caracter ","
+
             }
             catch (Exception)
             {
@@ -113,6 +123,8 @@ namespace delivcli
 
         private void montaScriptindividual()
         {
+            // desativado. método antigo que só mostrava posição do motoboy. sem histórico
+
             str.Clear();
             str.Append(@"<script type='text/javascript'> 
 
@@ -160,6 +172,40 @@ namespace delivcli
             }
             markers = [];
         }
+                </script>");
+        }
+
+        private void montaScriptindividual2()
+        {
+            str.Clear();
+            str.Append(@"<script type='text/javascript'> 
+                   function initMap() {
+                    var map = new google.maps.Map(document.getElementById('map'), {
+                    zoom: 14,
+                    center: ");
+
+            str.Append(centromapa);
+
+            str.Append(@",
+                    mapTypeId: google.maps.MapTypeId.TERRAIN 
+                    });
+
+                    var flightPlanCoordinates = [");
+
+            str.Append(coordenadas.ToString());
+
+            str.Append(@"];
+
+                    var flightPath = new google.maps.Polyline({
+                    path: flightPlanCoordinates,
+                    geodesic: true,
+                    strokeColor: '#FF0000',
+                    strokeOpacity: 1.0,
+                    strokeWeight: 2
+                    });
+
+                    flightPath.setMap(map); }
+
                 </script>");
         }
 
