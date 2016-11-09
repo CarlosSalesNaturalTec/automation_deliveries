@@ -17,7 +17,14 @@ namespace delivcli
                 if (!IsPostBack)
                 {
                     Session["CLI_ID_FUNC"] = "0";
+                    txtData.Text = DateTime.Today.ToString("dd/MM/yyyy");
                     Preenche_Combo();
+
+                    // string com data selecionada - máscara padrão SQL
+                    IFormatProvider culture = new System.Globalization.CultureInfo("pt-BR", true);
+                    DateTime dt2 = DateTime.Parse(txtData.Text, culture, System.Globalization.DateTimeStyles.AssumeLocal);
+                    Session["date_formated"]  = dt2.ToString("yyyy-MM-dd");
+
                 }
             }
             catch { }
@@ -47,5 +54,14 @@ namespace delivcli
             }
 
         }
+
+        protected void txtData_TextChanged(object sender, EventArgs e)
+        {
+            // string com data selecionada - máscara padrão SQL
+            IFormatProvider culture = new System.Globalization.CultureInfo("pt-BR", true);
+            DateTime dt2 = DateTime.Parse(txtData.Text, culture, System.Globalization.DateTimeStyles.AssumeLocal);
+            Session["date_formated"] = dt2.ToString("yyyy-MM-dd");
+        }
+
     }
 }

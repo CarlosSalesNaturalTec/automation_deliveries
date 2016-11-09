@@ -30,7 +30,8 @@ namespace delivcli
             try
             {
                 string stringselect = "";
-                string dataformatada = DateTime.Today.ToString("yyyy-MM-dd");
+                //string dataformatada = DateTime.Today.ToString("yyyy-MM-dd");
+                string dataformatada = Session["date_formated"].ToString();
 
                 if (tipoMapa == "T")
                 {
@@ -64,8 +65,10 @@ namespace delivcli
                     }
                 }
                 ConexaoBancoSQL.fecharConexao();
-                coordenadas.Length--;  //remove ultimo caracter ","
-
+                if (coordenadas.Length == 0) {}else {
+                    //remove ultimo caracter ","    
+                    coordenadas.Length--;  
+                }
             }
             catch (Exception)
             {
@@ -199,9 +202,9 @@ namespace delivcli
                     var flightPath = new google.maps.Polyline({
                     path: flightPlanCoordinates,
                     geodesic: true,
-                    strokeColor: '#FF0000',
+                    strokeColor: '#4D4DFF',
                     strokeOpacity: 1.0,
-                    strokeWeight: 2
+                    strokeWeight: 5
                     });
 
                     flightPath.setMap(map); }
