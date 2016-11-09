@@ -9,11 +9,46 @@
     <!-- Módulo     : PAINEL PRINCIPAL -->
     <!---------------------------------------------------------------------------------------------------------------------------------->
 
+    <br />
+
     <!-- Mensagens do sistema  -->
     <p class="text-danger">
-        <asp:Label ID="lbl_msg" runat="server"></asp:Label></p>
+        <asp:Label ID="lbl_msg" runat="server"></asp:Label>
+    </p>
 
     <!-- LINHA 01 -->
+    <div class="row">
+
+        <!-- % DE FUNCIONARIOS EM CAMPO-->
+        <div class="col-sm-4 col-lg-4">
+            <div class="dash-unit">
+                <dtitle>% Funcionários em Campo</dtitle>
+                <hr>
+                <div id="container_painel2" style="width: 200px; height: 200px; margin: 0 auto"></div>
+            </div>
+        </div>
+
+        <!-- % DE ENTREGAS EFETUADAS  -->
+        <div class="col-sm-4 col-lg-4">
+            <div class="dash-unit">
+                <dtitle>% Entregas Efetuadas</dtitle>
+                <hr>
+                <div id="container_painel1" style="width: 300px; height: 300px; margin: 0 auto"></div>
+            </div>
+        </div>
+
+        <!-- ENTREGAS NO PERÍODO  -->
+        <div class="col-sm-4 col-lg-4">
+            <div class="dash-unit">
+                <dtitle>% Entregas no Período</dtitle>
+                <hr>
+                <div id="container_painel3" style="min-width: 280px; height: 280px; margin: 0 auto"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- LINHA 02 -->
     <div class="row">
 
         <!-- DATA -->
@@ -55,37 +90,6 @@
 
     </div>
 
-    <!-- LINHA 02 -->
-    <div class="row">
-
-        <!-- % DE FUNCIONARIOS EM CAMPO-->
-        <div class="col-sm-4 col-lg-4">
-            <div class="dash-unit">
-                <dtitle>% Funcionários em Campo</dtitle>
-                <hr>
-                <div id="container_painel2" style="width: 200px; height: 200px; margin: 0 auto"></div>
-            </div>
-        </div>
-
-        <!-- % DE ENTREGAS EFETUADAS  -->
-        <div class="col-sm-4 col-lg-4">
-            <div class="dash-unit">
-                <dtitle>% Entregas Efetuadas</dtitle>
-                <hr>
-                <div id="container_painel1" style="width: 300px; height: 300px; margin: 0 auto"></div>
-            </div>
-        </div>
-
-        <!-- ENTREGAS NO PERÍODO  -->
-        <div class="col-sm-4 col-lg-4">
-            <div class="dash-unit">
-                <dtitle>% Entregas no Período</dtitle>
-                <hr>
-                <div id="container_painel3" style="min-width: 280px; height: 280px; margin: 0 auto"></div>
-            </div>
-        </div>
-
-    </div>
 
     <!-- SCRIPTS RESPONSAVEIS PELA CONSTRUÇÃO DOS BLOCOS DE INFORMAÇÃO E GRÁFICOS -->
     <script type="text/javascript" src="Scripts/admin.js"></script>

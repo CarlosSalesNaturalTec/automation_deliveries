@@ -89,6 +89,7 @@ namespace delivcli
 
         var markers = [];
         var map;
+        var image = 'images/motorbike24.png';
 
         function initMap() {
             map = new google.maps.Map(document.getElementById('map'), {
@@ -110,6 +111,7 @@ namespace delivcli
                 markers.push(new google.maps.Marker({
                     position: position,
                     map: map,
+                    icon: image,
                     animation: google.maps.Animation.DROP
                 }));
             }, timeout);
@@ -184,7 +186,7 @@ namespace delivcli
             str.Append(@"<script type='text/javascript'> 
                    function initMap() {
                     var map = new google.maps.Map(document.getElementById('map'), {
-                    zoom: 14,
+                    zoom: 12,
                     center: ");
 
             str.Append(centromapa);
@@ -204,7 +206,7 @@ namespace delivcli
                     geodesic: true,
                     strokeColor: '#4D4DFF',
                     strokeOpacity: 1.0,
-                    strokeWeight: 5
+                    strokeWeight: 4
                     });
 
                     flightPath.setMap(map); }

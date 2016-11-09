@@ -160,6 +160,7 @@
     <None Include="Properties\PublishProfiles\delivcli.pubxml" />
     <None Include="Properties\PublishProfiles\logcli.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="images\motorbike24.png" />
     <Content Include="Mapa.aspx" />
     <Content Include="Mapa1.aspx" />
     <Content Include="Painel.aspx" />
