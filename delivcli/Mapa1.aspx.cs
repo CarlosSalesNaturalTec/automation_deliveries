@@ -205,8 +205,8 @@ namespace delivcli
                     path: flightPlanCoordinates,
                     geodesic: true,
                     strokeColor: '#4D4DFF',
-                    strokeOpacity: 1.0,
-                    strokeWeight: 4
+                    strokeOpacity: 0.6,
+                    strokeWeight: 3
                     });
 
                     flightPath.setMap(map); }

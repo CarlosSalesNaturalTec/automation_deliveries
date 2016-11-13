@@ -17,13 +17,13 @@ namespace WebService2
     public class wservice : System.Web.Services.WebService
     {
 
-        [WebMethod(Description = "Mensagem aos visitantes. Retorno em XML")]
+        [WebMethod]
         public string Bem_Vindo()
         {
             return "Olá, Bem Vindo. Jesus Cristo tem sido minha companhia, fonte de proteção, provisão e prosperidade!";
         }
 
-        [WebMethod(Description = "Receber Coordenadas de Geolocalização e armazenar em base de dados. Retorno em XML")]
+        [WebMethod]
         public string Historico(int IdMotoboy, int IdEntrega, string latitude, string longitude, string dataLeitura)
         {
             string Resultado = "";
@@ -52,7 +52,7 @@ namespace WebService2
             return Resultado;
         }
 
-        [WebMethod(Description = "Receber Id do Motoboy e retornar JSON com lista de Entregas a realizar.")]
+        [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public string ListaEntregas(int IdMotoboy)
         {
@@ -88,6 +88,50 @@ namespace WebService2
 
             return Resultado;
         }
+
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string DetalhesEntrega(int IdEntrega)
+        {
+            string Resultado = "";
+            List<Object> resultado = new List<object>();
+            try
+            {
+                OperacaoBanco operacao = new OperacaoBanco();
+                System.Data.SqlClient.SqlDataReader dados = operacao.Select("SELECT ID_Entrega,Nome_Destinatario,Bairro,Endereco,Ponto_Ref,Cidade,Telefone,Observacoes,Latitude,Longitude  "
+                        + "FROM Tbl_Entregas "
+                        + "where ID_Entrega  = " + IdEntrega);
+                while (dados.Read())
+                {
+                    resultado.Add(new
+                    {
+                        ID_Entrega = dados[0].ToString(),
+                        Nome_Destinatario = dados[1].ToString(),
+                        Bairro = dados[2].ToString(),
+                        Endereco = dados[3].ToString(),
+                        Ponto_Ref = dados[4].ToString(),
+                        Cidade = dados[5].ToString(),
+                        Telefone = dados[6].ToString(),
+                        Observacoes = dados[7].ToString(),
+                        Latitude = dados[8].ToString(),
+                        Longitude = dados[9].ToString()
+                    });
+                }
+                ConexaoBancoSQL.fecharConexao();
+
+                //O JavaScriptSerializer vai fazer o web service retornar JSON
+                JavaScriptSerializer js = new JavaScriptSerializer();
+                return js.Serialize(resultado);
+
+            }
+            catch (Exception)
+            {
+                Resultado = "FALHA CONEXÃO BANCO DE DADOS";
+            }
+
+            return Resultado;
+        }
+
 
     }
 }
