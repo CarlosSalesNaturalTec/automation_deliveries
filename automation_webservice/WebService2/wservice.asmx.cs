@@ -132,6 +132,58 @@ namespace WebService2
             return Resultado;
         }
 
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string StartTravel(int IdEntrega, string latitude, string longitude, string dataLeitura)
+        {
+            string Resultado = "";
+
+            try
+            {
+                // atualiza status da entrega : VIAGEM INICIADA
+                OperacaoBanco operacao = new OperacaoBanco();
+                operacao = new OperacaoBanco();
+                Boolean atualizar = operacao.Update(@"update Tbl_Entregas set Partida_Data = '" + dataLeitura + "', Partida_Latitude = '" + 
+                    latitude + "', Partida_Longitude = '" + longitude  + "' where ID_Entrega = " + IdEntrega);
+                ConexaoBancoSQL.fecharConexao();
+
+                if (atualizar == true) { Resultado = "OK"; } else { Resultado = "NÃO FOI POSSIVEL ATUALIZAR STATUS"; }
+
+            }
+            catch (Exception)
+            {
+                Resultado = "FALHA CONEXÃO BANCO DE DADOS";
+            }
+
+            return Resultado;
+        }
+
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string EndTravel(int IdEntrega, string latitude, string longitude, string dataLeitura, string Status)
+        {
+            string Resultado = "";
+
+            try
+            {
+                // atualiza status da entrega : VIAGEM CONCLUIDA
+                OperacaoBanco operacao = new OperacaoBanco();
+                operacao = new OperacaoBanco();
+                Boolean atualizar = operacao.Update(@"update Tbl_Entregas set Chegada_Data = '" + dataLeitura + "', Chegada_Latitude = '" +
+                    latitude + "', Chegada_Longitude = '" + longitude + "', Status_Entrega ='" + Status + "', Entregue =1  where ID_Entrega = " + IdEntrega);
+                ConexaoBancoSQL.fecharConexao();
+
+                if (atualizar == true) { Resultado = "OK"; } else { Resultado = "NÃO FOI POSSIVEL ATUALIZAR STATUS"; }
+
+            }
+            catch (Exception)
+            {
+                Resultado = "FALHA CONEXÃO BANCO DE DADOS";
+            }
+
+            return Resultado;
+        }
+
 
     }
 }
