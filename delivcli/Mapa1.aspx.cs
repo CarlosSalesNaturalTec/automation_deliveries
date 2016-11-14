@@ -7,6 +7,7 @@ namespace delivcli
     {
         StringBuilder str = new StringBuilder();
         StringBuilder coordenadas = new StringBuilder();
+        StringBuilder cood_Markers = new StringBuilder();
         string tipoMapa = "";
         string centromapa = "";
         int contagem = 1;
@@ -19,8 +20,15 @@ namespace delivcli
                 if (Session["CLI_ID_FUNC"].ToString() == "0") { tipoMapa = "T"; } else { tipoMapa = "I"; }
 
                 obtemcoordenadas();
-                if (tipoMapa == "T") { montaScript(); } else { montaScriptindividual2(); }
-                
+                if (tipoMapa == "T")
+                {
+                    montaScript();
+                } else
+                {
+                    MarcadoresEntregas();
+                    montaScriptindividual();
+                }
+
                 Literal1.Text = str.ToString();
             }
         }
@@ -37,7 +45,8 @@ namespace delivcli
                 {
                     // Motoboys e respectivas coordenadas de localização
                     stringselect = "select usuario, GeoLatitude, GeoLongitude , GeoDataLoc from Tbl_Motoboys order by usuario";
-                }else
+                }
+                else
                 {
                     // Histórico localização do Motoboy (no dia)
                     stringselect = "select ID_Motoboy, Latitude, Longitude, Data_Coleta from Tbl_Historico"
@@ -53,21 +62,24 @@ namespace delivcli
                 while (dados.Read())
                 {
                     coord = Convert.ToString(dados[2]);
-                    if (coord =="")
+                    if (coord == "")
                     {
-                    }else
+                    }
+                    else
                     {
                         // pega somente o primeiro valor para servir como centro do mapa
-                        if (contagem == 1) { centromapa = "{ lat: " + Convert.ToString(dados[1]) + ", lng: " + Convert.ToString(dados[2]) + " }"; }
+                        if (contagem == 1) { centromapa = "{ lat: " + Convert.ToString(dados[1]) + ", lng: " + Convert.ToString(dados[2]) + " }"; contagem++; }
 
                         //obtem coordenadas
                         coordenadas.Append("{ lat: " + Convert.ToString(dados[1]) + ", lng: " + Convert.ToString(dados[2]) + " },");
                     }
                 }
                 ConexaoBancoSQL.fecharConexao();
-                if (coordenadas.Length == 0) {}else {
+                if (coordenadas.Length == 0) { }
+                else
+                {
                     //remove ultimo caracter ","    
-                    coordenadas.Length--;  
+                    coordenadas.Length--;
                 }
             }
             catch (Exception)
@@ -128,14 +140,12 @@ namespace delivcli
 
         private void montaScriptindividual()
         {
-            // desativado. método antigo que só mostrava posição do motoboy. sem histórico
-
             str.Clear();
             str.Append(@"<script type='text/javascript'> 
 
                    var neighborhoods = [");
 
-            str.Append(coordenadas.ToString());
+            str.Append(cood_Markers.ToString());
 
             str.Append(@"];
 
@@ -144,14 +154,25 @@ namespace delivcli
 
         function initMap() {
             map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 16,
-                center: ");
-
-            str.Append(coordenadas.ToString());
-
-            str.Append(@"
+                zoom: 11,
+                center: { lat: -12.8730, lng: -38.3598 }
             });
             drop();
+
+            var flightPlanCoordinates = [");
+            str.Append(coordenadas.ToString());
+            str.Append(@"];
+
+            var flightPath = new google.maps.Polyline({
+                    path: flightPlanCoordinates,
+                    geodesic: true,
+                    strokeColor: '#4D4DFF',
+                    strokeOpacity: 0.6,
+                    strokeWeight: 3
+                    });
+
+            flightPath.setMap(map); 
+
         }
 
         function drop() {
@@ -180,38 +201,35 @@ namespace delivcli
                 </script>");
         }
 
-        private void montaScriptindividual2()
+        private void MarcadoresEntregas()
         {
-            str.Clear();
-            str.Append(@"<script type='text/javascript'> 
-                   function initMap() {
-                    var map = new google.maps.Map(document.getElementById('map'), {
-                    zoom: 12,
-                    center: ");
+            string stringselect = "";
+            string dataformatada = Session["date_formated"].ToString();
+            cood_Markers.Clear();
+            string coord = "";
 
-            str.Append(centromapa);
+            // seleciona Coordenadas de todas as entregas a realizar na data
+            stringselect = "select ID_Entrega,ID_Motoboy,Latitude,Longitude, Data_Encomenda from Tbl_Entregas"
+                            + " where ID_Motoboy = " + Session["CLI_ID_FUNC"].ToString()
+                            + " and format(Data_Encomenda,'yyyy-MM-dd')= '" + dataformatada + "'";
+            OperacaoBanco operacao = new OperacaoBanco();
+            System.Data.SqlClient.SqlDataReader dados = operacao.Select(stringselect);
+            
+            while (dados.Read())
+            {
+                coord = Convert.ToString(dados[2]);
+                if (coord == "") { } else {
+                    cood_Markers.Append("{ lat: " + Convert.ToString(dados[2]) + ", lng: " + Convert.ToString(dados[3]) + " },");
+                }
+            }
 
-            str.Append(@",
-                    mapTypeId: google.maps.MapTypeId.TERRAIN 
-                    });
+            ConexaoBancoSQL.fecharConexao();
 
-                    var flightPlanCoordinates = [");
+            if (cood_Markers.Length == 0) { } else {
+                //remove ultimo caracter ","    
+                cood_Markers.Length--;
+            }
 
-            str.Append(coordenadas.ToString());
-
-            str.Append(@"];
-
-                    var flightPath = new google.maps.Polyline({
-                    path: flightPlanCoordinates,
-                    geodesic: true,
-                    strokeColor: '#4D4DFF',
-                    strokeOpacity: 0.6,
-                    strokeWeight: 3
-                    });
-
-                    flightPath.setMap(map); }
-
-                </script>");
         }
 
     }
