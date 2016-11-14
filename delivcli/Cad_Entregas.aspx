@@ -63,7 +63,6 @@
             <asp:BoundField DataField="Cidade" HeaderText="CIDADE"/>
             <asp:BoundField DataField="Telefone" HeaderText="TELEFONE"/>
             <asp:BoundField DataField="Data_Encomenda" HeaderText="DATA"/>
-            <asp:BoundField DataField="Cod_Encomenda" HeaderText="COD.ENCOMENDA"/>
             <asp:BoundField DataField="Status_Entrega" HeaderText="STATUS"/>
             <asp:BoundField DataField="ID_Entrega" HeaderText="ID"/>
         </Columns>
@@ -92,9 +91,7 @@
                     <p><asp:TextBox id="txt_ref" runat="server" CssClass="input-lg"/></p>
                     <p>Cidade:</p>
                     <p><asp:TextBox id="txt_cidade" runat="server" CssClass="input-lg"/></p>
-                    <p>Cod.Encom:</p>
-                    <p><asp:TextBox id="txt_encom" runat="server" CssClass="input-lg"/></p>
-                    
+                                        
                     <p>Data:</p>
                     <p><asp:TextBox id="txt_data" runat="server" CssClass="input-lg"/></p>
                     <ajaxToolkit:MaskedEditExtender ID="MaskedEditExtender2" runat="server"
@@ -143,9 +140,7 @@
                     <p><asp:TextBox id="txt_edit_bairro" runat="server" CssClass="input-lg"/></p>
                     <p>Cidade:</p>
                     <p><asp:TextBox id="txt_edit_cidade" runat="server" CssClass="input-lg"/></p>
-                    <p>Cod.Encom:</p>
-                    <p><asp:TextBox id="txt_edit_encom" runat="server" CssClass="input-lg"/></p>
-                    
+                                        
                     <p>Data:</p>
                     <p><asp:TextBox id="txt_edit_data" runat="server" CssClass="input-lg"/></p>
                     <ajaxToolkit:MaskedEditExtender ID="MaskedEditExtender1" runat="server"

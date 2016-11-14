@@ -193,10 +193,9 @@ namespace delivcli
 
             // string INSERT
             string stringinsert = @"INSERT INTO Tbl_Entregas (ID_Cliente, ID_Motoboy, Nome_Destinatario, Endereco, Ponto_Ref, " +
-                    "Bairro, Cidade, Cod_Encomenda, Data_Encomenda, Telefone, Entregue, Observacoes) VALUES (" + ID_Cli +
+                    "Bairro, Cidade, Data_Encomenda, Telefone, Entregue, Observacoes) VALUES (" + ID_Cli +
                     "," + id_selecionada + ", '" + txt_nome.Text + "', '" + txt_end.Text + "', '" + txt_ref.Text +
-                    "', '" + txt_bairro.Text + "', '" + txt_cidade.Text + "', '" + txt_encom.Text +
-                    "', '" + date_formated + "', '" + txt_telefone.Text + "', 0, '" + txt_obs.Text + "')";
+                    "', '" + txt_bairro.Text + "', '" + txt_cidade.Text + "', '" + date_formated + "', '" + txt_telefone.Text + "', 0, '" + txt_obs.Text + "')";
             try
             {
                 OperacaoBanco operacao = new OperacaoBanco();
@@ -207,7 +206,7 @@ namespace delivcli
                 txt_end.Text = "";
                 txt_ref.Text = "";
                 txt_bairro.Text = "";
-                txt_encom.Text = "";
+                
                 txt_telefone.Text = "";
                 txt_obs.Text = "";
 
@@ -242,7 +241,7 @@ namespace delivcli
             string stringupdate = @"update Tbl_Entregas set ID_Motoboy = " + id_selecionada + ", Nome_Destinatario = '" + txt_edit_nome.Text + "'," +
                 " Endereco = '" + txt_edit_end.Text + "', Ponto_Ref = '" + txt_edit_ref.Text + "', Bairro = '" + txt_edit_bairro.Text + "', " +
                 " Cidade = '" + txt_edit_cidade.Text + "', telefone = '" + txt_edit_tel.Text + "', Data_Encomenda = '" + date_formated + "', " +
-                " Cod_Encomenda = '" + txt_edit_encom.Text + "', Observacoes = '" + txt_edit_obs.Text + "'" +
+                " Observacoes = '" + txt_edit_obs.Text + "'" +
                 " where ID_Entrega =" + lbl_id.Text;
 
             try
@@ -298,8 +297,7 @@ namespace delivcli
             txt_edit_cidade.Text = GridView2.SelectedRow.Cells[4].Text;
             txt_edit_tel.Text = GridView2.SelectedRow.Cells[5].Text;
             txt_edit_data.Text = GridView2.SelectedRow.Cells[6].Text;
-            txt_edit_encom.Text = GridView2.SelectedRow.Cells[7].Text;
-            lbl_id.Text = GridView2.SelectedRow.Cells[9].Text;
+            lbl_id.Text = GridView2.SelectedRow.Cells[8].Text;
 
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openModal();", true);
         }
