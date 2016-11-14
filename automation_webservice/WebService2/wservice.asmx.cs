@@ -98,7 +98,8 @@ namespace WebService2
             try
             {
                 OperacaoBanco operacao = new OperacaoBanco();
-                System.Data.SqlClient.SqlDataReader dados = operacao.Select("SELECT ID_Entrega,Nome_Destinatario,Bairro,Endereco,Ponto_Ref,Cidade,Telefone,Observacoes,Latitude,Longitude  "
+                System.Data.SqlClient.SqlDataReader dados = operacao.Select("SELECT ID_Entrega,Nome_Destinatario,Bairro,Endereco,Ponto_Ref,"
+                        + "Cidade,Telefone,Observacoes,Latitude,Longitude,Partida_Data "
                         + "FROM Tbl_Entregas "
                         + "where ID_Entrega  = " + IdEntrega);
                 while (dados.Read())
@@ -114,7 +115,8 @@ namespace WebService2
                         Telefone = dados[6].ToString(),
                         Observacoes = dados[7].ToString(),
                         Latitude = dados[8].ToString(),
-                        Longitude = dados[9].ToString()
+                        Longitude = dados[9].ToString(),
+                        Partida_Data = dados[10].ToString()
                     });
                 }
                 ConexaoBancoSQL.fecharConexao();
