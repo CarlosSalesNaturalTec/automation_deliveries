@@ -197,6 +197,40 @@ namespace WebService2
             return Resultado;
         }
 
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string ListaCoordenadas(int IdMotoboy)
+        {
+            string Resultado = "";
+            List<Object> resultado = new List<object>();
+            try
+            {
+                OperacaoBanco operacao = new OperacaoBanco();
+                System.Data.SqlClient.SqlDataReader dados = operacao.Select("SELECT ID_Entrega,ID_Motoboy,Latitude,Longitude,Entregue "
+                        + "FROM Tbl_Entregas "
+                        + "where (Entregue<>1 and ID_Motoboy = " + IdMotoboy + ")");
+                while (dados.Read())
+                {
+                    resultado.Add(new
+                    {
+                        ID_Entrega = dados[0].ToString(),
+                        Latitude = dados[2].ToString(),
+                        Longitude = dados[3].ToString()
+                    });
+                }
+                ConexaoBancoSQL.fecharConexao();
 
+                //O JavaScriptSerializer vai fazer o web service retornar JSON
+                JavaScriptSerializer js = new JavaScriptSerializer();
+                return js.Serialize(resultado);
+
+            }
+            catch (Exception)
+            {
+                Resultado = "FALHA CONEXÃO BANCO DE DADOS";
+            }
+
+            return Resultado;
+        }
     }
 }
