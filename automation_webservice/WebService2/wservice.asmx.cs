@@ -165,6 +165,17 @@ namespace WebService2
         public string EndTravel(int IdEntrega, string latitude, string longitude, string dataLeitura, string Status)
         {
             string Resultado = "";
+            string mStatus = "";
+
+            switch (Status)
+            {
+                case "01": { mStatus = "ENTREGA REALIZADA"; break; }
+                case "02": { mStatus = "MUDOU-SE"; break; }
+                case "03": { mStatus = "AUSENTE"; break; }
+                case "04": { mStatus = "NÃO QUIZ RECEBER"; break; }
+                case "05": { mStatus = "ÁREA DE RISCO"; break; }
+                case "06": { mStatus = "END. INSUFICIENTE"; break; }
+            }
 
             try
             {
@@ -172,7 +183,7 @@ namespace WebService2
                 OperacaoBanco operacao = new OperacaoBanco();
                 operacao = new OperacaoBanco();
                 Boolean atualizar = operacao.Update(@"update Tbl_Entregas set Chegada_Data = '" + dataLeitura + "', Chegada_Latitude = '" +
-                    latitude + "', Chegada_Longitude = '" + longitude + "', Status_Entrega ='" + Status + "', Entregue =1  where ID_Entrega = " + IdEntrega);
+                    latitude + "', Chegada_Longitude = '" + longitude + "', Status_Entrega ='" + mStatus + "', Entregue =1  where ID_Entrega = " + IdEntrega);
                 ConexaoBancoSQL.fecharConexao();
 
                 if (atualizar == true) { Resultado = "OK"; } else { Resultado = "NÃO FOI POSSIVEL ATUALIZAR STATUS"; }

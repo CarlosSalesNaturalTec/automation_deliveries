@@ -105,7 +105,7 @@ namespace delivcli
 
                 // string lista de funcionários que já efetuaram entregas no dia
                 string stringselect = "select ID_Motoboy from tbl_entregas " +
-                        " where id_cliente = " + ID_Cli + " and Entregue = 1 and Data_Entrega = '" + date_formated + "' group by ID_Motoboy";
+                        " where id_cliente = " + ID_Cli + " and Entregue = 1 and Chegada_Data = '" + date_formated + "' group by ID_Motoboy";
 
                 OperacaoBanco operacao = new OperacaoBanco();
                 System.Data.SqlClient.SqlDataReader dados = operacao.Select(stringselect);
