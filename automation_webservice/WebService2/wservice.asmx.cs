@@ -208,7 +208,7 @@ namespace WebService2
                 OperacaoBanco operacao = new OperacaoBanco();
                 System.Data.SqlClient.SqlDataReader dados = operacao.Select("SELECT ID_Entrega,ID_Motoboy,Latitude,Longitude,Entregue "
                         + "FROM Tbl_Entregas "
-                        + "where (Entregue<>1 and ID_Motoboy = " + IdMotoboy + ")");
+                        + "where (Entregue<>1 and ID_Motoboy = " + IdMotoboy + " and Latitude<>'')");
                 while (dados.Read())
                 {
                     resultado.Add(new

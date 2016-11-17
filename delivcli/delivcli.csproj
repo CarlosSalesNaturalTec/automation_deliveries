@@ -140,6 +140,7 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Cad_Entregas_Geocoding.aspx" />
     <Content Include="Cad_Entregas.aspx" />
     <Content Include="Cad_Funcionario.aspx" />
     <Content Include="Content\bootstrap.css" />
@@ -220,6 +221,13 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Cad_Entregas_Geocoding.aspx.cs">
+      <DependentUpon>Cad_Entregas_Geocoding.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cad_Entregas_Geocoding.aspx.designer.cs">
+      <DependentUpon>Cad_Entregas_Geocoding.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Cad_Entregas.aspx.cs">
       <DependentUpon>Cad_Entregas.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
