@@ -13,247 +13,157 @@ namespace delivcli {
     public partial class Cad_Entregas_Geocoding {
         
         /// <summary>
-        /// lbl_total_entregas control.
+        /// Label1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_total_entregas;
+        protected global::System.Web.UI.WebControls.Label Label1;
         
         /// <summary>
-        /// txtData control.
+        /// Label4 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtData;
+        protected global::System.Web.UI.WebControls.Label Label4;
         
         /// <summary>
-        /// MaskedEditExtender5 control.
+        /// Label2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.MaskedEditExtender MaskedEditExtender5;
+        protected global::System.Web.UI.WebControls.Label Label2;
         
         /// <summary>
-        /// MaskedEditValidator5 control.
+        /// Label3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.MaskedEditValidator MaskedEditValidator5;
+        protected global::System.Web.UI.WebControls.Label Label3;
         
         /// <summary>
-        /// cmb_funcionario control.
+        /// txtEndereco control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList cmb_funcionario;
+        protected global::System.Web.UI.WebControls.TextBox txtEndereco;
         
         /// <summary>
-        /// lbl_mensagem control.
+        /// txtNumero control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_mensagem;
+        protected global::System.Web.UI.WebControls.TextBox txtNumero;
         
         /// <summary>
-        /// GridView2 control.
+        /// txtBairro control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView2;
+        protected global::System.Web.UI.WebControls.TextBox txtBairro;
         
         /// <summary>
-        /// cmb_func_modal control.
+        /// txtCidade control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList cmb_func_modal;
+        protected global::System.Web.UI.WebControls.TextBox txtCidade;
         
         /// <summary>
-        /// txt_nome control.
+        /// Button1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_nome;
+        protected global::System.Web.UI.WebControls.Button Button1;
         
         /// <summary>
-        /// txt_end control.
+        /// Label5 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_end;
+        protected global::System.Web.UI.WebControls.Label Label5;
         
         /// <summary>
-        /// txt_data control.
+        /// Label6 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_data;
+        protected global::System.Web.UI.WebControls.Label Label6;
         
         /// <summary>
-        /// MaskedEditExtender2 control.
+        /// Label7 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.MaskedEditExtender MaskedEditExtender2;
+        protected global::System.Web.UI.WebControls.Label Label7;
         
         /// <summary>
-        /// MaskedEditValidator2 control.
+        /// Label8 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.MaskedEditValidator MaskedEditValidator2;
+        protected global::System.Web.UI.WebControls.Label Label8;
         
         /// <summary>
-        /// txt_telefone control.
+        /// txtDestinatario control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_telefone;
+        protected global::System.Web.UI.WebControls.TextBox txtDestinatario;
         
         /// <summary>
-        /// txt_obs control.
+        /// txtPref control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_obs;
+        protected global::System.Web.UI.WebControls.TextBox txtPref;
         
         /// <summary>
-        /// bt_novo_fechar control.
+        /// txtTelefone control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button bt_novo_fechar;
+        protected global::System.Web.UI.WebControls.TextBox txtTelefone;
         
         /// <summary>
-        /// bt_novo_salvar control.
+        /// txtObs control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button bt_novo_salvar;
-        
-        /// <summary>
-        /// cmb_edit_func control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList cmb_edit_func;
-        
-        /// <summary>
-        /// txt_edit_nome control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_edit_nome;
-        
-        /// <summary>
-        /// txt_edit_end control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_edit_end;
-        
-        /// <summary>
-        /// txt_edit_data control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_edit_data;
-        
-        /// <summary>
-        /// MaskedEditExtender1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.MaskedEditExtender MaskedEditExtender1;
-        
-        /// <summary>
-        /// MaskedEditValidator1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.MaskedEditValidator MaskedEditValidator1;
-        
-        /// <summary>
-        /// txt_edit_tel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_edit_tel;
-        
-        /// <summary>
-        /// txt_edit_obs control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_edit_obs;
-        
-        /// <summary>
-        /// lbl_id control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_id;
-        
-        /// <summary>
-        /// Button5 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button5;
+        protected global::System.Web.UI.WebControls.TextBox txtObs;
         
         /// <summary>
         /// Button2 control.
@@ -265,12 +175,21 @@ namespace delivcli {
         protected global::System.Web.UI.WebControls.Button Button2;
         
         /// <summary>
-        /// Button1 control.
+        /// lblLat control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Label lblLat;
+        
+        /// <summary>
+        /// lblLong control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblLong;
     }
 }

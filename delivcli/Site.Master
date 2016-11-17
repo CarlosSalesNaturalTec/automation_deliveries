@@ -82,7 +82,7 @@
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="Cad_Entregas.aspx">Simples</a></li>
                                 <li class="divider"></li>
-                                <li><a href="Cad_Entregas_Geocoding.aspx">Completa</a></li>
+                                <li><a href="Cad_Entregas_Geocoding.aspx">Com endereço no Mapa</a></li>
                             </ul>
                         </li>
 

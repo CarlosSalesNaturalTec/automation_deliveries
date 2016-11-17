@@ -4,155 +4,85 @@
 
     <!-- Automation Deliveries CLIENT - Web App para automação de entrega de encomendas -->
     <!-- Criação    : Carlos Sales https://github.com/CarlosSalesNaturalTec  / 2016's-->
-    <!-- Ano        : 2016 -->
     <!-- Recursos   : ASP.NET / C# / JAVASCRIPT / CSS / SQL / Windows Azure -->
-    <!-- Módulo     : CADASTRO DE ENTREGAS -->
+    <!-- Módulo     : CADASTRO DE ENTREGAS com GEOCODING-->
     <!--------------------------------------------------------------------------------->
 
-    <!-- Script para exibição de ícones -->
-    <script src="https://use.fontawesome.com/8c3712a1dd.js"></script>
-
-    <!-- Script Modal Edit -->
-    <script type="text/javascript">
-        function openModal() {
-            $('#Modal_Edit_Delete').modal('show');
-        }
-    </script>
     <br />
 
-    <!-- quadro TOTAL DE ENTREGAS -->
     <div class="row">
-
-        <div class="col-sm-4 col-lg-4">
-            <div class="dash-unitb">
-                <dtitle>TOTAL DE ENTREGAS CADASTRADAS</dtitle>
-                <hr>
-                <h1><i class="fa fa-envelope-o" style="font-size: 40px" aria-hidden="true"></i>
-                    <asp:Label ID="lbl_total_entregas" runat="server" Text="999"></asp:Label> </h1>
-                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#Modal_Novo">Inserir Nova</button>
-            </div>
+        <div class="col-sm-3">
+            <asp:Label ID="Label1" runat="server" Text="Endereço"></asp:Label>
         </div>
-
-        <div class="col-sm-6 col-lg-6">
-            <div class="dash-unitb">                
-                <dtitle>FILTRO</dtitle>
-                <hr>
-                 <h2><asp:TextBox ID="txtData" runat="server"  AutoPostBack="True" OnTextChanged="txtData_TextChanged"/>
-                     <ajaxToolkit:MaskedEditExtender ID="MaskedEditExtender5" runat="server"
-                         TargetControlID="txtData" Mask="99/99/9999" MessageValidatorTip="true" OnFocusCssClass="MaskedEditFocus"
-                         OnInvalidCssClass="MaskedEditError" MaskType="Date" DisplayMoney="Left" AcceptNegative="Left" ErrorTooltipEnabled="True" />
-                     <ajaxToolkit:MaskedEditValidator ID="MaskedEditValidator5" runat="server"
-                         ControlExtender="MaskedEditExtender5" ControlToValidate="txtData" EmptyValueMessage="Informe Data"
-                         InvalidValueMessage="Data Invalida" Display="Dynamic" TooltipMessage="Data da Entrega" EmptyValueBlurredText="*"
-                         InvalidValueBlurredMessage="*" ValidationGroup="MKE" />
-                 </h2>
-                <asp:DropDownList ID="cmb_funcionario" runat="server" class="dash-unitc" Width="80%" AutoPostBack="True" OnSelectedIndexChanged="cmb_funcionario_SelectedIndexChanged"></asp:DropDownList>
-                <p><asp:Label ID="lbl_mensagem" runat="server" Text=""></asp:Label>    </p>
-            </div>
+        <div class="col-sm-2">
+            <asp:Label ID="Label4" runat="server" Text="Número"></asp:Label>
         </div>
-
-    </div>
-
-    <!-- Grid -->
-    <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" Width="90%" OnRowDataBound="GridView_RowDataBound" OnSelectedIndexChanged="GridView_SelectedIndexChanged">
-        <Columns>
-            <asp:BoundField DataField="Nome" HeaderText="FUNCIONARIO" />
-            <asp:BoundField DataField="Nome_Destinatario" HeaderText="DESTINATARIO" />
-            <asp:BoundField DataField="Endereco" HeaderText="ENDEREÇO" />
-            <asp:BoundField DataField="Telefone" HeaderText="TELEFONE"/>
-            <asp:BoundField DataField="Data_Encomenda" HeaderText="DATA"/>
-            <asp:BoundField DataField="Status_Entrega" HeaderText="STATUS"/>
-            <asp:BoundField DataField="ID_Entrega" HeaderText="ID"/>
-        </Columns>
-    </asp:GridView>
-
-    <!-- modal NOVO  -->
-    <div id="Modal_Novo" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Cadastrar nova Entrega</h4>
-                </div>
-
-                <div class="modal-body">
-                    <p>Funcionário:</p>
-                    <p><asp:DropDownList ID="cmb_func_modal" runat="server" CssClass="input-lg"></asp:DropDownList></p>
-                    <p>Destinatário:</p>
-                    <p><asp:TextBox id="txt_nome" runat="server" CssClass="input-lg"/></p>
-                    <p>Endereco:</p>
-                    <p><asp:TextBox id="txt_end" runat="server" CssClass="input-lg"/></p>
-                    
-                                        
-                    <p>Data:</p>
-                    <p><asp:TextBox id="txt_data" runat="server" CssClass="input-lg"/></p>
-                    <ajaxToolkit:MaskedEditExtender ID="MaskedEditExtender2" runat="server"
-                         TargetControlID="txt_data" Mask="99/99/9999" MessageValidatorTip="true" OnFocusCssClass="MaskedEditFocus"
-                         OnInvalidCssClass="MaskedEditError" MaskType="Date" DisplayMoney="Left" AcceptNegative="Left" ErrorTooltipEnabled="True" />
-                     <ajaxToolkit:MaskedEditValidator ID="MaskedEditValidator2" runat="server"
-                         ControlExtender="MaskedEditExtender2" ControlToValidate="txt_data" EmptyValueMessage="Informe Data"
-                         InvalidValueMessage="Data Invalida" Display="Dynamic" TooltipMessage="Data da Entrega" EmptyValueBlurredText="*"
-                         InvalidValueBlurredMessage="*" ValidationGroup="MKE" />
-
-                    <p>Telefone</p>
-                    <p><asp:TextBox id="txt_telefone" runat="server" CssClass="input-lg"/></p>
-                    <p>Observações:</p>
-                    <p><asp:TextBox id="txt_obs" runat="server" CssClass="input-lg"/></p>
-                </div>
-
-                <div class="modal-footer">
-                    <asp:Button ID="bt_novo_fechar" runat="server" Text="Cancelar" CssClass="btn btn-default" data-dismiss="modal" />
-                    <asp:Button ID="bt_novo_salvar" runat="server" Text="Salvar" CssClass="btn btn-success" OnClick="bt_novo_salvar_click" UseSubmitBehavior="false" data-dismiss="modal" />
-                </div>
-
-            </div>
+        <div class="col-sm-2">
+            <asp:Label ID="Label2" runat="server" Text="Bairro"></asp:Label>
+        </div>
+        <div class="col-sm-2">
+            <asp:Label ID="Label3" runat="server" Text="Cidade"></asp:Label>
         </div>
     </div>
 
-     <!-- modal EDIT,DELETE -->
-    <div id="Modal_Edit_Delete" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
+    <div class="row">
+        <div class="col-sm-3">
+            <asp:TextBox ID="txtEndereco" runat="server"></asp:TextBox>
+        </div>
+        <div class="col-sm-2">
+            <asp:TextBox ID="txtNumero" runat="server"></asp:TextBox>
+        </div>
+        <div class="col-sm-2">
+            <asp:TextBox ID="txtBairro" runat="server"></asp:TextBox>
+        </div>
+        <div class="col-sm-2">
+            <asp:TextBox ID="txtCidade" runat="server"></asp:TextBox>
+        </div>
+        <div class="col-sm-2">
+            <asp:Button ID="Button1" runat="server" Text="Buscar" CssClass="btn btn-primary" OnClick="bt_buscar_click"/>
+        </div>
+    </div>  
 
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Cadastro de Funcionários - Edição</h4>
-                </div>
-
-                <div class="modal-body">
-                    <p>Funcionário:</p>
-                    <p><asp:DropDownList ID="cmb_edit_func" runat="server" CssClass="input-lg"></asp:DropDownList></p>
-                    <p>Destinatário:</p>
-                    <p><asp:TextBox id="txt_edit_nome" runat="server" CssClass="input-lg"/></p>
-                    <p>Endereco:</p>
-                    <p><asp:TextBox id="txt_edit_end" runat="server" CssClass="input-lg"/></p>
-                                        
-                    <p>Data:</p>
-                    <p><asp:TextBox id="txt_edit_data" runat="server" CssClass="input-lg"/></p>
-                    <ajaxToolkit:MaskedEditExtender ID="MaskedEditExtender1" runat="server"
-                         TargetControlID="txt_edit_data" Mask="99/99/9999" MessageValidatorTip="true" OnFocusCssClass="MaskedEditFocus"
-                         OnInvalidCssClass="MaskedEditError" MaskType="Date" DisplayMoney="Left" AcceptNegative="Left" ErrorTooltipEnabled="True" />
-                     <ajaxToolkit:MaskedEditValidator ID="MaskedEditValidator1" runat="server"
-                         ControlExtender="MaskedEditExtender1" ControlToValidate="txt_edit_data" EmptyValueMessage="Informe Data"
-                         InvalidValueMessage="Data Invalida" Display="Dynamic" TooltipMessage="Data da Entrega" EmptyValueBlurredText="*"
-                         InvalidValueBlurredMessage="*" ValidationGroup="MKE" />
-
-                    <p>Telefone</p>
-                    <p><asp:TextBox id="txt_edit_tel" runat="server" CssClass="input-lg"/></p>
-                    <p>Observações:</p>
-                    <p><asp:TextBox id="txt_edit_obs" runat="server" CssClass="input-lg"/></p>
-                    <p>ID: <asp:Label ID="lbl_id" runat="server" Text=""></asp:Label></p>
-                </div>
-
-                <div class="modal-footer">
-                    <asp:Button ID="Button5" runat="server" Text="Cancelar" CssClass="btn btn-default" data-dismiss="modal" />
-                    <asp:Button ID="Button2" runat="server" Text="Excluir " CssClass="btn btn-danger" OnClick="bt_excluir_click" UseSubmitBehavior="false" data-dismiss="modal" />
-                    <asp:Button ID="Button1" runat="server" Text="Alterar " CssClass="btn btn-success" OnClick="bt_editar_salvar_click" UseSubmitBehavior="false" data-dismiss="modal" />
-                </div>
-
-            </div>
+    <div class="row">
+        <div class="col-sm-3">
+            <asp:Label ID="Label5" runat="server" Text="Destinatário"></asp:Label>
+        </div>
+        <div class="col-sm-2">
+            <asp:Label ID="Label6" runat="server" Text="P.Ref."></asp:Label>
+        </div>
+        <div class="col-sm-2">
+            <asp:Label ID="Label7" runat="server" Text="Telefone"></asp:Label>
+        </div>
+        <div class="col-sm-2">
+            <asp:Label ID="Label8" runat="server" Text="Observações"></asp:Label>
         </div>
     </div>
+
+    <div class="row">
+        <div class="col-sm-3">
+            <asp:TextBox ID="txtDestinatario" runat="server"></asp:TextBox>
+        </div>
+        <div class="col-sm-2">
+            <asp:TextBox ID="txtPref" runat="server"></asp:TextBox>
+        </div>
+        <div class="col-sm-2">
+            <asp:TextBox ID="txtTelefone" runat="server"></asp:TextBox>
+        </div>
+        <div class="col-sm-2">
+            <asp:TextBox ID="txtObs" runat="server"></asp:TextBox>
+        </div>
+        <div class="col-sm-2">
+            <asp:Button ID="Button2" runat="server" Text="Salvar " CssClass="btn btn-success" />
+        </div>
+    </div>
+
+    <!-- MAPA -->
+    <br />
+    <iframe height="400px" width="100%" frameborder="0" scrolling="no" src="/Mapa2.aspx"></iframe>
+    
+    <p></p>
+
+    <asp:Label ID="lblLat" runat="server" Text="Lat: 0"></asp:Label>
+    <asp:Label ID="lblLong" runat="server" Text="Long: 0"></asp:Label>
 
 </asp:Content>

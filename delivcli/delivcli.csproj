@@ -164,6 +164,7 @@
     <Content Include="images\motorbike24.png" />
     <Content Include="images\status_on.png" />
     <Content Include="Mapa.aspx" />
+    <Content Include="Mapa2.aspx" />
     <Content Include="Mapa1.aspx" />
     <Content Include="Painel.aspx" />
     <Content Include="Scripts\admin.js" />
@@ -219,6 +220,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddressComponent.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Cad_Entregas_Geocoding.aspx.cs">
@@ -266,6 +268,13 @@
     </Compile>
     <Compile Include="Mapa.aspx.designer.cs">
       <DependentUpon>Mapa.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mapa2.aspx.cs">
+      <DependentUpon>Mapa2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mapa2.aspx.designer.cs">
+      <DependentUpon>Mapa2.aspx</DependentUpon>
     </Compile>
     <Compile Include="Mapa1.aspx.cs">
       <DependentUpon>Mapa1.aspx</DependentUpon>
