@@ -54,7 +54,7 @@
             <asp:Label ID="Label7" runat="server" Text="Telefone"></asp:Label>
         </div>
         <div class="col-sm-2">
-            <asp:Label ID="Label8" runat="server" Text="Observações"></asp:Label>
+            <asp:Label ID="Label8" runat="server" Text="Motoboy"></asp:Label>
         </div>
     </div>
 
@@ -69,7 +69,7 @@
             <asp:TextBox ID="txtTelefone" runat="server"></asp:TextBox>
         </div>
         <div class="col-sm-2">
-            <asp:TextBox ID="txtObs" runat="server"></asp:TextBox>
+            <asp:DropDownList ID="cmb_funcionario" runat="server" Width="80%"></asp:DropDownList>
         </div>
         <div class="col-sm-2">
             <asp:Button ID="Button2" runat="server" Text="Salvar " CssClass="btn btn-success" />

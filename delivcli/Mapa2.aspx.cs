@@ -19,21 +19,43 @@ namespace delivcli
 
         private void montaScript()
         {
+
+            string markerPosition = "{ lat: " + Session["Busca_Latitude"].ToString() +", lng:" + Session["Busca_Longitude"].ToString() + " }";
+            
             str.Clear();
             str.Append(@"<script type='text/javascript'> 
 
                 var map;
+                var marcador;
+                var markers = [];
 
+                marcador = ");
+
+            str.Append(markerPosition);
+
+            str.Append(@"
                 function initMap() {
                     map = new google.maps.Map(document.getElementById('map'), {
                         zoom: 14,
-                        center: { lat: -12.9886458, lng: -38.4715624 }
+                        center: ");
+
+            str.Append(markerPosition);
+
+            str.Append(@"
                     });
+                    addMarkerWithTimeout(marcador, 200);
                 }
 
+                function addMarkerWithTimeout(position, timeout) {
+                    window.setTimeout(function () {
+                        markers.push(new google.maps.Marker({
+                            position: position,
+                            map: map,
+                            animation: google.maps.Animation.DROP
+                        }));
+                    }, timeout);
+                }
                 </script>");
         }
-
-
     }
 }

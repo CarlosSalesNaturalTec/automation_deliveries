@@ -157,13 +157,13 @@ namespace delivcli {
         protected global::System.Web.UI.WebControls.TextBox txtTelefone;
         
         /// <summary>
-        /// txtObs control.
+        /// cmb_funcionario control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtObs;
+        protected global::System.Web.UI.WebControls.DropDownList cmb_funcionario;
         
         /// <summary>
         /// Button2 control.

@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Web.UI;
+using System.Web.UI.WebControls;
 
 namespace delivcli
 {
@@ -11,11 +12,13 @@ namespace delivcli
         protected void Page_Load(object sender, EventArgs e)
         {
             // tenta identificar se houve login. caso contrário vai para página de erro
-            //ID_Cli = Session["Cli_ID"].ToString();
+            ID_Cli = Session["Cli_ID"].ToString();
 
             if (!IsPostBack)
             {
-
+                Session["Busca_Latitude"] = "0";
+                Session["Busca_Longitude"] = "0";
+                Preenche_Combo();
             }
         }
 
@@ -38,12 +41,33 @@ namespace delivcli
                 var longitude = location.lng;
 
                 lblLat.Text = latitude.ToString();
-                lblLong.Text = longitude.ToString(); 
+                lblLong.Text = longitude.ToString();
+
+                Session["Busca_Latitude"] = latitude.ToString();
+                Session["Busca_Longitude"] = longitude.ToString();
 
             }
 
+        }
+
+        protected void Preenche_Combo()
+        {
+            // combo funcionarios - filtro
+            OperacaoBanco operacao = new OperacaoBanco();
+            System.Data.SqlClient.SqlDataReader dados1 = operacao.Select(@"select ID_Motoboy, Nome from Tbl_Motoboys where " +
+                "ID_Cliente=" + ID_Cli + " order by Nome");
+
+            cmb_funcionario.DataSource = dados1;
+            cmb_funcionario.DataTextField = "Nome";
+            cmb_funcionario.DataValueField = "ID_Motoboy";
+            cmb_funcionario.DataBind();
+            ConexaoBancoSQL.fecharConexao();
+
+            cmb_funcionario.Items.Insert(0, new ListItem("SELECIONE", "-1"));
+            cmb_funcionario.SelectedIndex = Convert.ToInt32("-1");
 
         }
+
     }
        
 }
