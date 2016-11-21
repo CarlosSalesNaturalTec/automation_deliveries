@@ -43,8 +43,8 @@ namespace delivcli
                 lblLat.Text = latitude.ToString();
                 lblLong.Text = longitude.ToString();
 
-                Session["Busca_Latitude"] = latitude.ToString();
-                Session["Busca_Longitude"] = longitude.ToString();
+                Session["Busca_Latitude"] = latitude.ToString().Replace(",",".");
+                Session["Busca_Longitude"] = longitude.ToString().Replace(",",".");
 
             }
 
@@ -68,6 +68,51 @@ namespace delivcli
 
         }
 
+        protected void BtSalvar(object sender, EventArgs e)
+        {
+
+            // verifica ID do Motoboy
+            string id_selecionada = cmb_funcionario.SelectedItem.Value;
+            if (id_selecionada == "-1")
+            {
+                Response.Write("<script>alert('ATENÇÃO! Selecione o Motoboy');</script>");
+                return;
+            }
+
+            // string data da encomenda
+            string date_formated = DateTime.Now.ToString("yyyy-MM-dd");
+
+            // string INSERT
+            string stringinsert = @"INSERT INTO Tbl_Entregas (ID_Cliente, ID_Motoboy, Nome_Destinatario, Endereco, Ponto_Ref, " +
+                    "Bairro, Cidade, Data_Encomenda, Telefone, Entregue,Latitude,Longitude) VALUES (" + ID_Cli +
+                    "," + id_selecionada + ", '" + txtDestinatario.Text + "', '" + txtEndereco.Text + "', '" + txtPref.Text +
+                    "', '" + txtBairro.Text + "', '" + txtCidade.Text + "', '" + date_formated + "', '" + txtTelefone.Text + "', 0,'" +
+                    Session["Busca_Latitude"].ToString() + "', '" + Session["Busca_Longitude"].ToString() + "')";
+            try
+            {
+                OperacaoBanco operacao = new OperacaoBanco();
+                bool inserir = operacao.Insert(stringinsert);
+                ConexaoBancoSQL.fecharConexao();
+
+                if (inserir == true)
+                {
+                    Response.Write("<script>alert('Ok. Roteiro Salvo');</script>");
+                }
+
+                txtEndereco.Text = "";
+                txtNumero.Text = "";
+                txtBairro.Text = "";
+                txtDestinatario.Text = "";
+                txtPref.Text = "";
+                txtTelefone.Text = "";
+
+
+            }
+            catch
+            {
+            }
+
+        }
     }
        
 }

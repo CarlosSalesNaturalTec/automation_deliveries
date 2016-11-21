@@ -36,7 +36,7 @@
             <asp:TextBox ID="txtBairro" runat="server"></asp:TextBox>
         </div>
         <div class="col-sm-2">
-            <asp:TextBox ID="txtCidade" runat="server"></asp:TextBox>
+            <asp:TextBox ID="txtCidade" runat="server" Text="SALVADOR"></asp:TextBox>
         </div>
         <div class="col-sm-2">
             <asp:Button ID="Button1" runat="server" Text="Buscar" CssClass="btn btn-primary" OnClick="bt_buscar_click"/>
@@ -72,13 +72,13 @@
             <asp:DropDownList ID="cmb_funcionario" runat="server" Width="80%"></asp:DropDownList>
         </div>
         <div class="col-sm-2">
-            <asp:Button ID="Button2" runat="server" Text="Salvar " CssClass="btn btn-success" />
+            <asp:Button ID="Button2" runat="server" Text="Salvar " OnClick="BtSalvar" CssClass="btn btn-success" />
         </div>
     </div>
 
     <!-- MAPA -->
     <br />
-    <iframe height="400px" width="100%" frameborder="0" scrolling="no" src="/Mapa2.aspx"></iframe>
+    <iframe height="700px" width="100%" frameborder="0" scrolling="no" src="/Mapa2.aspx"></iframe>
     
     <p></p>
 

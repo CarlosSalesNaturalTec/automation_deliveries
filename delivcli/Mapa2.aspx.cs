@@ -36,7 +36,8 @@ namespace delivcli
             str.Append(@"
                 function initMap() {
                     map = new google.maps.Map(document.getElementById('map'), {
-                        zoom: 14,
+                        zoom: 18,
+                        mapTypeId: 'satellite',
                         center: ");
 
             str.Append(markerPosition);
