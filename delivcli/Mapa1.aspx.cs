@@ -102,10 +102,11 @@ namespace delivcli
         var markers = [];
         var map;
         var image = 'images/motorbike24.png';
+        var contentString = '<p>Nome Motoboy</p>';
 
         function initMap() {
             map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 11,
+                zoom: 14,
                 center: { lat: -12.8730, lng: -38.3598 }
             });
             drop();
@@ -114,19 +115,21 @@ namespace delivcli
         function drop() {
             clearMarkers();
             for (var i = 0; i < neighborhoods.length; i++) {
-                addMarkerWithTimeout(neighborhoods[i], i * 200);
+                MarcadorComInfoWindow(neighborhoods[i]);
             }
         }
 
-        function addMarkerWithTimeout(position, timeout) {
-            window.setTimeout(function () {
-                markers.push(new google.maps.Marker({
-                    position: position,
-                    map: map,
-                    icon: image,
-                    animation: google.maps.Animation.DROP
-                }));
-            }, timeout);
+        function MarcadorComInfoWindow(position) {
+            var infowindow = new google.maps.InfoWindow({
+                content: contentString
+            });
+
+            var marker = new google.maps.Marker({
+            position: position,
+            map: map
+            });
+
+            infowindow.open(map, marker);
         }
 
         function clearMarkers() {

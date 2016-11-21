@@ -26,6 +26,6 @@
     </div>
 
     <!-- MAPA -->
-    <iframe height="500px" width="100%" frameborder="0" scrolling="no" src="/Mapa1.aspx"></iframe>
+    <iframe height="700px" width="100%" frameborder="0" scrolling="no" src="/Mapa1.aspx"></iframe>
 
 </asp:Content>
