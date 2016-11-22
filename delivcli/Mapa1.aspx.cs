@@ -7,6 +7,8 @@ namespace delivcli
     {
         StringBuilder str = new StringBuilder();
         StringBuilder coordenadas = new StringBuilder();
+        StringBuilder coordenadasDados = new StringBuilder();
+        StringBuilder coordenadasDados2 = new StringBuilder();
         StringBuilder cood_Markers = new StringBuilder();
         string tipoMapa = "";
         string centromapa = "";
@@ -20,6 +22,7 @@ namespace delivcli
                 if (Session["CLI_ID_FUNC"].ToString() == "0") { tipoMapa = "T"; } else { tipoMapa = "I"; }
 
                 obtemcoordenadas();
+
                 if (tipoMapa == "T")
                 {
                     montaScript();
@@ -38,13 +41,15 @@ namespace delivcli
             try
             {
                 string stringselect = "";
-                //string dataformatada = DateTime.Today.ToString("yyyy-MM-dd");
                 string dataformatada = Session["date_formated"].ToString();
 
                 if (tipoMapa == "T")
                 {
                     // Motoboys e respectivas coordenadas de localização
-                    stringselect = "select usuario, GeoLatitude, GeoLongitude , GeoDataLoc from Tbl_Motoboys order by usuario";
+                    stringselect = @"select usuario, GeoLatitude, GeoLongitude , format(GeoDataLoc,'dd-MM-yyyy') as UltimaData," +
+                        " format(GeoDataLoc,'HH:mm:ss') as UltimaHora" +
+                        " from Tbl_Motoboys where ID_Cliente = " + Session["Cli_ID"].ToString() +
+                        " order by usuario";
                 }
                 else
                 {
@@ -57,6 +62,8 @@ namespace delivcli
                 System.Data.SqlClient.SqlDataReader dados = operacao.Select(stringselect);
 
                 coordenadas.Clear();
+                coordenadasDados.Clear();
+                coordenadasDados2.Clear();
 
                 string coord = "";
                 while (dados.Read())
@@ -70,17 +77,38 @@ namespace delivcli
                         // pega somente o primeiro valor para servir como centro do mapa
                         if (contagem == 1) { centromapa = "{ lat: " + Convert.ToString(dados[1]) + ", lng: " + Convert.ToString(dados[2]) + " }"; contagem++; }
 
-                        //obtem coordenadas
+                        //obtem dados da ultima leitura
                         coordenadas.Append("{ lat: " + Convert.ToString(dados[1]) + ", lng: " + Convert.ToString(dados[2]) + " },");
+
+                        if (tipoMapa == "T")
+                        {
+                            string dadosCoordenadas = Convert.ToString(dados[0]);
+                            coordenadasDados.Append("'" + dadosCoordenadas + "',");
+
+                            string dadosCoordenadas2 = Convert.ToString(dados[3]) + " " + Convert.ToString(dados[4]);
+                            coordenadasDados2.Append("'" + dadosCoordenadas2 + "',");
+                        }
+
                     }
                 }
+
                 ConexaoBancoSQL.fecharConexao();
+
                 if (coordenadas.Length == 0) { }
-                else
-                {
-                    //remove ultimo caracter ","    
-                    coordenadas.Length--;
+                else { coordenadas.Length--; //remove ultimo caracter "," 
                 }
+
+                if (coordenadasDados.Length == 0) { }
+                else {
+                    coordenadasDados.Length--; //remove ultimo caracter "," 
+                }
+
+                if (coordenadasDados2.Length == 0) { }
+                else {
+                    coordenadasDados2.Length--; //remove ultimo caracter "," 
+                }
+
+
             }
             catch (Exception)
             {
@@ -93,21 +121,30 @@ namespace delivcli
             str.Clear();
             str.Append(@"<script type='text/javascript'> 
 
-                   var neighborhoods = [");
-
+            var neighborhoods = [");
             str.Append(coordenadas.ToString());
-
             str.Append(@"];
+
+            var NomeMotoboy = [");
+            str.Append(coordenadasDados.ToString());
+            str.Append(@"];
+
+            var DataHoraCoord = [");
+            str.Append(coordenadasDados2.ToString());
+            str.Append(@"];
+
+            var CentroDoMapa = ");
+            str.Append(centromapa);
+            str.Append(@";
 
         var markers = [];
         var map;
         var image = 'images/motorbike24.png';
-        var contentString = '<p>Nome Motoboy</p>';
 
         function initMap() {
             map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 14,
-                center: { lat: -12.8730, lng: -38.3598 }
+                zoom: 12,
+                center: CentroDoMapa
             });
             drop();
         }
@@ -115,17 +152,21 @@ namespace delivcli
         function drop() {
             clearMarkers();
             for (var i = 0; i < neighborhoods.length; i++) {
-                MarcadorComInfoWindow(neighborhoods[i]);
+                var contentString = '<p>' + NomeMotoboy[i] + '</p>' + '<p>' + DataHoraCoord[i] + '</p>';
+                var contentTitle = NomeMotoboy[i];
+                MarcadorComInfoWindow(neighborhoods[i],contentString,contentTitle);
             }
         }
 
-        function MarcadorComInfoWindow(position) {
+        function MarcadorComInfoWindow(position,dadosc,titulo) {
             var infowindow = new google.maps.InfoWindow({
-                content: contentString
+                content: dadosc
             });
 
             var marker = new google.maps.Marker({
             position: position,
+            icon: image,
+            title: titulo,
             map: map
             });
 
@@ -146,19 +187,21 @@ namespace delivcli
             str.Clear();
             str.Append(@"<script type='text/javascript'> 
 
-                   var neighborhoods = [");
-
+            var neighborhoods = [");
             str.Append(cood_Markers.ToString());
-
             str.Append(@"];
+
+            var CentroDoMapa = ");
+            str.Append(centromapa);
+            str.Append(@";
 
         var markers = [];
         var map;
 
         function initMap() {
             map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 11,
-                center: { lat: -12.8730, lng: -38.3598 }
+                zoom: 12,
+                center: CentroDoMapa
             });
             drop();
 

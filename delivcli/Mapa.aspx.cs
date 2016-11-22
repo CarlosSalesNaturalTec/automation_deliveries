@@ -33,7 +33,7 @@ namespace delivcli
         private void Preenche_Combo()
         {
             OperacaoBanco operacao = new OperacaoBanco();
-            System.Data.SqlClient.SqlDataReader dados1 = operacao.Select("select ID_Motoboy,Nome from Tbl_Motoboys order by Nome");
+            System.Data.SqlClient.SqlDataReader dados1 = operacao.Select("select ID_Motoboy,Nome from Tbl_Motoboys where ID_Cliente =" + v_id_user + " order by Nome");
             cmb_func.DataSource = dados1;
             cmb_func.DataTextField = "Nome";
             cmb_func.DataValueField = "ID_Motoboy";
