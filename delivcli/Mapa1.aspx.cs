@@ -26,7 +26,8 @@ namespace delivcli
                 if (tipoMapa == "T")
                 {
                     montaScript();
-                } else
+                }
+                else
                 {
                     MarcadoresEntregas();
                     montaScriptindividual();
@@ -47,7 +48,7 @@ namespace delivcli
                 {
                     // Motoboys e respectivas coordenadas de localização
                     stringselect = @"select usuario, GeoLatitude, GeoLongitude , format(GeoDataLoc,'dd-MM-yyyy') as UltimaData," +
-                        " format(GeoDataLoc,'HH:mm:ss') as UltimaHora" +
+                        " format(GeoDataLoc,'HH:mm:ss') as UltimaHora, DATEDIFF(MINUTE, GeoDataLoc, getdate()) AS Intervalo " +
                         " from Tbl_Motoboys where ID_Cliente = " + Session["Cli_ID"].ToString() +
                         " order by usuario";
                 }
@@ -80,13 +81,29 @@ namespace delivcli
                         //obtem dados da ultima leitura
                         coordenadas.Append("{ lat: " + Convert.ToString(dados[1]) + ", lng: " + Convert.ToString(dados[2]) + " },");
 
+
+                        string dadosCoordenadas = Convert.ToString(dados[0]);
+                        string dadosCoordenadas2 = "";
+
                         if (tipoMapa == "T")
                         {
-                            string dadosCoordenadas = Convert.ToString(dados[0]);
-                            coordenadasDados.Append("'" + dadosCoordenadas + "',");
+                            string status = "", tagIni = "", tagFim = "";
+                            int minutos = Convert.ToInt16(dados[5]);
+                            if (minutos > 185) {
+                                tagIni = "<p style=\"color: red;\"><b>";
+                                status = "Off-Line";
+                                tagFim = "</b></p>";
+                                dadosCoordenadas2 = Convert.ToString(dados[3]) + " " + Convert.ToString(dados[4]);
+                            }
+                            else {
+                                tagIni = "<p style=\"color: green;\"><b>";
+                                status = "On-Line";
+                                tagFim = "</b></p>";
+                                dadosCoordenadas2 = Convert.ToString(dados[4]);
+                            }
 
-                            string dadosCoordenadas2 = Convert.ToString(dados[3]) + " " + Convert.ToString(dados[4]);
-                            coordenadasDados2.Append("'" + dadosCoordenadas2 + "',");
+                            coordenadasDados.Append("'" + tagIni + dadosCoordenadas + "  " + status + tagFim + "',");
+                            coordenadasDados2.Append("'<p>" + dadosCoordenadas2 + "</p>',");
                         }
 
                     }
@@ -95,16 +112,20 @@ namespace delivcli
                 ConexaoBancoSQL.fecharConexao();
 
                 if (coordenadas.Length == 0) { }
-                else { coordenadas.Length--; //remove ultimo caracter "," 
+                else
+                {
+                    coordenadas.Length--; //remove ultimo caracter "," 
                 }
 
                 if (coordenadasDados.Length == 0) { }
-                else {
+                else
+                {
                     coordenadasDados.Length--; //remove ultimo caracter "," 
                 }
 
                 if (coordenadasDados2.Length == 0) { }
-                else {
+                else
+                {
                     coordenadasDados2.Length--; //remove ultimo caracter "," 
                 }
 
@@ -152,13 +173,12 @@ namespace delivcli
         function drop() {
             clearMarkers();
             for (var i = 0; i < neighborhoods.length; i++) {
-                var contentString = '<p>' + NomeMotoboy[i] + '</p>' + '<p>' + DataHoraCoord[i] + '</p>';
-                var contentTitle = NomeMotoboy[i];
-                MarcadorComInfoWindow(neighborhoods[i],contentString,contentTitle);
+                var contentString = NomeMotoboy[i] + DataHoraCoord[i];
+                MarcadorComInfoWindow(neighborhoods[i],contentString);
             }
         }
 
-        function MarcadorComInfoWindow(position,dadosc,titulo) {
+        function MarcadorComInfoWindow(position,dadosc) {
             var infowindow = new google.maps.InfoWindow({
                 content: dadosc
             });
@@ -166,7 +186,6 @@ namespace delivcli
             var marker = new google.maps.Marker({
             position: position,
             icon: image,
-            title: titulo,
             map: map
             });
 
@@ -260,18 +279,22 @@ namespace delivcli
                             + " and format(Data_Encomenda,'yyyy-MM-dd')= '" + dataformatada + "'";
             OperacaoBanco operacao = new OperacaoBanco();
             System.Data.SqlClient.SqlDataReader dados = operacao.Select(stringselect);
-            
+
             while (dados.Read())
             {
                 coord = Convert.ToString(dados[2]);
-                if (coord == "") { } else {
+                if (coord == "") { }
+                else
+                {
                     cood_Markers.Append("{ lat: " + Convert.ToString(dados[2]) + ", lng: " + Convert.ToString(dados[3]) + " },");
                 }
             }
 
             ConexaoBancoSQL.fecharConexao();
 
-            if (cood_Markers.Length == 0) { } else {
+            if (cood_Markers.Length == 0) { }
+            else
+            {
                 //remove ultimo caracter ","    
                 cood_Markers.Length--;
             }
