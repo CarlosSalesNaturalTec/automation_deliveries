@@ -150,6 +150,7 @@
     <Content Include="Content\main.css" />
     <Content Include="Content\register.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="ListagemStatus.aspx" />
     <Content Include="ErroDefault.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -246,6 +247,13 @@
       <DependentUpon>Cad_Funcionario.aspx</DependentUpon>
     </Compile>
     <Compile Include="ConexaoBancoSQL.cs" />
+    <Compile Include="ListagemStatus.aspx.cs">
+      <DependentUpon>ListagemStatus.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ListagemStatus.aspx.designer.cs">
+      <DependentUpon>ListagemStatus.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

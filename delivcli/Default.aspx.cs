@@ -25,6 +25,7 @@ namespace delivcli
                 {
                     Session["Cli_ID"] = Convert.ToString(rcrdset[0]);
                     Session["CLI_ID_FUNC"] ="0";
+                    Session["LocTipo"] = "On-Line";   //utilizado na pagina de Localizadores exibindo entregadores ativos
                     Response.Redirect("Painel.aspx");
                 }
                 else

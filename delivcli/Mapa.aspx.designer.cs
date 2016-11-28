@@ -13,39 +13,30 @@ namespace delivcli {
     public partial class Mapa {
         
         /// <summary>
-        /// cmb_func control.
+        /// BtAtivos control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList cmb_func;
+        protected global::System.Web.UI.WebControls.Button BtAtivos;
         
         /// <summary>
-        /// txtData control.
+        /// BtInativos control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtData;
+        protected global::System.Web.UI.WebControls.Button BtInativos;
         
         /// <summary>
-        /// MaskedEditExtender5 control.
+        /// BtTodos control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.MaskedEditExtender MaskedEditExtender5;
-        
-        /// <summary>
-        /// MaskedEditValidator5 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.MaskedEditValidator MaskedEditValidator5;
+        protected global::System.Web.UI.WebControls.Button BtTodos;
     }
 }
