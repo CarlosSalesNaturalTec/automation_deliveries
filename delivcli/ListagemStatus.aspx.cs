@@ -21,10 +21,10 @@ namespace delivcli
         private void ColetaDados()
         {
             // seleção do usuário: ativo, inativo ou todos
-            string escolha = Session["LocTipo"].ToString();  
+            string escolha = Session["LocTipo"].ToString();
 
             str.Clear();
-            string stringComAspas = "<div class=\"panel panel-" + TipoHeader(escolha) + "\"><div class=\"panel-heading\"><h3 class=\"panel-title\"> " + 
+            string stringComAspas = "<div class=\"panel panel-" + TipoHeader(escolha) + "\"><div class=\"panel-heading\"><h3 class=\"panel-title\"> " +
                    Session["LocTipo"].ToString().ToUpper() + "</h3></div><div class=\"panel-body\">";
             str.Append(stringComAspas);
 
@@ -42,16 +42,19 @@ namespace delivcli
                 if (escolha == "On-Line") { if (min1 > 185) { continue; } }
                 if (escolha == "Off-Line") { if (min1 < 185) { continue; } }
 
-                //nome do Entregador
-                stringComAspas = "<a class=\"list-group-item\"><h4 class=\"list-group-item-heading\">" + Convert.ToString(dados[0]) + "</h4>";
+                //nome do Entregador + Total de Entregas do Dia + Total de Entregas Realizadas
+                stringComAspas = "<a class=\"list-group-item\"><h4 class=\"list-group-item-heading\">" + Convert.ToString(dados[0]) + 
+                    ". " + TotaldeEntregas(Convert.ToString(dados[2])) + "</h4>";
                 str.Append(stringComAspas);
 
-                if (min1 > 185) {
+                if (min1 > 185)
+                {
                     stringComAspas = "<p class=\"list-group-item-text\">Off-Line à: " + TempoOff(min1) + "</p></a>";
                 }
-                else {
-                    stringComAspas = "<p class=\"list-group-item-text\">Status: " + StatusDirecao(Convert.ToString(dados[2])) + "</p></a>";
-                }   
+                else
+                {
+                    stringComAspas = "<p class=\"list-group-item-text\">" + StatusDirecao(Convert.ToString(dados[2])) + "</p></a>";
+                }
                 str.Append(stringComAspas);
             }
             ConexaoBancoSQL.fecharConexao();
@@ -84,23 +87,42 @@ namespace delivcli
 
         public string StatusDirecao(string identregador)
         {
-            string stringselect = "", status = "xxx";
+            string stringselect = "", status = "Dest.: Não Especificado";
 
-            stringselect = @"select ID_Entrega from Tbl_Entregas where ID_Motoboy = " + identregador + " and Partida_Iniciada=1";
+            //  verifica se está em direção a uma entrega específica.
+            stringselect = @"select Nome_Destinatario from Tbl_Entregas where ID_Motoboy = " + identregador + " and Entregue =0 and Partida_Iniciada=1";
             OperacaoBanco operacao2 = new OperacaoBanco();
             System.Data.SqlClient.SqlDataReader recordset = operacao2.Select(stringselect);
-            
             while (recordset.Read())
             {
-
+                status = "Dest.: " + Convert.ToString(recordset[0]);
             }
             ConexaoBancoSQL.fecharConexao();
-
             return status;
-
         }
 
-        public string TempoOff (int tempominutos)
+        public string TotaldeEntregas(string identregador)
+        {
+            string stringselect = "";
+            int totaldeentregas = 0, realizadas = 0;
+            string datastatus = DateTime.Today.ToString("yyyy-MM-dd");
+
+            // total de entregas do entregador no dia
+            stringselect = @"select ID_Entrega, Entregue from Tbl_Entregas where ID_Motoboy = " + identregador +
+                " and format(Data_Encomenda,'yyyy-MM-dd') ='" + datastatus + "'";
+            OperacaoBanco operacao4 = new OperacaoBanco();
+            System.Data.SqlClient.SqlDataReader recordset = operacao4.Select(stringselect);
+            while (recordset.Read())
+            {
+                totaldeentregas++;
+                if ( Convert.ToString(recordset[1]) == "True") { realizadas++; }
+            }
+            ConexaoBancoSQL.fecharConexao();
+            return realizadas.ToString() + " de " + totaldeentregas.ToString() ;
+            
+        }
+
+        public string TempoOff(int tempominutos)
         {
             string tempo = "xxx";
             int minutos = tempominutos - 180;  // 180 = diferença fuso horario
@@ -119,6 +141,8 @@ namespace delivcli
             }
             return tempo;
         }
+
+
 
     }
 }

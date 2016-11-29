@@ -29,7 +29,8 @@
                 <hr>
                 <h1><i class="fa fa-envelope-o" style="font-size: 40px" aria-hidden="true"></i>
                     <asp:Label ID="lbl_total_entregas" runat="server" Text="999"></asp:Label> </h1>
-                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#Modal_Novo">Inserir Nova</button>
+
+                <!-- <button type="button" class="btn btn-success" data-toggle="modal" data-target="#Modal_Novo">Inserir Nova</button> -->
             </div>
         </div>
 
