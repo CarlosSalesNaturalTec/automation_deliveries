@@ -8,7 +8,6 @@ namespace delivcli
         StringBuilder str = new StringBuilder();
         StringBuilder coordenadas = new StringBuilder();
         StringBuilder coordenadasDados = new StringBuilder();
-        StringBuilder coordenadasDados2 = new StringBuilder();
         StringBuilder cood_Markers = new StringBuilder();
         string centromapa = "{ lat: -12.9886458, lng: -38.4715624 }";
         int contagem = 1;
@@ -44,7 +43,6 @@ namespace delivcli
 
                 coordenadas.Clear();
                 coordenadasDados.Clear();
-                coordenadasDados2.Clear();
 
                 string coord = "";
 
@@ -68,7 +66,6 @@ namespace delivcli
                         coordenadas.Append("{ lat: " + Convert.ToString(dados[1]) + ", lng: " + Convert.ToString(dados[2]) + " },");
 
                         string dadosCoordenadas = Convert.ToString(dados[0]);
-                        string dadosCoordenadas2 = "";
 
                         string tagIni = "", tagFim = "";
                         int minutos = Convert.ToInt16(dados[5]);
@@ -76,18 +73,14 @@ namespace delivcli
                         {
                             tagIni = "<p style=\"color: red;\"><b>";
                             tagFim = "</b></p>";
-                            dadosCoordenadas2 = Convert.ToString(dados[3]) + " " + Convert.ToString(dados[4]);
                         }
                         else
                         {
                             tagIni = "<p style=\"color: green;\"><b>";
                             tagFim = "</b></p>";
-                            dadosCoordenadas2 = Convert.ToString(dados[4]);
                         }
 
                         coordenadasDados.Append("'" + tagIni + dadosCoordenadas + tagFim + "',");
-                        coordenadasDados2.Append("'<p>" + dadosCoordenadas2 + "</p>',");
-
                     }
 
                 }
@@ -95,22 +88,15 @@ namespace delivcli
                 ConexaoBancoSQL.fecharConexao();
 
                 if (coordenadas.Length == 0) { }
-                else
-                {
+                else {
                     coordenadas.Length--; //remove ultimo caracter "," 
                 }
 
                 if (coordenadasDados.Length == 0) { }
-                else
-                {
+                else {
                     coordenadasDados.Length--; //remove ultimo caracter "," 
                 }
 
-                if (coordenadasDados2.Length == 0) { }
-                else
-                {
-                    coordenadasDados2.Length--; //remove ultimo caracter "," 
-                }
             }
             catch (Exception)
             {
@@ -129,10 +115,6 @@ namespace delivcli
 
             var NomeMotoboy = [");
             str.Append(coordenadasDados.ToString());
-            str.Append(@"];
-
-            var DataHoraCoord = [");
-            str.Append(coordenadasDados2.ToString());
             str.Append(@"];
 
             var CentroDoMapa = ");
@@ -154,7 +136,7 @@ namespace delivcli
         function drop() {
             clearMarkers();
             for (var i = 0; i < neighborhoods.length; i++) {
-                var contentString = NomeMotoboy[i] + DataHoraCoord[i];
+                var contentString = NomeMotoboy[i];
                 MarcadorComInfoWindow(neighborhoods[i],contentString);
             }
         }

@@ -14,9 +14,7 @@
 
 <body>
 
-    <div class="list-group">
-        <asp:Literal ID="Literal1" runat="server"></asp:Literal>
-    </div>
+    <asp:Literal ID="Literal1" runat="server"></asp:Literal>
 
 </body>
 </html>
