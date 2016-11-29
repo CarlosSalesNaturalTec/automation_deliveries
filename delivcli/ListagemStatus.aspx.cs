@@ -59,7 +59,6 @@ namespace delivcli
             stringComAspas = "</div></div>";
             str.Append(stringComAspas);
 
-
         }
 
         public string TipoHeader(string Escolha)
@@ -87,12 +86,15 @@ namespace delivcli
         {
             string stringselect = "", status = "xxx";
 
-            stringselect = @"select ID_Entrega from Tbl_Entregas where ID_Motoboy = " + identregador + " and Entregue=0";
+            stringselect = @"select ID_Entrega from Tbl_Entregas where ID_Motoboy = " + identregador + " and Partida_Iniciada=1";
             OperacaoBanco operacao2 = new OperacaoBanco();
-            System.Data.SqlClient.SqlDataReader dados = operacao2.Select(stringselect);
-            ConexaoBancoSQL.fecharConexao();
+            System.Data.SqlClient.SqlDataReader recordset = operacao2.Select(stringselect);
+            
+            while (recordset.Read())
+            {
 
-           
+            }
+            ConexaoBancoSQL.fecharConexao();
 
             return status;
 
@@ -115,8 +117,6 @@ namespace delivcli
                     tempo = "Mais de 24hs";
                 }
             }
-
-
             return tempo;
         }
 
