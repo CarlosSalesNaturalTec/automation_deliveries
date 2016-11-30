@@ -8,8 +8,13 @@ namespace delivcli
         StringBuilder str = new StringBuilder();
         StringBuilder coordenadas = new StringBuilder();
         StringBuilder coordenadasDados = new StringBuilder();
+
         StringBuilder tituloMarcador = new StringBuilder();
         StringBuilder cood_Markers = new StringBuilder();
+
+        StringBuilder EntregasCoord = new StringBuilder();
+        StringBuilder EntregasInfo = new StringBuilder();
+
         string centromapa = "{ lat: -12.9886458, lng: -38.4715624 }";
         int contagem = 1;
 
@@ -21,8 +26,9 @@ namespace delivcli
                 string v_id_cli = Session["Cli_ID"].ToString();
 
                 obtemcoordenadas("On-Line");
-                montaScript();
+                EntregasEmAberto();
 
+                montaScript();
                 Literal1.Text = str.ToString();
             }
         }
@@ -89,11 +95,7 @@ namespace delivcli
 
                 //remove ultimo caracter "," 
                 if (coordenadas.Length == 0) { } else { coordenadas.Length--; }
-
-                //remove ultimo caracter "," 
                 if (coordenadasDados.Length == 0) { } else { coordenadasDados.Length--; }
-
-                //remove ultimo caracter "," 
                 if (tituloMarcador.Length == 0) { } else { tituloMarcador.Length--; }
 
             }
@@ -101,6 +103,36 @@ namespace delivcli
             {
                 throw;
             }
+        }
+
+        private void EntregasEmAberto()
+        {
+            EntregasCoord.Clear();
+            EntregasInfo.Clear();
+           
+            string datastatus = DateTime.Now.ToString("yyyy-MM-dd");
+            string stringselect = @"select Tbl_Entregas.Latitude, Tbl_Entregas.Longitude, Tbl_Motoboys.Nome " +
+                    " from Tbl_Entregas " +
+                    " INNER JOIN Tbl_Motoboys ON Tbl_Entregas.ID_Motoboy = Tbl_Motoboys.ID_Motoboy " +
+                    " where Tbl_Entregas.ID_Cliente = " + Session["Cli_ID"].ToString() +
+                    " and format(Tbl_Entregas.Data_Encomenda,'yyyy-MM-dd') ='" + datastatus + "'" +
+                    " and Tbl_Entregas.Status_Entrega ='EM ABERTO'";
+
+            OperacaoBanco operacao = new OperacaoBanco();
+            System.Data.SqlClient.SqlDataReader dados = operacao.Select(stringselect);
+            while (dados.Read())
+            {
+                string coord = Convert.ToString(dados[0]);
+                if (coord == "0") { continue; }
+                EntregasCoord.Append("{ lat: " + Convert.ToString(dados[0]) + ", lng: " + Convert.ToString(dados[1]) + " },");
+                EntregasInfo.Append("'" + Convert.ToString(dados[2]) + "',");
+            }
+            ConexaoBancoSQL.fecharConexao();
+
+            //remove ultimo caracter "," 
+            if (EntregasCoord.Length == 0) { } else { EntregasCoord.Length--; }
+            if (EntregasInfo.Length == 0) { } else { EntregasInfo.Length--; }
+
         }
 
         private void montaScript()
@@ -120,11 +152,20 @@ namespace delivcli
             str.Append(tituloMarcador.ToString());
             str.Append(@"];
 
+            var EntregasEmAberto = [");
+            str.Append(EntregasCoord.ToString());
+            str.Append(@"];
+
+            var EntregasTitle = [");
+            str.Append(EntregasInfo.ToString());
+            str.Append(@"];
+
             var CentroDoMapa = ");
             str.Append(centromapa);
             str.Append(@";
 
         var markers = [];
+        var markersEntregas = [];
         var map;
         var image = 'images/motorbike24.png';
 
@@ -134,6 +175,7 @@ namespace delivcli
                 center: CentroDoMapa
             });
             entregadoresOnLine();
+            entregasemAberto();
         }
 
         function entregadoresOnLine() {
@@ -141,6 +183,13 @@ namespace delivcli
             for (var i = 0; i < neighborhoods.length; i++) {
                 var contentString = NomeMotoboy[i];
                 MarcadorComInfoWindow(neighborhoods[i],contentString,TituloMarcador[i]);
+            }
+        }
+
+        function entregasemAberto() {
+            clearMarkersEntregas();
+            for (var i = 0; i < EntregasEmAberto.length; i++) {
+                MarcadorEntrega(EntregasEmAberto[i],EntregasTitle[i]);
             }
         }
 
@@ -157,12 +206,28 @@ namespace delivcli
             infowindow.open(map, marker);
         }
 
+        function MarcadorEntrega(position,titulo) {
+            var markersEntregas = new google.maps.Marker({
+            position: position,
+            title: titulo,
+            map: map
+            });
+        }
+
         function clearMarkers() {
             for (var i = 0; i < markers.length; i++) {
                 markers[i].setMap(null);
             }
             markers = [];
         }
+
+        function clearMarkersEntregas() {
+            for (var i = 0; i < markersEntregas.length; i++) {
+                markersEntregas[i].setMap(null);
+            }
+            markersEntregas = [];
+        }
+
                 </script>");
         }
     }
