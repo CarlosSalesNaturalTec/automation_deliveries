@@ -1,23 +1,29 @@
-﻿<%@ Page Title="Mapa Localização Funcionários" Language="C#" MasterPageFile="~/Site.Master" EnableEventValidation="false" AutoEventWireup="true" CodeBehind="Mapa.aspx.cs" Inherits="delivcli.Mapa" %>
+﻿<%@ Page Title="Mapa Localização Entregadores" Language="C#" MasterPageFile="~/Site.Master" EnableEventValidation="false" AutoEventWireup="true" CodeBehind="Mapa.aspx.cs" Inherits="delivcli.Mapa" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
-    <br />
-    <asp:Button ID="BtAtivos" runat="server" Text="ON-LINE" CssClass="btn btn-success btn-lg" OnClick="BtAtivos_Click" />
-    <asp:Button ID="BtInativos" runat="server" Text="OFF-LINE" CssClass="btn btn-danger btn-lg" OnClick="BtInativos_Click" />
-    <asp:Button ID="BtTodos" runat="server" Text="TODOS" CssClass="btn btn-info btn-lg" OnClick="BtTodos_Click" />
-    
-    <p></p>
-
     <div class="row">
-        <!-- MAPA -->
+
+        <!-- Mapa / marcadores nos locais de ENTREGA / Marcadores nos Entregadores On-Line -->
+        <br />
         <div class="col-sm-9 col-md-9 col-lg-9">
-            <iframe height="500px" width="100%" frameborder="0" scrolling="no" src="/Mapa1.aspx"></iframe>
+            <iframe height="600px" width="100%" frameborder="0" scrolling="no" src="/Mapa1.aspx"></iframe>
         </div>
 
+        <!-- Listagem ENtregadores On Line e OFF Line-->
         <div class="col-sm-3 col-md-3 col-lg-3">
-            <iframe height="500px" width="100%" frameborder="0" scrolling="yes" src="/ListagemStatus.aspx"></iframe>
+            <iframe height="600px" width="100%" frameborder="0" scrolling="yes" src="/ListagemStatus.aspx"></iframe>
         </div>
+
+        <!-- Listagem Entregas A Realizar-->
+
+        <!-- Listagem Entregas A Caminho-->
+
+        <!-- Listagem Entregas Entregues-->
+
+        <!-- Listagem Entregas Retornadas -->
+
+
 
     </div>
 

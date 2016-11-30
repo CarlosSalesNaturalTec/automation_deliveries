@@ -60,12 +60,15 @@ namespace delivcli
         {
             try
             {
+
+                string datacadastro = DateTime.Now.ToString("yyyy-MM-dd") + " 00:00:00";
+
                 OperacaoBanco operacao = new OperacaoBanco();
                 bool inserir = operacao.Insert(@"INSERT INTO Tbl_Motoboys (ID_Cliente, Nome, Telefone, " +
-                    "WhatsApp, Veiculo, Modelo, Placa, usuario, senha) VALUES (" + v_id_user +
+                    "WhatsApp, Veiculo, Modelo, Placa, usuario, senha, GeoLatitude, GeoLongitude, GeoDataLoc ) VALUES (" + v_id_user +
                     ",'" + txt_nome.Text + "', '" + txt_telefone.Text +
                     "', '" + txt_whatsapp.Text + "', '" + txt_veiculo.Text + "', '" + txt_modelo.Text +
-                    "', '" + txt_placa.Text + "', '" + txt_user.Text + "', '123456')");
+                    "', '" + txt_placa.Text + "', '" + txt_user.Text + "', '123456',0,0,'" + datacadastro + "')");
                 ConexaoBancoSQL.fecharConexao();
 
                 txt_nome.Text = "";

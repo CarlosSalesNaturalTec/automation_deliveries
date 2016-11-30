@@ -11,32 +11,5 @@ namespace delivcli {
     
     
     public partial class Mapa {
-        
-        /// <summary>
-        /// BtAtivos control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtAtivos;
-        
-        /// <summary>
-        /// BtInativos control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtInativos;
-        
-        /// <summary>
-        /// BtTodos control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtTodos;
     }
 }

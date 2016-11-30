@@ -8,6 +8,7 @@ namespace delivcli
         StringBuilder str = new StringBuilder();
         StringBuilder coordenadas = new StringBuilder();
         StringBuilder coordenadasDados = new StringBuilder();
+        StringBuilder tituloMarcador = new StringBuilder();
         StringBuilder cood_Markers = new StringBuilder();
         string centromapa = "{ lat: -12.9886458, lng: -38.4715624 }";
         int contagem = 1;
@@ -19,14 +20,14 @@ namespace delivcli
                 // tenta identificar se houve login. caso contrário vai para página de erro
                 string v_id_cli = Session["Cli_ID"].ToString();
 
-                obtemcoordenadas();
+                obtemcoordenadas("On-Line");
                 montaScript();
 
                 Literal1.Text = str.ToString();
             }
         }
 
-        private void obtemcoordenadas()
+        private void obtemcoordenadas(string escolha)
         {
             try
             {
@@ -43,6 +44,7 @@ namespace delivcli
 
                 coordenadas.Clear();
                 coordenadasDados.Clear();
+                tituloMarcador.Clear();
 
                 string coord = "";
 
@@ -50,13 +52,12 @@ namespace delivcli
                 {
 
                     int min1 = Convert.ToInt16(dados[5]);  // diferença em minutos
-                    string escolha = Session["LocTipo"].ToString();  // seleção do usuário: ativo, inativo ou todos
 
                     if (escolha == "On-Line") { if (min1 > 185) { continue; } }
                     if (escolha == "Off-Line") { if (min1 < 185) { continue; } }
 
                     coord = Convert.ToString(dados[2]);
-                    if (coord == "") { }
+                    if (coord == "") { continue; }
                     else
                     {
                         // pega somente o primeiro valor para servir como centro do mapa
@@ -81,21 +82,19 @@ namespace delivcli
                         }
 
                         coordenadasDados.Append("'" + tagIni + dadosCoordenadas + tagFim + "',");
+                        tituloMarcador.Append("'" + dadosCoordenadas + "',");
                     }
-
                 }
-
                 ConexaoBancoSQL.fecharConexao();
 
-                if (coordenadas.Length == 0) { }
-                else {
-                    coordenadas.Length--; //remove ultimo caracter "," 
-                }
+                //remove ultimo caracter "," 
+                if (coordenadas.Length == 0) { } else { coordenadas.Length--; }
 
-                if (coordenadasDados.Length == 0) { }
-                else {
-                    coordenadasDados.Length--; //remove ultimo caracter "," 
-                }
+                //remove ultimo caracter "," 
+                if (coordenadasDados.Length == 0) { } else { coordenadasDados.Length--; }
+
+                //remove ultimo caracter "," 
+                if (tituloMarcador.Length == 0) { } else { tituloMarcador.Length--; }
 
             }
             catch (Exception)
@@ -117,6 +116,10 @@ namespace delivcli
             str.Append(coordenadasDados.ToString());
             str.Append(@"];
 
+            var TituloMarcador = [");
+            str.Append(tituloMarcador.ToString());
+            str.Append(@"];
+
             var CentroDoMapa = ");
             str.Append(centromapa);
             str.Append(@";
@@ -130,28 +133,27 @@ namespace delivcli
                 zoom: 12,
                 center: CentroDoMapa
             });
-            drop();
+            entregadoresOnLine();
         }
 
-        function drop() {
+        function entregadoresOnLine() {
             clearMarkers();
             for (var i = 0; i < neighborhoods.length; i++) {
                 var contentString = NomeMotoboy[i];
-                MarcadorComInfoWindow(neighborhoods[i],contentString);
+                MarcadorComInfoWindow(neighborhoods[i],contentString,TituloMarcador[i]);
             }
         }
 
-        function MarcadorComInfoWindow(position,dadosc) {
-            var infowindow = new google.maps.InfoWindow({
-                content: dadosc
-            });
-
+        function MarcadorComInfoWindow(position,dadosc,titulo) {
             var marker = new google.maps.Marker({
             position: position,
             icon: image,
+            title: titulo,
             map: map
             });
-
+            var infowindow = new google.maps.InfoWindow({
+                content: dadosc
+            });
             infowindow.open(map, marker);
         }
 
@@ -163,7 +165,5 @@ namespace delivcli
         }
                 </script>");
         }
-
-        
     }
 }

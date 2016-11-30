@@ -15,6 +15,7 @@
 <body>
 
     <asp:Literal ID="Literal1" runat="server"></asp:Literal>
+    <asp:Literal ID="Literal2" runat="server"></asp:Literal>
 
 </body>
 </html>

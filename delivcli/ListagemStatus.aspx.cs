@@ -13,19 +13,20 @@ namespace delivcli
         {
             if (!IsPostBack)
             {
-                ColetaDados();
+                ColetaDados("On-Line");
                 Literal1.Text = str.ToString();
+
+                ColetaDados("Off-Line");
+                Literal2.Text = str.ToString();
             }
         }
 
-        private void ColetaDados()
+        private void ColetaDados(string escolha)
         {
-            // seleção do usuário: ativo, inativo ou todos
-            string escolha = Session["LocTipo"].ToString();
 
             str.Clear();
             string stringComAspas = "<div class=\"panel panel-" + TipoHeader(escolha) + "\"><div class=\"panel-heading\"><h3 class=\"panel-title\"> " +
-                   Session["LocTipo"].ToString().ToUpper() + "</h3></div><div class=\"panel-body\">";
+                   escolha.ToUpper() + "</h3></div><div class=\"panel-body\">";
             str.Append(stringComAspas);
 
             // Listagem de Entregadores e intevalo desde a ultima atualização
@@ -87,7 +88,7 @@ namespace delivcli
 
         public string StatusDirecao(string identregador)
         {
-            string stringselect = "", status = "Dest.: Não Especificado";
+            string stringselect = "", status = "Próx.Dest.: Não Especificado";
 
             //  verifica se está em direção a uma entrega específica.
             stringselect = @"select Nome_Destinatario from Tbl_Entregas where ID_Motoboy = " + identregador + " and Entregue =0 and Partida_Iniciada=1";
@@ -95,7 +96,7 @@ namespace delivcli
             System.Data.SqlClient.SqlDataReader recordset = operacao2.Select(stringselect);
             while (recordset.Read())
             {
-                status = "Dest.: " + Convert.ToString(recordset[0]);
+                status = "Próx.Dest.: " + Convert.ToString(recordset[0]);
             }
             ConexaoBancoSQL.fecharConexao();
             return status;
@@ -141,8 +142,6 @@ namespace delivcli
             }
             return tempo;
         }
-
-
 
     }
 }

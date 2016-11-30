@@ -12,21 +12,6 @@ namespace delivcli
             v_id_user = Session["Cli_ID"].ToString();
         }
 
-        protected void BtAtivos_Click(object sender, EventArgs e)
-        {
-            Session["LocTipo"] = "On-Line";
-        }
-
-        protected void BtInativos_Click(object sender, EventArgs e)
-        {
-            Session["LocTipo"] = "Off-Line";
-        }
-
-        protected void BtTodos_Click(object sender, EventArgs e)
-        {
-            Session["LocTipo"] = "Todos";
-        }
-
     }
 
 }

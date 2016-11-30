@@ -84,10 +84,10 @@ namespace delivcli
 
             // string INSERT
             string stringinsert = @"INSERT INTO Tbl_Entregas (ID_Cliente, ID_Motoboy, Nome_Destinatario, Endereco, Ponto_Ref, " +
-                    "Bairro, Cidade, Data_Encomenda, Telefone, Entregue,Latitude,Longitude) VALUES (" + ID_Cli +
+                    "Bairro, Cidade, Data_Encomenda, Telefone, Entregue,Latitude,Longitude,Status_Entrega) VALUES (" + ID_Cli +
                     "," + id_selecionada + ", '" + txtDestinatario.Text + "', '" + txtEndereco.Text + "', '" + txtPref.Text +
                     "', '" + txtBairro.Text + "', '" + txtCidade.Text + "', '" + date_formated + "', '" + txtTelefone.Text + "', 0,'" +
-                    Session["Busca_Latitude"].ToString() + "', '" + Session["Busca_Longitude"].ToString() + "')";
+                    Session["Busca_Latitude"].ToString() + "', '" + Session["Busca_Longitude"].ToString() + "','EM ABERTO')";
             try
             {
                 OperacaoBanco operacao = new OperacaoBanco();
