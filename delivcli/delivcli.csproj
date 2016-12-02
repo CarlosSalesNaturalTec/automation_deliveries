@@ -150,6 +150,10 @@
     <Content Include="Content\main.css" />
     <Content Include="Content\register.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\flagEmAberto.png" />
+    <Content Include="images\flagEmAndamento.png" />
+    <Content Include="images\flagOk.png" />
+    <Content Include="images\flagRetorno.png" />
     <Content Include="ListagemStatus.aspx" />
     <Content Include="ErroDefault.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />

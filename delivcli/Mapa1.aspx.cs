@@ -9,11 +9,20 @@ namespace delivcli
         StringBuilder coordenadas = new StringBuilder();
         StringBuilder coordenadasDados = new StringBuilder();
 
-        StringBuilder tituloMarcador = new StringBuilder();
         StringBuilder cood_Markers = new StringBuilder();
 
-        StringBuilder EntregasCoord = new StringBuilder();
-        StringBuilder EntregasInfo = new StringBuilder();
+        StringBuilder EmAbertoCoord = new StringBuilder();
+        StringBuilder EmAbertoInfo = new StringBuilder();
+
+        StringBuilder EmAndamentoCoord = new StringBuilder();
+        StringBuilder EmAndamentoInfo = new StringBuilder();
+
+        StringBuilder RealizadasCoord = new StringBuilder();
+        StringBuilder RealizadasInfo = new StringBuilder();
+
+        StringBuilder RetornoCoord = new StringBuilder();
+        StringBuilder RetornoInfo = new StringBuilder();
+
 
         string centromapa = "{ lat: -12.9886458, lng: -38.4715624 }";
         int contagem = 1;
@@ -26,20 +35,26 @@ namespace delivcli
                 string v_id_cli = Session["Cli_ID"].ToString();
 
                 obtemcoordenadas("On-Line");
+
                 EntregasEmAberto();
+                EntregasEmAndamento();
+                EntregasRealizadas();
+                Retornos();
 
                 montaScript();
                 Literal1.Text = str.ToString();
             }
         }
 
+        // ---------------------------------------------------------------------------------------------------------------------------
+        // Motoboys e respectivas coordenadas de localização
         private void obtemcoordenadas(string escolha)
         {
             try
             {
                 string stringselect = "";
 
-                // Motoboys e respectivas coordenadas de localização
+                
                 stringselect = @"select usuario, GeoLatitude, GeoLongitude , format(GeoDataLoc,'dd-MM-yyyy') as UltimaData," +
                         " format(GeoDataLoc,'HH:mm:ss') as UltimaHora, DATEDIFF(MINUTE, GeoDataLoc, getdate()) AS Intervalo " +
                         " from Tbl_Motoboys where ID_Cliente = " + Session["Cli_ID"].ToString() +
@@ -50,7 +65,6 @@ namespace delivcli
 
                 coordenadas.Clear();
                 coordenadasDados.Clear();
-                tituloMarcador.Clear();
 
                 string coord = "";
 
@@ -88,7 +102,6 @@ namespace delivcli
                         }
 
                         coordenadasDados.Append("'" + tagIni + dadosCoordenadas + tagFim + "',");
-                        tituloMarcador.Append("'" + dadosCoordenadas + "',");
                     }
                 }
                 ConexaoBancoSQL.fecharConexao();
@@ -96,7 +109,6 @@ namespace delivcli
                 //remove ultimo caracter "," 
                 if (coordenadas.Length == 0) { } else { coordenadas.Length--; }
                 if (coordenadasDados.Length == 0) { } else { coordenadasDados.Length--; }
-                if (tituloMarcador.Length == 0) { } else { tituloMarcador.Length--; }
 
             }
             catch (Exception)
@@ -104,19 +116,23 @@ namespace delivcli
                 throw;
             }
         }
+        
 
+        // ---------------------------------------------------------------------------------------------------------------------------
+        // Entregas em Aberto
         private void EntregasEmAberto()
         {
-            EntregasCoord.Clear();
-            EntregasInfo.Clear();
+            EmAbertoCoord.Clear();
+            EmAbertoInfo.Clear();
            
             string datastatus = DateTime.Now.ToString("yyyy-MM-dd");
-            string stringselect = @"select Tbl_Entregas.Latitude, Tbl_Entregas.Longitude, Tbl_Motoboys.Nome " +
+            string stringselect = @"select Tbl_Entregas.Latitude, Tbl_Entregas.Longitude, Tbl_Motoboys.Nome, Tbl_Entregas.Nome_Destinatario" +
                     " from Tbl_Entregas " +
                     " INNER JOIN Tbl_Motoboys ON Tbl_Entregas.ID_Motoboy = Tbl_Motoboys.ID_Motoboy " +
                     " where Tbl_Entregas.ID_Cliente = " + Session["Cli_ID"].ToString() +
                     " and format(Tbl_Entregas.Data_Encomenda,'yyyy-MM-dd') ='" + datastatus + "'" +
-                    " and Tbl_Entregas.Status_Entrega ='EM ABERTO'";
+                    " and Tbl_Entregas.Status_Entrega ='EM ABERTO'" +
+                    " and Tbl_Entregas.Partida_Iniciada =0";
 
             OperacaoBanco operacao = new OperacaoBanco();
             System.Data.SqlClient.SqlDataReader dados = operacao.Select(stringselect);
@@ -124,40 +140,160 @@ namespace delivcli
             {
                 string coord = Convert.ToString(dados[0]);
                 if (coord == "0") { continue; }
-                EntregasCoord.Append("{ lat: " + Convert.ToString(dados[0]) + ", lng: " + Convert.ToString(dados[1]) + " },");
-                EntregasInfo.Append("'" + Convert.ToString(dados[2]) + "',");
+                EmAbertoCoord.Append("{ lat: " + Convert.ToString(dados[0]) + ", lng: " + Convert.ToString(dados[1]) + " },");
+                EmAbertoInfo.Append("'Em Aberto: " + Convert.ToString(dados[3]) + " / " + Convert.ToString(dados[2]) + "',");
             }
             ConexaoBancoSQL.fecharConexao();
 
             //remove ultimo caracter "," 
-            if (EntregasCoord.Length == 0) { } else { EntregasCoord.Length--; }
-            if (EntregasInfo.Length == 0) { } else { EntregasInfo.Length--; }
+            if (EmAbertoCoord.Length == 0) { } else { EmAbertoCoord.Length--; }
+            if (EmAbertoInfo.Length == 0) { } else { EmAbertoInfo.Length--; }
 
         }
 
+
+        // ---------------------------------------------------------------------------------------------------------------------------
+        // Entregas em Andamento
+        private void EntregasEmAndamento()
+        {
+            EmAndamentoCoord.Clear();
+            EmAndamentoInfo.Clear();
+
+            string datastatus = DateTime.Now.ToString("yyyy-MM-dd");
+            string stringselect = @"select Tbl_Entregas.Latitude, Tbl_Entregas.Longitude, Tbl_Motoboys.Nome, Tbl_Entregas.Nome_Destinatario" +
+                    " from Tbl_Entregas " +
+                    " INNER JOIN Tbl_Motoboys ON Tbl_Entregas.ID_Motoboy = Tbl_Motoboys.ID_Motoboy " +
+                    " where Tbl_Entregas.ID_Cliente = " + Session["Cli_ID"].ToString() +
+                    " and Tbl_Entregas.Partida_Iniciada = 1" +
+                    " and Tbl_Entregas.Entregue = 0";
+
+            OperacaoBanco operacao = new OperacaoBanco();
+            System.Data.SqlClient.SqlDataReader dados = operacao.Select(stringselect);
+            while (dados.Read())
+            {
+                string coord = Convert.ToString(dados[0]);
+                if (coord == "0") { continue; }
+                EmAndamentoCoord.Append("{ lat: " + Convert.ToString(dados[0]) + ", lng: " + Convert.ToString(dados[1]) + " },");
+                EmAndamentoInfo.Append("'Em Andamento: " + Convert.ToString(dados[3]) + " / " + Convert.ToString(dados[2]) + "',");
+            }
+            ConexaoBancoSQL.fecharConexao();
+
+            //remove ultimo caracter "," 
+            if (EmAndamentoCoord.Length == 0) { } else { EmAndamentoCoord.Length--; }
+            if (EmAndamentoInfo.Length == 0) { } else { EmAndamentoInfo.Length--; }
+
+        }
+
+
+        // ---------------------------------------------------------------------------------------------------------------------------
+        // Entregas Realizadas
+        private void EntregasRealizadas()
+        {
+            RealizadasCoord.Clear();
+            RealizadasInfo.Clear();
+
+            string datastatus = DateTime.Now.ToString("yyyy-MM-dd");
+            string stringselect = @"select Tbl_Entregas.Latitude, Tbl_Entregas.Longitude, Tbl_Motoboys.Nome, Tbl_Entregas.Nome_Destinatario" +
+                    " from Tbl_Entregas " +
+                    " INNER JOIN Tbl_Motoboys ON Tbl_Entregas.ID_Motoboy = Tbl_Motoboys.ID_Motoboy " +
+                    " where Tbl_Entregas.ID_Cliente = " + Session["Cli_ID"].ToString() +
+                    " and Tbl_Entregas.Entregue = 1" +
+                    " and Tbl_Entregas.Status_Entrega='ENTREGA REALIZADA'";
+
+            OperacaoBanco operacao = new OperacaoBanco();
+            System.Data.SqlClient.SqlDataReader dados = operacao.Select(stringselect);
+            while (dados.Read())
+            {
+                string coord = Convert.ToString(dados[0]);
+                if (coord == "0") { continue; }
+                RealizadasCoord.Append("{ lat: " + Convert.ToString(dados[0]) + ", lng: " + Convert.ToString(dados[1]) + " },");
+                RealizadasInfo.Append("'Entregue: " + Convert.ToString(dados[3]) + " / " + Convert.ToString(dados[2]) + "',");
+            }
+            ConexaoBancoSQL.fecharConexao();
+
+            //remove ultimo caracter "," 
+            if (RealizadasCoord.Length == 0) { } else { RealizadasCoord.Length--; }
+            if (RealizadasInfo.Length == 0) { } else { RealizadasInfo.Length--; }
+
+        }
+
+        // ---------------------------------------------------------------------------------------------------------------------------
+        // Retornos
+        private void Retornos()
+        {
+            RetornoCoord.Clear();
+            RetornoInfo.Clear();
+
+            string datastatus = DateTime.Now.ToString("yyyy-MM-dd");
+            string stringselect = @"select Tbl_Entregas.Latitude, Tbl_Entregas.Longitude, Tbl_Motoboys.Nome, Tbl_Entregas.Nome_Destinatario" +
+                    " from Tbl_Entregas " +
+                    " INNER JOIN Tbl_Motoboys ON Tbl_Entregas.ID_Motoboy = Tbl_Motoboys.ID_Motoboy " +
+                    " where Tbl_Entregas.ID_Cliente = " + Session["Cli_ID"].ToString() +
+                    " and Tbl_Entregas.Entregue = 1"+
+                    " and Tbl_Entregas.Status_Entrega<>'ENTREGA REALIZADA'";
+
+            OperacaoBanco operacao = new OperacaoBanco();
+            System.Data.SqlClient.SqlDataReader dados = operacao.Select(stringselect);
+            while (dados.Read())
+            {
+                string coord = Convert.ToString(dados[0]);
+                if (coord == "0") { continue; }
+                RetornoCoord.Append("{ lat: " + Convert.ToString(dados[0]) + ", lng: " + Convert.ToString(dados[1]) + " },");
+                RetornoInfo.Append("'Retorno: " + Convert.ToString(dados[3]) + " / " + Convert.ToString(dados[2]) + "',");
+            }
+            ConexaoBancoSQL.fecharConexao();
+
+            //remove ultimo caracter "," 
+            if (RetornoCoord.Length == 0) { } else { RetornoCoord.Length--; }
+            if (RetornoInfo.Length == 0) { } else { RetornoInfo.Length--; }
+
+        }
+
+        // ---------------------------------------------------------------------------------------------------------------------------
+        // Monta Mapa 
         private void montaScript()
         {
             str.Clear();
             str.Append(@"<script type='text/javascript'> 
 
-            var neighborhoods = [");
+            var coordEntregador = [");
             str.Append(coordenadas.ToString());
             str.Append(@"];
 
-            var NomeMotoboy = [");
+            var NomeEntregador = [");
             str.Append(coordenadasDados.ToString());
             str.Append(@"];
 
-            var TituloMarcador = [");
-            str.Append(tituloMarcador.ToString());
-            str.Append(@"];
-
             var EntregasEmAberto = [");
-            str.Append(EntregasCoord.ToString());
+            str.Append(EmAbertoCoord.ToString());
             str.Append(@"];
 
-            var EntregasTitle = [");
-            str.Append(EntregasInfo.ToString());
+            var EntregasInfo = [");
+            str.Append(EmAbertoInfo.ToString());
+            str.Append(@"];
+
+            var EmAndamentoCoord = [");
+            str.Append(EmAndamentoCoord.ToString());
+            str.Append(@"];
+
+            var EmAndamentoInfo = [");
+            str.Append(EmAndamentoInfo.ToString());
+            str.Append(@"];
+
+            var RealizadasCoord = [");
+            str.Append(RealizadasCoord.ToString());
+            str.Append(@"];
+
+            var RealizadasInfo = [");
+            str.Append(RealizadasInfo.ToString());
+            str.Append(@"];
+
+            var RetornosCoord = [");
+            str.Append(RetornoCoord.ToString());
+            str.Append(@"];
+
+            var RetornosInfo = [");
+            str.Append(RetornoInfo.ToString());
             str.Append(@"];
 
             var CentroDoMapa = ");
@@ -166,51 +302,147 @@ namespace delivcli
 
         var markers = [];
         var markersEntregas = [];
+        var markersEmAndamento = [];
+        var markersRealizadas = [];
+        var markersRetornos = [];
+
         var map;
+        
         var image = 'images/motorbike24.png';
+        var imageEmAberto = 'images/flagEmAberto.png';
+        var imageEmAndamento = 'images/flagEmAndamento.png';
+        var imageEntregue = 'images/flagOk.png';
+        var imageRetorno = 'images/flagRetorno.png';
 
         function initMap() {
             map = new google.maps.Map(document.getElementById('map'), {
                 zoom: 12,
                 center: CentroDoMapa
             });
+
             entregadoresOnLine();
+
             entregasemAberto();
+            entregasemAndamento();
+            entregasRealizadas();
+            entregasRetornos();
         }
 
         function entregadoresOnLine() {
             clearMarkers();
-            for (var i = 0; i < neighborhoods.length; i++) {
-                var contentString = NomeMotoboy[i];
-                MarcadorComInfoWindow(neighborhoods[i],contentString,TituloMarcador[i]);
+            for (var i = 0; i < coordEntregador.length; i++) {
+                var contentString = NomeEntregador[i];
+                MarcadorEntregador(coordEntregador[i],contentString);
             }
         }
 
         function entregasemAberto() {
             clearMarkersEntregas();
             for (var i = 0; i < EntregasEmAberto.length; i++) {
-                MarcadorEntrega(EntregasEmAberto[i],EntregasTitle[i]);
+                MarcadorEntrega(EntregasEmAberto[i],EntregasInfo[i]);
             }
         }
 
-        function MarcadorComInfoWindow(position,dadosc,titulo) {
+        function entregasemAndamento() {
+            clearEmAndamento();
+            for (var i = 0; i < EmAndamentoCoord.length; i++) {
+                MarcadorEmAndamento(EmAndamentoCoord[i],EmAndamentoInfo[i]);
+            }
+        }
+
+        function entregasRealizadas() {
+            clearRealizadas();
+            for (var i = 0; i < RealizadasCoord.length; i++) {
+                MarcadorRealizadas(RealizadasCoord[i],RealizadasInfo[i]);
+            }
+        }
+
+        function entregasRetornos() {
+            clearRetornos();
+            for (var i = 0; i < RetornosCoord.length; i++) {
+                MarcadorRetornos(RetornosCoord[i],RetornosInfo[i]);
+            }
+        }
+
+        function MarcadorEntregador(position,dadosc) {
             var marker = new google.maps.Marker({
             position: position,
             icon: image,
-            title: titulo,
             map: map
             });
+
             var infowindow = new google.maps.InfoWindow({
                 content: dadosc
             });
+
             infowindow.open(map, marker);
+
+            marker.addListener('click', function() {
+                infowindow.open(marker.get('map'), marker);
+            });
         }
 
-        function MarcadorEntrega(position,titulo) {
+        function MarcadorEntrega(position,info) {
             var markersEntregas = new google.maps.Marker({
             position: position,
-            title: titulo,
+            icon: imageEmAberto,
             map: map
+            });
+
+            var infowindow = new google.maps.InfoWindow({
+                content: info
+            });
+
+            markersEntregas.addListener('click', function() {
+                infowindow.open(markersEntregas.get('map'), markersEntregas);
+            });
+        }
+
+        function MarcadorEmAndamento(position,info) {
+            var markersEmAndamento = new google.maps.Marker({
+            position: position,
+            icon: imageEmAndamento,
+            map: map
+            });
+
+            var infowindow = new google.maps.InfoWindow({
+                content: info
+            });
+
+            markersEmAndamento.addListener('click', function() {
+                infowindow.open(markersEmAndamento.get('map'), markersEmAndamento);
+            });
+        }
+
+        function MarcadorRealizadas(position,info) {
+            var markersRealizadas = new google.maps.Marker({
+            position: position,
+            icon: imageEntregue,
+            map: map
+            });
+
+            var infowindow = new google.maps.InfoWindow({
+                content: info
+            });
+
+            markersRealizadas.addListener('click', function() {
+                infowindow.open(markersRealizadas.get('map'), markersRealizadas);
+            });
+        }
+
+        function MarcadorRetornos(position,info) {
+            var markersRetornos = new google.maps.Marker({
+            position: position,
+            icon: imageRetorno,
+            map: map
+            });
+
+            var infowindow = new google.maps.InfoWindow({
+                content: info
+            });
+
+            markersRetornos.addListener('click', function() {
+                infowindow.open(markersRetornos.get('map'), markersRetornos);
             });
         }
 
@@ -228,7 +460,29 @@ namespace delivcli
             markersEntregas = [];
         }
 
-                </script>");
+        function clearEmAndamento() {
+            for (var i = 0; i < markersEmAndamento.length; i++) {
+                markersEmAndamento[i].setMap(null);
+            }
+            markersEmAndamento = [];
+        }
+
+        function clearRealizadas() {
+            for (var i = 0; i < markersRealizadas.length; i++) {
+                markersRealizadas[i].setMap(null);
+            }
+            markersRealizadas = [];
+        }
+
+        function clearRetornos() {
+            for (var i = 0; i < markersRetornos.length; i++) {
+                markersRetornos[i].setMap(null);
+            }
+            markersRetornos = [];
+        }
+
+
+        </script>");
         }
     }
 }
