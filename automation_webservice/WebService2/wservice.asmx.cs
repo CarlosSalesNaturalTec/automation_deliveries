@@ -146,7 +146,7 @@ namespace WebService2
                 OperacaoBanco operacao = new OperacaoBanco();
                 operacao = new OperacaoBanco();
                 Boolean atualizar = operacao.Update(@"update Tbl_Entregas set Partida_Data = '" + dataLeitura + "', Partida_Latitude = '" + 
-                    latitude + "', Partida_Longitude = '" + longitude  + "', Partida_Iniciada = 1  where ID_Entrega = " + IdEntrega);
+                    latitude + "', Partida_Longitude = '" + longitude  + "', Partida_Iniciada = 1, Status_Entrega = 'EM ANDAMENTO'  where ID_Entrega = " + IdEntrega);
                 ConexaoBancoSQL.fecharConexao();
 
                 if (atualizar == true) { Resultado = "OK"; } else { Resultado = "NÃO FOI POSSIVEL ATUALIZAR STATUS"; }

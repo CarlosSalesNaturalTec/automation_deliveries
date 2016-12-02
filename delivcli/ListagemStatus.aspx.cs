@@ -76,7 +76,7 @@ namespace delivcli
                     tipoheader = "success";
                     break;
                 case "Off-Line":
-                    tipoheader = "danger";
+                    tipoheader = "default";
                     break;
                 default:
                     tipoheader = "info";
