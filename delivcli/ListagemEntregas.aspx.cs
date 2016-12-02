@@ -29,9 +29,9 @@ namespace delivcli
             string stringcomaspas = "<table class=\"table table-striped table-hover \">" +
                 "<thead>" +
                 "<tr>" +
-                "<th>Destinatário</th>" +
-                "<th>Entregador</th>" +
-                "<th>Status</th>" +
+                "<th>DESTINATÁRIO</th>" +
+                "<th>ENTREGADOR</th>" +
+                "<th>STATUS</th>" +
                 "</tr>" +
                 "</thead>" +
                 "<tbody>";
@@ -59,6 +59,7 @@ namespace delivcli
                 string colunaDestinatario = Convert.ToString(dados[1]);
                 string colunaStatus = Convert.ToString(dados[2]);
                 string colunaStatusFormat = "";
+                string colunaStatusFormat1 = "";
 
                 switch (colunaStatus)
                 {
@@ -66,19 +67,21 @@ namespace delivcli
                         colunaStatusFormat = "<p class=\"text-success\">";
                         break;
                     case "EM ANDAMENTO":
-                        colunaStatusFormat = "<p class=\"text-success\">";
+                        colunaStatusFormat = "<p class=\"text-info\">";
+                        break;
+                    case "EM ABERTO":
+                        colunaStatusFormat = "<p class=\"text-primary\">";
                         break;
                     default:
+                        colunaStatusFormat = "<p class=\"text-danger\">";
+                        colunaStatusFormat1 = "</p>";
                         break;
-                }
-
-
-                
+                }            
 
                 string stringcomaspas = "<tr>" +
                     "<td>" + colunaDestinatario + "</td>" +
                     "<td>" + colunaEntregador + "</td>" +
-                    "<td>" + colunaStatusFormat + colunaStatus + "</p></td>" +
+                    "<td>" + colunaStatusFormat + colunaStatus + colunaStatusFormat1 + "</td>" +
                     "</tr>";
 
                 str.Append(stringcomaspas);

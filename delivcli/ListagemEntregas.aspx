@@ -15,7 +15,6 @@
 <body>
 
     <br />
-    <h3>Status das Entregas</h3>
     <asp:Literal ID="Literal1" runat="server"></asp:Literal>
     
 </body>
