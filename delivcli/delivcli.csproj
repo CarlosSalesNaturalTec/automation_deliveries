@@ -154,6 +154,7 @@
     <Content Include="images\flagEmAndamento.png" />
     <Content Include="images\flagOk.png" />
     <Content Include="images\flagRetorno.png" />
+    <Content Include="ListagemEntregas.aspx" />
     <Content Include="ListagemStatus.aspx" />
     <Content Include="ErroDefault.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -251,6 +252,13 @@
       <DependentUpon>Cad_Funcionario.aspx</DependentUpon>
     </Compile>
     <Compile Include="ConexaoBancoSQL.cs" />
+    <Compile Include="ListagemEntregas.aspx.cs">
+      <DependentUpon>ListagemEntregas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ListagemEntregas.aspx.designer.cs">
+      <DependentUpon>ListagemEntregas.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ListagemStatus.aspx.cs">
       <DependentUpon>ListagemStatus.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

@@ -15,15 +15,10 @@
             <iframe height="600px" width="100%" frameborder="0" scrolling="yes" src="/ListagemStatus.aspx"></iframe>
         </div>
 
-        <!-- Listagem Entregas A Realizar-->
-
-        <!-- Listagem Entregas A Caminho-->
-
-        <!-- Listagem Entregas Entregues-->
-
-        <!-- Listagem Entregas Retornadas -->
-
-
+        <!-- Listagem de Entregas por Status-->
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <iframe height="800px" width="100%" frameborder="0" scrolling="yes" src="/ListagemEntregas.aspx"></iframe>
+        </div>
 
     </div>
 

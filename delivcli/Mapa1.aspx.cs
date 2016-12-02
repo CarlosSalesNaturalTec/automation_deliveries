@@ -159,7 +159,6 @@ namespace delivcli
             EmAndamentoCoord.Clear();
             EmAndamentoInfo.Clear();
 
-            string datastatus = DateTime.Now.ToString("yyyy-MM-dd");
             string stringselect = @"select Tbl_Entregas.Latitude, Tbl_Entregas.Longitude, Tbl_Motoboys.Nome, Tbl_Entregas.Nome_Destinatario" +
                     " from Tbl_Entregas " +
                     " INNER JOIN Tbl_Motoboys ON Tbl_Entregas.ID_Motoboy = Tbl_Motoboys.ID_Motoboy " +
@@ -198,6 +197,7 @@ namespace delivcli
                     " INNER JOIN Tbl_Motoboys ON Tbl_Entregas.ID_Motoboy = Tbl_Motoboys.ID_Motoboy " +
                     " where Tbl_Entregas.ID_Cliente = " + Session["Cli_ID"].ToString() +
                     " and Tbl_Entregas.Entregue = 1" +
+                    " and format(Tbl_Entregas.Data_Encomenda,'yyyy-MM-dd') ='" + datastatus + "'" +
                     " and Tbl_Entregas.Status_Entrega='ENTREGA REALIZADA'";
 
             OperacaoBanco operacao = new OperacaoBanco();
@@ -229,7 +229,8 @@ namespace delivcli
                     " from Tbl_Entregas " +
                     " INNER JOIN Tbl_Motoboys ON Tbl_Entregas.ID_Motoboy = Tbl_Motoboys.ID_Motoboy " +
                     " where Tbl_Entregas.ID_Cliente = " + Session["Cli_ID"].ToString() +
-                    " and Tbl_Entregas.Entregue = 1"+
+                    " and format(Tbl_Entregas.Data_Encomenda,'yyyy-MM-dd') ='" + datastatus + "'" +
+                    " and Tbl_Entregas.Entregue = 1" +
                     " and Tbl_Entregas.Status_Entrega<>'ENTREGA REALIZADA'";
 
             OperacaoBanco operacao = new OperacaoBanco();
