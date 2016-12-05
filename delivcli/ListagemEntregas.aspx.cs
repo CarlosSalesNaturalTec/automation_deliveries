@@ -59,7 +59,6 @@ namespace delivcli
                 string colunaDestinatario = Convert.ToString(dados[1]);
                 string colunaStatus = Convert.ToString(dados[2]);
                 string colunaStatusFormat = "";
-                string colunaStatusFormat1 = "";
 
                 switch (colunaStatus)
                 {
@@ -73,15 +72,16 @@ namespace delivcli
                         colunaStatusFormat = "<p class=\"text-primary\">";
                         break;
                     default:
-                        colunaStatusFormat = "<p class=\"text-danger\">";
-                        colunaStatusFormat1 = "</p>";
+                        colunaStatusFormat = "<p class=\"text-danger\">";        
                         break;
-                }            
+                }
+
+                string colunaStatusFormat1 = "</p>";
 
                 string stringcomaspas = "<tr>" +
                     "<td>" + colunaDestinatario + "</td>" +
                     "<td>" + colunaEntregador + "</td>" +
-                    "<td>" + colunaStatusFormat + colunaStatus + colunaStatusFormat1 + "</td>" +
+                    "<td> <a href=\"DetalhesEntrega.aspx\" target=\"_parent\">" + colunaStatusFormat + colunaStatus + colunaStatusFormat1 + "</a></td>" +
                     "</tr>";
 
                 str.Append(stringcomaspas);

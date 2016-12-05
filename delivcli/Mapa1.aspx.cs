@@ -23,7 +23,6 @@ namespace delivcli
         StringBuilder RetornoCoord = new StringBuilder();
         StringBuilder RetornoInfo = new StringBuilder();
 
-
         string centromapa = "{ lat: -12.9886458, lng: -38.4715624 }";
         int contagem = 1;
 

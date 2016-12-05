@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Mapa Localização Entregadores" Language="C#" MasterPageFile="~/Site.Master" EnableEventValidation="false" AutoEventWireup="true" CodeBehind="Mapa.aspx.cs" Inherits="delivcli.Mapa" %>
+﻿<%@ Page Title="Situação Atual" Language="C#" MasterPageFile="~/Site.Master" EnableEventValidation="false" AutoEventWireup="true" CodeBehind="Mapa.aspx.cs" Inherits="delivcli.Mapa" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
@@ -16,7 +16,7 @@
         </div>
 
         <!-- Listagem de Entregas por Status-->
-
+        <br />
         <div class="col-sm-12 col-md-12 col-lg-12">
             <iframe height="800px" width="100%" frameborder="0" scrolling="yes" src="/ListagemEntregas.aspx"></iframe>
         </div>
