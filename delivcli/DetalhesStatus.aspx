@@ -14,25 +14,18 @@
 
 <body>
 
-    <asp:Literal ID="Literal1" runat="server"></asp:Literal>
-    <asp:Literal ID="Literal2" runat="server"></asp:Literal>
     <div class="well">
-        STATUS DA ENTREGA : 
+        <p class="text-info">Destinatário:</p>
+        <p><asp:Label ID="lblDestinatario" runat="server"></asp:Label></p>
+        <p>End.: <asp:Label ID="lblEnd" runat="server"></asp:Label></p>
+        <p>Bairro: <asp:Label ID="lblBairro" runat="server"></asp:Label></p>
+           
+        <p class="text-info">Status:</p>
+        <p><asp:Label ID="lblStatus" runat="server"></asp:Label></p>
+        
+        <p class="text-info">Entregador:</p>
+        <p><asp:Label ID="lblEntregador" runat="server"></asp:Label></p>
     </div>
-
-    <div class="well">
-        ENTREGADOR              :
-    </div>
-
-    <div class="well">
-        DISTÃNCIA PERCORRIDA    : 000 KM
-    </div>
-
-    <div class="well">
-        TEMPO GASTO NO PERCURSO : 000 min
-    </div>
-
-
 
 </body>
 </html>

@@ -8,11 +8,8 @@ namespace delivcli
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
-            {
-                // tenta identificar se houve login. caso contrário vai para página de erro
-                string v_id_cli = Session["Cli_ID"].ToString();
-                string IDEntrega = Request.QueryString["IDEnt"];
-
+            {   
+                Session["IDDetalhes"] = Request.QueryString["IDEnt"];
             }
         }
     }
