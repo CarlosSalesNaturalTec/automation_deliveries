@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
     <br />
-    <h1>Performace no Período: 
+    <h1>Performace no Período 
     
         <br />
     

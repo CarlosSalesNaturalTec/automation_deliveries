@@ -42,7 +42,7 @@ namespace delivcli
         private void dadosCorpo()
         {
             string datastatus = DateTime.Now.ToString("yyyy-MM-dd");
-            string stringselect = @"select Tbl_Motoboys.Nome, Tbl_Entregas.Nome_Destinatario, Tbl_Entregas.Status_Entrega" +
+            string stringselect = @"select Tbl_Motoboys.Nome, Tbl_Entregas.Nome_Destinatario, Tbl_Entregas.Status_Entrega, Tbl_Entregas.ID_Entrega " +
                     " from Tbl_Entregas " +
                     " INNER JOIN Tbl_Motoboys ON Tbl_Entregas.ID_Motoboy = Tbl_Motoboys.ID_Motoboy " +
                     " where Tbl_Entregas.ID_Cliente = " + Session["Cli_ID"].ToString() +
@@ -78,10 +78,12 @@ namespace delivcli
 
                 string colunaStatusFormat1 = "</p>";
 
+                string linkUrl = "<a href=\"DetalhesEntrega.aspx" + "?IDEnt=" + Convert.ToString(dados[3]) +  "\" target=\"_parent\">";
+
                 string stringcomaspas = "<tr>" +
                     "<td>" + colunaDestinatario + "</td>" +
                     "<td>" + colunaEntregador + "</td>" +
-                    "<td> <a href=\"DetalhesEntrega.aspx\" target=\"_parent\">" + colunaStatusFormat + colunaStatus + colunaStatusFormat1 + "</a></td>" +
+                    "<td>" + linkUrl + colunaStatusFormat + colunaStatus + colunaStatusFormat1 + "</a></td>" +
                     "</tr>";
 
                 str.Append(stringcomaspas);

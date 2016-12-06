@@ -10,6 +10,7 @@ namespace delivcli
         {
             // tenta identificar se houve login. caso contrário vai para página de erro
             v_id_user = Session["Cli_ID"].ToString();
+
         }
 
     }
