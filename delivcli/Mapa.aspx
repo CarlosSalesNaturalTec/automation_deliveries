@@ -16,7 +16,7 @@
         </div>
     </div>
 
-    <br />
+    <h1>Listagem</h1>
     <div class="row">
         <!-- Listagem de Entregas por Status-->
         <div class="col-sm-12 col-md-12 col-lg-12">
