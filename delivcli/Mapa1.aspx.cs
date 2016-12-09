@@ -123,7 +123,7 @@ namespace delivcli
             EmAbertoInfo.Clear();
            
             string datastatus = DateTime.Now.ToString("yyyy-MM-dd");
-            string stringselect = @"select Tbl_Entregas.Latitude, Tbl_Entregas.Longitude, Tbl_Motoboys.Nome, Tbl_Entregas.Nome_Destinatario" +
+            string stringselect = @"select Tbl_Entregas.Latitude, Tbl_Entregas.Longitude, Tbl_Motoboys.Nome, Tbl_Entregas.Nome_Destinatario, Tbl_Entregas.ID_Entrega" +
                     " from Tbl_Entregas " +
                     " INNER JOIN Tbl_Motoboys ON Tbl_Entregas.ID_Motoboy = Tbl_Motoboys.ID_Motoboy " +
                     " where Tbl_Entregas.ID_Cliente = " + Session["Cli_ID"].ToString() +
@@ -135,10 +135,12 @@ namespace delivcli
             System.Data.SqlClient.SqlDataReader dados = operacao.Select(stringselect);
             while (dados.Read())
             {
+                string linkUrl = "<a href=\"DetalhesEntrega.aspx" + "?IDEnt=" + Convert.ToString(dados[4]) + "\" target=\"_parent\">";
+
                 string coord = Convert.ToString(dados[0]);
                 if (coord == "0") { continue; }
                 EmAbertoCoord.Append("{ lat: " + Convert.ToString(dados[0]) + ", lng: " + Convert.ToString(dados[1]) + " },");
-                EmAbertoInfo.Append("'Em Aberto: " + Convert.ToString(dados[3]) + " / " + Convert.ToString(dados[2]) + "',");
+                EmAbertoInfo.Append("'" + linkUrl + "Em Aberto: " + Convert.ToString(dados[3]) + " / " + Convert.ToString(dados[2]) + "</a>',");
             }
             ConexaoBancoSQL.fecharConexao();
 
@@ -156,7 +158,7 @@ namespace delivcli
             EmAndamentoCoord.Clear();
             EmAndamentoInfo.Clear();
 
-            string stringselect = @"select Tbl_Entregas.Latitude, Tbl_Entregas.Longitude, Tbl_Motoboys.Nome, Tbl_Entregas.Nome_Destinatario" +
+            string stringselect = @"select Tbl_Entregas.Latitude, Tbl_Entregas.Longitude, Tbl_Motoboys.Nome, Tbl_Entregas.Nome_Destinatario, Tbl_Entregas.ID_Entrega" +
                     " from Tbl_Entregas " +
                     " INNER JOIN Tbl_Motoboys ON Tbl_Entregas.ID_Motoboy = Tbl_Motoboys.ID_Motoboy " +
                     " where Tbl_Entregas.ID_Cliente = " + Session["Cli_ID"].ToString() +
@@ -166,11 +168,14 @@ namespace delivcli
             OperacaoBanco operacao = new OperacaoBanco();
             System.Data.SqlClient.SqlDataReader dados = operacao.Select(stringselect);
             while (dados.Read())
-            {
+            {                
                 string coord = Convert.ToString(dados[0]);
                 if (coord == "0") { continue; }
+
+                string linkUrl = "<a href=\"DetalhesEntrega.aspx" + "?IDEnt=" + Convert.ToString(dados[4]) + "\" target=\"_parent\">";
+
                 EmAndamentoCoord.Append("{ lat: " + Convert.ToString(dados[0]) + ", lng: " + Convert.ToString(dados[1]) + " },");
-                EmAndamentoInfo.Append("'Em Andamento: " + Convert.ToString(dados[3]) + " / " + Convert.ToString(dados[2]) + "',");
+                EmAndamentoInfo.Append("'" + linkUrl + "Em Andamento: " + Convert.ToString(dados[3]) + " / " + Convert.ToString(dados[2]) + "</a>',");
             }
             ConexaoBancoSQL.fecharConexao();
 
@@ -189,7 +194,7 @@ namespace delivcli
             RealizadasInfo.Clear();
 
             string datastatus = DateTime.Now.ToString("yyyy-MM-dd");
-            string stringselect = @"select Tbl_Entregas.Latitude, Tbl_Entregas.Longitude, Tbl_Motoboys.Nome, Tbl_Entregas.Nome_Destinatario" +
+            string stringselect = @"select Tbl_Entregas.Latitude, Tbl_Entregas.Longitude, Tbl_Motoboys.Nome, Tbl_Entregas.Nome_Destinatario, Tbl_Entregas.ID_Entrega" +
                     " from Tbl_Entregas " +
                     " INNER JOIN Tbl_Motoboys ON Tbl_Entregas.ID_Motoboy = Tbl_Motoboys.ID_Motoboy " +
                     " where Tbl_Entregas.ID_Cliente = " + Session["Cli_ID"].ToString() +
@@ -201,10 +206,14 @@ namespace delivcli
             System.Data.SqlClient.SqlDataReader dados = operacao.Select(stringselect);
             while (dados.Read())
             {
+
                 string coord = Convert.ToString(dados[0]);
                 if (coord == "0") { continue; }
+
+                string linkUrl = "<a href=\"DetalhesEntrega.aspx" + "?IDEnt=" + Convert.ToString(dados[4]) + "\" target=\"_parent\">";
+
                 RealizadasCoord.Append("{ lat: " + Convert.ToString(dados[0]) + ", lng: " + Convert.ToString(dados[1]) + " },");
-                RealizadasInfo.Append("'Entregue: " + Convert.ToString(dados[3]) + " / " + Convert.ToString(dados[2]) + "',");
+                RealizadasInfo.Append("'" + linkUrl + "Entregue: " + Convert.ToString(dados[3]) + " / " + Convert.ToString(dados[2]) + "</a>',");
             }
             ConexaoBancoSQL.fecharConexao();
 
@@ -222,7 +231,7 @@ namespace delivcli
             RetornoInfo.Clear();
 
             string datastatus = DateTime.Now.ToString("yyyy-MM-dd");
-            string stringselect = @"select Tbl_Entregas.Latitude, Tbl_Entregas.Longitude, Tbl_Motoboys.Nome, Tbl_Entregas.Nome_Destinatario" +
+            string stringselect = @"select Tbl_Entregas.Latitude, Tbl_Entregas.Longitude, Tbl_Motoboys.Nome, Tbl_Entregas.Nome_Destinatario, Tbl_Entregas.ID_Entrega" +
                     " from Tbl_Entregas " +
                     " INNER JOIN Tbl_Motoboys ON Tbl_Entregas.ID_Motoboy = Tbl_Motoboys.ID_Motoboy " +
                     " where Tbl_Entregas.ID_Cliente = " + Session["Cli_ID"].ToString() +
@@ -236,8 +245,11 @@ namespace delivcli
             {
                 string coord = Convert.ToString(dados[0]);
                 if (coord == "0") { continue; }
+
+                string linkUrl = "<a href=\"DetalhesEntrega.aspx" + "?IDEnt=" + Convert.ToString(dados[4]) + "\" target=\"_parent\">";
+
                 RetornoCoord.Append("{ lat: " + Convert.ToString(dados[0]) + ", lng: " + Convert.ToString(dados[1]) + " },");
-                RetornoInfo.Append("'Retorno: " + Convert.ToString(dados[3]) + " / " + Convert.ToString(dados[2]) + "',");
+                RetornoInfo.Append("'" + linkUrl + "Retorno: " + Convert.ToString(dados[3]) + " / " + Convert.ToString(dados[2]) + "</a>',");
             }
             ConexaoBancoSQL.fecharConexao();
 

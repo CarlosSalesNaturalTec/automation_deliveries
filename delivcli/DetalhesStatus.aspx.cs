@@ -16,8 +16,9 @@ namespace delivcli
             if (!IsPostBack)
             {
                 dadosDaEntrega();
-                montaScript();
+                ScriptDistancia();
                 Literal1.Text = str.ToString();
+
             }
 
         }
@@ -47,7 +48,7 @@ namespace delivcli
                 Lng = Convert.ToString(dados[7]);
             }
             ConexaoBancoSQL.fecharConexao();
-            posicaoEntrega = Lat + "," + Lng;
+            posicaoEntrega = "{lat: " + Lat + ", lng: " + Lng + "}";
 
             ObtemDistancia(ident);
 
@@ -68,53 +69,49 @@ namespace delivcli
                 Lng = Convert.ToString(dados[1]);
             }
             ConexaoBancoSQL.fecharConexao();
-            posicaoEntregador = Lat + "," + Lng;
+            posicaoEntregador = "{lat: " + Lat + ", lng: " + Lng + "}";
         }
 
-        private void montaScript()
+        private void ScriptDistancia()
         {
             str.Clear();
             str.Append(@"<script type='text/javascript'>
 
-            var origem = new google.maps.LatLng(");
+            function initMap() {
+
+              var origin1 = ");
             str.Append(posicaoEntregador);
-            str.Append(@");
+            str.Append(@";
 
-            var destino = new google.maps.LatLng(");
+              var destinationB = ");
             str.Append(posicaoEntrega);
-            str.Append(@");
+            str.Append(@";
 
-            var geocoder = new google.maps.Geocoder;
-            var service = new google.maps.DistanceMatrixService();
-            
-            service.getDistanceMatrix(
-            {
-               origins: [origem],
-               destinations: [destino],
-               travelMode: google.maps.TravelMode.DRIVING,
-               unitSystem: google.maps.UnitSystem.METRIC,
-               avoidHighways: false,
-               avoidTolls: false
-            }, callback);
-
-            function callback(response, status) {
-              
+              var service = new google.maps.DistanceMatrixService;
+              service.getDistanceMatrix({
+                origins: [origin1],
+                destinations: [destinationB],
+                travelMode: google.maps.TravelMode.TRANSIT,
+                unitSystem: google.maps.UnitSystem.METRIC
+              }, function(response, status) {
                 if (status !== google.maps.DistanceMatrixStatus.OK) {
-                      alert('Error was: ' + status);
-                    } else {
+                  alert('Error was: ' + status);
+                } else {
+                  var originList = response.originAddresses;
+                  var destinationList = response.destinationAddresses;
+                  var outputDiv = document.getElementById('output');
+                  outputDiv.innerHTML = '';
 
-                      var outputDiv = document.getElementById('output');
-                      outputDiv.innerHTML = '';
-
-                      for (var i = 0; i < originList.length; i++) {   
-                        var results = response.rows[i].elements;
-                        for (var j = 0; j < results.length; j++) {
-                          outputDiv.innerHTML += results[j].distance.text + ' in ' +
-                              results[j].duration.text + '<br>';
-                        }
-                      }
+                  for (var i = 0; i < originList.length; i++) {
+                    var results = response.rows[i].elements;
+                    for (var j = 0; j < results.length; j++) {
+                      outputDiv.innerHTML += 'Distancia:<b>' + results[j].distance.text + '</b><br>' +
+                        'Tempo Estimado:<b>' + results[j].duration.text + '</b>';
                     }
-            }
+                  }
+                }
+              });
+            }    
 
             </script>");
         }

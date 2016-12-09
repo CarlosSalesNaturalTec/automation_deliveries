@@ -30,6 +30,7 @@ namespace delivcli
                 "<thead>" +
                 "<tr>" +
                 "<th>DESTINATÁRIO</th>" +
+                "<th>BAIRRO</th>" +
                 "<th>ENTREGADOR</th>" +
                 "<th>STATUS</th>" +
                 "</tr>" +
@@ -42,7 +43,7 @@ namespace delivcli
         private void dadosCorpo()
         {
             string datastatus = DateTime.Now.ToString("yyyy-MM-dd");
-            string stringselect = @"select Tbl_Motoboys.Nome, Tbl_Entregas.Nome_Destinatario, Tbl_Entregas.Status_Entrega, Tbl_Entregas.ID_Entrega " +
+            string stringselect = @"select Tbl_Motoboys.Nome, Tbl_Entregas.Nome_Destinatario, Tbl_Entregas.Status_Entrega, Tbl_Entregas.ID_Entrega, Tbl_Entregas.Bairro " +
                     " from Tbl_Entregas " +
                     " INNER JOIN Tbl_Motoboys ON Tbl_Entregas.ID_Motoboy = Tbl_Motoboys.ID_Motoboy " +
                     " where Tbl_Entregas.ID_Cliente = " + Session["Cli_ID"].ToString() +
@@ -58,6 +59,7 @@ namespace delivcli
                 string colunaEntregador = Convert.ToString(dados[0]);
                 string colunaDestinatario = Convert.ToString(dados[1]);
                 string colunaStatus = Convert.ToString(dados[2]);
+                string colunaBairro = Convert.ToString(dados[4]);
                 string colunaStatusFormat = "";
 
                 switch (colunaStatus)
@@ -82,6 +84,7 @@ namespace delivcli
 
                 string stringcomaspas = "<tr>" +
                     "<td>" + colunaDestinatario + "</td>" +
+                    "<td>" + colunaBairro + "</td>" +
                     "<td>" + colunaEntregador + "</td>" +
                     "<td>" + linkUrl + colunaStatusFormat + colunaStatus + colunaStatusFormat1 + "</a></td>" +
                     "</tr>";
