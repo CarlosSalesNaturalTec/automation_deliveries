@@ -16,9 +16,6 @@ namespace delivcli
             if (!IsPostBack)
             {
                 dadosDaEntrega();
-                ScriptDistancia();
-                Literal1.Text = str.ToString();
-
             }
 
         }
@@ -26,8 +23,10 @@ namespace delivcli
         public void dadosDaEntrega()
         {
             string ident = "";
+            string horaentrega = "";
             string stringselect = @"select Tbl_Entregas.Nome_Destinatario, Tbl_Entregas.Status_Entrega," +
-                    " Tbl_Motoboys.Nome, Tbl_Entregas.Endereco, Tbl_Entregas.Bairro, Tbl_Motoboys.ID_Motoboy, Tbl_Entregas.Latitude, Tbl_Entregas.Longitude " +
+                    " Tbl_Motoboys.Nome, Tbl_Entregas.Endereco, Tbl_Entregas.Bairro, Tbl_Motoboys.ID_Motoboy, " +
+                    " Tbl_Entregas.Latitude, Tbl_Entregas.Longitude, format(Chegada_Data,'dd/MM/yyyy hh:mm:ss') as dataentrega " +
                     " from Tbl_Entregas " +
                     " INNER JOIN Tbl_Motoboys ON Tbl_Entregas.ID_Motoboy = Tbl_Motoboys.ID_Motoboy " +
                     " where Tbl_Entregas.ID_Entrega = " + Session["IDDetalhes"].ToString();
@@ -46,11 +45,24 @@ namespace delivcli
                 ident = Convert.ToString(dados[5]);
                 Lat = Convert.ToString(dados[6]);
                 Lng = Convert.ToString(dados[7]);
+               
+                horaentrega = Convert.ToString(dados[8]);
             }
             ConexaoBancoSQL.fecharConexao();
             posicaoEntrega = "{lat: " + Lat + ", lng: " + Lng + "}";
 
-            ObtemDistancia(ident);
+            switch (lblStatus.Text)
+            {
+                case "EM ABERTO":
+                    ObtemDistancia(ident);
+                    break;
+                case "EM ANDAMENTO":
+                    ObtemDistancia(ident);
+                    break;
+                default:
+                    lblHoraEntrega.Text = horaentrega;
+                    break;
+            }
 
         }
 
@@ -70,6 +82,10 @@ namespace delivcli
             }
             ConexaoBancoSQL.fecharConexao();
             posicaoEntregador = "{lat: " + Lat + ", lng: " + Lng + "}";
+
+            ScriptDistancia();
+            Literal1.Text = str.ToString();
+
         }
 
         private void ScriptDistancia()

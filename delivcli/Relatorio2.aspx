@@ -1,46 +1,37 @@
-﻿<%@ Page Title="Situação Atual" Language="C#" MasterPageFile="~/Site.Master" EnableEventValidation="false" AutoEventWireup="true" CodeBehind="Relatorio2.aspx.cs" Inherits="delivcli.Relatorio2" %>
+﻿<%@ Page Title="Situação Atual" Culture="auto" UICulture="auto" Language="C#" MasterPageFile="~/Site.Master" EnableEventValidation="false" AutoEventWireup="true" CodeBehind="Relatorio2.aspx.cs" Inherits="delivcli.Relatorio2" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
     <br />
-    <h1>Performace no Período 
-    
-        <br />
-    
-    <div class="btn-group">
-        <a href="#" class="btn btn-default">HOJE</a>
-        <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
-        <ul class="dropdown-menu">
-            <li><a href="#">ONTEM</a></li>
-            <li><a href="#">ESTA SEMANA</a></li>
-            <li><a href="#">SEMANA ANTERIOR</a></li>
-            <li class="divider"></li>
-            <li><a href="#">ESTE MÊS</a></li>
-            <li><a href="#">MÊS ANTERIOR</a></li>
-            <li class="divider"></li>
-            <li><a href="#">ESPECIFICAR PERÍODO</a></li>
-        </ul>
+    <h1>Performace no Período </h1>
+
+    <div class="row">
+        <div class="col-sm-4 col-lg-4">
+            <h4>De:<asp:TextBox ID="txtPer1" runat="server" AutoPostBack="True" />
+                <ajaxToolkit:MaskedEditExtender ID="MaskedEditExtender5" runat="server"
+                    TargetControlID="txtPer1" Mask="99/99/9999" MessageValidatorTip="true" OnFocusCssClass="MaskedEditFocus"
+                    OnInvalidCssClass="MaskedEditError" MaskType="Date" DisplayMoney="Left" AcceptNegative="Left" ErrorTooltipEnabled="True" />
+                <ajaxToolkit:MaskedEditValidator ID="MaskedEditValidator5" runat="server"
+                    ControlExtender="MaskedEditExtender5" ControlToValidate="txtPer1" EmptyValueMessage="Informe Data"
+                    InvalidValueMessage="Data Invalida" Display="Dynamic" TooltipMessage="Periodo Inicial" EmptyValueBlurredText="*"
+                    InvalidValueBlurredMessage="*" ValidationGroup="MKE" />
+            </h4>
+        </div>
+
+        <div class="col-sm-4 col-lg-4">
+            <h4>Até:<asp:TextBox ID="TxtPer2" runat="server" AutoPostBack="True" />
+                <ajaxToolkit:MaskedEditExtender ID="MaskedEditExtender1" runat="server"
+                    TargetControlID="TxtPer2" Mask="99/99/9999" MessageValidatorTip="true" OnFocusCssClass="MaskedEditFocus"
+                    OnInvalidCssClass="MaskedEditError" MaskType="Date" DisplayMoney="Left" AcceptNegative="Left" ErrorTooltipEnabled="True" />
+                <ajaxToolkit:MaskedEditValidator ID="MaskedEditValidator1" runat="server"
+                    ControlExtender="MaskedEditExtender1" ControlToValidate="TxtPer2" EmptyValueMessage="Periodo Final"
+                    InvalidValueMessage="Data Invalida" Display="Dynamic" TooltipMessage="Periodo Final" EmptyValueBlurredText="*"
+                    InvalidValueBlurredMessage="*" ValidationGroup="MKE" />
+            </h4>
+        </div>
+
     </div>
 
-    </h1>
-
-    <table class="table table-striped table-hover ">
-        <thead>
-            <tr>
-                <th>Entregador</th>
-                <th>Total de Entregas Cadastradas</th>
-                <th>Total de Entregas Realizadas</th>
-                <th>Percentual</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>xxx</td>
-                <td>999</td>
-                <td>999</td>
-                <td>999</td>
-            </tr>
-        </tbody>
-    </table>
+    <asp:Literal ID="Literal1" runat="server"></asp:Literal>
 
 </asp:Content>

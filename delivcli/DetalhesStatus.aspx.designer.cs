@@ -49,6 +49,15 @@ namespace delivcli {
         protected global::System.Web.UI.WebControls.Label lblBairro;
         
         /// <summary>
+        /// lblEntregador control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblEntregador;
+        
+        /// <summary>
         /// lblStatus control.
         /// </summary>
         /// <remarks>
@@ -58,12 +67,12 @@ namespace delivcli {
         protected global::System.Web.UI.WebControls.Label lblStatus;
         
         /// <summary>
-        /// lblEntregador control.
+        /// lblHoraEntrega control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblEntregador;
+        protected global::System.Web.UI.WebControls.Label lblHoraEntrega;
     }
 }
