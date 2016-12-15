@@ -30,7 +30,7 @@ namespace delivcli
                         "<th>Entregador</th>" +
                         "<th>Total de Entregas</th>" +
                         "<th>Total em Km</th>" +
-                        "<th>Tempo Gasto</th>" +
+                        "<th>Tempo Gasto (min)</th>" +
                     "</tr>" +
                 "</thead>" +
                 "<tbody>";
@@ -50,8 +50,8 @@ namespace delivcli
                 string T1 = TotalEntregues(Convert.ToString(dados[1]));
                 if (T1 == "0") { continue; }
 
-                string T2 = TotalEmKm(Convert.ToString(dados[1])); 
-                string T3 = "000";
+                string T2 = TotalEmKm(Convert.ToString(dados[1]));
+                string T3 = TempoTotal(Convert.ToString(dados[1]));
 
                 string stringcomaspas = "<tr>" +
                                            "<td>" + Entregador + "</td>" +
@@ -88,9 +88,46 @@ namespace delivcli
         private string TotalEmKm(string id)
         {
             string totalKm = "0";
+            string stringselect = "select Partida_Data , Chegada_Data " +
+                                "from Tbl_Entregas  " +
+                                "where Tbl_Entregas.ID_Motoboy = " + id + " and " +
+                                "Tbl_Entregas.Entregue = 1 and " +
+                                "format(Tbl_Entregas.Data_Encomenda,'dd/MM/yyyy') >='" + txtPer1.Text + "' " +
+                                "and format(Tbl_Entregas.Data_Encomenda,'dd/MM/yyyy') <='" + TxtPer2.Text + "'";
+            OperacaoBanco operacao = new OperacaoBanco();
+            System.Data.SqlClient.SqlDataReader dados = operacao.Select(stringselect);
+
+            string partida, chegada = "";
+
+            while (dados.Read())
+            {
+                partida = Convert.ToString(dados[0]);
+                chegada = Convert.ToString(dados[1]);
+
+            }
+            ConexaoBancoSQL.fecharConexao();
 
             return totalKm;
 
+        }
+
+        private string TempoTotal(string id)
+        {
+            string tempo = "0";
+            string stringselect = "select sum(DATEDIFF(MINUTE, Partida_data, Chegada_Data)) AS TempoTotal " +
+                                    "from Tbl_Entregas " +
+                                    "where entregue = 1 and ID_Motoboy = " + id + " " +
+                                    "and format(Tbl_Entregas.Data_Encomenda, 'dd/MM/yyyy') >= '" + txtPer1.Text + "' " +
+                                    "and format(Tbl_Entregas.Data_Encomenda, 'dd/MM/yyyy') <= '" + TxtPer2.Text + "'";
+            OperacaoBanco operacao = new OperacaoBanco();
+            System.Data.SqlClient.SqlDataReader dados = operacao.Select(stringselect);
+
+            while (dados.Read())
+            {
+                tempo = Convert.ToString(dados[0]);
+            }
+            ConexaoBancoSQL.fecharConexao();
+            return tempo;
         }
 
         private void montaRodape()
