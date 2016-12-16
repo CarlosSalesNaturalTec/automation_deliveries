@@ -7,8 +7,6 @@ namespace delivcli
     {
         StringBuilder str = new StringBuilder();
         StringBuilder coordenadas = new StringBuilder();
-
-        string posicao1 = "", posicao2 = "";
         
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -53,7 +51,7 @@ namespace delivcli
                 string T1 = TotalEntregues(Convert.ToString(dados[1]));
                 if (T1 == "0") { continue; }
 
-                string T2 = Viagens(Convert.ToString(dados[1]));
+                string T2 = TotalKM(Convert.ToString(dados[1]));  // atenção incompleto
                 string T3 = TempoTotal(Convert.ToString(dados[1]));
 
                 string stringcomaspas = "<tr>" +
@@ -88,44 +86,13 @@ namespace delivcli
             return TotalGeralEntregues;
         }
 
-        private string Viagens(string id)
+        private string TotalKM (string id)
         {
-            string totalKm = "0";
-            string stringselect = "select Partida_Data , Chegada_Data " +
-                                "from Tbl_Entregas  " +
-                                "where Tbl_Entregas.ID_Motoboy = " + id + " and " +
-                                "Tbl_Entregas.Entregue = 1 and " +
-                                "format(Tbl_Entregas.Data_Encomenda,'dd/MM/yyyy') >='" + txtPer1.Text + "' " +
-                                "and format(Tbl_Entregas.Data_Encomenda,'dd/MM/yyyy') <='" + TxtPer2.Text + "' " +
-                                "order by Partida_Data";
-            OperacaoBanco operacao = new OperacaoBanco();
-            System.Data.SqlClient.SqlDataReader dados = operacao.Select(stringselect);
-
-            string partida, chegada = "";
-
-            while (dados.Read())
-            {
-                partida = Convert.ToString(dados[0]);
-                chegada = Convert.ToString(dados[1]);
-
-                TotalKmPorViagem(id, partida, chegada);
-
-            }
-            ConexaoBancoSQL.fecharConexao();
-
-            return totalKm;
-
-        }
-
-        private string TotalKmPorViagem (string id, string start, string finish)
-        {
-            string kmTotal = "0";
             coordenadas.Clear();
-
             string stringselect = "select Latitude, Longitude from Tbl_Historico " +
                                     "where ID_Motoboy =  " + id + " " +
-                                    "and Data_Coleta >= '" + start + "' " +
-                                    "and Data_Coleta <= '" + finish + "' " +
+                                    "and format(Data_Coleta,'dd/MM/yyyy') >='" + txtPer1.Text + "' " +
+                                    "and format(Data_Coleta,'dd/MM/yyyy') <='" + TxtPer2.Text + "' " +
                                     "order by Data_Coleta";        
             OperacaoBanco operacao = new OperacaoBanco();
             System.Data.SqlClient.SqlDataReader dados = operacao.Select(stringselect);
@@ -137,51 +104,25 @@ namespace delivcli
 
             //remove ultimo caracter "," 
             if (coordenadas.Length == 0) { } else { coordenadas.Length--; }
+            ScriptDistancia();
 
-            return kmTotal;
+            string DistanciaViagem = "0";  //Request["dist"].ToString();
+
+            return DistanciaViagem;
         }
 
         private void ScriptDistancia()
         {
             str.Clear();
             str.Append(@"<script type='text/javascript'>
+            function calcDist() {
 
-            function initMap() {
+            var dist = google.maps.geometry.spherical.computeLength(");
+            str.Append(coordenadas.ToString());
+            str.Append(@");
 
-              var origin1 = ");
-            str.Append(posicao1);
-            str.Append(@";
-
-              var destinationB = ");
-            str.Append(posicao2);
-            str.Append(@";
-
-              var service = new google.maps.DistanceMatrixService;
-              service.getDistanceMatrix({
-                origins: [origin1],
-                destinations: [destinationB],
-                travelMode: google.maps.TravelMode.TRANSIT,
-                unitSystem: google.maps.UnitSystem.METRIC
-              }, function(response, status) {
-                if (status !== google.maps.DistanceMatrixStatus.OK) {
-                  alert('Error was: ' + status);
-                } else {
-                  var originList = response.originAddresses;
-                  var destinationList = response.destinationAddresses;
-                  var outputDiv = document.getElementById('output');
-                  outputDiv.innerHTML = '';
-
-                  for (var i = 0; i < originList.length; i++) {
-                    var results = response.rows[i].elements;
-                    for (var j = 0; j < results.length; j++) {
-                      outputDiv.innerHTML += 'Distancia:<b>' + results[j].distance.text + '</b><br>' +
-                        'Tempo Estimado:<b>' + results[j].duration.text + '</b>';
-                    }
-                  }
-                }
-              });
-            }    
-
+            document.getElementById('Hidden1').value = dist;
+            }
             </script>");
         }
 

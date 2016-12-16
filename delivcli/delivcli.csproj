@@ -150,6 +150,7 @@
     <Content Include="Content\main.css" />
     <Content Include="Content\register.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="EntregadorMapa.aspx" />
     <Content Include="images\flagEmAberto.png" />
     <Content Include="images\flagEmAndamento.png" />
     <Content Include="images\flagOk.png" />
@@ -173,6 +174,7 @@
     <Content Include="images\status_on.png" />
     <Content Include="DetalhesMapa.aspx" />
     <Content Include="Relatorio1.aspx" />
+    <Content Include="FichaEntregador.aspx" />
     <Content Include="Relatorio2.aspx" />
     <Content Include="Mapa.aspx" />
     <Content Include="DetalhesEntrega.aspx" />
@@ -257,6 +259,13 @@
       <DependentUpon>Cad_Funcionario.aspx</DependentUpon>
     </Compile>
     <Compile Include="ConexaoBancoSQL.cs" />
+    <Compile Include="EntregadorMapa.aspx.cs">
+      <DependentUpon>EntregadorMapa.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EntregadorMapa.aspx.designer.cs">
+      <DependentUpon>EntregadorMapa.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ListagemEntregas.aspx.cs">
       <DependentUpon>ListagemEntregas.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -308,6 +317,13 @@
     </Compile>
     <Compile Include="Relatorio1.aspx.designer.cs">
       <DependentUpon>Relatorio1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FichaEntregador.aspx.cs">
+      <DependentUpon>FichaEntregador.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FichaEntregador.aspx.designer.cs">
+      <DependentUpon>FichaEntregador.aspx</DependentUpon>
     </Compile>
     <Compile Include="Relatorio2.aspx.cs">
       <DependentUpon>Relatorio2.aspx</DependentUpon>

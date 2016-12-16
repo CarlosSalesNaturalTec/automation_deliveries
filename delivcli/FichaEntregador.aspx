@@ -1,9 +1,8 @@
-﻿<%@ Page Title="Relatório de Produtividade" Culture="auto" UICulture="auto" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Relatorio1.aspx.cs" EnableEventValidation="false" Inherits="delivcli.Relatorio1" %>
+﻿<%@ Page Title="Histórico Entregador" Culture="auto" UICulture="auto" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="FichaEntregador.aspx.cs" EnableEventValidation="false" Inherits="delivcli.FichaEntregador" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
-    <br />
-    <h1>Produtividade no Período </h1>
+    <h1>Histórico Entregador</h1>
 
     <div class="row">
         <div class="col-sm-4 col-lg-4">
@@ -31,12 +30,11 @@
         </div>
 
     </div>
-
-    <asp:Literal ID="Literal1" runat="server"></asp:Literal>
-
-    <input id="Hidden1" name="dist" type="hidden"/>
-
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCOmedP-f3N7W7CPxaRoCZJ5mTMm6g0Ycc&callback=initMap"
-        async defer></script>
+    
+    <div class="row">
+        <div class="col-sm-9 col-md-9 col-lg-9">
+            <iframe height="500px" width="100%" frameborder="0" scrolling="no" src="/EntregadorMapa.aspx"></iframe>
+        </div>
+    </div>
 
 </asp:Content>
