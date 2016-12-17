@@ -35,6 +35,10 @@
         <div class="col-sm-9 col-md-9 col-lg-9">
             <iframe height="500px" width="100%" frameborder="0" scrolling="no" src="/EntregadorMapa.aspx"></iframe>
         </div>
+
+        <div class="col-sm-3 col-md-3 col-lg-3">
+            <iframe height="500px" width="100%" frameborder="0" scrolling="yes" src="/EntregadorDist.aspx"></iframe>
+        </div>
     </div>
 
 </asp:Content>

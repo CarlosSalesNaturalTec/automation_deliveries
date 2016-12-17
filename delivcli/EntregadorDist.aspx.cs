@@ -3,21 +3,19 @@ using System.Text;
 
 namespace delivcli
 {
-    public partial class EntregadorMapa : System.Web.UI.Page
+    public partial class EntregadorDist : System.Web.UI.Page
     {
         StringBuilder str = new StringBuilder();
         StringBuilder coordenadas = new StringBuilder();
-        string infoWindowEntregador = "";
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 string idEntregador = Session["IDEntregador"].ToString();
-                string centro = CentroDoMapa(idEntregador);
 
                 caminhoPercorrido(idEntregador);
-                montaScript(centro);
+                montaScript();
                 Literal1.Text = str.ToString();
             }
         }
@@ -42,51 +40,16 @@ namespace delivcli
             if (coordenadas.Length == 0) { coordenadas.Append("0"); } else { coordenadas.Length--; }
         }
 
-        private string CentroDoMapa(string id)
-        {
-            string centromapa = "";
-            string stringselect = "select GeoLatitude, GeoLongitude, Nome from Tbl_Motoboys where ID_Motoboy  = " + id;
-            OperacaoBanco operacao = new OperacaoBanco();
-            System.Data.SqlClient.SqlDataReader dados = operacao.Select(stringselect);
-            while (dados.Read())
-            {
-                centromapa = "{ lat: " + Convert.ToString(dados[0]) + ", lng: " + Convert.ToString(dados[1]) + " }";
-                infoWindowEntregador = Convert.ToString(dados[2]);
-            }
-            return centromapa;
-        }
-
-        private void montaScript(string centroMapa)
+       private void montaScript()
         {
             str.Clear();
             str.Append(@"<script type='text/javascript'> 
 
-            var CentroDoMapa = ");
-            str.Append(centroMapa);
-            str.Append(@";
-
             var CaminhoPercorrido = [");
             str.Append(coordenadas);
-            str.Append(@"];
-
-            var coordEntregador = ");
-            str.Append(centroMapa);
-            str.Append(@";
-
-            var InfowindowEntregador = '");
-            str.Append(infoWindowEntregador);
-            str.Append(@"';
-
-            var map;
-            var image = 'images/motorbike24.png';
-            var poly;
+            str.Append(@"];            
 
             function initMap() {
-
-                map = new google.maps.Map(document.getElementById('map'), {
-                    zoom: 12,
-                    center: CentroDoMapa
-                });
 
                 var flightPath = new google.maps.Polyline({
                     path: CaminhoPercorrido,
@@ -96,17 +59,9 @@ namespace delivcli
                     strokeWeight: 3
                     });
 
-                flightPath.setMap(map); 
+                var lengthInMeters = google.maps.geometry.spherical.computeLength(flightPath.getPath());
+                document.getElementById('distanc').value = lengthInMeters.toPrecision(4);
 
-                MarcadorEntregador(coordEntregador,InfowindowEntregador);
-            }
-
-            function MarcadorEntregador(position,dadosc) {
-                 var marker = new google.maps.Marker({
-                 position: position,
-                 icon: image,
-                 map: map
-                 });
             }
 
             </script>");

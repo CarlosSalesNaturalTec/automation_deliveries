@@ -150,6 +150,7 @@
     <Content Include="Content\main.css" />
     <Content Include="Content\register.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="EntregadorDist.aspx" />
     <Content Include="EntregadorMapa.aspx" />
     <Content Include="images\flagEmAberto.png" />
     <Content Include="images\flagEmAndamento.png" />
@@ -259,6 +260,13 @@
       <DependentUpon>Cad_Funcionario.aspx</DependentUpon>
     </Compile>
     <Compile Include="ConexaoBancoSQL.cs" />
+    <Compile Include="EntregadorDist.aspx.cs">
+      <DependentUpon>EntregadorDist.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EntregadorDist.aspx.designer.cs">
+      <DependentUpon>EntregadorDist.aspx</DependentUpon>
+    </Compile>
     <Compile Include="EntregadorMapa.aspx.cs">
       <DependentUpon>EntregadorMapa.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
