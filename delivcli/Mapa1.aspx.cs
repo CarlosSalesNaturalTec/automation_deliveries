@@ -53,7 +53,7 @@ namespace delivcli
             {
                 string stringselect = "";
                 stringselect = @"select usuario, GeoLatitude, GeoLongitude , format(GeoDataLoc,'dd-MM-yyyy') as UltimaData," +
-                        " format(GeoDataLoc,'HH:mm:ss') as UltimaHora, DATEDIFF(MINUTE, GeoDataLoc, getdate()) AS Intervalo " +
+                        " format(GeoDataLoc,'HH:mm:ss') as UltimaHora, DATEDIFF(MINUTE, GeoDataLoc, getdate()) AS Intervalo, ID_Motoboy  " +
                         " from Tbl_Motoboys where ID_Cliente = " + Session["Cli_ID"].ToString() +
                         " order by usuario";
 
@@ -87,15 +87,16 @@ namespace delivcli
 
                         string tagIni = "", tagFim = "";
                         int minutos = Convert.ToInt16(dados[5]);
+
                         if (minutos > 185)
                         {
-                            tagIni = "<p style=\"color: red;\"><b>";
-                            tagFim = "</b></p>";
+                            tagIni = "<a href=\"FichaEntregador.aspx" + "?ID=" + Convert.ToString(dados[6]) + "\" target=\"_parent\" style=\"color: red;\">";  
+                            tagFim = "</a>";
                         }
                         else
                         {
-                            tagIni = "<p style=\"color: green;\"><b>";
-                            tagFim = "</b></p>";
+                            tagIni = "<a href=\"FichaEntregador.aspx" + "?ID=" + Convert.ToString(dados[6]) + "\" target=\"_parent\" style=\"color: green;\">";
+                            tagFim = "</a>";
                         }
 
                         coordenadasDados.Append("'" + tagIni + dadosCoordenadas + tagFim + "',");

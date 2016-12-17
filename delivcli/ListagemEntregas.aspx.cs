@@ -43,7 +43,8 @@ namespace delivcli
         private void dadosCorpo()
         {
             string datastatus = DateTime.Now.ToString("yyyy-MM-dd");
-            string stringselect = @"select Tbl_Motoboys.Nome, Tbl_Entregas.Nome_Destinatario, Tbl_Entregas.Status_Entrega, Tbl_Entregas.ID_Entrega, Tbl_Entregas.Bairro " +
+            string stringselect = @"select Tbl_Motoboys.Nome, Tbl_Entregas.Nome_Destinatario, Tbl_Entregas.Status_Entrega, " +
+                    " Tbl_Entregas.ID_Entrega, Tbl_Entregas.Bairro, Tbl_Entregas.ID_Motoboy " +
                     " from Tbl_Entregas " +
                     " INNER JOIN Tbl_Motoboys ON Tbl_Entregas.ID_Motoboy = Tbl_Motoboys.ID_Motoboy " +
                     " where Tbl_Entregas.ID_Cliente = " + Session["Cli_ID"].ToString() +
@@ -55,8 +56,9 @@ namespace delivcli
 
             while (dados.Read())
             {
+                string linkUrl = "<a href=\"FichaEntregador.aspx?ID=" + Convert.ToString(dados[5]) + "\" target=\"_parent\">";
 
-                string colunaEntregador = Convert.ToString(dados[0]);
+                string colunaEntregador = linkUrl + Convert.ToString(dados[0]) + "</a>";
                 string colunaDestinatario = Convert.ToString(dados[1]);
                 string colunaStatus = Convert.ToString(dados[2]);
                 string colunaBairro = Convert.ToString(dados[4]);
@@ -80,7 +82,7 @@ namespace delivcli
 
                 string colunaStatusFormat1 = "</p>";
 
-                string linkUrl = "<a href=\"DetalhesEntrega.aspx" + "?IDEnt=" + Convert.ToString(dados[3]) +  "\" target=\"_parent\">";
+                linkUrl = "<a href=\"DetalhesEntrega.aspx" + "?IDEnt=" + Convert.ToString(dados[3]) +  "\" target=\"_parent\">";
 
                 string stringcomaspas = "<tr>" +
                     "<td>" + colunaDestinatario + "</td>" +
