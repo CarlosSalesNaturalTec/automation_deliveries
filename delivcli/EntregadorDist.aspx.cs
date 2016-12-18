@@ -53,14 +53,12 @@ namespace delivcli
 
                 var flightPath = new google.maps.Polyline({
                     path: CaminhoPercorrido,
-                    geodesic: true,
-                    strokeColor: '#4D4DFF',
-                    strokeOpacity: 0.6,
-                    strokeWeight: 3
+                    geodesic: true
                     });
 
                 var lengthInMeters = google.maps.geometry.spherical.computeLength(flightPath.getPath());
-                document.getElementById('distanc').value = lengthInMeters.toPrecision(4);
+                var distKm = lengthInMeters / 1000 ;
+                document.getElementById('distanc').value = distKm.toPrecision(4) ;
 
             }
 

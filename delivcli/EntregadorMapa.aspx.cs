@@ -107,6 +107,17 @@ namespace delivcli
                  icon: image,
                  map: map
                  });
+
+            var infowindow = new google.maps.InfoWindow({
+                content: dadosc
+            });
+
+            infowindow.open(map, marker);
+
+            marker.addListener('click', function() {
+                infowindow.open(marker.get('map'), marker);
+            });
+
             }
 
             </script>");

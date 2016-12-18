@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Text;
+using System.Web.UI;
 
 namespace delivcli
 {
-    public partial class Relatorio2 : System.Web.UI.Page
+    public partial class Relatorio3 : System.Web.UI.Page
     {
         StringBuilder str = new StringBuilder();
+        StringBuilder str1 = new StringBuilder();
+        StringBuilder coordenadas = new StringBuilder();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -68,11 +71,7 @@ namespace delivcli
                 "<thead>" +
                     "<tr>" +
                         "<th>Entregador</th>" +
-                        "<th>Total de Entregas no Período</th>" +
-                        "<th>Total Entregador</th>" +
-                        "<th>% Geral</th>" +
-                        "<th>Entregues</th>" +
-                        "<th>Performance (%)</th>" +
+                        "<th>Distancia Percorrida (Km)</th>" +
                     "</tr>" +
                 "</thead>" +
                 "<tbody>";
@@ -86,93 +85,69 @@ namespace delivcli
             OperacaoBanco operacao = new OperacaoBanco();
             System.Data.SqlClient.SqlDataReader dados = operacao.Select(stringselect);
 
-            string T1 = TotalEntregas();
-
             while (dados.Read())
             {
                 string Entregador = Convert.ToString(dados[0]);
-                string T2 = TotalEntregador(Convert.ToString(dados[1]));
-
-                if (T2 == "0") { continue; }
-
-                string T3 = TotalEntregues(Convert.ToString(dados[1]));
-
-                double percent1 = (Convert.ToDouble(T2) / Convert.ToDouble(T1)) * 100;
-                double percent2 = (Convert.ToDouble(T3) / Convert.ToDouble(T2)) * 100;
-
+                string idEntregador = Convert.ToString(dados[1]);
                 string stringcomaspas = "<tr>" +
                                            "<td>" + Entregador + "</td>" +
-                                           "<td>" + T1 + "</td>" +
-                                           "<td>" + T2 + "</td>" +
-                                           "<td>" + percent1.ToString("#,0.00") + "</td>" +
-                                           "<td>" + T3 + "</td>" +
-                                           "<td>" + percent2.ToString("#,0.00") + "</td>" +
+                                           "<td>" + TotalKm("1") + "</td>" +
                                         "</tr>";
                 str.Append(stringcomaspas);
             }
             ConexaoBancoSQL.fecharConexao();
         }
 
-        private string TotalEntregas()
+        private string TotalKm(string id)
         {
-            string TotalGeralEntregas = "0";
-            string stringselect = "select COUNT(Tbl_Entregas.ID_Entrega) as TotalGeralEntregas " +
-                                "from Tbl_Entregas  " +
-                                "where Tbl_Entregas.ID_Cliente = " + Session["Cli_ID"].ToString() + " and " +
-                                "format(Tbl_Entregas.Data_Encomenda,'dd/MM/yyyy') >='" + txtPer1.Text + "' " +
-                                "and format(Tbl_Entregas.Data_Encomenda,'dd/MM/yyyy') <='" + TxtPer2.Text + "'";
-            OperacaoBanco operacao = new OperacaoBanco();
-            System.Data.SqlClient.SqlDataReader dados = operacao.Select(stringselect);
+            
+            caminhoPercorrido(id);
+            
+            //executa javascript para calculo de distanciA
+            //ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "calcdist", ScriptDistancia(), true);
 
-            while (dados.Read())
-            {
-                TotalGeralEntregas = Convert.ToString(dados[0]);
-            }
-            ConexaoBancoSQL.fecharConexao();
-
-            return TotalGeralEntregas;
+            string resultado = "000";
+            
+            return resultado;
         }
 
-        private string TotalEntregador(string id)
+        private void caminhoPercorrido(string id)
         {
-            string TotalGeralEntregador = "0";
-            string stringselect = "select COUNT(Tbl_Entregas.ID_Entrega) as TotalGeralEntregas " +
-                                "from Tbl_Entregas  " +
-                                "where Tbl_Entregas.ID_Cliente = " + Session["Cli_ID"].ToString() + " and " +
-                                "Tbl_Entregas.ID_Motoboy = " + id + " and " +
-                                "format(Tbl_Entregas.Data_Encomenda,'dd/MM/yyyy') >='" + txtPer1.Text + "' " +
-                                "and format(Tbl_Entregas.Data_Encomenda,'dd/MM/yyyy') <='" + TxtPer2.Text + "'";
+            coordenadas.Clear();
+            string stringselect = "select Latitude, Longitude from Tbl_Historico " +
+                                    "where ID_Motoboy =  " + id + " " +
+                                    "and format(Data_Coleta,'dd/MM/yyyy') >='" + txtPer1.Text + "' " +
+                                    "and format(Data_Coleta,'dd/MM/yyyy') <='" + TxtPer2.Text + "' " +
+                                    "order by Data_Coleta";
             OperacaoBanco operacao = new OperacaoBanco();
             System.Data.SqlClient.SqlDataReader dados = operacao.Select(stringselect);
-
             while (dados.Read())
             {
-                TotalGeralEntregador = Convert.ToString(dados[0]);
+                coordenadas.Append("{ lat: " + Convert.ToString(dados[0]) + ", lng: " + Convert.ToString(dados[1]) + " },");
             }
             ConexaoBancoSQL.fecharConexao();
 
-            return TotalGeralEntregador;
+            //remove ultimo caracter "," 
+            if (coordenadas.Length == 0) { coordenadas.Append("{ lat: 0, lng: 0}"); } else { coordenadas.Length--; }
         }
 
-        private string TotalEntregues(string id)
+        private string ScriptDistancia()
         {
-            string TotalGeralEntregues = "1";
-            string stringselect = "select COUNT(Tbl_Entregas.ID_Entrega) as TotalGeralEntregas " +
-                                "from Tbl_Entregas  " +
-                                "where Tbl_Entregas.ID_Motoboy = " + id + " and " +
-                                "Tbl_Entregas.Entregue = 1 and " +
-                                "format(Tbl_Entregas.Data_Encomenda,'dd/MM/yyyy') >='" + txtPer1.Text + "' " +
-                                "and format(Tbl_Entregas.Data_Encomenda,'dd/MM/yyyy') <='" + TxtPer2.Text + "'";
-            OperacaoBanco operacao = new OperacaoBanco();
-            System.Data.SqlClient.SqlDataReader dados = operacao.Select(stringselect);
+            str1.Clear();
+            str1.Append(@"var CaminhoPercorrido = [");
+            str1.Append(coordenadas);
+            str1.Append(@"];            
 
-            while (dados.Read())
-            {
-                TotalGeralEntregues = Convert.ToString(dados[0]);
-            }
-            ConexaoBancoSQL.fecharConexao();
+                var flightPath = new google.maps.Polyline({
+                    path: CaminhoPercorrido,
+                    geodesic: true
+                    });
 
-            return TotalGeralEntregues;
+                var lengthInMeters = google.maps.geometry.spherical.computeLength(flightPath.getPath());
+
+                document.getElementById('Hidden1').value = lengthInMeters;");
+
+            return str1.ToString();
         }
 
         private void montaRodape()
@@ -196,6 +171,7 @@ namespace delivcli
             montaRodape();
             Literal1.Text = str.ToString();
         }
+
     }
 
 }

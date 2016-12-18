@@ -11,14 +11,12 @@ namespace delivcli
         {
             if (!IsPostBack)
             {
-
-                txtPer1.Text = DateTime.Today.ToString("dd/MM/yyyy");
-                TxtPer2.Text = DateTime.Today.ToString("dd/MM/yyyy");
-
-                Session["per1"] = txtPer1.Text;
-                Session["per2"] = TxtPer2.Text;
-                Session["IDEntregador"] = Request.QueryString["ID"];
-
+               txtPer1.Text = DateTime.Today.ToString("dd/MM/yyyy");
+               TxtPer2.Text = DateTime.Today.ToString("dd/MM/yyyy");
+                  
+               Session["per1"] = txtPer1.Text;
+               Session["per2"] = TxtPer2.Text;
+               Session["IDEntregador"] = Request.QueryString["ID"];
             }
         }
 

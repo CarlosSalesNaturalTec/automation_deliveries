@@ -20,7 +20,7 @@
     <asp:Literal ID="Literal1" runat="server"></asp:Literal>
 
     <div class="well">
-        <p class="text-info">Distância Percorrida (m):</p>
+        <p class="text-info">Distância Percorrida (Km):</p>
         <input id="distanc" type="text" readonly="readonly" />
     </div>
 

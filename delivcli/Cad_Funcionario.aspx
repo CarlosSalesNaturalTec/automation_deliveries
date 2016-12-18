@@ -52,9 +52,6 @@
             <asp:BoundField DataField="Placa" HeaderText="PLACA" />
             <asp:BoundField DataField="Usuario" HeaderText="USUÁRIO" />
             <asp:BoundField DataField="ID_Motoboy" HeaderText="ID" />
-            <asp:BoundField DataField="GeoLatitude" HeaderText="LAT" />
-            <asp:BoundField DataField="GeoLongitude" HeaderText="LNG" />
-            <asp:BoundField DataField="GeoDataLoc" HeaderText="ATUALIZADO" />
         </Columns>
     </asp:GridView>
 

@@ -1,21 +1,21 @@
-﻿<%@ Page Title="Relatório de Performance" Culture="auto" UICulture="auto" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Relatorio2.aspx.cs" EnableEventValidation="false" Inherits="delivcli.Relatorio2" %>
+﻿<%@ Page Title="Relatório de Performance" Culture="auto" UICulture="auto" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Relatorio3.aspx.cs" EnableEventValidation="false" Inherits="delivcli.Relatorio3" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
     <br />
-    <h1>Relatório de Performance</h1>
+    <h1>Relatório de Distância Percorrida</h1>
 
     <div class="btn-group">
         <a href="#" class="btn btn-default">Período</a>
         <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
         <ul class="dropdown-menu">
-            <li><a href="Relatorio2.aspx?Per=1">HOJE</a></li>
+            <li><a href="Relatorio3.aspx?Per=1">HOJE</a></li>
             <li class="divider"></li>
-            <li><a href="Relatorio2.aspx?Per=2">ONTEM</a></li>
+            <li><a href="Relatorio3.aspx?Per=2">ONTEM</a></li>
             <li class="divider"></li>
-            <li><a href="Relatorio2.aspx?Per=3">ESTA SEMANA</a></li>
+            <li><a href="Relatorio3.aspx?Per=3">ESTA SEMANA</a></li>
             <li class="divider"></li>
-            <li><a href="Relatorio2.aspx?Per=4">ESTE MÊS</a></li>
+            <li><a href="Relatorio3.aspx?Per=4">ESTE MÊS</a></li>
         </ul>
     </div>
 
@@ -42,6 +42,12 @@
         </div>
     </div>
 
+    <input id="Hidden1" name="Hidden1" type="text" />
+
     <asp:Literal ID="Literal1" runat="server"></asp:Literal>
+
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCOmedP-f3N7W7CPxaRoCZJ5mTMm6g0Ycc&libraries=geometry&callback=initMap"
+        async defer></script>
+    
 
 </asp:Content>

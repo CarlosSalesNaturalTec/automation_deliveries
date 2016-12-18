@@ -176,6 +176,7 @@
     <Content Include="DetalhesMapa.aspx" />
     <Content Include="Relatorio1.aspx" />
     <Content Include="FichaEntregador.aspx" />
+    <Content Include="Relatorio3.aspx" />
     <Content Include="Relatorio2.aspx" />
     <Content Include="Mapa.aspx" />
     <Content Include="DetalhesEntrega.aspx" />
@@ -332,6 +333,13 @@
     </Compile>
     <Compile Include="FichaEntregador.aspx.designer.cs">
       <DependentUpon>FichaEntregador.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorio3.aspx.cs">
+      <DependentUpon>Relatorio3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Relatorio3.aspx.designer.cs">
+      <DependentUpon>Relatorio3.aspx</DependentUpon>
     </Compile>
     <Compile Include="Relatorio2.aspx.cs">
       <DependentUpon>Relatorio2.aspx</DependentUpon>

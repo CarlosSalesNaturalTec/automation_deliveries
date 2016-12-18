@@ -12,9 +12,48 @@ namespace delivcli
         {
             if (!IsPostBack)
             {
+                switch (Request.QueryString["Per"])
+                {
+                    case "1":
+                        txtPer1.Text = DateTime.Today.ToString("dd/MM/yyyy");
+                        TxtPer2.Text = DateTime.Today.ToString("dd/MM/yyyy");
+                        break;
 
-                txtPer1.Text = DateTime.Today.ToString("dd/MM/yyyy");
-                TxtPer2.Text = DateTime.Today.ToString("dd/MM/yyyy");
+                    case "2":
+                        txtPer1.Text = DateTime.Today.AddDays(-1).ToString("dd/MM/yyyy");
+                        TxtPer2.Text = DateTime.Today.AddDays(-1).ToString("dd/MM/yyyy");
+                        break;
+
+                    case "3":
+
+                        DateTime dt = DateTime.Today;
+                        DateTime dt1, dt2;
+
+                        var culture = System.Threading.Thread.CurrentThread.CurrentCulture;
+                        var diff = dt.DayOfWeek - culture.DateTimeFormat.FirstDayOfWeek;
+                        if (diff < 0)
+                            diff += 7;
+                        dt1 = dt.AddDays(-diff).Date;
+                        dt2 = dt1.AddDays(1);  // para adequar a brasil
+
+                        txtPer1.Text = dt2.ToString("dd/MM/yyyy");
+                        TxtPer2.Text = DateTime.Today.ToString("dd/MM/yyyy");
+                        break;
+
+                    case "4":
+
+                        int d1 = DateTime.Today.Day -1;
+                        DateTime d2 = DateTime.Today.AddDays(-d1);
+
+                        txtPer1.Text = d2.ToString("dd/MM/yyyy");
+                        TxtPer2.Text = DateTime.Today.ToString("dd/MM/yyyy");
+                        break;
+
+                    default:
+                        txtPer1.Text = DateTime.Today.ToString("dd/MM/yyyy");
+                        TxtPer2.Text = DateTime.Today.ToString("dd/MM/yyyy");
+                        break;
+                }
 
                 montaCabecalho();
                 dadosCorpo();
@@ -22,6 +61,8 @@ namespace delivcli
                 Literal1.Text = str.ToString();
             }
         }
+
+
 
         private void montaCabecalho()
         {
@@ -167,5 +208,4 @@ namespace delivcli
             Literal1.Text = str.ToString();
         }
     }
-
 }

@@ -60,7 +60,6 @@ namespace delivcli
         {
             try
             {
-
                 string datacadastro = DateTime.Now.ToString("yyyy-MM-dd") + " 00:00:00";
 
                 OperacaoBanco operacao = new OperacaoBanco();

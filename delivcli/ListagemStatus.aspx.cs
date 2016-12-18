@@ -44,7 +44,7 @@ namespace delivcli
                 if (escolha == "Off-Line") { if (min1 < 185) { continue; } }
 
                 //nome do Entregador + Total de Entregas do Dia + Total de Entregas Realizadas
-                stringComAspas = "<a href=\"FichaEntregador.aspx" + "?ID=" + Convert.ToString(dados[2]) + "\" target=\"_parent\" class=\"list-group-item\"><h4 class=\"list-group-item-heading\">" + Convert.ToString(dados[0]) + 
+                stringComAspas = "<a href=\"FichaEntregador.aspx?ID=" + Convert.ToString(dados[2]) + "\" target=\"_parent\" class=\"list-group-item\"><h4 class=\"list-group-item-heading\">" + Convert.ToString(dados[0]) + 
                     ". " + TotaldeEntregas(Convert.ToString(dados[2])) + "</h4>";
                 str.Append(stringComAspas);
 
