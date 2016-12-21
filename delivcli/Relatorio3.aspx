@@ -42,7 +42,7 @@
         </div>
     </div>
 
-    <input id="Hidden1" name="Hidden1" type="text" />
+    <input id="Hidden1" name="Hidden1" type="hidden" />
 
     <asp:Literal ID="Literal1" runat="server"></asp:Literal>
 

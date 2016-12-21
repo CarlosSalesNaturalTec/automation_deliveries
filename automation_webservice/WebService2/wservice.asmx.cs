@@ -44,6 +44,7 @@ namespace WebService2
             operacao = new OperacaoBanco();
             System.Data.SqlClient.SqlDataReader dados = operacao.Select("select top 10 Latitude, Data_Coleta from Tbl_Historico_Temp " +
                     "where ID_Motoboy = " + IdMotoboy + " order by Data_Coleta desc");
+
             int repeticoes = 1;
             int registros = 0;
             string ultimoregistro = "";
