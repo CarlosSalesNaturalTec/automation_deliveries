@@ -28,25 +28,51 @@ namespace WebService2
         {
             string Resultado = "";
 
-            try
+            // lança dados em tabela temporária de localização
+            OperacaoBanco operacao = new OperacaoBanco();
+            Boolean inserir = operacao.Insert(@"insert into Tbl_Historico_Temp (ID_Motoboy, Id_Entrega, Data_Coleta, Latitude, Longitude)
+	                                                values (" + IdMotoboy + ", " + IdEntrega + ", '" + dataLeitura + "', '" + latitude + "','" + longitude + "')");
+            ConexaoBancoSQL.fecharConexao();
+
+            // atualiza dados de localização em tabela de motoboy
+            operacao = new OperacaoBanco();
+            Boolean atualizar = operacao.Update(@"update Tbl_Motoboys set GeoLatitude = '" + latitude + "', GeoLongitude = '" + longitude + "', GeoDataLoc = '" + dataLeitura + "' where ID_motoboy = " + IdMotoboy);
+            ConexaoBancoSQL.fecharConexao();
+            if (atualizar == true) { Resultado = "OK"; } else { Resultado = "NÃO FOI POSSIVEL INSERIR REGISTRO"; }
+
+            // verifica se valor de Latitude se repete mais de 1 vez nos ultimos 10 lançamentos
+            operacao = new OperacaoBanco();
+            System.Data.SqlClient.SqlDataReader dados = operacao.Select("select top 10 Latitude, Data_Coleta from Tbl_Historico_Temp " +
+                    "where ID_Motoboy = " + IdMotoboy + " order by Data_Coleta desc");
+            int repeticoes = 1;
+            int registros = 0;
+            string ultimoregistro = "";
+            while (dados.Read())
             {
-                // lança dados em tabela de histórico de localização
-                OperacaoBanco operacao = new OperacaoBanco();
-                Boolean inserir = operacao.Insert(@"insert into Tbl_Historico (ID_Motoboy, Id_Entrega, Data_Coleta, Latitude, Longitude)
-	                                                values (" + IdMotoboy + ", " + IdEntrega + ", '" + dataLeitura + "', '" + latitude + "','" + longitude + "')");                
-                ConexaoBancoSQL.fecharConexao();
-
-                // lança dados em tabela de motoboy
-                operacao = new OperacaoBanco();
-                Boolean atualizar = operacao.Update(@"update Tbl_Motoboys set GeoLatitude = '" + latitude + "', GeoLongitude = '" + longitude + "', GeoDataLoc = '" + dataLeitura + "' where ID_motoboy = " + IdMotoboy);
-                ConexaoBancoSQL.fecharConexao();
-
-                if (atualizar == true) { Resultado = "OK"; } else { Resultado = "NÃO FOI POSSIVEL INSERIR REGISTRO"; }
-
+                if (latitude == Convert.ToString(dados[0])) { repeticoes++; }
+                ultimoregistro = Convert.ToString(dados[1]);
+                registros++;
             }
-            catch (Exception)
+            ConexaoBancoSQL.fecharConexao();
+
+            //Caso o valor de Latitude não se repita, significa que está em movimento. neste caso grava posição em tabela de histórico
+            if (repeticoes == 1)
             {
-                Resultado = "FALHA CONEXÃO BANCO DE DADOS";
+                operacao = new OperacaoBanco();
+                inserir = operacao.Insert(@"insert into Tbl_Historico (ID_Motoboy, Id_Entrega, Data_Coleta, Latitude, Longitude)
+	                                                values (" + IdMotoboy + ", " + IdEntrega + ", '" + dataLeitura + "', '" + latitude + "','" + longitude + "')");
+                ConexaoBancoSQL.fecharConexao();
+            }
+
+
+            //mantem em tabela temporaria apenas ultimos 10 registros. apaga os demais
+            if (registros > 9)
+            {
+                operacao = new OperacaoBanco();
+                Boolean deletar = operacao.Delete("delete from Tbl_Historico_Temp " +
+                    "where ID_Motoboy = " + IdMotoboy +
+                    "and Data_Coleta < '" + ultimoregistro + "'");
+                ConexaoBancoSQL.fecharConexao();
             }
 
             return Resultado;
@@ -63,13 +89,13 @@ namespace WebService2
                 OperacaoBanco operacao = new OperacaoBanco();
                 System.Data.SqlClient.SqlDataReader dados = operacao.Select("SELECT ID_Entrega,Bairro,Endereco,Id_Motoboy,Entregue "
                         + "FROM Tbl_Entregas "
-                        + "where (Entregue<>1 and ID_Motoboy = " + IdMotoboy 
+                        + "where (Entregue<>1 and ID_Motoboy = " + IdMotoboy
                         + ") order by Bairro");
                 while (dados.Read())
                 {
                     resultado.Add(new
                     {
-                        ID_Entrega= dados[0].ToString(),
+                        ID_Entrega = dados[0].ToString(),
                         Bairro = dados[1].ToString(),
                         Endereco = dados[2].ToString()
                     });
@@ -145,8 +171,8 @@ namespace WebService2
                 // atualiza status da entrega : VIAGEM INICIADA
                 OperacaoBanco operacao = new OperacaoBanco();
                 operacao = new OperacaoBanco();
-                Boolean atualizar = operacao.Update(@"update Tbl_Entregas set Partida_Data = '" + dataLeitura + "', Partida_Latitude = '" + 
-                    latitude + "', Partida_Longitude = '" + longitude  + "', Partida_Iniciada = 1, Status_Entrega = 'EM ANDAMENTO'  where ID_Entrega = " + IdEntrega);
+                Boolean atualizar = operacao.Update(@"update Tbl_Entregas set Partida_Data = '" + dataLeitura + "', Partida_Latitude = '" +
+                    latitude + "', Partida_Longitude = '" + longitude + "', Partida_Iniciada = 1, Status_Entrega = 'EM ANDAMENTO'  where ID_Entrega = " + IdEntrega);
                 ConexaoBancoSQL.fecharConexao();
 
                 if (atualizar == true) { Resultado = "OK"; } else { Resultado = "NÃO FOI POSSIVEL ATUALIZAR STATUS"; }
