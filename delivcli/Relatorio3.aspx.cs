@@ -14,54 +14,57 @@ namespace delivcli
         {
             if (!IsPostBack)
             {
-
-                switch (Request.QueryString["Per"])
-                {
-                    case "1":
-                        txtPer1.Text = DateTime.Today.ToString("dd/MM/yyyy");
-                        TxtPer2.Text = DateTime.Today.ToString("dd/MM/yyyy");
-                        break;
-
-                    case "2":
-                        txtPer1.Text = DateTime.Today.AddDays(-1).ToString("dd/MM/yyyy");
-                        TxtPer2.Text = DateTime.Today.AddDays(-1).ToString("dd/MM/yyyy");
-                        break;
-
-                    case "3":
-
-                        DateTime dt = DateTime.Today;
-                        DateTime dt1, dt2;
-
-                        var culture = System.Threading.Thread.CurrentThread.CurrentCulture;
-                        var diff = dt.DayOfWeek - culture.DateTimeFormat.FirstDayOfWeek;
-                        if (diff < 0)
-                            diff += 7;
-                        dt1 = dt.AddDays(-diff).Date;
-                        dt2 = dt1.AddDays(1);  // para adequar a brasil
-
-                        txtPer1.Text = dt2.ToString("dd/MM/yyyy");
-                        TxtPer2.Text = DateTime.Today.ToString("dd/MM/yyyy");
-                        break;
-
-                    case "4":
-
-                        int d1 = DateTime.Today.Day - 1;
-                        DateTime d2 = DateTime.Today.AddDays(-d1);
-
-                        txtPer1.Text = d2.ToString("dd/MM/yyyy");
-                        TxtPer2.Text = DateTime.Today.ToString("dd/MM/yyyy");
-                        break;
-
-                    default:
-                        txtPer1.Text = DateTime.Today.ToString("dd/MM/yyyy");
-                        TxtPer2.Text = DateTime.Today.ToString("dd/MM/yyyy");
-                        break;
-                }
-
+                periodo();
                 montaCabecalho();
                 dadosCorpo();
                 montaRodape();
                 Literal1.Text = str.ToString();
+            }
+        }
+
+        private void periodo()
+        {
+            switch (Request.QueryString["Per"])
+            {
+                case "1":
+                    txtPer1.Text = DateTime.Today.ToString("dd/MM/yyyy");
+                    TxtPer2.Text = DateTime.Today.ToString("dd/MM/yyyy");
+                    break;
+
+                case "2":
+                    txtPer1.Text = DateTime.Today.AddDays(-1).ToString("dd/MM/yyyy");
+                    TxtPer2.Text = DateTime.Today.AddDays(-1).ToString("dd/MM/yyyy");
+                    break;
+
+                case "3":
+
+                    DateTime dt = DateTime.Today;
+                    DateTime dt1, dt2;
+
+                    var culture = System.Threading.Thread.CurrentThread.CurrentCulture;
+                    var diff = dt.DayOfWeek - culture.DateTimeFormat.FirstDayOfWeek;
+                    if (diff < 0)
+                        diff += 7;
+                    dt1 = dt.AddDays(-diff).Date;
+                    dt2 = dt1.AddDays(1);  // para adequar a brasil
+
+                    txtPer1.Text = dt2.ToString("dd/MM/yyyy");
+                    TxtPer2.Text = DateTime.Today.ToString("dd/MM/yyyy");
+                    break;
+
+                case "4":
+
+                    int d1 = DateTime.Today.Day - 1;
+                    DateTime d2 = DateTime.Today.AddDays(-d1);
+
+                    txtPer1.Text = d2.ToString("dd/MM/yyyy");
+                    TxtPer2.Text = DateTime.Today.ToString("dd/MM/yyyy");
+                    break;
+
+                default:
+                    txtPer1.Text = DateTime.Today.ToString("dd/MM/yyyy");
+                    TxtPer2.Text = DateTime.Today.ToString("dd/MM/yyyy");
+                    break;
             }
         }
 
@@ -102,12 +105,11 @@ namespace delivcli
         {
             
             caminhoPercorrido(id);
-            
-            //executa javascript para calculo de distanciA
-            //ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "calcdist", ScriptDistancia(), true);
 
-            string resultado = "000";
-            
+            //executa javascript para calculo de distanciA
+            ClientScript.RegisterStartupScript(this.GetType(), "calcdist", ScriptDistancia());
+            string resultado = "99"; // Request["Hidden1"].ToString();
+
             return resultado;
         }
 
@@ -134,7 +136,7 @@ namespace delivcli
         private string ScriptDistancia()
         {
             str1.Clear();
-            str1.Append(@"var CaminhoPercorrido = [");
+            str1.Append(@"<script language=javascript>var CaminhoPercorrido = [");
             str1.Append(coordenadas);
             str1.Append(@"];            
 
@@ -142,10 +144,8 @@ namespace delivcli
                     path: CaminhoPercorrido,
                     geodesic: true
                     });
-
                 var lengthInMeters = google.maps.geometry.spherical.computeLength(flightPath.getPath());
-
-                document.getElementById('Hidden1').value = lengthInMeters;");
+                document.getElementById('Hidden1').value = lengthInMeters;</script>");
 
             return str1.ToString();
         }

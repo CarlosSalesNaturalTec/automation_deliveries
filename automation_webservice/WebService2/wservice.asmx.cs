@@ -28,37 +28,40 @@ namespace WebService2
         {
             string Resultado = "";
 
-            // lança dados em tabela temporária de localização
-            OperacaoBanco operacao = new OperacaoBanco();
-            Boolean inserir = operacao.Insert(@"insert into Tbl_Historico_Temp (ID_Motoboy, Id_Entrega, Data_Coleta, Latitude, Longitude)
-	                                                values (" + IdMotoboy + ", " + IdEntrega + ", '" + dataLeitura + "', '" + latitude + "','" + longitude + "')");
-            ConexaoBancoSQL.fecharConexao();
-
             // atualiza dados de localização em tabela de motoboy
-            operacao = new OperacaoBanco();
+            OperacaoBanco operacao = new OperacaoBanco();
             Boolean atualizar = operacao.Update(@"update Tbl_Motoboys set GeoLatitude = '" + latitude + "', GeoLongitude = '" + longitude + "', GeoDataLoc = '" + dataLeitura + "' where ID_motoboy = " + IdMotoboy);
             ConexaoBancoSQL.fecharConexao();
             if (atualizar == true) { Resultado = "OK"; } else { Resultado = "NÃO FOI POSSIVEL INSERIR REGISTRO"; }
+
+
 
             // verifica se valor de Latitude se repete mais de 1 vez nos ultimos 10 lançamentos
             operacao = new OperacaoBanco();
             System.Data.SqlClient.SqlDataReader dados = operacao.Select("select top 10 Latitude, Data_Coleta from Tbl_Historico_Temp " +
                     "where ID_Motoboy = " + IdMotoboy + " order by Data_Coleta desc");
-
             int repeticoes = 1;
             int registros = 0;
             string ultimoregistro = "";
             while (dados.Read())
             {
-                if (latitude == Convert.ToString(dados[0])) { repeticoes++; }
+                if (latitude == Convert.ToString(dados[0])) { repeticoes=repeticoes+1; }
                 ultimoregistro = Convert.ToString(dados[1]);
                 registros++;
             }
             ConexaoBancoSQL.fecharConexao();
 
+
+
             //Caso o valor de Latitude não se repita, significa que está em movimento. neste caso grava posição em tabela de histórico
             if (repeticoes == 1)
             {
+                // lança dados em tabelas de localização
+                operacao = new OperacaoBanco();
+                Boolean inserir = operacao.Insert(@"insert into Tbl_Historico_Temp (ID_Motoboy, Id_Entrega, Data_Coleta, Latitude, Longitude)
+	                                                values (" + IdMotoboy + ", " + IdEntrega + ", '" + dataLeitura + "', '" + latitude + "','" + longitude + "')");
+                ConexaoBancoSQL.fecharConexao();
+
                 operacao = new OperacaoBanco();
                 inserir = operacao.Insert(@"insert into Tbl_Historico (ID_Motoboy, Id_Entrega, Data_Coleta, Latitude, Longitude)
 	                                                values (" + IdMotoboy + ", " + IdEntrega + ", '" + dataLeitura + "', '" + latitude + "','" + longitude + "')");

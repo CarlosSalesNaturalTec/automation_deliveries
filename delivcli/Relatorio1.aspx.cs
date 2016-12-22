@@ -12,49 +12,7 @@ namespace delivcli
         {
             if (!IsPostBack)
             {
-                switch (Request.QueryString["Per"])
-                {
-                    case "1":
-                        txtPer1.Text = DateTime.Today.ToString("dd/MM/yyyy");
-                        TxtPer2.Text = DateTime.Today.ToString("dd/MM/yyyy");
-                        break;
-
-                    case "2":
-                        txtPer1.Text = DateTime.Today.AddDays(-1).ToString("dd/MM/yyyy");
-                        TxtPer2.Text = DateTime.Today.AddDays(-1).ToString("dd/MM/yyyy");
-                        break;
-
-                    case "3":
-
-                        DateTime dt = DateTime.Today;
-                        DateTime dt1, dt2;
-
-                        var culture = System.Threading.Thread.CurrentThread.CurrentCulture;
-                        var diff = dt.DayOfWeek - culture.DateTimeFormat.FirstDayOfWeek;
-                        if (diff < 0)
-                            diff += 7;
-                        dt1 = dt.AddDays(-diff).Date;
-                        dt2 = dt1.AddDays(1);  // para adequar a brasil
-
-                        txtPer1.Text = dt2.ToString("dd/MM/yyyy");
-                        TxtPer2.Text = DateTime.Today.ToString("dd/MM/yyyy");
-                        break;
-
-                    case "4":
-
-                        int d1 = DateTime.Today.Day -1;
-                        DateTime d2 = DateTime.Today.AddDays(-d1);
-
-                        txtPer1.Text = d2.ToString("dd/MM/yyyy");
-                        TxtPer2.Text = DateTime.Today.ToString("dd/MM/yyyy");
-                        break;
-
-                    default:
-                        txtPer1.Text = DateTime.Today.ToString("dd/MM/yyyy");
-                        TxtPer2.Text = DateTime.Today.ToString("dd/MM/yyyy");
-                        break;
-                }
-
+                periodo();
                 montaCabecalho();
                 dadosCorpo();
                 montaRodape();
@@ -62,7 +20,51 @@ namespace delivcli
             }
         }
 
+        private void periodo()
+        {
+            switch (Request.QueryString["Per"])
+            {
+                case "1":
+                    txtPer1.Text = DateTime.Today.ToString("dd/MM/yyyy");
+                    TxtPer2.Text = DateTime.Today.ToString("dd/MM/yyyy");
+                    break;
 
+                case "2":
+                    txtPer1.Text = DateTime.Today.AddDays(-1).ToString("dd/MM/yyyy");
+                    TxtPer2.Text = DateTime.Today.AddDays(-1).ToString("dd/MM/yyyy");
+                    break;
+
+                case "3":
+
+                    DateTime dt = DateTime.Today;
+                    DateTime dt1, dt2;
+
+                    var culture = System.Threading.Thread.CurrentThread.CurrentCulture;
+                    var diff = dt.DayOfWeek - culture.DateTimeFormat.FirstDayOfWeek;
+                    if (diff < 0)
+                        diff += 7;
+                    dt1 = dt.AddDays(-diff).Date;
+                    dt2 = dt1.AddDays(1);  // para adequar a brasil
+
+                    txtPer1.Text = dt2.ToString("dd/MM/yyyy");
+                    TxtPer2.Text = DateTime.Today.ToString("dd/MM/yyyy");
+                    break;
+
+                case "4":
+
+                    int d1 = DateTime.Today.Day - 1;
+                    DateTime d2 = DateTime.Today.AddDays(-d1);
+
+                    txtPer1.Text = d2.ToString("dd/MM/yyyy");
+                    TxtPer2.Text = DateTime.Today.ToString("dd/MM/yyyy");
+                    break;
+
+                default:
+                    txtPer1.Text = DateTime.Today.ToString("dd/MM/yyyy");
+                    TxtPer2.Text = DateTime.Today.ToString("dd/MM/yyyy");
+                    break;
+            }
+        }
 
         private void montaCabecalho()
         {
@@ -89,11 +91,11 @@ namespace delivcli
             while (dados.Read())
             {
                 string Entregador = Convert.ToString(dados[0]);
-                string T1 = TotalEntregues(Convert.ToString(dados[1]));
+                string T1 = "99"; // TotalEntregues(Convert.ToString(dados[1]));
                 if (T1 == "0") { continue; }
 
-                string T2 = TotalKM(Convert.ToString(dados[1]));  // atenção incompleto
-                string T3 = TempoTotal(Convert.ToString(dados[1]));
+                string T2 = "0"; //TotalKM(Convert.ToString(dados[1]));  // atenção incompleto
+                string T3 = "0"; //TempoTotal(Convert.ToString(dados[1]));
 
                 string stringcomaspas = "<tr>" +
                                            "<td>" + Entregador + "</td>" +
