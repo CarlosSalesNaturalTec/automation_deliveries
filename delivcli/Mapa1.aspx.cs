@@ -68,7 +68,7 @@ namespace delivcli
                 while (dados.Read())
                 {
 
-                    int min1 = Convert.ToInt16(dados[5]);  // diferença em minutos
+                    int min1 = Convert.ToInt32(dados[5]);  // diferença em minutos
 
                     if (escolha == "On-Line") { if (min1 > 185) { continue; } }
                     if (escolha == "Off-Line") { if (min1 < 185) { continue; } }

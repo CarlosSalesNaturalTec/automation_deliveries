@@ -39,7 +39,7 @@ namespace delivcli
 
             while (dados.Read())
             {
-                int min1 = Convert.ToInt16(dados[1]);  // diferença em minutos (180 de fuso hrário + 5 minutos de tolerância desde a ultima atualização)
+                int min1 = Convert.ToInt32(dados[1]);  // diferença em minutos (180 de fuso hrário + 5 minutos de tolerância desde a ultima atualização)
                 if (escolha == "On-Line") { if (min1 > 185) { continue; } }
                 if (escolha == "Off-Line") { if (min1 < 185) { continue; } }
 
