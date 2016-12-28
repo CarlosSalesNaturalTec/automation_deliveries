@@ -19,6 +19,8 @@ namespace delivcli
                 txt_data.Text = DateTime.Today.ToString("dd/MM/yyyy");
 
                 Preenche_Combo();
+                Preenche_Combo_Status();
+
                 atualiza_grid();
                 totalderegistros();
             }
@@ -60,6 +62,45 @@ namespace delivcli
                 while (dados.Read())
                 {
                     totalderegistros = Convert.ToString(dados[0]);
+                    lbl_total_entregas.Text = totalderegistros;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            ConexaoBancoSQL.fecharConexao();
+        }
+
+        private void totalderegistrosStatus()
+        {
+            // string data da encomenda
+            IFormatProvider culture = new System.Globalization.CultureInfo("pt-BR", true);
+            DateTime dt2 = DateTime.Parse(txtData.Text, culture, System.Globalization.DateTimeStyles.AssumeLocal);
+            string date_formated = dt2.ToString("yyyy-MM-dd");
+
+            // filtro funcionário
+            string stringSelect = "";
+            if (cmb_status.SelectedItem.Value == "-1")
+            {
+                stringSelect = @"SELECT COUNT(*) AS totalderegistros FROM Tbl_Entregas where " +
+                "ID_Cliente= " + ID_Cli + " and Data_Encomenda='" + date_formated + "'";
+            }
+            else
+            {
+                stringSelect = @"SELECT COUNT(*) AS totalderegistros FROM Tbl_Entregas where " +
+                "Status_Entrega = '" + cmb_status.SelectedItem.Text + "' and Data_Encomenda='" + date_formated + "'";
+            }
+
+            // total de registros cadastrados
+            OperacaoBanco operacao4 = new OperacaoBanco();
+            System.Data.SqlClient.SqlDataReader dados4 = operacao4.Select(stringSelect);
+            String totalderegistros = "";
+            try
+            {
+                while (dados4.Read())
+                {
+                    totalderegistros = Convert.ToString(dados4[0]);
                     lbl_total_entregas.Text = totalderegistros;
                 }
             }
@@ -114,6 +155,23 @@ namespace delivcli
 
             cmb_edit_func.Items.Insert(0, new ListItem("SELECIONE FUNCIONÁRIO", "-1"));
             cmb_edit_func.SelectedIndex = Convert.ToInt32("-1");
+        }
+
+        private void Preenche_Combo_Status()
+        {
+            // combostatus das entregas - filtro
+            OperacaoBanco operacao2 = new OperacaoBanco();
+            System.Data.SqlClient.SqlDataReader dados2 = operacao2.Select(@"select Ordem, Descricao from Tbl_Entregas_Status order by Ordem");
+
+            cmb_status.DataSource = dados2;
+            cmb_status.DataTextField = "Descricao";
+            cmb_status.DataValueField = "Ordem";
+            cmb_status.DataBind();
+            ConexaoBancoSQL.fecharConexao();
+
+            cmb_status.Items.Insert(0, new ListItem("TODOS AS ENTREGAS", "-1"));
+            cmb_status.SelectedIndex = Convert.ToInt32("-1");
+
         }
 
         protected bool ValidaData(String date)
@@ -171,6 +229,44 @@ namespace delivcli
             OperacaoBanco operacao = new OperacaoBanco();
             System.Data.SqlClient.SqlDataReader rcrdset = operacao.Select(stringSelect);
             GridView2.DataSource = rcrdset;
+            GridView2.DataBind();
+            ConexaoBancoSQL.fecharConexao();
+        }
+
+        public void atualiza_grid_status()
+        {
+            // string com data selecionada - máscara padrão SQL
+            IFormatProvider culture = new System.Globalization.CultureInfo("pt-BR", true);
+            DateTime dt2 = DateTime.Parse(txtData.Text, culture, System.Globalization.DateTimeStyles.AssumeLocal);
+            string date_formated = dt2.ToString("yyyy-MM-dd");
+
+            // filtro funcionário
+            string stringSelect = "";
+            if (cmb_status.SelectedItem.Value == "-1")
+            {
+                stringSelect = @"select Tbl_Entregas.ID_Motoboy, Tbl_Motoboys.Nome, Tbl_Entregas.Id_Entrega, Tbl_Entregas.Nome_Destinatario, " +
+                    " Tbl_Entregas.Endereco, Tbl_Entregas.Bairro, Tbl_Entregas.Cidade, " +
+                    " Tbl_Entregas.Telefone, Tbl_Entregas.Data_Encomenda, Tbl_Entregas.Cod_Encomenda, Tbl_Entregas.Status_Entrega from Tbl_Entregas " +
+                    " INNER JOIN Tbl_Motoboys ON Tbl_Entregas.ID_Motoboy = Tbl_Motoboys.ID_Motoboy " +
+                    " where Tbl_Entregas.ID_Cliente = " + ID_Cli +
+                    " and Tbl_Entregas.Data_Encomenda = '" + date_formated + "'" +
+                    " order by Tbl_Motoboys.Nome, Tbl_Entregas.Nome_Destinatario";
+            }
+            else
+            {
+                stringSelect = @"select Tbl_Entregas.ID_Motoboy, Tbl_Motoboys.Nome, Tbl_Entregas.Id_Entrega, Tbl_Entregas.Nome_Destinatario, " +
+                    " Tbl_Entregas.Endereco, Tbl_Entregas.Bairro, Tbl_Entregas.Cidade, " +
+                    " Tbl_Entregas.Telefone, Tbl_Entregas.Data_Encomenda, Tbl_Entregas.Cod_Encomenda, Tbl_Entregas.Status_Entrega from Tbl_Entregas " +
+                    " INNER JOIN Tbl_Motoboys ON Tbl_Entregas.ID_Motoboy = Tbl_Motoboys.ID_Motoboy " +
+                    " where Tbl_Entregas.Status_Entrega = '" + cmb_status.SelectedItem.Text +  "'" +
+                    " and Tbl_Entregas.Data_Encomenda = '" + date_formated + "'" +
+                    " order by Tbl_Motoboys.Nome, Tbl_Entregas.Nome_Destinatario";
+            }
+
+            // listagem de ENTREGAS 
+            OperacaoBanco operacao3 = new OperacaoBanco();
+            System.Data.SqlClient.SqlDataReader rcrdset3 = operacao3.Select(stringSelect);
+            GridView2.DataSource = rcrdset3;
             GridView2.DataBind();
             ConexaoBancoSQL.fecharConexao();
         }
@@ -312,6 +408,12 @@ namespace delivcli
         {
             atualiza_grid();
             totalderegistros();
+        }
+
+        protected void cmb_status_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            atualiza_grid_status();
+            totalderegistrosStatus();
         }
     }
 }

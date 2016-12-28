@@ -23,7 +23,7 @@
                         <div class="form-group">
                             <label for="inputUser" class="col-lg-2 control-label">Usuário</label>
                             <div class="col-lg-10">
-                                <asp:TextBox ID="inputUser" runat="server" CssClass="form-control"></asp:TextBox>
+                                <asp:TextBox ID="inputUser" runat="server" CssClass="form-control" Text="USERTIM"></asp:TextBox>
                             </div>
                         </div>
 
