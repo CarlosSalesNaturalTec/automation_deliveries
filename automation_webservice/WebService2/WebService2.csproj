@@ -67,6 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+    <None Include="Properties\PublishProfiles\LogWebService - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\WebService21214 - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\WebService21214.pubxml" />
     <None Include="Web.Debug.config">

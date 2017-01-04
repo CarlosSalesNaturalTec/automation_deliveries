@@ -28,6 +28,28 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "delivcli", "delivcli\delivc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "deliv", "deliv\deliv.csproj", "{FAB4D116-2281-4651-8FAF-AC3691357F71}"
 EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "loginmaster", "loginmaster\", "{056A527E-D00F-4B26-AFF9-111FF5D69EF9}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5.2"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_50095"
+		Debug.AspNetCompiler.PhysicalPath = "loginmaster\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_50095\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_50095"
+		Release.AspNetCompiler.PhysicalPath = "loginmaster\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_50095\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "50095"
+		SlnRelativePath = "loginmaster\"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -46,6 +68,10 @@ Global
 		{FAB4D116-2281-4651-8FAF-AC3691357F71}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FAB4D116-2281-4651-8FAF-AC3691357F71}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FAB4D116-2281-4651-8FAF-AC3691357F71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{056A527E-D00F-4B26-AFF9-111FF5D69EF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{056A527E-D00F-4B26-AFF9-111FF5D69EF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{056A527E-D00F-4B26-AFF9-111FF5D69EF9}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{056A527E-D00F-4B26-AFF9-111FF5D69EF9}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
