@@ -1,13 +1,17 @@
-﻿<!DOCTYPE html>
-<html lang="en">
-  <head>
+﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="Default.aspx.vb" Inherits="Scripts_Default" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head runat="server">
+
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Meta, title, CSS, favicons, etc. -->
-    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Login Painel de Controle - Log Transportes</title>
+    <title>LOGIN Painel de Controle</title>
 
     <!-- Bootstrap -->
     <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -20,9 +24,33 @@
 
     <!-- Custom Theme Style -->
     <link href="../build/css/custom.min.css" rel="stylesheet">
-  </head>
 
-  <body class="login">
+    <script src="Scripts/jquery-3.1.1.min.js" type="text/javascript"></script>
+
+    <script type = "text/javascript">
+        function TentarLogin() {            
+
+            $.ajax({
+                type: "POST",
+                url: "Default.aspx/GetAcesso",
+                data: '{name: "' + document.getElementById("txtNome").value + '" }',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: OnSuccess,
+                failure: function (response) {
+                    alert(response.d);
+                }
+            });
+        }
+        function OnSuccess(response) {
+            alert(response.d);
+        }
+    </script> 
+</head>
+
+<body class="login">
+
+
     <div>
       <a class="hiddenanchor" id="signup"></a>
       <a class="hiddenanchor" id="signin"></a>
@@ -30,16 +58,16 @@
       <div class="login_wrapper">
         <div class="animate form login_form">
           <section class="login_content">
-            <form>
+            <form id="form1" runat="server">
               <h1>Painel de Controle</h1>
               <div>
-                <input type="text" class="form-control" placeholder="Usuário" required="" />
+                <input type="text" class="form-control" placeholder="Usuário" id="txtNome"/>
               </div>
               <div>
                 <input type="password" class="form-control" placeholder="Senha" required="" />
               </div>
               <div>
-                <a class="btn btn-default submit" href="http://logcli.azurewebsites.net/">Entrar</a>
+                  <input type="button" value="ENTRAR" onclick="TentarLogin()" class="btn btn-default" />
               </div>
 
               <div class="clearfix"></div>
@@ -54,9 +82,9 @@
 
                 <div>
                   <h1><i class="fa fa-motorcycle"></i> Log Transportes</h1>
-                  <a href="https://play.google.com/store/apps/details?id=br.com.loglogistica.logapp"> Baixar Aplicativo de Rastreamento na Google Play Store</a>
-                        
-                </div>
+                  <a href="https://play.google.com/store/apps/details?id=br.com.loglogistica.logapp"> Baixar Aplicativo de Rastreamento na Google Play Store</a>  
+                </div>                
+
               </div>
             </form>
           </section>
@@ -100,4 +128,6 @@
       </div>
     </div>
   </body>
+
+
 </html>
