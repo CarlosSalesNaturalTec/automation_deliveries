@@ -31,6 +31,7 @@ EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "loglogin", "loglogin\", "{ABF809FC-E8FE-482C-BF12-F253FFB2ADF8}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5.2"
+		ProjectReferences = ""
 		Debug.AspNetCompiler.VirtualPath = "/localhost_54060"
 		Debug.AspNetCompiler.PhysicalPath = "loglogin\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_54060\"

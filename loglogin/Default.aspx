@@ -32,8 +32,8 @@
 
             $.ajax({
                 type: "POST",
-                url: "Default.aspx/GetAcesso",
-                data: '{name: "' + document.getElementById("txtNome").value + '" }',
+                url: "WebService.asmx/Identificador",
+                data: '{user: "' + document.getElementById("txtNome").value + '", pwd: "' + document.getElementById("txtpwd").value + '"  }',
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: OnSuccess,
@@ -43,7 +43,8 @@
             });
         }
         function OnSuccess(response) {
-            alert(response.d);
+            var linkurl = response.d;
+            window.location.href = linkurl;
         }
     </script> 
 </head>
@@ -64,7 +65,7 @@
                 <input type="text" class="form-control" placeholder="Usuário" id="txtNome"/>
               </div>
               <div>
-                <input type="password" class="form-control" placeholder="Senha" required="" />
+                <input type="password" class="form-control" placeholder="Senha" required="" id="txtpwd" />
               </div>
               <div>
                   <input type="button" value="ENTRAR" onclick="TentarLogin()" class="btn btn-default" />
