@@ -1,0 +1,10 @@
+C:\Users\Carlos Sales\Source\Repos\automation_deliveries\automation_webservice\BLL\bin\Release\BLL.dll
+C:\Users\Carlos Sales\Source\Repos\automation_deliveries\automation_webservice\BLL\bin\Release\BLL.pdb
+C:\Users\Carlos Sales\Source\Repos\automation_deliveries\automation_webservice\BLL\bin\Release\DAL.dll
+C:\Users\Carlos Sales\Source\Repos\automation_deliveries\automation_webservice\BLL\bin\Release\EntityFramework.dll
+C:\Users\Carlos Sales\Source\Repos\automation_deliveries\automation_webservice\BLL\bin\Release\DAL.pdb
+C:\Users\Carlos Sales\Source\Repos\automation_deliveries\automation_webservice\BLL\bin\Release\EntityFramework.xml
+C:\Users\Carlos Sales\Source\Repos\automation_deliveries\automation_webservice\BLL\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\Carlos Sales\Source\Repos\automation_deliveries\automation_webservice\BLL\obj\Release\BLL.csprojResolveAssemblyReference.cache
+C:\Users\Carlos Sales\Source\Repos\automation_deliveries\automation_webservice\BLL\obj\Release\BLL.dll
+C:\Users\Carlos Sales\Source\Repos\automation_deliveries\automation_webservice\BLL\obj\Release\BLL.pdb

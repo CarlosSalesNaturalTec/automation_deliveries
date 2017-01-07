@@ -1,0 +1,4 @@
+C:\Users\Carlos Sales\Source\Repos\automation_deliveries\automation_webservice\UI\bin\Debug\UI.dll
+C:\Users\Carlos Sales\Source\Repos\automation_deliveries\automation_webservice\UI\bin\Debug\UI.pdb
+C:\Users\Carlos Sales\Source\Repos\automation_deliveries\automation_webservice\UI\obj\Debug\UI.dll
+C:\Users\Carlos Sales\Source\Repos\automation_deliveries\automation_webservice\UI\obj\Debug\UI.pdb

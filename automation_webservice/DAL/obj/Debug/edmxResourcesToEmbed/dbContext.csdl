@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dblogModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Tbl_Clientes">
+    <Key>
+      <PropertyRef Name="ID_Cliente" />
+    </Key>
+    <Property Name="ID_Cliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nome" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Telefone" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Responsavel" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Area_Unidade" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="usuario" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="senha" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Tbl_Entregas" Relationship="Self.FK__Tbl_Entre__ID_Cl__412EB0B6" FromRole="Tbl_Clientes" ToRole="Tbl_Entregas" />
+    <NavigationProperty Name="Tbl_Motoboys" Relationship="Self.FK__Tbl_Motob__ID_Cl__38996AB5" FromRole="Tbl_Clientes" ToRole="Tbl_Motoboys" />
+  </EntityType>
+  <EntityType Name="Tbl_Entregas">
+    <Key>
+      <PropertyRef Name="ID_Entrega" />
+    </Key>
+    <Property Name="ID_Entrega" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_Cliente" Type="Int32" />
+    <Property Name="ID_Motoboy" Type="Int32" />
+    <Property Name="Nome_Destinatario" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Endereco" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Ponto_Ref" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Bairro" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Cidade" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Cod_Encomenda" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Data_Encomenda" Type="DateTime" Precision="3" />
+    <Property Name="Data_Entrega" Type="DateTime" Precision="3" />
+    <Property Name="Telefone" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Observacoes" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+    <Property Name="Entregue" Type="Boolean" />
+    <Property Name="Status_Entrega" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Latitude" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Longitude" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Tbl_Clientes" Relationship="Self.FK__Tbl_Entre__ID_Cl__412EB0B6" FromRole="Tbl_Entregas" ToRole="Tbl_Clientes" />
+    <NavigationProperty Name="Tbl_Motoboys" Relationship="Self.FK__Tbl_Entre__ID_Mo__4222D4EF" FromRole="Tbl_Entregas" ToRole="Tbl_Motoboys" />
+  </EntityType>
+  <EntityType Name="Tbl_Motoboys">
+    <Key>
+      <PropertyRef Name="ID_Motoboy" />
+    </Key>
+    <Property Name="ID_Motoboy" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_Cliente" Type="Int32" />
+    <Property Name="Nome" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Telefone" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="WhatsApp" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Veiculo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Modelo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Placa" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="usuario" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="senha" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+    <Property Name="GeoLatitude" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="GeoLongitude" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="GeoAccuracy" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="GeoDataLoc" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Tbl_Clientes" Relationship="Self.FK__Tbl_Motob__ID_Cl__38996AB5" FromRole="Tbl_Motoboys" ToRole="Tbl_Clientes" />
+    <NavigationProperty Name="Tbl_Entregas" Relationship="Self.FK__Tbl_Entre__ID_Mo__4222D4EF" FromRole="Tbl_Motoboys" ToRole="Tbl_Entregas" />
+  </EntityType>
+  <Association Name="FK__Tbl_Entre__ID_Cl__412EB0B6">
+    <End Role="Tbl_Clientes" Type="Self.Tbl_Clientes" Multiplicity="0..1" />
+    <End Role="Tbl_Entregas" Type="Self.Tbl_Entregas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tbl_Clientes">
+        <PropertyRef Name="ID_Cliente" />
+      </Principal>
+      <Dependent Role="Tbl_Entregas">
+        <PropertyRef Name="ID_Cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Tbl_Motob__ID_Cl__38996AB5">
+    <End Role="Tbl_Clientes" Type="Self.Tbl_Clientes" Multiplicity="0..1" />
+    <End Role="Tbl_Motoboys" Type="Self.Tbl_Motoboys" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tbl_Clientes">
+        <PropertyRef Name="ID_Cliente" />
+      </Principal>
+      <Dependent Role="Tbl_Motoboys">
+        <PropertyRef Name="ID_Cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Tbl_Entre__ID_Mo__4222D4EF">
+    <End Role="Tbl_Motoboys" Type="Self.Tbl_Motoboys" Multiplicity="0..1" />
+    <End Role="Tbl_Entregas" Type="Self.Tbl_Entregas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tbl_Motoboys">
+        <PropertyRef Name="ID_Motoboy" />
+      </Principal>
+      <Dependent Role="Tbl_Entregas">
+        <PropertyRef Name="ID_Motoboy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="dblogEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Tbl_Clientes" EntityType="Self.Tbl_Clientes" />
+    <EntitySet Name="Tbl_Entregas" EntityType="Self.Tbl_Entregas" />
+    <EntitySet Name="Tbl_Motoboys" EntityType="Self.Tbl_Motoboys" />
+    <AssociationSet Name="FK__Tbl_Entre__ID_Cl__412EB0B6" Association="Self.FK__Tbl_Entre__ID_Cl__412EB0B6">
+      <End Role="Tbl_Clientes" EntitySet="Tbl_Clientes" />
+      <End Role="Tbl_Entregas" EntitySet="Tbl_Entregas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Tbl_Motob__ID_Cl__38996AB5" Association="Self.FK__Tbl_Motob__ID_Cl__38996AB5">
+      <End Role="Tbl_Clientes" EntitySet="Tbl_Clientes" />
+      <End Role="Tbl_Motoboys" EntitySet="Tbl_Motoboys" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Tbl_Entre__ID_Mo__4222D4EF" Association="Self.FK__Tbl_Entre__ID_Mo__4222D4EF">
+      <End Role="Tbl_Motoboys" EntitySet="Tbl_Motoboys" />
+      <End Role="Tbl_Entregas" EntitySet="Tbl_Entregas" />
+    </AssociationSet>
+    <FunctionImport Name="uspConsultarEntregas" ReturnType="Collection(dblogModel.uspConsultarEntregas_Result)">
+      <Parameter Name="INintIDMotoboy" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="uspConsultarEntregas_Result">
+    <Property Type="Int32" Name="ID_Cliente" Nullable="true" />
+    <Property Type="Int32" Name="ID_Motoboy" Nullable="true" />
+    <Property Type="String" Name="Nome_Destinatario" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Endereco" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Bairro" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Cidade" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Latitude" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="Longitude" Nullable="true" MaxLength="30" />
+  </ComplexType>
+</Schema>

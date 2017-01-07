@@ -1,0 +1,29 @@
+{
+  "siteName": {
+    "value": "WebService21214"
+  },
+  "hostingPlanName": {
+    "value": "webserver_automation"
+  },
+  "siteLocation": {
+    "value": "Brazil South"
+  },
+  "sku": {
+    "value": "Free"
+  },
+  "workerSize": {
+    "value": "0"
+  },
+  "siteMode": {
+    "value": "Limited"
+  },
+  "computeMode": {
+    "value": "0"
+  },
+  "subscriptionId": {
+    "value": "1d393b78-8729-43d0-8983-e65f903e3351"
+  },
+  "resourceGroup": {
+    "value": "webserver_automation"
+  }
+}

@@ -1,0 +1,6 @@
+C:\Users\Carlos Sales\Source\Repos\automation_deliveries\automation_webservice\WebService\bin\WebService.dll.config
+C:\Users\Carlos Sales\Source\Repos\automation_deliveries\automation_webservice\WebService\bin\WebService.dll
+C:\Users\Carlos Sales\Source\Repos\automation_deliveries\automation_webservice\WebService\bin\WebService.pdb
+C:\Users\Carlos Sales\Source\Repos\automation_deliveries\automation_webservice\WebService\obj\Release\WebService.csprojResolveAssemblyReference.cache
+C:\Users\Carlos Sales\Source\Repos\automation_deliveries\automation_webservice\WebService\obj\Release\WebService.dll
+C:\Users\Carlos Sales\Source\Repos\automation_deliveries\automation_webservice\WebService\obj\Release\WebService.pdb

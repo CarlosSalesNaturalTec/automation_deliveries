@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="dblogModelStoreContainer" CdmEntityContainer="dblogEntities">
+    <EntitySetMapping Name="Tbl_Clientes">
+      <EntityTypeMapping TypeName="dblogModel.Tbl_Clientes">
+        <MappingFragment StoreEntitySet="Tbl_Clientes">
+          <ScalarProperty Name="ID_Cliente" ColumnName="ID_Cliente" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="Telefone" ColumnName="Telefone" />
+          <ScalarProperty Name="Responsavel" ColumnName="Responsavel" />
+          <ScalarProperty Name="Area_Unidade" ColumnName="Area_Unidade" />
+          <ScalarProperty Name="usuario" ColumnName="usuario" />
+          <ScalarProperty Name="senha" ColumnName="senha" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Entregas">
+      <EntityTypeMapping TypeName="dblogModel.Tbl_Entregas">
+        <MappingFragment StoreEntitySet="Tbl_Entregas">
+          <ScalarProperty Name="ID_Entrega" ColumnName="ID_Entrega" />
+          <ScalarProperty Name="ID_Cliente" ColumnName="ID_Cliente" />
+          <ScalarProperty Name="ID_Motoboy" ColumnName="ID_Motoboy" />
+          <ScalarProperty Name="Nome_Destinatario" ColumnName="Nome_Destinatario" />
+          <ScalarProperty Name="Endereco" ColumnName="Endereco" />
+          <ScalarProperty Name="Ponto_Ref" ColumnName="Ponto_Ref" />
+          <ScalarProperty Name="Bairro" ColumnName="Bairro" />
+          <ScalarProperty Name="Cidade" ColumnName="Cidade" />
+          <ScalarProperty Name="Cod_Encomenda" ColumnName="Cod_Encomenda" />
+          <ScalarProperty Name="Data_Encomenda" ColumnName="Data_Encomenda" />
+          <ScalarProperty Name="Data_Entrega" ColumnName="Data_Entrega" />
+          <ScalarProperty Name="Telefone" ColumnName="Telefone" />
+          <ScalarProperty Name="Observacoes" ColumnName="Observacoes" />
+          <ScalarProperty Name="Entregue" ColumnName="Entregue" />
+          <ScalarProperty Name="Status_Entrega" ColumnName="Status_Entrega" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Motoboys">
+      <EntityTypeMapping TypeName="dblogModel.Tbl_Motoboys">
+        <MappingFragment StoreEntitySet="Tbl_Motoboys">
+          <ScalarProperty Name="ID_Motoboy" ColumnName="ID_Motoboy" />
+          <ScalarProperty Name="ID_Cliente" ColumnName="ID_Cliente" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="Telefone" ColumnName="Telefone" />
+          <ScalarProperty Name="WhatsApp" ColumnName="WhatsApp" />
+          <ScalarProperty Name="Veiculo" ColumnName="Veiculo" />
+          <ScalarProperty Name="Modelo" ColumnName="Modelo" />
+          <ScalarProperty Name="Placa" ColumnName="Placa" />
+          <ScalarProperty Name="usuario" ColumnName="usuario" />
+          <ScalarProperty Name="senha" ColumnName="senha" />
+          <ScalarProperty Name="GeoLatitude" ColumnName="GeoLatitude" />
+          <ScalarProperty Name="GeoLongitude" ColumnName="GeoLongitude" />
+          <ScalarProperty Name="GeoAccuracy" ColumnName="GeoAccuracy" />
+          <ScalarProperty Name="GeoDataLoc" ColumnName="GeoDataLoc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="uspConsultarEntregas" FunctionName="dblogModel.Store.uspConsultarEntregas">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="dblogModel.uspConsultarEntregas_Result">
+          <ScalarProperty Name="ID_Cliente" ColumnName="ID_Cliente" />
+          <ScalarProperty Name="ID_Motoboy" ColumnName="ID_Motoboy" />
+          <ScalarProperty Name="Nome_Destinatario" ColumnName="Nome_Destinatario" />
+          <ScalarProperty Name="Endereco" ColumnName="Endereco" />
+          <ScalarProperty Name="Bairro" ColumnName="Bairro" />
+          <ScalarProperty Name="Cidade" ColumnName="Cidade" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

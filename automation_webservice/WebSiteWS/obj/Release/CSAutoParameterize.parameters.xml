@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="dblogEntities-Web.config Connection String" description="dblogEntities Connection String used in web.config by the application to access the database." defaultValue="metadata=res://*/dbContext.csdl|res://*/dbContext.ssdl|res://*/dbContext.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=servermodels.database.windows.net;initial catalog=dblog;persist security info=True;user id=admservermodel;password=Pwd@2016;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Carlos\ Sales\\Source\\Repos\\automation_deliveries\\automation_webservice\\WebSiteWS\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='dblogEntities']/@connectionString" />
+  </parameter>
+</parameters>

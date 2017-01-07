@@ -12,9 +12,10 @@
     <title>Painel de Controle </title>
 
     <script src="../Vendors/jquery/dist/jquery.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
-    
+    <script src="../Vendors/bootstrap/dist/js/bootstrap.min.js"></script>
 
 </head>
-
+<body>
+    <asp:Literal ID="Literal1" runat="server"></asp:Literal>
+</body>
 </html>

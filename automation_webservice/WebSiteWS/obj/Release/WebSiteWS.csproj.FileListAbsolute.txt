@@ -1,0 +1,14 @@
+C:\Users\Carlos Sales\Source\Repos\automation_deliveries\automation_webservice\WebSiteWS\bin\WebSiteWS.dll.config
+C:\Users\Carlos Sales\Source\Repos\automation_deliveries\automation_webservice\WebSiteWS\bin\WebSiteWS.dll
+C:\Users\Carlos Sales\Source\Repos\automation_deliveries\automation_webservice\WebSiteWS\bin\WebSiteWS.pdb
+C:\Users\Carlos Sales\Source\Repos\automation_deliveries\automation_webservice\WebSiteWS\bin\BLL.dll
+C:\Users\Carlos Sales\Source\Repos\automation_deliveries\automation_webservice\WebSiteWS\bin\DAL.dll
+C:\Users\Carlos Sales\Source\Repos\automation_deliveries\automation_webservice\WebSiteWS\bin\EntityFramework.dll
+C:\Users\Carlos Sales\Source\Repos\automation_deliveries\automation_webservice\WebSiteWS\bin\BLL.pdb
+C:\Users\Carlos Sales\Source\Repos\automation_deliveries\automation_webservice\WebSiteWS\bin\DAL.pdb
+C:\Users\Carlos Sales\Source\Repos\automation_deliveries\automation_webservice\WebSiteWS\bin\EntityFramework.xml
+C:\Users\Carlos Sales\Source\Repos\automation_deliveries\automation_webservice\WebSiteWS\obj\Release\WebSiteWS.csprojResolveAssemblyReference.cache
+C:\Users\Carlos Sales\Source\Repos\automation_deliveries\automation_webservice\WebSiteWS\obj\Release\WebSiteWS.dll
+C:\Users\Carlos Sales\Source\Repos\automation_deliveries\automation_webservice\WebSiteWS\obj\Release\WebSiteWS.pdb
+C:\Users\Carlos Sales\Source\Repos\automation_deliveries\automation_webservice\WebSiteWS\bin\EntityFramework.SqlServer.dll
+C:\Users\Carlos Sales\Source\Repos\automation_deliveries\automation_webservice\WebSiteWS\bin\EntityFramework.SqlServer.xml

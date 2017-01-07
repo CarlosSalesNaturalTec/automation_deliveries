@@ -1,0 +1,7 @@
+C:\Users\Carlos Sales\Source\Repos\automation_deliveries\automation_webservice\DAL\bin\Debug\DAL.dll.config
+C:\Users\Carlos Sales\Source\Repos\automation_deliveries\automation_webservice\DAL\bin\Debug\DAL.dll
+C:\Users\Carlos Sales\Source\Repos\automation_deliveries\automation_webservice\DAL\bin\Debug\DAL.pdb
+C:\Users\Carlos Sales\Source\Repos\automation_deliveries\automation_webservice\DAL\bin\Debug\EntityFramework.dll
+C:\Users\Carlos Sales\Source\Repos\automation_deliveries\automation_webservice\DAL\bin\Debug\EntityFramework.xml
+C:\Users\Carlos Sales\Source\Repos\automation_deliveries\automation_webservice\DAL\obj\Debug\DAL.dll
+C:\Users\Carlos Sales\Source\Repos\automation_deliveries\automation_webservice\DAL\obj\Debug\DAL.pdb
