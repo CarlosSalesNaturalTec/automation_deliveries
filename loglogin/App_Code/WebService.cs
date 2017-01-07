@@ -19,30 +19,33 @@ public class WebService : System.Web.Services.WebService
     public string Identificador(string user, string pwd)
     {
 
-        string url = "USUARIO NAO LOCALIZADO";
+        string url = "#signup";
 
         // localiza usuario
-        string stringSelect = "select ID_Cliente , usuario , senha from Tbl_Clientes where usuario = '" + user + "'";
-       
+        string stringSelect = "select senha, ID_Cliente, nivel from Tbl_Usuarios where usuario = '" + user + "'";
         OperacaoBanco operacao = new OperacaoBanco();
         System.Data.SqlClient.SqlDataReader rcrdset = operacao.Select(stringSelect);
         while (rcrdset.Read())
         {
-            string idcli = Convert.ToString(rcrdset[0]);
-            
-            url = "ID do usuario: "  + idcli;
-
-            /*if (inputSenha.Text == Convert.ToString(rcrdset[2]))
+            if (pwd == Convert.ToString(rcrdset[0]))
             {
-                Session["Cli_ID"] = Convert.ToString(rcrdset[0]);
-                Session["CLI_ID_FUNC"] ="0";
-                Session["LocTipo"] = "On-Line";   //utilizado na pagina de Localizadores exibindo entregadores ativos
-                Response.Redirect("Painel.aspx");
+                string idcli = Convert.ToString(rcrdset[1]);
+                string nivelUSer = Convert.ToString(rcrdset[2]);
+
+                switch (nivelUSer)
+                {
+                    case "1":
+                        url = "http://logcli.azurewebsites.net/Default.aspx";
+                        break;
+                    default:
+                        url = "http://logcli.azurewebsites.net/Default.aspx";
+                        break;
+                } 
             }
             else
             {
-                lbl_msg.Text = "USURIO OU SENHA INVÁLIDOS";
-            }*/
+                url = "#signup";
+            }
         }
         ConexaoBancoSQL.fecharConexao();
 
