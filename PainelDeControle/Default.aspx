@@ -49,7 +49,7 @@
                 <ul class="nav side-menu">
                   <li><a><i class="fa fa-home"></i> Cadastros <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="#">Clientes</a></li>
+                      <li><a href="ClienteNovo.aspx" target="iframe_a">Clientes</a></li>
                       <li><a href="Entregadores.aspx" target="iframe_a">Entregadores</a></li>
                     </ul>
                   </li>

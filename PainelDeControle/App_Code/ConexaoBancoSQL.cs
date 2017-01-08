@@ -6,6 +6,13 @@ public class ConexaoBancoSQL
     private static SqlConnection objConexao = null;
     private string stringconnection1;
 
+    public void tentarAbrirConexaoRemota()
+    {
+        objConexao = new SqlConnection();
+        objConexao.ConnectionString = stringconnection1;
+        objConexao.Open();
+    }
+
     public ConexaoBancoSQL()
     {
         // *** STRING DE CONEXÃO COM BANCO DE DADOS - Atenção! Alterar dados conforme seu servidor
@@ -20,19 +27,11 @@ public class ConexaoBancoSQL
         }
     }
 
-    public void tentarAbrirConexaoRemota()
-    {
-        objConexao = new SqlConnection();
-        objConexao.ConnectionString = stringconnection1;
-        objConexao.Open();
-    }
-
     public static SqlConnection getConexao()
     {
         new ConexaoBancoSQL();
         return objConexao;
     }
-
     public static void fecharConexao()
     {
         objConexao.Close();

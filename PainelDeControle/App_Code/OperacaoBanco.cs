@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Data.SqlClient;
 
-/// <summary>
-/// Summary description for OperacaoBanco
-/// </summary>
 public class OperacaoBanco
 {
     private SqlCommand TemplateMethod(String query)
@@ -71,4 +68,5 @@ public class OperacaoBanco
             return false;
         }
     }
+
 }

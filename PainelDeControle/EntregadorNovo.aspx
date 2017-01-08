@@ -5,13 +5,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <link rel="stylesheet" href="~/vendors/bootstrap/dist/css/bootstrap.min.css">
-
-    <script src="~/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="~/vendors/jquery/dist/jquery-3.1.1.min.js" type="text/javascript"></script>
-
     <style type="text/css">
         #results {
             float: right;
@@ -22,34 +15,13 @@
         }
     </style>
 
-    <script type = "text/javascript">
-        function SalvarRegistro() {            
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-            var v1 = document.getElementById("inputNome").value
-            var v2 = document.getElementById("selectVeiculo").value
-            var v3 = document.getElementById("inputModelo").value
-            var v4 = document.getElementById("inputPlaca").value
-            var v5 = document.getElementById("inputIDCli").value
-            var v6 = document.getElementById("inputCli").value
-            var v7 = document.getElementById("Hidden1").value
-
-            $.ajax({
-                type: "POST",
-                url: "WebServicePainelMaster.asmx/EntregadorSalvar",
-                data: '{v1: "' + v1 + '", v2: "' + v2 + ', v3: "' + v3 + '", v4: "' + v4 + '", v5: "' + v5 + '", v6: "' + v6 + '", v7: "' + v7 + '" }',
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: OnSuccess,
-                failure: function (response) {
-                    alert(response.d);
-                }
-            });
-        }
-        function OnSuccess(response) {
-            alert(response.d);
-            window.location.href = "Entregadores.aspx";
-        }
-    </script> 
+    <link rel="stylesheet" href="~/vendors/bootstrap/dist/css/bootstrap.min.css">
+    <script type="text/javascript" src="Scripts/jquery-3.1.1.min.js" ></script>
+    <script type="text/javascript" src="Scripts/webcam.js"></script>
 
 </head>
 <body>
@@ -95,39 +67,77 @@
 
             <legend></legend>
 
-            <!-- Camera - necessário https -->
+            <!-- Camera  -->
             <br />
             <div id="results"></div>
             <div id="my_camera"></div>
 
             <br />
             <div class="row">
-                <div class="col-md-5">
+                <div class="col-sm-6">
                     <label for="filePicker">Carregar Foto existente:</label><br>
                     <input type="file" id="filePicker">
                 </div>
-                <div class="col-md-5">
+                <div class="col-sm-6">
                     <label for="btwebcam">WebCam:</label><br>
                     <input id="btwebcam" type="button" value="Ativar WebCam" onclick="AtivarWebCam()">
                     <input type="button" value="Capturar imagem WebCam" onclick="take_snapshot()">
                 </div>
             </div>
+            <input id="Hidden1" name="fotouri" type="hidden" />
             <br />
+            <!-- Camera  -->
 
             <legend></legend>
+
             <div class="form-group">
                 <div class="col-md-4 col-md-offset-1">
-                    <button type="reset" class="btn btn-default">Cancelar</button>
-                    <input type="button" value="Salvar" onclick="SalvarRegistro()" class="btn btn-success" />
+                    <button type="reset" class="btn btn-default" onclick="cancelar()">Cancelar</button>
+                    <button type="button" class="btn btn-success" onclick="SalvarRegistro()">Salvar</button>
                 </div>
-            </div>
+            </div
+
         </fieldset>
     </form>
 
-    <input id="Hidden1" name="fotouri" type="hidden"/>
+    <!-- Salvar Registro  -->
+    <script type="text/javascript">
+        function SalvarRegistro() {
 
-    <script type="text/javascript" src="Scripts/webcam.js"></script>
+            var v1 = document.getElementById("inputNome").value
+            var v2 = document.getElementById("selectVeiculo").value
+            var v3 = document.getElementById("inputModelo").value
+            var v4 = document.getElementById("inputPlaca").value
+            var v5 = document.getElementById("inputIDCli").value
+            var v6 = document.getElementById("inputCli").value
+            var v7 = document.getElementById("Hidden1").value
 
+            $.ajax({
+                type: "POST",
+                url: "wspainel.asmx/SalvarEntregador",
+                data: '{param1: "' + v1 + '", param2: "' + v2 + '", param3: "' + v3 + '", param4: "' + v4 + '", param5: "' + v5 + '", param6: "' + v6 + '", param7: "' + v7 + '"  }',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: OnSuccess,
+                failure: function (response) {
+                    alert(response.d);
+                }
+            });
+        }
+        function OnSuccess(response) {
+            alert("Ok");
+            var linkurl = response.d;
+            window.location.href = linkurl;
+        }
+        function cancelar() {
+            alert("Ok");
+            var linkurl = "../Entregadores.aspx";
+            window.location.href = linkurl;
+        }
+    </script>
+    <!-- Salvar Registro  -->
+
+    <!-- Foto  -->
     <script language="JavaScript">
 
         var handleFileSelect = function (evt) {
@@ -156,7 +166,6 @@
             alert('The File APIs are not fully supported in this browser.');
         }
 
-
         function AtivarWebCam() {
             Webcam.set({
                 width: 160,
@@ -164,7 +173,7 @@
                 image_format: 'png'
             });
             Webcam.attach('#my_camera');
-            
+
         }
 
         function take_snapshot() {
@@ -179,7 +188,7 @@
         }
 
     </script>
-
+    <!-- Foto  -->
 
 </body>
 
