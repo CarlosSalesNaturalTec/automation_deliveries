@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 
-public partial class CadEntregadores : System.Web.UI.Page
+public partial class Entregadores : System.Web.UI.Page
 {
     StringBuilder str = new StringBuilder();
 
@@ -9,9 +9,6 @@ public partial class CadEntregadores : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            // tenta identificar se houve login. caso contrário vai para página de erro
-            string v_id_cli = Session["Cli_ID"].ToString();
-
             montaCabecalho();
             dadosCorpo();
             montaRodape();
@@ -50,7 +47,7 @@ public partial class CadEntregadores : System.Web.UI.Page
 
         while (dados.Read())
         {
-            string linkUrl = "<a href=\"FichaEntregador.aspx?ID=" + Convert.ToString(dados[5]) + "\" target=\"_parent\">";
+            string linkUrl = "<a href=\"FichaEntregador.aspx?ID=" + Convert.ToString(dados[4]) + "\" target=\"_self\">";
 
             string Coluna1 = linkUrl + Convert.ToString(dados[0]) + "</a>";
             string Coluna2 = Convert.ToString(dados[1]);
