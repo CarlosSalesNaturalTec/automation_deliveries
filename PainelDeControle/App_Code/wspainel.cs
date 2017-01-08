@@ -1,4 +1,5 @@
-﻿using System.Web.Services;
+﻿using System;
+using System.Web.Services;
 
 [WebService(Namespace = "http://tempuri.org/")]
 [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
@@ -10,6 +11,7 @@ public class wspainel : System.Web.Services.WebService
     {
         //Uncomment the following line if using designed components 
         //InitializeComponent(); 
+
         // ALELUIA ! LOUVADO SEJA O SENHOR JESUS . ELE ME TEM AJUDADO E ME TORNADO SEU PRINCIPE
     }
 
@@ -30,7 +32,51 @@ public class wspainel : System.Web.Services.WebService
         }
 
         return url;
-
     }
 
+    [WebMethod]
+    public string ExcluirEntregador(string param1)
+    {
+        string url = "";
+        OperacaoBanco operacao = new OperacaoBanco();
+        Boolean deletar = operacao.Delete("delete from Tbl_Motoboys where ID_Motoboy =" + param1);
+        ConexaoBancoSQL.fecharConexao();
+        if (deletar == true)
+        {
+            url = "../Entregadores.aspx";
+        }
+        else
+        {
+            url = "../Sorry.aspx";
+        }
+
+        return url;
+    }
+
+    [WebMethod]
+    public string EditarEntregador(string param1, string param2, string param3, string param4, string param5, string param6, string param7, string param8)
+    {
+        string url = "";
+        OperacaoBanco operacao = new OperacaoBanco();
+        bool inserir = operacao.Insert(@"update Tbl_Motoboys set nome = '" + param1 + "', " +
+            "veiculo = '" +  param2 + "', " +
+            "modelo = '" + param3 + "', " +
+            "placa = '" + param4 + "', " +
+            "ID_Cliente = " + param5 + ", " +
+            "Cliente = '" + param6 + "', " +
+            "FotoDataURI  = '" + param7 + "' " +
+            "where ID_Motoboy =" + param8);
+
+        ConexaoBancoSQL.fecharConexao();
+        if (inserir == true)
+        {
+            url = "../Entregadores.aspx";
+        }
+        else
+        {
+            url = "../Sorry.aspx";
+        }
+
+        return url;
+    }
 }

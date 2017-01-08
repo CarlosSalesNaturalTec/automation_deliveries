@@ -37,7 +37,7 @@ public partial class Entregadores : System.Web.UI.Page
     private void dadosCorpo()
     {
         string datastatus = DateTime.Now.ToString("yyyy-MM-dd");
-        string stringselect = @"select Tbl_Motoboys.Nome as NomeEnt, Tbl_Motoboys.Modelo, Tbl_Motoboys.Placa, Tbl_Clientes.Nome as NomeCli, Tbl_Motoboys.ID_Motoboy " +
+        string stringselect = @"select Tbl_Motoboys.Nome as NomeEnt, Tbl_Motoboys.Veiculo, Tbl_Motoboys.Placa, Tbl_Clientes.Nome as NomeCli, Tbl_Motoboys.ID_Motoboy " +
                 " from Tbl_Motoboys " +
                 " INNER JOIN Tbl_Clientes ON Tbl_Motoboys.ID_Cliente  = Tbl_Clientes.ID_Cliente " +
                 " order by Tbl_Motoboys.Nome";
@@ -47,7 +47,7 @@ public partial class Entregadores : System.Web.UI.Page
 
         while (dados.Read())
         {
-            string linkUrl = "<a href=\"FichaEntregador.aspx?ID=" + Convert.ToString(dados[4]) + "\" target=\"_self\">";
+            string linkUrl = "<a href=\"EntregadorFicha.aspx?IDEnt=" + Convert.ToString(dados[4]) + "\" target=\"_self\">";
 
             string Coluna1 = linkUrl + Convert.ToString(dados[0]) + "</a>";
             string Coluna2 = Convert.ToString(dados[1]);
