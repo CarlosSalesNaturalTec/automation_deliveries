@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ClienteNovo.aspx.cs" Inherits="ClienteNovo" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ClienteFicha.aspx.cs" Inherits="ClienteFicha" %>
 
 <!DOCTYPE html>
 
@@ -20,7 +20,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="~/vendors/bootstrap/dist/css/bootstrap.min.css">
-    <script type="text/javascript" src="Scripts/jquery-3.1.1.min.js" ></script>
+    <script type="text/javascript" src="Scripts/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="Scripts/webcam.js"></script>
 
 </head>
@@ -28,7 +28,7 @@
 
     <form class="form-horizontal">
         <fieldset>
-            <legend>Novo Cliente</legend>
+            <legend>Ficha Cliente</legend>
 
             <div class="form-group">
                 <label for="inputNome" class="col-md-1 control-label">Nome</label>
@@ -60,39 +60,41 @@
 
             <legend></legend>
 
+            <input id="IDHidden" name="IDHidden" type="hidden" />
+
             <div class="form-group">
                 <div class="col-md-4 col-md-offset-1">
+                    <button type="button" class="btn btn-danger" onclick="ExcluirRegistro()">Excluir</button>
                     <button type="reset" class="btn btn-default" onclick="cancelar()">Cancelar</button>
-                    <button type="button" class="btn btn-success" onclick="SalvarRegistro()">Salvar</button>
+                    <button type="button" class="btn btn-success" onclick="AtualizarRegistro()">Salvar</button>
                 </div>
             </div>
 
         </fieldset>
     </form>
 
-    <!-- Salvar Registro  -->
+    <!-- preenche campos  -->
+    <asp:Literal ID="Literal1" runat="server"></asp:Literal>
+    <!-- preenche campos  -->
+
+    <!-- Operações com Registro  -->
     <script type="text/javascript">
-        function SalvarRegistro() {
+
+        function AtualizarRegistro() {
 
             var v1 = document.getElementById("inputNome").value
             var v2 = document.getElementById("inputResponsavel").value
             var v3 = document.getElementById("inputEmail").value
             var v4 = document.getElementById("inputTelefone").value
-
-            if (v1 == "") {
-                alert("Informe Nome do Cliente");
-                document.getElementById("inputNome").focus();
-                return;
-            }
+            var v5 = document.getElementById("IDHidden").value
 
             $.ajax({
                 type: "POST",
-                url: "wspainel.asmx/SalvarCliente",
-                data: '{param1: "' + v1 + '", param2: "' + v2 + '", param3: "' + v3 + '", param4: "' + v4 + '" }',
+                url: "wspainel.asmx/EditarCliente",
+                data: '{param1: "' + v1 + '", param2: "' + v2 + '", param3: "' + v3 + '", param4: "' + v4 + '", param5: "' + v5 + '" }',
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (response) {
-                    alert("Ok");
                     var linkurl = response.d;
                     window.location.href = linkurl;
                 },
@@ -101,18 +103,38 @@
                 }
             });
         }
+
+        function ExcluirRegistro() {
+
+            var r = confirm("CONFIRMA EXCLUSÂO ?");
+            if (r == false) {
+                return;
+            } 
+
+            var v1 = document.getElementById("IDHidden").value
+
+            $.ajax({
+                type: "POST",
+                url: "wspainel.asmx/ExcluirCliente",
+                data: '{param1: "' + v1 + '" }',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                    var linkurl = response.d;
+                    window.location.href = linkurl;
+                },
+                failure: function (response) {
+                    alert(response.d);
+                }
+            });
+        }
+
         function cancelar() {
             var linkurl = "../Clientes.aspx";
             window.location.href = linkurl;
         }
     </script>
-    <!-- Salvar Registro  -->
+    <!-- Operações com Registro  -->
 
-     <!-- Foco  -->
-    <script type="text/javascript">
-        document.getElementById("inputNome").focus();
-    </script>
-    
 </body>
-
 </html>

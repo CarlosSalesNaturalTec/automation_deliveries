@@ -29,6 +29,7 @@ public partial class EntregadorFicha : System.Web.UI.Page
                 "document.getElementById('inputPlaca').value = \"" + Convert.ToString(rcrdset[3]) + "\";" +
                 "document.getElementById('inputIDCli').value = \"" + Convert.ToString(rcrdset[4]) + "\";" +
                 "document.getElementById('inputCli').value = \"" + Convert.ToString(rcrdset[5]) + "\";" +
+                "document.getElementById('Hidden1').value = \"" + Convert.ToString(rcrdset[6]) + "\";" +
                 "document.getElementById('results').innerHTML = '<img src=\"" + Convert.ToString(rcrdset[6]) + "\"/>'; " +
                 "</script>";
         }
