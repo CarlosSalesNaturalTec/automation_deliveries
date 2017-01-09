@@ -38,7 +38,7 @@ public class WebService : System.Web.Services.WebService
                         url = "http://painelmaster.azurewebsites.net";
                         break;
                     default:
-                        url = "http://logcli.azurewebsites.net/Default.aspx?idcli=" + idcli;
+                        url = "http://painelcliente.azurewebsites.net/Default.aspx?idcli=" + idcli;
                         break;
                 } 
             }

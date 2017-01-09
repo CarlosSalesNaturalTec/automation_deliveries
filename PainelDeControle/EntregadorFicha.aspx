@@ -7,7 +7,7 @@
 
     <style type="text/css">
         #results {
-            float: right;
+            float: left;
             margin: 5px;
             padding: 5px;
             border: 1px solid;
@@ -29,6 +29,22 @@
     <form class="form-horizontal">
         <fieldset>
             <legend>Ficha Entregador</legend>
+
+            <!-- Camera  -->
+            <div id="results"></div>
+            <div id="my_camera"></div>
+            <br />
+            <div class="row">
+                <div class="col-sm-6">
+                    <label for="filePicker">Carregar Foto:</label><br>
+                    <input type="file" id="filePicker">
+                </div>
+            </div>
+            <input id="Hidden1" name="fotouri" type="hidden" />
+            <br />
+            <!-- Camera  -->
+
+            <legend></legend>
 
             <div class="form-group">
                 <label for="inputNome" class="col-md-1 control-label">Nome</label>
@@ -63,23 +79,7 @@
                 <div class="col-md-7">
                     <input type="text" class="form-control" id="inputCli">
                 </div>
-            </div>
-
-            <legend></legend>
-
-            <!-- Camera  -->
-            <div id="results"></div>
-            <div id="my_camera"></div>
-            <br />
-            <div class="row">
-                <div class="col-sm-6">
-                    <label for="filePicker">Carregar Foto:</label><br>
-                    <input type="file" id="filePicker">
-                </div>
-            </div>
-            <input id="Hidden1" name="fotouri" type="hidden" />
-            <br />
-            <!-- Camera  -->
+            </div>          
 
             <legend></legend>
 

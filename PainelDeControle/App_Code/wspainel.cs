@@ -85,8 +85,8 @@ public class wspainel : System.Web.Services.WebService
     {
         string url = "";
         OperacaoBanco operacao = new OperacaoBanco();
-        bool inserir = operacao.Insert(@"INSERT INTO Tbl_Clientes (Nome, Responsavel , email, Telefone, Usuario, Senha) " +
-            "VALUES ('" + param1 + "', '" + param2 + "', '" + param3 + "', '" + param4 + "', '" + param5 + "', '" + param6 + "')");
+        bool inserir = operacao.Insert(@"INSERT INTO Tbl_Clientes (Nome, Responsavel , email, Telefone, Usuario, Senha, nivel) " +
+            "VALUES ('" + param1 + "', '" + param2 + "', '" + param3 + "', '" + param4 + "', '" + param5 + "', '" + param6 + "','2')");
         ConexaoBancoSQL.fecharConexao();
         if (inserir == true)
         {
