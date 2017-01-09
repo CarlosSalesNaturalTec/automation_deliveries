@@ -22,7 +22,7 @@ public class WebService : System.Web.Services.WebService
         string url = "#signup";
 
         // localiza usuario
-        string stringSelect = "select senha, ID_Cliente, nivel from Tbl_Usuarios where usuario = '" + user + "'";
+        string stringSelect = "select senha, ID_Cliente, nivel from Tbl_Clientes where usuario = '" + user + "'";
         OperacaoBanco operacao = new OperacaoBanco();
         System.Data.SqlClient.SqlDataReader rcrdset = operacao.Select(stringSelect);
         while (rcrdset.Read())

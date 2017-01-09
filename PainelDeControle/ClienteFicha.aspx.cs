@@ -14,7 +14,7 @@ public partial class ClienteFicha : System.Web.UI.Page
     private void PreencheCampos(string ID)
     {
         string ScriptDados = "";
-        string stringSelect = @"select Nome, Responsavel , email, Telefone " +
+        string stringSelect = @"select Nome, Responsavel , email, Telefone, Usuario, Senha " +
             "from Tbl_Clientes  " +
             "where ID_Cliente  = " + ID;
         OperacaoBanco operacao = new OperacaoBanco();
@@ -27,6 +27,8 @@ public partial class ClienteFicha : System.Web.UI.Page
                 "document.getElementById('inputResponsavel').value = \"" + Convert.ToString(rcrdset[1]) + "\";" +
                 "document.getElementById('inputEmail').value = \"" + Convert.ToString(rcrdset[2]) + "\";" +
                 "document.getElementById('inputTelefone').value = \"" + Convert.ToString(rcrdset[3]) + "\";" +
+                "document.getElementById('inputUsuario').value = \"" + Convert.ToString(rcrdset[4]) + "\";" +
+                "document.getElementById('inputSenha').value = \"" + Convert.ToString(rcrdset[5]) + "\";" +
                 "</script>";
         }
         ConexaoBancoSQL.fecharConexao();

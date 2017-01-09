@@ -81,12 +81,12 @@ public class wspainel : System.Web.Services.WebService
     }
 
     [WebMethod]
-    public string SalvarCliente(string param1, string param2, string param3, string param4)
+    public string SalvarCliente(string param1, string param2, string param3, string param4, string param5, string param6)
     {
         string url = "";
         OperacaoBanco operacao = new OperacaoBanco();
-        bool inserir = operacao.Insert(@"INSERT INTO Tbl_Clientes (Nome, Responsavel , email, Telefone) " +
-            "VALUES ('" + param1 + "', '" + param2 + "', '" + param3 + "', '" + param4 + "')");
+        bool inserir = operacao.Insert(@"INSERT INTO Tbl_Clientes (Nome, Responsavel , email, Telefone, Usuario, Senha) " +
+            "VALUES ('" + param1 + "', '" + param2 + "', '" + param3 + "', '" + param4 + "', '" + param5 + "', '" + param6 + "')");
         ConexaoBancoSQL.fecharConexao();
         if (inserir == true)
         {
@@ -120,14 +120,16 @@ public class wspainel : System.Web.Services.WebService
     }
 
     [WebMethod]
-    public string EditarCliente(string param1, string param2, string param3, string param4, string param5)
+    public string EditarCliente(string param1, string param2, string param3, string param4, string param5, string param6, string param7)
     {
         string url = "";
         OperacaoBanco operacao = new OperacaoBanco();
         bool inserir = operacao.Insert(@"update Tbl_Clientes set nome = '" + param1 + "', " +
             "Responsavel  = '" + param2 + "', " +
             "email = '" + param3 + "', " +
-            "Telefone = '" + param4 + "' " +
+            "Telefone = '" + param4 + "', " +
+            "Usuario = '" + param6 + "', " +
+            "Senha = '" + param7 + "' " +
             "where ID_Cliente =" + param5);
 
         ConexaoBancoSQL.fecharConexao();

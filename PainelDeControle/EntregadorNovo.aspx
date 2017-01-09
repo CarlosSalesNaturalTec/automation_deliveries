@@ -86,7 +86,7 @@
 
             <div class="form-group">
                 <div class="col-md-4 col-md-offset-1">
-                    <button type="reset" class="btn btn-default" onclick="cancelar()">Cancelar</button>
+                    <button type="reset" class="btn btn-primary" onclick="cancelar()">Cancelar</button>
                     <button type="button" class="btn btn-success" onclick="SalvarRegistro()">Salvar</button>
                 </div>
             </div>
