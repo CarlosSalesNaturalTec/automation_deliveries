@@ -144,4 +144,25 @@ public class wspainel : System.Web.Services.WebService
 
         return url;
     }
+
+    [WebMethod]
+    public string SalvarCurric(string param1, string param2, string param3, string param4, string param5, string param6, string param7)
+    {
+        string url = "";
+        OperacaoBanco operacao = new OperacaoBanco();
+        bool inserir = operacao.Insert(@"INSERT INTO Tbl_Curriculum (Nome, RG , CPF, Endereco, CEP, TelResid, TelCelular ) " +
+            "VALUES ('" + param1 + "', '" + param2 + "', '" + param3 + "', '" + param4 + "', '" + param5 + "', '" + param6 + "', '" + param7 + "')");
+        ConexaoBancoSQL.fecharConexao();
+        if (inserir == true)
+        {
+            url = "../Curriculuns.aspx";
+        }
+        else
+        {
+            url = "../Sorry.aspx";
+        }
+
+        return url;
+    }
+
 }

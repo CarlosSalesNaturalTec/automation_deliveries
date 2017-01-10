@@ -50,7 +50,7 @@
                   <li><a><i class="fa fa-home"></i> Cadastros <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="Entregadores.aspx" target="iframe_a">Entregadores</a></li>
-                        <li><a href="SorryBlank.aspx" target="iframe_a">Entregas</a></li>
+                        <li><a href="EntregasCadastro.aspx" target="iframe_a">Entregas</a></li>
                     </ul>
                   </li>
                   
@@ -95,14 +95,14 @@
 
         <!-- page content -->
          <div class="right_col" role="main">
-            <iframe src="PainelPrincipal.aspx" height="700px" width="100%" frameborder="0" name="iframe_a"><p>Seu browser não suporta iframes.</p></iframe> 
+            <iframe src="PainelPrincipal.aspx" height="1400px" width="100%" frameborder="0" name="iframe_a"><p>Seu browser não suporta iframes.</p></iframe> 
          </div>      
         <!-- /page content -->
 
         <!-- footer content -->
         <footer>
           <div class="pull-right">
-            Log Transportes - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+            Log Transportes 
           </div>
           <div class="clearfix"></div>
         </footer>

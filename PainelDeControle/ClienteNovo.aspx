@@ -127,7 +127,7 @@
     </script>
     <!-- Salvar Registro  -->
 
-     <!-- Foco  -->
+    <!-- Foco  -->
     <script type="text/javascript">
         document.getElementById("inputNome").focus();
     </script>
