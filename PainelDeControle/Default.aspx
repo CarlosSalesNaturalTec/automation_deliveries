@@ -87,18 +87,9 @@
 
         <!-- page content -->
          <div class="right_col" role="main">
-            <iframe src="PainelPrincipal.aspx" height="700px" width="100%" frameborder="0" name="iframe_a"><p>Seu browser não suporta iframes.</p></iframe> 
+            <iframe src="PainelPrincipal.aspx" height="1000px" width="100%" frameborder="0" name="iframe_a"><p>Seu browser não suporta iframes.</p></iframe> 
          </div>      
         <!-- /page content -->
-
-        <!-- footer content -->
-        <footer>
-          <div class="pull-right">
-            Log Transportes - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
-          </div>
-          <div class="clearfix"></div>
-        </footer>
-        <!-- /footer content -->
 
       </div>
     </div>

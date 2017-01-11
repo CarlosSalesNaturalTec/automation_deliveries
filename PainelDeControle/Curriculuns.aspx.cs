@@ -46,7 +46,7 @@ public partial class Curriculuns : System.Web.UI.Page
 
         while (dados.Read())
         {
-            string linkUrl = "<a href=\"CurriculumFicha.aspx?IDCli=" + Convert.ToString(dados[4]) + "\" target=\"_self\">";
+            string linkUrl = "<a href=\"CurriculumFicha.aspx?IDCurric=" + Convert.ToString(dados[4]) + "\" target=\"_self\">";
 
             string Coluna1 = linkUrl + Convert.ToString(dados[0]) + "</a>";
             string Coluna2 = Convert.ToString(dados[1]);
