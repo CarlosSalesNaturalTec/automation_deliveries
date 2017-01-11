@@ -7,6 +7,6 @@
     <title></title>
 </head>
 <body>
-    <h3>Curriculum Cadastrado com Sucesso.</h3>
+    <h3>Obrigado. Curriculum Cadastrado com Sucesso!</h3>
 </body>
 </html>
