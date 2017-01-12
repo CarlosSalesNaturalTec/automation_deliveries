@@ -60,11 +60,15 @@
 
             <div class="form-group">
                 <label for="inputEnd" class="col-md-2 control-label">Endereço</label>
-                <div class="col-md-5">
+                <div class="col-md-4">
                     <input type="text" class="form-control" id="inputEnd">
                 </div>
-                <label for="inputCEP" class="col-md-2 control-label">CEP</label>
+                <label for="inputBairro" class="col-md-1 control-label">Bairro</label>
                 <div class="col-md-2">
+                    <input type="text" class="form-control" id="inputBairro">
+                </div>
+                <label for="inputCEP" class="col-md-1 control-label">CEP</label>
+                <div class="col-md-1">
                     <input type="text" class="form-control" id="inputCEP">
                 </div>
             </div>
@@ -100,6 +104,7 @@
                 <label for="selectEstCivil" class="col-md-2 control-label">Est.Civil</label>
                 <div class="col-md-2">
                     <select class="form-control" id="selectEstCivil">
+                        <option disabled selected value>Selecione</option>
                         <option>CASADO(A)</option>
                         <option>SOLTEIRO(A)</option>
                         <option>DIVORCIADO(A)</option>
@@ -109,9 +114,14 @@
                 <label for="selectFilhos" class="col-md-1 control-label">Filhos</label>
                 <div class="col-md-2">
                     <select class="form-control" id="selectFilhos">
+                        <option disabled selected value>Selecione</option>
                         <option>SIM</option>
                         <option>NÃO</option>
                     </select>
+                </div>
+                <label for="inputNascimento" class="col-md-2 control-label">Ano de Nascimento</label>
+                <div class="col-md-2">
+                    <input type="number" class="form-control" id="inputNascimento">
                 </div>
             </div>
 
@@ -119,6 +129,7 @@
                 <label for="selecthabilita" class="col-md-2 control-label">Habilitação</label>
                 <div class="col-md-2">
                     <select class="form-control" id="selecthabilita">
+                        <option disabled selected value>Selecione</option>
                         <option>A</option>
                         <option>B</option>
                         <option>C</option>
@@ -142,6 +153,7 @@
                 <label for="selectVeiculo" class="col-md-2 control-label">Veic.Propio</label>
                 <div class="col-md-2">
                     <select class="form-control" id="selectVeiculo">
+                        <option disabled selected value>Selecione</option>
                         <option>SIM</option>
                         <option>NÃO</option>
                     </select>
@@ -157,15 +169,15 @@
             </div>
 
             <div class="form-group">
-                <label for="selectArea" class="col-md-2 control-label">Area Desejada</label>
+                <label for="selectArea" class="col-md-2 control-label">Função Desejada</label>
                 <div class="col-md-2">
                     <select class="form-control" id="selectArea">
-                        <option>LOGISTICA</option>
-                        <option>OPERACIONAL</option>
+                        <option disabled selected value>Selecione</option>
+                        <option>MOTOBOY</option>
+                        <option>MOTORISTA</option>
                         <option>ADMINISTRATIVO</option>
-                        <option>COMERCIAL</option>
-                        <option>FINANCEIRO</option>
-                        <option>REC.HUMANOS</option>
+                        <option>LOGÍSTICA</option>
+                        <option>AJUDANTE</option>
                     </select>
                 </div>
             </div>
@@ -311,7 +323,7 @@
 
             <div class="form-group">
                 <div class="col-md-4 col-md-offset-1">
-                    <button type="button" class="btn btn-success" onclick="SalvarRegistro()">Enviar</button>
+                    <button id="BotaoSalvar" type="button" class="btn btn-success" onclick="SalvarRegistro()">Enviar</button>
                 </div>
             </div>
 
@@ -362,12 +374,16 @@
             var v38 = document.getElementById("inputIndicacao").value
             var v39 = document.getElementById("inputComentarios").value
             var v40 = document.getElementById("Hidden1").value
+            var v41 = document.getElementById("inputBairro").value
+            var v42 = document.getElementById("inputNascimento").value
 
             if (v1 == "") {
                 alert("Informe Nome");
                 document.getElementById("inputNome").focus();
                 return;
             }
+
+            document.getElementById("BotaoSalvar").disabled = true;
 
             $.ajax({
                 type: "POST",
@@ -380,11 +396,11 @@
                     '", param26: "' + v26 + '", param27: "' + v27 + '", param28: "' + v28 + '", param29: "' + v29 + '", param30: "' + v30 +
                     '", param31: "' + v31 + '", param32: "' + v32 + '", param33: "' + v33 + '", param34: "' + v34 + '", param35: "' + v35 +
                     '", param36: "' + v36 + '", param37: "' + v37 + '", param38: "' + v38 + '", param39: "' + v39 + '", param40: "' + v40 +
+                    '", param41: "' + v41 + '", param42: "' + v42 + 
                     '" }',
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (response) {
-                    alert("Ok");
                     var linkurl = response.d;
                     window.location.href = linkurl;
                 },
