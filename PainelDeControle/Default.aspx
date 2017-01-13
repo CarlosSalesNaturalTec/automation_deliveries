@@ -87,7 +87,7 @@
 
         <!-- page content -->
          <div class="right_col" role="main">
-            <iframe src="PainelPrincipal.aspx" height="1000px" width="100%" frameborder="0" name="iframe_a"><p>Seu browser não suporta iframes.</p></iframe> 
+            <iframe src="PainelPrincipal.aspx" height="2000px" width="100%" frameborder="0" name="iframe_a"><p>Seu browser não suporta iframes.</p></iframe> 
          </div>      
         <!-- /page content -->
 

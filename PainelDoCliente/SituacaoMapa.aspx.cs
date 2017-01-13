@@ -85,12 +85,12 @@ public partial class SituacaoMapa : System.Web.UI.Page
 
                     if (minutos > 185)
                     {
-                        tagIni = "<a href=\"FichaEntregador.aspx?ID=" + Convert.ToString(dados[6]) + "\" target=\"_parent\" style=\"color: red;\">";
+                        tagIni = "<a href=\"EntregadorFicha.aspx?IDEnt=" + Convert.ToString(dados[6]) + "\" target=\"_parent\" style=\"color: red;\">";
                         tagFim = "</a>";
                     }
                     else
                     {
-                        tagIni = "<a href=\"FichaEntregador.aspx?ID=" + Convert.ToString(dados[6]) + "\" target=\"_parent\" style=\"color: green;\">";
+                        tagIni = "<a href=\"EntregadorFicha.aspx?IDEnt=" + Convert.ToString(dados[6]) + "\" target=\"_parent\" style=\"color: green;\">";
                         tagFim = "</a>";
                     }
 

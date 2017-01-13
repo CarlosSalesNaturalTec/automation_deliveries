@@ -180,6 +180,10 @@
                         <option>AJUDANTE</option>
                     </select>
                 </div>
+                <label for="inputSalario" class="col-md-2 control-label">Pretensão Salarial</label>
+                <div class="col-md-2">
+                    <input type="number" class="form-control" id="inputSalario" value="0">
+                </div>
             </div>
 
             <br />
@@ -261,7 +265,7 @@
                 </div>
                 <label for="inputConclusao1" class="col-md-1 control-label">Ano de Conclusão</label>
                 <div class="col-lg-1">
-                    <input type="text" class="form-control" id="inputConclusao1">
+                    <input type="number" class="form-control" id="inputConclusao1">
                 </div>
             </div>
 
@@ -272,7 +276,7 @@
                 </div>
                 <label for="inputConclusao2" class="col-md-1 control-label">Ano de Conclusão</label>
                 <div class="col-lg-1">
-                    <input type="text" class="form-control" id="inputConclusao2">
+                    <input type="number" class="form-control" id="inputConclusao2">
                 </div>
             </div>
 
@@ -283,7 +287,7 @@
                 </div>
                 <label for="inputConclusao3" class="col-md-1 control-label">Ano de Conclusão</label>
                 <div class="col-lg-1">
-                    <input type="text" class="form-control" id="inputConclusao3">
+                    <input type="number" class="form-control" id="inputConclusao3">
                 </div>
             </div>
 
@@ -376,6 +380,7 @@
             var v40 = document.getElementById("Hidden1").value
             var v41 = document.getElementById("inputBairro").value
             var v42 = document.getElementById("inputNascimento").value
+            var v43 = document.getElementById("inputSalario").value
 
             if (v1 == "") {
                 alert("Informe Nome");
@@ -396,7 +401,7 @@
                     '", param26: "' + v26 + '", param27: "' + v27 + '", param28: "' + v28 + '", param29: "' + v29 + '", param30: "' + v30 +
                     '", param31: "' + v31 + '", param32: "' + v32 + '", param33: "' + v33 + '", param34: "' + v34 + '", param35: "' + v35 +
                     '", param36: "' + v36 + '", param37: "' + v37 + '", param38: "' + v38 + '", param39: "' + v39 + '", param40: "' + v40 +
-                    '", param41: "' + v41 + '", param42: "' + v42 + 
+                    '", param41: "' + v41 + '", param42: "' + v42 + '", param43: "' + v43 +
                     '" }',
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",

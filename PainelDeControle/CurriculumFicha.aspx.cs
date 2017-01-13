@@ -22,7 +22,7 @@ public partial class CurriculumFicha : System.Web.UI.Page
             "Pai, Mae, EstCivil ,Filhos ,HabilitacaoCat , HabilitacaoNum , HabilitacaoEmissao , VeiculoProprio , AnoModelo ," +
             "Renavan ,AreaDesejada ,Empresa1,Periodo1 ,Cargo1 ,Atividades1 , Empresa2 ,Periodo2, Cargo2, Atividades2, " +
             "Empresa3,Periodo3,Cargo3,Atividades3, Escolaridade1 ,Conclusao1, Escolaridade2 ,Conclusao2, " +
-            "Escolaridade3 ,Conclusao3, indicacao, Comentarios ,FotoDataURI ,DataCad " +
+            "Escolaridade3 ,Conclusao3, indicacao, Comentarios ,FotoDataURI , format(DataCad,'dd/MM/yyyy') as datac, Bairro , AnoNascimento " +
             "from Tbl_Curriculum where ID_Curric = " + IDCur;
 
         OperacaoBanco operacaocURRIC = new OperacaoBanco();
@@ -71,6 +71,9 @@ public partial class CurriculumFicha : System.Web.UI.Page
                 "document.getElementById('inputComentarios').value = \"" + Convert.ToString(rcrdsetCURRIC[38]) + "\";" +
                 "document.getElementById('results').innerHTML = '<img src=\"" + Convert.ToString(rcrdsetCURRIC[39]) + "\"/>'; " +
                 "document.getElementById('inputDataCad').value = \"" + Convert.ToString(rcrdsetCURRIC[40]) + "\";" +
+                "document.getElementById('inputBairro').value = \"" + Convert.ToString(rcrdsetCURRIC[41]) + "\";" +
+                "document.getElementById('inputNascimento').value = \"" + Convert.ToString(rcrdsetCURRIC[42]) + "\";" +
+                "document.getElementById('IDHidden').value = \"" + IDCur + "\";" +
                 "</script>";
         }
         ConexaoBancoSQL.fecharConexao();

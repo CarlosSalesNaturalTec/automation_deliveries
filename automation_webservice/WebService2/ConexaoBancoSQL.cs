@@ -24,7 +24,7 @@ namespace WebService2
         public ConexaoBancoSQL()
         {
             // *** STRING DE CONEXÃO COM BANCO DE DADOS - Atenção! Alterar dados conforme seu servidor
-           stringconnection1 = @"Server=tcp:servermodels.database.windows.net,1433;Initial Catalog=dblog;Persist Security Info=False;User ID=admservermodel;Password=Pwd@2016;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+           stringconnection1 = @"Server=tcp:serverlog.database.windows.net,1433;Initial Catalog=dblog;Persist Security Info=False;User ID=admserver;Password=Pwd@2017;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
             try
             {
                 tentarAbrirConexaoRemota();

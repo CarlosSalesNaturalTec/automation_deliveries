@@ -38,6 +38,8 @@
         <fieldset>
             <legend>Dados Pessoais</legend>
 
+            <input type="hidden" id="IDHidden" />
+
             <!-- Foto  -->
             <div id="results"></div>
             <!-- Foto  -->
@@ -64,10 +66,13 @@
 
             <div class="form-group">
                 <label for="inputEnd" class="col-md-2 control-label">Endereço</label>
-                <div class="col-md-5">
+                <div class="col-md-4">
                     <input type="text" class="form-control" id="inputEnd" readonly>
                 </div>
-                <label for="inputCEP" class="col-md-2 control-label">CEP</label>
+                <label for="inputBairro" class="col-md-1 control-label">Bairro/CEP</label>
+                <div class="col-md-2">
+                    <input type="text" class="form-control" id="inputBairro" readonly>
+                </div>
                 <div class="col-md-2">
                     <input type="text" class="form-control" id="inputCEP" readonly>
                 </div>
@@ -109,6 +114,10 @@
                 <div class="col-md-2">
                     <input type="text" class="form-control" id="selectFilhos" readonly>
                 </div>
+                <label for="inputNascimento" class="col-md-2 control-label">Ano de Nascimento</label>
+                <div class="col-md-2">
+                    <input class="form-control" id="inputNascimento" readonly>
+                </div>
             </div>
 
             <div class="form-group">
@@ -133,24 +142,28 @@
                 <div class="col-md-2">
                     <input type="text" class="form-control" id="selectVeiculo" readonly>
                 </div>
-                <label for="inputAnoModelo" class="col-md-1 control-label">Ano/Modelo</label>
-                <div class="col-md-2">
+                <label for="inputAnoModelo" class="col-md-1 control-label">Ano / Modelo</label>
+                <div class="col-md-3">
                     <input type="text" class="form-control" id="inputAnoModelo" readonly>
                 </div>
-                <label for="inputRenavam" class="col-md-2 control-label">Renavam</label>
+                <label for="inputRenavam" class="col-md-1 control-label">Renavam</label>
                 <div class="col-md-2">
                     <input type="text" class="form-control" id="inputRenavam" readonly>
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="selectArea" class="col-md-2 control-label">Area Desejada</label>
+                <label for="selectArea" class="col-md-2 control-label">Função Desejada</label>
                 <div class="col-md-2">
                     <input type="text" class="form-control" id="selectArea" readonly>
                 </div>
-                <label for="inputDataCad" class="col-md-2 control-label">Data Cadastro</label>
+                <label for="inputDataCad" class="col-md-1 control-label">Data Cadastro</label>
                 <div class="col-md-2">
                     <input type="text" class="form-control" id="inputDataCad" readonly>
+                </div>
+                <label for="inputSalario" class="col-md-2 control-label">Pretensão Salarial</label>
+                <div class="col-md-2">
+                    <input type="number" class="form-control" id="inputSalario" value="0">
                 </div>
             </div>
 
@@ -159,68 +172,62 @@
             <legend>Experiências Profissionais</legend>
 
             <div class="form-group">
-                <label for="inputExperiencia1" class="col-md-2 control-label">Empresa</label>
+                <label for="inputExperiencia1" class="col-md-2 control-label">Empresa / Cargo / Periodo</label>
                 <div class="col-md-3">
                     <input type="text" class="form-control" id="inputExperiencia1" readonly>
                 </div>
-                <label for="inputPeriodo1" class="col-md-1 control-label">Periodo</label>
-                <div class="col-md-2">
-                    <input type="text" class="form-control" id="inputPeriodo1" readonly>
-                </div>
-                <label for="inputCargo1" class="col-md-1 control-label">Cargo</label>
-                <div class="col-md-2">
+                <div class="col-md-3">
                     <input type="text" class="form-control" id="inputCargo1" readonly>
+                </div>
+                <div class="col-md-3">
+                    <input type="text" class="form-control" id="inputPeriodo1" readonly>
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="inputAtividades1" class="col-md-2 control-label">Atividades</label>
-                <div class="col-lg-4">
-                    <textarea class="form-control" rows="3" id="inputAtividades1" readonly></textarea>
+                <div class="col-md-9">
+                    <textarea class="form-control" rows="4" id="inputAtividades1" readonly></textarea>
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="inputExperiencia2" class="col-md-2 control-label">Empresa</label>
+                <label for="inputExperiencia2" class="col-md-2 control-label">Empresa / Cargo / Periodo</label>
                 <div class="col-md-3">
                     <input type="text" class="form-control" id="inputExperiencia2" readonly>
                 </div>
-                <label for="inputPeriodo2" class="col-md-1 control-label">Periodo</label>
-                <div class="col-md-2">
-                    <input type="text" class="form-control" id="inputPeriodo2" readonly>
-                </div>
-                <label for="inputCargo2" class="col-md-1 control-label">Cargo</label>
-                <div class="col-md-2">
+                <div class="col-md-3">
                     <input type="text" class="form-control" id="inputCargo2" readonly>
+                </div>
+                <div class="col-md-3">
+                    <input type="text" class="form-control" id="inputPeriodo2" readonly>
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="inputAtividades2" class="col-md-2 control-label">Atividades</label>
-                <div class="col-lg-8">
-                    <textarea class="form-control" rows="3" id="inputAtividades2" readonly></textarea>
+                <div class="col-md-9">
+                    <textarea class="form-control" rows="4" id="inputAtividades2" readonly></textarea>
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="inputExperiencia3" class="col-md-2 control-label">Empresa</label>
+                <label for="inputExperiencia3" class="col-md-2 control-label">Empresa / Cargo / Periodo</label>
                 <div class="col-md-3">
                     <input type="text" class="form-control" id="inputExperiencia3" readonly>
                 </div>
-                <label for="inputPeriodo3" class="col-md-1 control-label">Periodo</label>
-                <div class="col-md-2">
-                    <input type="text" class="form-control" id="inputPeriodo3" readonly>
-                </div>
-                <label for="inputCargo3" class="col-md-1 control-label">Cargo</label>
-                <div class="col-md-2">
+                <div class="col-md-3">
                     <input type="text" class="form-control" id="inputCargo3" readonly>
+                </div>
+                <div class="col-md-3">
+                    <input type="text" class="form-control" id="inputPeriodo3" readonly>
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="inputAtividades3" class="col-md-2 control-label">Atividades</label>
-                <div class="col-lg-8">
-                    <textarea class="form-control" rows="3" id="inputAtividades3" readonly></textarea>
+                <div class="col-md-9">
+                    <textarea class="form-control" rows="4" id="inputAtividades3" readonly></textarea>
                 </div>
             </div>
 
@@ -228,33 +235,33 @@
 
             <div class="form-group">
                 <label for="inputEscolaridade1" class="col-md-2 control-label">Segundo Grau</label>
-                <div class="col-lg-7">
+                <div class="col-md-6">
                     <input type="text" class="form-control" id="inputEscolaridade1" readonly>
                 </div>
                 <label for="inputConclusao1" class="col-md-1 control-label">Ano de Conclusão</label>
-                <div class="col-lg-1">
+                <div class="col-md-2">
                     <input type="text" class="form-control" id="inputConclusao1" readonly>
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="inputEscolaridade2" class="col-md-2 control-label">Graduação</label>
-                <div class="col-lg-7">
+                <div class="col-md-6">
                     <input type="text" class="form-control" id="inputEscolaridade2" readonly>
                 </div>
                 <label for="inputConclusao2" class="col-md-1 control-label">Ano de Conclusão</label>
-                <div class="col-lg-1">
+                <div class="col-md-2">
                     <input type="text" class="form-control" id="inputConclusao2" readonly>
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="inputEscolaridade3" class="col-md-2 control-label">Pós/Mestrado</label>
-                <div class="col-lg-7">
+                <div class="col-md-6">
                     <input type="text" class="form-control" id="inputEscolaridade3" readonly>
                 </div>
                 <label for="inputConclusao3" class="col-md-1 control-label">Ano de Conclusão</label>
-                <div class="col-lg-1">
+                <div class="col-md-2">
                     <input type="text" class="form-control" id="inputConclusao3" readonly>
                 </div>
             </div>
@@ -263,29 +270,70 @@
 
             <div class="form-group">
                 <label for="inputIndicacao" class="col-md-2 control-label">Indicação</label>
-                <div class="col-lg-9">
+                <div class="col-md-9">
                     <input type="text" class="form-control" id="inputIndicacao" readonly>
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="inputComentarios" class="col-md-2 control-label">Objetivos</label>
-                <div class="col-lg-9">
-                    <textarea class="form-control" rows="3" id="inputComentarios" readonly></textarea>
+                <div class="col-md-9">
+                    <textarea class="form-control" rows="4" id="inputComentarios" readonly></textarea>
+                </div>
+            </div>
+
+            <legend></legend>
+
+            <div class="form-group">
+                <div class="col-md-4 col-md-offset-1">
+                    <button id="BotaoExcluir" type="button" class="btn btn-danger" onclick="ExcluirRegistro()">Excluir</button>
                 </div>
             </div>
 
         </fieldset>
     </form>
 
+    <!-- Excluir Registro  -->
+    <script type="text/javascript">
+        function ExcluirRegistro() {
+
+            var r = confirm("CONFIRMA EXCLUSÂO DE CURRICULUM?");
+            if (r == false) {
+                return;
+            }
+
+            var v1 = document.getElementById("IDHidden").value
+            
+            document.getElementById("BotaoExcluir").disabled = true;
+
+            $.ajax({
+                type: "POST",
+                url: "wspainel.asmx/ExcluirCurric",
+                data: '{param1: "' + v1 + '"}',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                    var linkurl = response.d;
+                    window.location.href = linkurl;
+                },
+                failure: function (response) {
+                    alert(response.d);
+                }
+            });
+        }
+    </script>
+    <!-- Excluir Registro  -->
+
+
+    <!-- preenche campos  -->
+    <asp:Literal ID="Literal1" runat="server"></asp:Literal>
+    <!-- preenche campos  -->
+
     <!-- Foco  -->
     <script type="text/javascript">
         document.getElementById("inputNome").focus();
     </script>
 
-    <!-- preenche campos  -->
-    <asp:Literal ID="Literal1" runat="server"></asp:Literal>
-    <!-- preenche campos  -->
 
 </body>
 

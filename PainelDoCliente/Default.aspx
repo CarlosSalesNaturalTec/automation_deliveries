@@ -50,7 +50,7 @@
                   <li><a><i class="fa fa-home"></i> Cadastros <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="Entregadores.aspx" target="iframe_a">Entregadores</a></li>
-                        <li><a href="EntregasCadastro.aspx" target="iframe_a">Entregas</a></li>
+                        <li><a href="Entregas.aspx" target="iframe_a">Entregas</a></li>
                     </ul>
                   </li>
                   
@@ -64,9 +64,9 @@
 
                   <li><a><i class="fa fa-bar-chart-o"></i> Relatórios <span class="fa fa-chevron-down"></span></a>
                    <ul class="nav child_menu">
-                      <li><a href="SorryBlank.aspx" target="iframe_a">Performance</a></li>
-                      <li><a href="SorryBlank.aspx" target="iframe_a">Produtividade</a></li>
-                       <li><a href="SorryBlank.aspx" target="iframe_a">Distância Percorrida</a></li>
+                      <li><a href="Relatorio1.aspx" target="iframe_a">Performance</a></li>
+                      <li><a href="Relatorio2.aspx" target="iframe_a">Produtividade</a></li>
+                       <li><a href="Relatorio3.aspx" target="iframe_a">Distância Percorrida</a></li>
                     </ul>
                   </li>
 

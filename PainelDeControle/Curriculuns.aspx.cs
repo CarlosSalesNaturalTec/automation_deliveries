@@ -23,9 +23,10 @@ public partial class Curriculuns : System.Web.UI.Page
             "<thead>" +
             "<tr>" +
             "<th>NOME</th>" +
-            "<th>CELULAR</th>" +
-            "<th>TELEFONE</th>" +
-            "<th>VEICULO</th>" +
+            "<th>FUNÇÃO</th>" +
+            "<th>CAT.HABILIT.</th>" +
+            "<th>BAIRRO</th>" +
+            "<th>INDICAÇÃO</th>" +
             "<th>ID</th>" +
             "</tr>" +
             "</thead>" +
@@ -37,7 +38,7 @@ public partial class Curriculuns : System.Web.UI.Page
     private void dadosCorpo()
     {
         string datastatus = DateTime.Now.ToString("yyyy-MM-dd");
-        string stringselect = @"select Nome, TelCelular, TelResid , AnoModelo, ID_Curric " +
+        string stringselect = @"select Nome, AreaDesejada, HabilitacaoCat, Bairro , indicacao, ID_Curric   " +
                 " from Tbl_Curriculum " +
                 " order by Nome";
 
@@ -46,20 +47,22 @@ public partial class Curriculuns : System.Web.UI.Page
 
         while (dados.Read())
         {
-            string linkUrl = "<a href=\"CurriculumFicha.aspx?IDCurric=" + Convert.ToString(dados[4]) + "\" target=\"_self\">";
+            string linkUrl = "<a href=\"CurriculumFicha.aspx?IDCurric=" + Convert.ToString(dados[5]) + "\" target=\"_self\">";
 
             string Coluna1 = linkUrl + Convert.ToString(dados[0]) + "</a>";
             string Coluna2 = Convert.ToString(dados[1]);
             string Coluna3 = Convert.ToString(dados[2]);
             string Coluna4 = Convert.ToString(dados[3]);
             string Coluna5 = Convert.ToString(dados[4]);
-            
+            string Coluna6 = Convert.ToString(dados[5]);
+
             string stringcomaspas = "<tr>" +
                 "<td>" + Coluna1 + "</td>" +
                 "<td>" + Coluna2 + "</td>" +
                 "<td>" + Coluna3 + "</td>" +
                 "<td>" + Coluna4 + "</td>" +
                 "<td>" + Coluna5 + "</td>" +
+                "<td>" + Coluna6 + "</td>" +
                 "</tr>";
 
             str.Append(stringcomaspas);
