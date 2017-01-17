@@ -108,7 +108,7 @@ namespace delivcli
 
             //executa javascript para calculo de distanciA
             ClientScript.RegisterStartupScript(this.GetType(), "calcdist", ScriptDistancia());
-            string resultado = "99"; // Request["Hidden1"].ToString();
+            string resultado = "0"; // Request["Hidden1"].ToString();
 
             return resultado;
         }

@@ -72,7 +72,6 @@
 
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li><a runat="server" href="~/">Conectar</a></li>
                         <li><a id="A2" runat="server" href="~/Painel.aspx">Painel</a></li>
                         <li><a id="A1" runat="server" href="~/Mapa.aspx">Situação Atual</a></li>
                         <li><a id="A4" runat="server" href="~/Cad_Funcionario.aspx">Entregadores</a></li>

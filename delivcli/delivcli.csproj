@@ -152,6 +152,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="EntregadorDist.aspx" />
     <Content Include="EntregadorMapa.aspx" />
+    <Content Include="Entregador_Ficha.aspx" />
     <Content Include="images\flagEmAberto.png" />
     <Content Include="images\flagEmAndamento.png" />
     <Content Include="images\flagOk.png" />
@@ -171,6 +172,7 @@
     <None Include="Properties\PublishProfiles\delivcli.pubxml" />
     <None Include="Properties\PublishProfiles\logcli - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\logcli.pubxml" />
+    <None Include="Properties\PublishProfiles\logcliente - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\logtracking - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="images\motorbike24.png" />
@@ -276,6 +278,13 @@
     </Compile>
     <Compile Include="EntregadorMapa.aspx.designer.cs">
       <DependentUpon>EntregadorMapa.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Entregador_Ficha.aspx.cs">
+      <DependentUpon>Entregador_Ficha.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Entregador_Ficha.aspx.designer.cs">
+      <DependentUpon>Entregador_Ficha.aspx</DependentUpon>
     </Compile>
     <Compile Include="ListagemEntregas.aspx.cs">
       <DependentUpon>ListagemEntregas.aspx</DependentUpon>

@@ -34,7 +34,7 @@
             </div>
         </div>
 
-        <div class="col-sm-6 col-lg-6">
+        <div class="col-sm-8 col-lg-8">
             <div class="dash-unitb">                
                 <dtitle>FILTRO</dtitle>
                 <hr>
@@ -47,8 +47,10 @@
                          InvalidValueMessage="Data Invalida" Display="Dynamic" TooltipMessage="Data da Entrega" EmptyValueBlurredText="*"
                          InvalidValueBlurredMessage="*" ValidationGroup="MKE" />
                  </h2>
-                <asp:DropDownList ID="cmb_funcionario" runat="server" class="dash-unitc" Width="80%" AutoPostBack="True" OnSelectedIndexChanged="cmb_funcionario_SelectedIndexChanged"></asp:DropDownList>
-                <p><asp:Label ID="lbl_mensagem" runat="server" Text=""></asp:Label>    </p>
+                <p>
+                <asp:DropDownList ID="cmb_funcionario" runat="server" class="dash-unitc" Width="50%" AutoPostBack="True" OnSelectedIndexChanged="cmb_funcionario_SelectedIndexChanged"></asp:DropDownList>
+                <asp:DropDownList ID="cmb_status" runat="server" class="dash-unitc" Width="50%" AutoPostBack="True" OnSelectedIndexChanged="cmb_status_SelectedIndexChanged"></asp:DropDownList>
+                <p><asp:Label ID="lbl_mensagem" runat="server"></asp:Label>    </p></p>
             </div>
         </div>
 

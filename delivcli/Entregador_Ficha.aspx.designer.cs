@@ -10,7 +10,7 @@
 namespace delivcli {
     
     
-    public partial class Cad_Funcionario {
+    public partial class Entregador_Ficha {
         
         /// <summary>
         /// Literal1 control.

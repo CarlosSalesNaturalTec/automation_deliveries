@@ -9,7 +9,12 @@ namespace delivcli
         {
             if (!IsPostBack)
             {
-                inputUser.Focus();
+                Session["Cli_ID"] = Request.QueryString["IDCli"];
+                Session["CLI_ID_FUNC"] = "0";
+                Session["LocTipo"] = "On-Line";   //utilizado na pagina de Localizadores exibindo entregadores ativos
+                Response.Redirect("Mapa.aspx");
+
+                // inputUser.Focus();
             }
         }
 

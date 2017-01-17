@@ -35,52 +35,12 @@ namespace WebService2
             Boolean atualizar = operacao.Update(@"update Tbl_Motoboys set GeoLatitude = '" + latitude + "', GeoLongitude = '" + longitude + "', GeoDataLoc = '" + dataLeitura + "' where ID_motoboy = " + IdMotoboy);
             if (atualizar == true) { Resultado = "OK"; } else { Resultado = "NÃO FOI POSSIVEL INSERIR REGISTRO"; }
             ConexaoBancoSQL.fecharConexao();
-
-            // verifica se valor de Latitude se repete mais de 1 vez nos ultimos 10 lançamentos
-            OperacaoBanco operacao1 = new OperacaoBanco();
-            System.Data.SqlClient.SqlDataReader dados1 = operacao1.Select("select top 10 Latitude,Data_Coleta from Tbl_Historico_Temp " +
-                    "where ID_Motoboy = " + IdMotoboy + " order by Data_Coleta desc");
-
-            Boolean lancar = true;
-            int registros = 0;
-            string ultimoregistro = "";
-            string leiturabanco = "";
-
-            while (dados1.Read())
-            {
-                leiturabanco = Convert.ToString(dados1[0]);
-                if (latitude == leiturabanco) { lancar = false; }
-
-                ultimoregistro = Convert.ToString(dados1[1]);
-                registros++;
-            }
+            
+            OperacaoBanco operacao2 = new OperacaoBanco();
+            Boolean inserir2 = operacao2.Insert(@"insert into Tbl_Historico (ID_Motoboy, Id_Entrega, Data_Coleta, Latitude, Longitude) " +
+                "values (" + IdMotoboy + ", " + IdEntrega + ", '" + dataLeitura + "', '" + latitude + "','" + longitude + "')");
             ConexaoBancoSQL.fecharConexao();
-
-            //Caso o valor de Latitude não se repita, significa que está em movimento. neste caso grava posição em tabela de histórico
-            if (lancar == true)
-            {
-                OperacaoBanco operacao2 = new OperacaoBanco();
-                Boolean inserir2 = operacao2.Insert(@"insert into Tbl_Historico (ID_Motoboy, Id_Entrega, Data_Coleta, Latitude, Longitude)
-	                                                values (" + IdMotoboy + ", " + IdEntrega + ", '" + dataLeitura + "', '" + latitude + "','" + longitude + "')");
-                ConexaoBancoSQL.fecharConexao();
-            }
-
-            // lança dados em tabela TEMP de localização 
-            OperacaoBanco operacao3 = new OperacaoBanco();
-            Boolean inserir3 = operacao3.Insert(@"insert into Tbl_Historico_Temp (ID_Motoboy, Id_Entrega, Data_Coleta, Latitude, Longitude)
-	                                                values (" + IdMotoboy + ", " + IdEntrega + ", '" + dataLeitura + "', '" + latitude + "','" + longitude + "')");
-            ConexaoBancoSQL.fecharConexao();
-
-            //mantem em tabela temporaria apenas ultimos 10 registros. apaga os demais 
-            if (registros > 9)
-            {
-                OperacaoBanco operacao4 = new OperacaoBanco();
-                Boolean deletar4 = operacao4.Delete("delete from Tbl_Historico_Temp " +
-                "where ID_Motoboy = " + IdMotoboy +
-                "and Data_Coleta < '" + ultimoregistro + "'");
-                ConexaoBancoSQL.fecharConexao();
-            }
-
+            
             return Resultado;
         }
 

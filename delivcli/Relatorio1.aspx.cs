@@ -91,7 +91,7 @@ namespace delivcli
             while (dados.Read())
             {
                 string Entregador = Convert.ToString(dados[0]);
-                string T1 = "99"; // TotalEntregues(Convert.ToString(dados[1]));
+                string T1 = "00"; // TotalEntregues(Convert.ToString(dados[1]));
                 if (T1 == "0") { continue; }
 
                 string T2 = "0"; //TotalKM(Convert.ToString(dados[1]));  // atenção incompleto
