@@ -157,6 +157,7 @@
     <Content Include="images\flagEmAndamento.png" />
     <Content Include="images\flagOk.png" />
     <Content Include="images\flagRetorno.png" />
+    <Content Include="utilitarios\ImportClientes.aspx" />
     <Content Include="ListagemEntregas.aspx" />
     <Content Include="DetalhesStatus.aspx" />
     <Content Include="ListagemStatus.aspx" />
@@ -285,6 +286,13 @@
     </Compile>
     <Compile Include="Entregador_Ficha.aspx.designer.cs">
       <DependentUpon>Entregador_Ficha.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="utilitarios\ImportClientes.aspx.cs">
+      <DependentUpon>ImportClientes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="utilitarios\ImportClientes.aspx.designer.cs">
+      <DependentUpon>ImportClientes.aspx</DependentUpon>
     </Compile>
     <Compile Include="ListagemEntregas.aspx.cs">
       <DependentUpon>ListagemEntregas.aspx</DependentUpon>
