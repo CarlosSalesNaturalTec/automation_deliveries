@@ -9,10 +9,10 @@ public partial class Clientes : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
+
             montaCabecalho();
             dadosCorpo();
             montaRodape();
-
             Literal1.Text = str.ToString();
         }
     }
@@ -38,15 +38,16 @@ public partial class Clientes : System.Web.UI.Page
     {
         string datastatus = DateTime.Now.ToString("yyyy-MM-dd");
         string stringselect = @"select Nome, Responsavel , email , Telefone, ID_Cliente " +
-                " from Tbl_Clientes " +
+                " from Tbl_Clientes where nivel = 2" +
                 " order by Nome";
+        int TotalRegistros = 0;
 
         OperacaoBanco operacao = new OperacaoBanco();
         System.Data.SqlClient.SqlDataReader dados = operacao.Select(stringselect);
 
         while (dados.Read())
         {
-            string linkUrl = "<a href=\"ClienteFicha.aspx?IDCli=" + Convert.ToString(dados[4]) + "\" target=\"_self\">";
+            string linkUrl = "<a href=\"../Cadastros/ClienteFicha.aspx?IDCli=" + Convert.ToString(dados[4]) + "\" target=\"_self\">";
 
             string Coluna1 = linkUrl + Convert.ToString(dados[0]) + "</a>";
             string Coluna2 = Convert.ToString(dados[1]);
@@ -63,13 +64,22 @@ public partial class Clientes : System.Web.UI.Page
                 "</tr>";
 
             str.Append(stringcomaspas);
+            TotalRegistros++;
         }
         ConexaoBancoSQL.fecharConexao();
+
+        lblTotalDeRegistros.Text = TotalRegistros.ToString();
+        
     }
 
     private void montaRodape()
     {
         string footer = "</tbody></table>";
         str.Append(footer);
+    }
+
+    private void TotalCLientes()
+    {
+
     }
 }

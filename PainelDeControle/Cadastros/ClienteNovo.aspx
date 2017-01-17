@@ -80,7 +80,7 @@
             <div class="form-group">
                 <div class="col-md-4 col-md-offset-1">
                     <button type="reset" class="btn btn-primary" onclick="cancelar()">Cancelar</button>
-                    <button type="button" class="btn btn-success" onclick="SalvarRegistro()">Salvar</button>
+                    <button type="button" class="btn btn-success" onclick="SalvarRegistro()" id="btSalvar">Salvar</button>
                 </div>
             </div>
 
@@ -90,6 +90,8 @@
     <!-- Salvar Registro  -->
     <script type="text/javascript">
         function SalvarRegistro() {
+
+            document.getElementById("btSalvar").style.cursor = "progress";
 
             var v1 = document.getElementById("inputNome").value
             var v2 = document.getElementById("inputResponsavel").value
@@ -111,6 +113,7 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (response) {
+                    document.getElementById("btSalvar").style.cursor = "default";
                     alert("Ok");
                     var linkurl = response.d;
                     window.location.href = linkurl;
@@ -121,7 +124,7 @@
             });
         }
         function cancelar() {
-            var linkurl = "../Clientes.aspx";
+            var linkurl = "../Cadastros/Clientes.aspx";
             window.location.href = linkurl;
         }
     </script>
