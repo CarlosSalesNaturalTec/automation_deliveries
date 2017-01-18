@@ -9,7 +9,6 @@ public partial class Clientes : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-
             montaCabecalho();
             dadosCorpo();
             montaRodape();
@@ -19,14 +18,13 @@ public partial class Clientes : System.Web.UI.Page
 
     private void montaCabecalho()
     {
-        string stringcomaspas = "<table class=\"table table-striped table-hover \">" +
+        string stringcomaspas = "<table id=\"tabelaCli\" class=\"table table-striped table-hover \">" +
             "<thead>" +
             "<tr>" +
             "<th>NOME</th>" +
             "<th>RESPONSÁVEL</th>" +
             "<th>EMAIL</th>" +
             "<th>TELEFONE</th>" +
-            "<th>ID</th>" +
             "</tr>" +
             "</thead>" +
             "<tbody>";
@@ -53,22 +51,18 @@ public partial class Clientes : System.Web.UI.Page
             string Coluna2 = Convert.ToString(dados[1]);
             string Coluna3 = Convert.ToString(dados[2]);
             string Coluna4 = Convert.ToString(dados[3]);
-            string Coluna5 = Convert.ToString(dados[4]);
             
             string stringcomaspas = "<tr>" +
                 "<td>" + Coluna1 + "</td>" +
                 "<td>" + Coluna2 + "</td>" +
                 "<td>" + Coluna3 + "</td>" +
                 "<td>" + Coluna4 + "</td>" +
-                "<td>" + Coluna5 + "</td>" +
                 "</tr>";
 
             str.Append(stringcomaspas);
             TotalRegistros++;
         }
         ConexaoBancoSQL.fecharConexao();
-
-        lblTotalDeRegistros.Text = TotalRegistros.ToString();
         
     }
 
@@ -78,8 +72,4 @@ public partial class Clientes : System.Web.UI.Page
         str.Append(footer);
     }
 
-    private void TotalCLientes()
-    {
-
-    }
 }

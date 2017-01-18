@@ -144,7 +144,7 @@
         }
 
         function cancelar() {
-            var linkurl = "../Clientes.aspx";
+            var linkurl = "../Cadastros/Clientes.aspx";
             window.location.href = linkurl;
         }
     </script>

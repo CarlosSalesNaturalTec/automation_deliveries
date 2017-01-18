@@ -16,33 +16,29 @@
 <body>
 
     <h3>Cadastro de Clientes</h3>
-
-    <div class="row">
-        <div class="col-md-4">
-           Quant.: <asp:Label ID="lblTotalDeRegistros" runat="server"></asp:Label>
-        </div>
-    </div>
     <br />
 
-
-    <form class="form-horizontal">
-        <fieldset>
-            <div class="form-group">
-                <div class="col-md-4">
-                    <input type="text" class="form-control" id="inputNome" placeholder="Cliente / Contrato">
-                </div>
-                <div class="col-md-2">
-                    <input type="button" class="btn btn-primary" id="btFiltro" value="Pesquisar">
-                </div>
-                <div class="col-md-1">
-                    <a href="../Cadastros/ClienteNovo.aspx" class="btn btn-success">Novo</a>
-                </div>
-            </div>
-        </fieldset>
-    </form>
-
-
-
     <asp:Literal ID="Literal1" runat="server"></asp:Literal>
+
+     <!-- Busca e Paginação modelo: datatables.net -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	    <link rel="stylesheet" href="//cdn.datatables.net/1.10.10/css/jquery.dataTables.min.css">
+	    <script src="//cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script>
+	    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.10/css/dataTables.bootstrap.min.css">
+	    <script>
+	    $(document).ready(function(){
+	        $('#tabelaCli').DataTable({
+		    	"language": {
+		            "lengthMenu": "Mostrando _MENU_ registros por página",
+		            "zeroRecords": "Nada encontrado",
+		            "info": "Mostrando página _PAGE_ de _PAGES_",
+		            "infoEmpty": "Nenhum registro disponível",
+		            "infoFiltered": "(filtrado de _MAX_ registros no total)"
+		        }
+		    });
+		});
+	    </script>
+
 </body>
 </html>
