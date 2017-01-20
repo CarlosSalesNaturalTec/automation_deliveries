@@ -16,10 +16,35 @@
 <body>
 
     <h3>Cadastro de Entregadores</h3>
-    <a href="EntregadorNovo.aspx" class="btn btn-success">Novo</a>
 
     <asp:Literal ID="Literal1" runat="server"></asp:Literal>
 
+    <!-- Busca e Paginação modelo: datatables.net -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+	    <link rel="stylesheet" href="//cdn.datatables.net/1.10.10/css/jquery.dataTables.min.css">
+	    <script src="//cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script>
+	    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.10/css/dataTables.bootstrap.min.css">
+
+	    <script>
+	    $(document).ready(function(){
+	        $('#tabelaEnt').DataTable({
+		    	"language": {
+		            "lengthMenu": "Mostrando _MENU_ registros por página",
+		            "zeroRecords": "Nada encontrado",
+		            "info": "Mostrando página _PAGE_ de _PAGES_",
+		            "infoEmpty": "Nenhum registro disponível",
+		            "infoFiltered": "(filtrado de _MAX_ registros no total)",
+		            "search": "Pesquisa:"
+		        }
+		    });
+		});
+	    </script>
+
+    <div class="divbt" >
+        <a href="EntregadorNovo.aspx" class="btn btn-success">Novo</a>
+    </div>
 
 </body>
 </html>

@@ -90,7 +90,7 @@ public class wspainel : System.Web.Services.WebService
         ConexaoBancoSQL.fecharConexao();
         if (inserir == true)
         {
-            url = "../Cadastros/Clientes.aspx";
+            url = "../Clientes.aspx";
         }
         else
         {

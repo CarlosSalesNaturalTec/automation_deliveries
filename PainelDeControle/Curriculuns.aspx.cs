@@ -19,7 +19,7 @@ public partial class Curriculuns : System.Web.UI.Page
 
     private void montaCabecalho()
     {
-        string stringcomaspas = "<table class=\"table table-striped table-hover \">" +
+        string stringcomaspas = "<table id=\"tabelaCurric\" class=\"table table-striped table-hover \">" +
             "<thead>" +
             "<tr>" +
             "<th>NOME</th>" +
