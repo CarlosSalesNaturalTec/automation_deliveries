@@ -82,6 +82,8 @@
                                 <li><a href="Cad_Entregas.aspx">Listagem</a></li>
                                 <li class="divider"></li>
                                 <li><a href="Cad_Entregas_Geocoding.aspx">Nova Entrega</a></li>
+                                <li class="divider"></li>
+                                <li><a href="Cad_Entregas_Import.aspx">Importar</a></li>
                             </ul>
                         </li>
 

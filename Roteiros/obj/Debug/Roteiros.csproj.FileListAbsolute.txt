@@ -1,0 +1,9 @@
+C:\Users\admdeveloper\Source\Repos\automation_deliveries\Roteiros\bin\Debug\Roteiros.exe.config
+C:\Users\admdeveloper\Source\Repos\automation_deliveries\Roteiros\bin\Debug\Roteiros.exe
+C:\Users\admdeveloper\Source\Repos\automation_deliveries\Roteiros\bin\Debug\Roteiros.pdb
+C:\Users\admdeveloper\Source\Repos\automation_deliveries\Roteiros\obj\Debug\Roteiros.csprojResolveAssemblyReference.cache
+C:\Users\admdeveloper\Source\Repos\automation_deliveries\Roteiros\obj\Debug\Roteiros.Properties.Resources.resources
+C:\Users\admdeveloper\Source\Repos\automation_deliveries\Roteiros\obj\Debug\Roteiros.csproj.GenerateResource.Cache
+C:\Users\admdeveloper\Source\Repos\automation_deliveries\Roteiros\obj\Debug\Roteiros.exe
+C:\Users\admdeveloper\Source\Repos\automation_deliveries\Roteiros\obj\Debug\Roteiros.pdb
+C:\Users\admdeveloper\Source\Repos\automation_deliveries\Roteiros\obj\Debug\Roteiros.Form1.resources

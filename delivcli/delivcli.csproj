@@ -142,6 +142,7 @@
   <ItemGroup>
     <Content Include="Cad_Entregas_Geocoding.aspx" />
     <Content Include="Cad_Entregas.aspx" />
+    <Content Include="Cad_Entregas_Import.aspx" />
     <Content Include="Cad_Funcionario.aspx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -257,6 +258,13 @@
     </Compile>
     <Compile Include="Cad_Entregas.aspx.designer.cs">
       <DependentUpon>Cad_Entregas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Cad_Entregas_Import.aspx.cs">
+      <DependentUpon>Cad_Entregas_Import.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cad_Entregas_Import.aspx.designer.cs">
+      <DependentUpon>Cad_Entregas_Import.aspx</DependentUpon>
     </Compile>
     <Compile Include="Cad_Funcionario.aspx.cs">
       <DependentUpon>Cad_Funcionario.aspx</DependentUpon>
