@@ -67,9 +67,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-    <None Include="Properties\PublishProfiles\LogWebService - Web Deploy.pubxml" />
-    <None Include="Properties\PublishProfiles\WebService21214 - Web Deploy.pubxml" />
-    <None Include="Properties\PublishProfiles\WebService21214.pubxml" />
+    <None Include="Properties\PublishProfiles\logwebservice - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\logwebservice - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -90,6 +89,7 @@
       <SubType>Component</SubType>
     </Compile>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

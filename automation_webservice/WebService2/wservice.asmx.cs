@@ -20,7 +20,7 @@ namespace WebService2
         [WebMethod]
         public string Bem_Vindo()
         {
-            return "Olá, Bem Vindo. Jesus Cristo tem sido minha companhia, fonte de proteção, provisão e prosperidade!";
+            return "Jesus Cristo é a minha força!";
         }
 
         [WebMethod]
@@ -30,15 +30,15 @@ namespace WebService2
 
             if (IdMotoboy == 0) { return Resultado; }
 
-            // atualiza dados de localização em tabela de motoboy
-            OperacaoBanco operacao = new OperacaoBanco();
-            Boolean atualizar = operacao.Update(@"update Tbl_Motoboys set GeoLatitude = '" + latitude + "', GeoLongitude = '" + longitude + "', GeoDataLoc = '" + dataLeitura + "' where ID_motoboy = " + IdMotoboy);
-            if (atualizar == true) { Resultado = "OK"; } else { Resultado = "NÃO FOI POSSIVEL INSERIR REGISTRO"; }
-            ConexaoBancoSQL.fecharConexao();
-            
             OperacaoBanco operacao2 = new OperacaoBanco();
             Boolean inserir2 = operacao2.Insert(@"insert into Tbl_Historico (ID_Motoboy, Id_Entrega, Data_Coleta, Latitude, Longitude) " +
                 "values (" + IdMotoboy + ", " + IdEntrega + ", '" + dataLeitura + "', '" + latitude + "','" + longitude + "')");
+            ConexaoBancoSQL.fecharConexao();
+
+            // atualiza dados de localização em tabela de motoboy
+            OperacaoBanco operacao = new OperacaoBanco();
+            Boolean atualizar = operacao.Update(@"update Tbl_Motoboys set GeoLatitude = '" + latitude + "', GeoLongitude = '" + longitude + "', GeoDataLoc = '" + dataLeitura + "' where ID_motoboy = " + IdMotoboy);
+            if (atualizar == true) { Resultado = "OK"; } else { Resultado = "ERRO"; }
             ConexaoBancoSQL.fecharConexao();
             
             return Resultado;
@@ -222,5 +222,6 @@ namespace WebService2
 
             return Resultado;
         }
+
     }
 }
