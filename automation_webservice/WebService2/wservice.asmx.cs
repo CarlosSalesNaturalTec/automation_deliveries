@@ -26,9 +26,10 @@ namespace WebService2
         [WebMethod]
         public string Historico(int IdMotoboy, int IdEntrega, string latitude, string longitude, string dataLeitura)
         {
-            string Resultado = "XXX";
+            string Resultado = "";
 
             if (IdMotoboy == 0) { return Resultado; }
+            if (latitude == "null") { return Resultado; }
 
             OperacaoBanco operacao2 = new OperacaoBanco();
             Boolean inserir2 = operacao2.Insert(@"insert into Tbl_Historico (ID_Motoboy, Id_Entrega, Data_Coleta, Latitude, Longitude) " +
@@ -40,7 +41,7 @@ namespace WebService2
             Boolean atualizar = operacao.Update(@"update Tbl_Motoboys set GeoLatitude = '" + latitude + "', GeoLongitude = '" + longitude + "', GeoDataLoc = '" + dataLeitura + "' where ID_motoboy = " + IdMotoboy);
             if (atualizar == true) { Resultado = "OK"; } else { Resultado = "ERRO"; }
             ConexaoBancoSQL.fecharConexao();
-            
+
             return Resultado;
         }
 

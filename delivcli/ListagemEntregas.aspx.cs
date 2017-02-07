@@ -26,7 +26,7 @@ namespace delivcli
 
         private void montaCabecalho()
         {
-            string stringcomaspas = "<table class=\"table table-striped table-hover \">" +
+            string stringcomaspas = "<table id=\"tabelaCli\" class=\"table table-striped table-hover \">" +
                 "<thead>" +
                 "<tr>" +
                 "<th>DESTINATÁRIO</th>" +

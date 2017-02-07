@@ -20,7 +20,7 @@
     <div class="row">
         <!-- Listagem de Entregas por Status-->
         <div class="col-sm-12 col-md-12 col-lg-12">
-            <iframe height="500px" width="100%" frameborder="0" scrolling="yes" src="/ListagemEntregas.aspx"></iframe>
+            <iframe height="700px" width="100%" frameborder="0" scrolling="yes" src="/ListagemEntregas.aspx"></iframe>
         </div>
     </div>
 

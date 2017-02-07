@@ -8,11 +8,14 @@ namespace delivcli
     public partial class Cad_Funcionario : Page
     {
         StringBuilder str = new StringBuilder();
+        string ID_Cli = "";
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
+                ID_Cli = Session["Cli_ID"].ToString();
+
                 montaCabecalho();
                 dadosCorpo();
                 montaRodape();
@@ -43,7 +46,7 @@ namespace delivcli
             string datastatus = DateTime.Now.ToString("yyyy-MM-dd");
             string stringselect = @"select Nome, Veiculo, Modelo, Placa, ID_Motoboy " +
                     " from Tbl_Motoboys " +
-                    " where ID_Cliente = 5 " +
+                    " where ID_Cliente = " + ID_Cli +
                     " order by Nome";
 
             OperacaoBanco operacao = new OperacaoBanco();

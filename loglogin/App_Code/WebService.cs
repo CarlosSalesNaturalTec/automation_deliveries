@@ -35,7 +35,7 @@ public class WebService : System.Web.Services.WebService
                 switch (nivelUSer)
                 {
                     case "1":
-                        url = "http://painelmaster.azurewebsites.net";
+                        url = "http://logmaster.azurewebsites.net";
                         break;
                     default:
                         url = "http://logcliente.azurewebsites.net?IDCli=" + idcli;
