@@ -16,7 +16,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <meta name="author" content="Carlos Sales - Natural Tecnologia">
-    <title>LogLogística- <%: Page.Title %></title>
+    <title>LOG | TRANSPORTES - <%: Page.Title %></title>
 
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
@@ -67,7 +67,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" runat="server">LOGLogística</a>
+                    <a class="navbar-brand" runat="server">LOG | TRANSPORTES</a>
                 </div>
 
                 <div class="navbar-collapse collapse">
@@ -79,11 +79,9 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Entregas <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="Cad_Entregas.aspx">Listagem</a></li>
+                                <li><a href="Cad_Entregas.aspx">Listagem/Filtro</a></li>
                                 <li class="divider"></li>
                                 <li><a href="Cad_Entregas_Geocoding.aspx">Nova Entrega</a></li>
-                                <li class="divider"></li>
-                                <li><a href="Cad_Entregas_Import.aspx">Importar</a></li>
                             </ul>
                         </li>
 
@@ -97,7 +95,6 @@
                                 <li><a href="Relatorio3.aspx?Per=1">Distância Percorrida</a></li>
                             </ul>
                         </li>
-
 
                     </ul>
                 </div>
