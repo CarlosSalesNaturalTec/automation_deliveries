@@ -168,12 +168,50 @@ public class wspainel : System.Web.Services.WebService
     {
         string url = "";
         OperacaoBanco operacao = new OperacaoBanco();
-        bool inserir = operacao.Insert("INSERT INTO Tbl_Orcamentos_Solicitacoes (Empresa, Contato, email,Telefone, Observacoes, Necessidade, Disponibilidade, Data_Solicitacao) " +
-            "VALUES ('" + param1 + "', '" + param2 + "', '" + param3 + "', '" + param4 + "', '" + param5 + "', '" + param6 + "', '" + param7 + "', getdate())");
+        bool inserir = operacao.Insert("INSERT INTO Tbl_Orcamentos (Empresa, Contato, email,Telefone, Observacoes, Necessidade, Disponibilidade, Data_Solicitacao,StatusORC ) " +
+            "VALUES ('" + param1 + "', '" + param2 + "', '" + param3 + "', '" + param4 + "', '" + param5 + "', '" + param6 + "', '" + param7 + "', getdate(),'EM ABERTO')");
         ConexaoBancoSQL.fecharConexao();
         if (inserir == true)
         {
-            url = "../Orcamento_Concluido.aspx";
+            url = "../Orcamento_Concluido.aspx?Empresa=" + param1;
+        }
+        else
+        {
+            url = "../Sorry.aspx";
+        }
+
+        return url;
+    }
+
+    [WebMethod]
+    public string ExcluirOrcamento(string param1)
+    {
+        string url = "";
+        OperacaoBanco operacao = new OperacaoBanco();
+        Boolean deletar = operacao.Delete("delete from Tbl_Orcamentos where ID_Solicitacao =" + param1);
+        ConexaoBancoSQL.fecharConexao();
+        if (deletar == true)
+        {
+            url = "../Orcamento_lista.aspx";
+        }
+        else
+        {
+            url = "../Sorry.aspx";
+        }
+
+        return url;
+    }
+
+    [WebMethod]
+    public string GerarProposta(string param1, string param2)
+    {
+        string url = "";
+        OperacaoBanco operacao = new OperacaoBanco();
+        Boolean alterar = operacao.Delete("update Tbl_Orcamentos set Roteiro='" + param2 + "' where ID_Solicitacao =" + param1);
+        ConexaoBancoSQL.fecharConexao();
+        if (alterar == true)
+        {
+            url = "../Orcamento_lista.aspx";
         }
         else
         {

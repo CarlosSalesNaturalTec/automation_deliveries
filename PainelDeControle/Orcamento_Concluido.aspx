@@ -6,7 +6,6 @@
 <head runat="server">
     <title>Solicitação de orçamento enviada com sucesso</title>
 
-
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -29,5 +28,6 @@
     <h3>Obrigado. Em breve nosso consultor entrará em contato.</h3>
     <p>Se preferir entre em contato pelo 71 3555-2700 de Segunda a Sexta das 8 às 18h | Horário Comercial</p> 
     <p>E-mail: comercial@loglogistica.com.br</p>
+
 </body>
 </html>

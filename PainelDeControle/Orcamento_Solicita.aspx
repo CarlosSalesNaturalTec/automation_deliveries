@@ -108,8 +108,6 @@
     <script type="text/javascript">
         function SalvarRegistro() {
 
-            document.getElementById("btSalvar").style.cursor = "progress";
-
             var v1 = document.getElementById("inputEmpresa").value
             var v2 = document.getElementById("inputContato").value
             var v3 = document.getElementById("inputEmail").value
@@ -123,6 +121,9 @@
                 document.getElementById("inputEmpresa").focus();
                 return;
             }
+
+            $("body").css("cursor", "progress");
+            document.getElementById("btSalvar").disabled = true;
 
             $.ajax({
                 type: "POST",
@@ -139,6 +140,8 @@
                     alert(response.d);
                 }
             });
+
+            $("body").css("cursor", "default");
         }
     </script>
     <!-- Salvar Registro  -->

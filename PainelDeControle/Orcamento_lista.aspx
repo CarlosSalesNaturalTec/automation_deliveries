@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Curriculuns.aspx.cs" Inherits="Curriculuns" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Orcamento_lista.aspx.cs" Inherits="Orcamento_lista" %>
 
 <!DOCTYPE html>
 
@@ -15,10 +15,11 @@
 
 <body>
 
-    <h3>Banco de Currículos</h3>
+    <h3>Orçamentos Solicitados</h3>
+    
     <asp:Literal ID="Literal1" runat="server"></asp:Literal>
 
-     <!-- Busca e Paginação modelo: datatables.net -->
+    <!-- Busca e Paginação modelo: datatables.net -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
 	    <link rel="stylesheet" href="//cdn.datatables.net/1.10.10/css/jquery.dataTables.min.css">
@@ -28,9 +29,9 @@
 
 	    <script>
 	    $(document).ready(function(){
-	        $('#tabelaCurric').DataTable({
+	        $('#tabelaOrc').DataTable({
 		    	"language": {
-		            "lengthMenu": "Mostrando _MENU_ registros por página",
+		    	    "lengthMenu": "Mostrando _MENU_ registros por página",
 		            "zeroRecords": "Nada encontrado",
 		            "info": " _MAX_ registros no total",
 		            "infoEmpty": "Nenhum registro disponível",

@@ -11,7 +11,6 @@ public class wspainel : System.Web.Services.WebService
     {
         //Uncomment the following line if using designed components 
         //InitializeComponent(); 
-
         // ALELUIA ! LOUVADO SEJA O SENHOR JESUS . ELE ME TEM AJUDADO E ME TORNADO SEU PRINCIPE
     }
 
@@ -46,7 +45,7 @@ public class wspainel : System.Web.Services.WebService
         ConexaoBancoSQL.fecharConexao();
         if (inserir == true)
         {
-            url = "../CurriculoOK.aspx";
+            url = "../CurriculoOK.aspx?Nome=" + param1 + "&Funcao=" + param19;
         }
         else
         {
