@@ -16,7 +16,7 @@
 
 </head>
 <body>
-    <form class="form-horizontal">
+    <form class="form-horizontal" id="view1">
 
         <fieldset>
             <legend>Solicitação de Orçamento</legend>
@@ -47,7 +47,7 @@
             <div class="form-group">
                  <label for="inputEmail" class="col-md-1 control-label">E-mail</label>
                 <div class="col-md-9">
-                    <input type="email" class="form-control" id="inputEmail" readonly>
+                    <input type="text" class="form-control" id="inputEmail" readonly>
                 </div>
             </div>
 
@@ -133,14 +133,44 @@
                 <div class="col-md-6">
                     <textarea class="form-control" rows="3" id="inputDescricao1"></textarea>
                 </div>
+            </div>
 
+            <div class="form-group">
+                <label for="inputValor2" class="col-md-1 control-label">Valor 2:</label>
+                <div class="col-md-2">
+                    <input type="number" class="form-control" id="inputValor2">
+                </div>
+
+                <label for="inputDescricao2" class="col-md-1 control-label">Descrição:</label>
+                <div class="col-md-6">
+                    <textarea class="form-control" rows="3" id="inputDescricao2"></textarea>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="inputValor3" class="col-md-1 control-label">Valor 3:</label>
+                <div class="col-md-2">
+                    <input type="number" class="form-control" id="inputValor3">
+                </div>
+
+                <label for="inputDescricao3" class="col-md-1 control-label">Descrição:</label>
+                <div class="col-md-6">
+                    <textarea class="form-control" rows="3" id="inputDescricao3"></textarea>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="inputObsGerais" class="col-md-1 control-label">Observações</label>
+                <div class="col-md-9">
+                    <textarea class="form-control" rows="3" id="inputObsGerais"></textarea>
+                </div>
             </div>
 
             <legend></legend>
 
             <div class="form-group">
                 <div class="col-md-4 col-md-offset-1">
-                    <button type="button" class="btn btn-danger" onclick="ExcluirRegistro()" id="btExcluir">Excluir</button>
+                    <button type="button" class="btn btn-primary" onclick="Voltar()" id="btVoltar">Voltar</button>                    
                     <button type="button" class="btn btn-success" onclick="GerarProposta()" id="btGerar">Gerar Proposta</button>
                 </div>
             </div>
@@ -149,6 +179,15 @@
     </form>
 </body>
     
+    <!-- Botão Voltar -->
+    <script type="text/javascript">
+        function Voltar() {
+            window.location.href = "../Orcamento_lista.aspx#view1";
+        }
+    </script>
+    <!-- Botão Voltar -->
+
+
     <!-- Gerar Porposta Comercial  -->
     <script type="text/javascript">
         function GerarProposta() {
@@ -160,13 +199,26 @@
 
             var v1 = document.getElementById("IDHidden").value
             var v2 = document.getElementById("inputRoteiro").value
+            var v3 = document.getElementById("inputPeriodo").value
+            var v4 = document.getElementById("inputFuncionario").value
+            var v5 = document.getElementById("inputHorario").value
+            var v6 = document.getElementById("inputFranquia").value
+            var v7 = document.getElementById("inputValor1").value
+            var v8 = document.getElementById("inputDescricao1").value
+            var v9 = document.getElementById("inputValor2").value
+            var v10 = document.getElementById("inputDescricao2").value
+            var v11 = document.getElementById("inputValor3").value
+            var v12 = document.getElementById("inputDescricao3").value
+            var v13 = document.getElementById("inputObsGerais").value
 
             document.getElementById("btGerar").disabled = true;
 
             $.ajax({
                 type: "POST",
                 url: "wspainel.asmx/GerarProposta",
-                data: '{param1: "' + v1 + '", param2: "' + v2 + '"}',
+                data: '{param1: "' + v1 + '", param2: "' + v2 + '", param3: "' + v3 + '", param4: "' + v4 + '", param5: "' + v5 +
+                    '", param6: "' + v6 + '", param7: "' + v7 + '", param8: "' + v8 + '", param9: "' + v9 + '", param10: "' + v10 +
+                    '", param11: "' + v11 + '", param12: "' + v12 + '", param13: "' + v13 + '"}',
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (response) {
@@ -216,6 +268,12 @@
     <!-- preenche campos  -->
     <asp:Literal ID="Literal1" runat="server"></asp:Literal>
     <!-- preenche campos  -->
+
+    <!-- Foco  -->
+    <script type="text/javascript">
+        document.getElementById("inputRoteiro").focus();
+    </script>
+    <!-- Foco  -->
 
 
 </html>

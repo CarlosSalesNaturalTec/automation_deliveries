@@ -203,11 +203,17 @@ public class wspainel : System.Web.Services.WebService
     }
 
     [WebMethod]
-    public string GerarProposta(string param1, string param2)
+    public string GerarProposta(string param1, string param2, string param3, string param4, string param5, 
+        string param6, string param7, string param8, string param9, string param10,
+        string param11, string param12, string param13)
     {
         string url = "";
+
         OperacaoBanco operacao = new OperacaoBanco();
-        Boolean alterar = operacao.Delete("update Tbl_Orcamentos set Roteiro='" + param2 + "' where ID_Solicitacao =" + param1);
+        Boolean alterar = operacao.Delete("update Tbl_Orcamentos set Roteiro='" + param2 + "', Periodo= '" + param3 + "', Funcionario = '" + param4 +
+            "', Horario='" + param5 + "', Franquia='" + param6 + "', Valor1=" + param7 + ", Detalhes1='" + param8 + "', Valor2=" + param9 + ", Detalhes2='" + param10 +
+            "', Valor3=" + param11 + ", Detalhes3='" + param12 + "', ObsGerais='" + param13 + "', StatusORC='GERADO' " +
+            "where ID_Solicitacao =" + param1);
         ConexaoBancoSQL.fecharConexao();
         if (alterar == true)
         {
