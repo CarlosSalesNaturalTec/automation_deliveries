@@ -55,6 +55,12 @@
                     </ul>
                   </li>
 
+                  <li><a><i class="fa fa-truck"></i> Operacional <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="Abastecimento_Lista.aspx" target="iframe_a">Abastecimentos</a></li>
+                    </ul>
+                  </li>
+
                   <li><a><i class="fa fa-bar-chart-o"></i> Relatórios <span class="fa fa-chevron-down"></span></a>
                    <ul class="nav child_menu">
                       <li><a href="SorryBlank.aspx" target="iframe_a">Performance</a></li>

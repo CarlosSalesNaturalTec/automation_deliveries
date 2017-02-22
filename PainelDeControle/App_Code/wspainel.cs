@@ -217,7 +217,28 @@ public class wspainel : System.Web.Services.WebService
         ConexaoBancoSQL.fecharConexao();
         if (alterar == true)
         {
-            url = "../Orcamento_lista.aspx";
+            url = "../Orcamento_printer.aspx?IDOrc=" + param1;
+        }
+        else
+        {
+            url = "../Sorry.aspx";
+        }
+
+        return url;
+    }
+
+
+    [WebMethod]
+    public string AbastecimentoNovo(string param1, string param2, string param3)
+    {
+        string url = "";
+        OperacaoBanco operacao = new OperacaoBanco();
+        bool inserir = operacao.Insert(@"INSERT INTO Tbl_Abastecimentos (Placa, Nome, Valor, DataSolicita ) " +
+           "VALUES ('" + param1 + "', '" + param2 + "', " + param3 + ", getdate())");
+        ConexaoBancoSQL.fecharConexao();
+        if (inserir == true)
+        {
+            url = "../Abastecimento_Concluido.aspx?placa=" + param1 + "&nome="+param2 + "&valor="+param3;
         }
         else
         {

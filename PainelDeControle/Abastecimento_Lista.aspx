@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Clientes.aspx.cs" Inherits="Clientes" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Abastecimento_Lista.aspx.cs" Inherits="Abastecimento_Lista" %>
 
 <!DOCTYPE html>
 
@@ -15,10 +15,10 @@
 
 <body>
 
-    <h3>Cadastro de Clientes</h3>
-    <div class="divbt" >
-        <a href="ClienteNovo.aspx" class="btn btn-success">Novo</a>
-    </div>
+    <h3>Autorizações de Abastecimentos</h3>
+
+    <a href="Abastecimento_Novo.aspx" class="btn btn-success">Novo</a>
+    <br />
     
     <asp:Literal ID="Literal1" runat="server"></asp:Literal>
 
@@ -32,11 +32,11 @@
 
 	    <script>
 	    $(document).ready(function(){
-	        $('#tabelaCli').DataTable({
+	        $('#tabela').DataTable({
 		    	"language": {
-		            "lengthMenu": "Mostrando _MENU_ registros por página",
+		    	    "lengthMenu": "Mostrando _MENU_ registros por página",
 		            "zeroRecords": "Nada encontrado",
-		            "info": "Mostrando página _PAGE_ de _PAGES_",
+		            "info": " _MAX_ registros no total",
 		            "infoEmpty": "Nenhum registro disponível",
 		            "infoFiltered": "(filtrado de _MAX_ registros no total)",
 		            "search": "Pesquisa:"

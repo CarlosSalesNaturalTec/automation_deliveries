@@ -12,7 +12,6 @@
 
     <link rel="stylesheet" href="~/vendors/bootstrap/dist/css/bootstrap.min.css">
     <script type="text/javascript" src="Scripts/jquery-3.1.1.min.js"></script>
-    <script type="text/javascript" src="Scripts/webcam.js"></script>
 
 </head>
 <body>
