@@ -229,16 +229,16 @@ public class wspainel : System.Web.Services.WebService
 
 
     [WebMethod]
-    public string AbastecimentoNovo(string param1, string param2, string param3)
+    public string AbastecimentoNovo(string param1, string param2, string param3, string param4, string param5)
     {
         string url = "";
         OperacaoBanco operacao = new OperacaoBanco();
-        bool inserir = operacao.Insert(@"INSERT INTO Tbl_Abastecimentos (Placa, Nome, Valor, DataSolicita ) " +
-           "VALUES ('" + param1 + "', '" + param2 + "', " + param3 + ", getdate())");
+        bool inserir = operacao.Insert(@"INSERT INTO Tbl_Abastecimentos (Modelo, Placa, Nome, Valor, Kilometragem , DataAutoriza ) " +
+           "VALUES ('" + param1 + "', '" + param2 + "', '" + param3 + "', " + param4 + ", '" + param5 + "', getdate())");
         ConexaoBancoSQL.fecharConexao();
         if (inserir == true)
         {
-            url = "../Abastecimento_Concluido.aspx?placa=" + param1 + "&nome="+param2 + "&valor="+param3;
+            url = "../Abastecimento_Concluido.aspx?modelo=" + param1 + "&placa="+param2 + "&nome=" + param3 + "&valor=" + param4 + "&Km=" + param5;
         }
         else
         {

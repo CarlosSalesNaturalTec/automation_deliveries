@@ -6,8 +6,13 @@ public partial class Abastecimento_Concluido : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
 
+        string idaut = IDAutoriza();
+
+        literal_ID.Text = "Número  : " + idaut;
         literal_nome.Text =  "Nome  : " + Request.QueryString["nome"];
+        literal_modelo.Text = "Modelo  : " + Request.QueryString["modelo"];
         literal_placa.Text = "Placa : " +  Request.QueryString["placa"];
+        literal_Km.Text = "Kilometragem : " + Request.QueryString["Km"];
         literal_valor.Text = "Valor : R$ " + Request.QueryString["valor"];
 
 
@@ -27,14 +32,24 @@ public partial class Abastecimento_Concluido : System.Web.UI.Page
         string assuntoMensagem = "Autorização de Abastecimento - LOG TRANSPORTES";
 
         string l0 = "<img alt=\"LOG-Transportes\" src=\"http://logmaster.azurewebsites.net/images/logologt.png\"/>";
-        string l1 = "<b><p>Autorização de Abastecimento</p></b>";
-        string l2 = "<p></p>";
-        string l3 = "<p>Autorizamos o abastecimento do nosso veículo, conforme descrito abaixo:</p><p></p>";
-        string l4 = "<p>Placa:" + Request.QueryString["placa"] + "</p>";
-        string l5 = "<p>Nome:" + Request.QueryString["nome"] + "</p>";
-        string l6 = "<p>Valor: R$ " + Request.QueryString["valor"] + "</p>";
+        string l1 = "<b><p>AUTORIZAÇÃO DE ABASTECIMENTO</p></b>";
+        string l2 = "<br/>";
+        string l3 = "<p>De: LOG TRANSPORTES</p>";
+        string l4 = "<p>Para: POSTO TREVO</p>";
+        string l5 = "<p>Data:" + DateTime.Now.ToString("dd/MM/yyyy") + " - Número Autorização: " + idaut + "</p>";
+        string l6 = "<br/>";
+        string l7 = "<p>Autorizamos o abastecimento do veículo:</p><br/>";
+        string l8 = "<p>Modelo:" + Request.QueryString["modelo"] + "</p>";
+        string l9 = "<p>Placa :" + Request.QueryString["placa"] + "</p>";
+        string l10 = "<p>Motorista:" + Request.QueryString["nome"] + "</p>";
+        string l11 = "<p>Valor: R$ " + Request.QueryString["valor"] + "</p>";
+        string l12 = "<br/>";
+        string l13 = "<p>Atencionamente</p>";
+        string l14 = "<br/>";
+        string l15 = "<p><b>Sergio Suarez y Martis</b></p>";
+        string l16 = "<p><i>Diretor</i></p>";
 
-        string conteudoMensagem = l0 + l1 + l2 + l3 + l4 + l5 + l6;
+        string conteudoMensagem = l0 + l1 + l2 + l3 + l4 + l5 + l6 + l7 + l8 + l9 + l10 + l11 + l12 + l13 + l14 + l15 + l16;
 
         //Cria objeto com dados do e-mail.
         MailMessage objEmail = new MailMessage();
@@ -101,7 +116,7 @@ public partial class Abastecimento_Concluido : System.Web.UI.Page
         }
         catch (Exception ex)
         {
-            //Response.Write("Ocorreram problemas no envio do e-mail. Erro = " + ex.Message);
+            Response.Write("Ocorreram problemas no envio do e-mail. Erro = " + ex.Message);
         }
         finally
         {
@@ -109,5 +124,22 @@ public partial class Abastecimento_Concluido : System.Web.UI.Page
             objEmail.Dispose();
             //anexo.Dispose();
         }
+    }
+
+    public string IDAutoriza()
+    {
+        string idaut = "";
+        string stringselect = @"select ID_Abastecimento from Tbl_Abastecimentos order by ID_Abastecimento desc";
+        OperacaoBanco operacao = new OperacaoBanco();
+        System.Data.SqlClient.SqlDataReader dados = operacao.Select(stringselect);
+
+        while (dados.Read())
+        {
+            idaut= Convert.ToString(dados[0]);
+            break;
+        }
+        ConexaoBancoSQL.fecharConexao();
+
+        return idaut;
     }
 }

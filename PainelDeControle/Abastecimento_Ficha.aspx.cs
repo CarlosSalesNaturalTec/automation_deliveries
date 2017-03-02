@@ -18,7 +18,7 @@ public partial class Abastecimento_Ficha : System.Web.UI.Page
     private void PreencheCampos(string IDOrc)
     {
         string ScriptDados = "";
-        string stringSelect = "select ID_Abastecimento , Placa , Nome, Valor, format(DataSolicita,'dd/MM/yyyy') as DataAbast " +
+        string stringSelect = "select Placa , Nome, Valor, format(DataAutoriza,'dd/MM/yyyy') as DataAbast, modelo, Kilometragem   " +
             "from Tbl_Abastecimentos where ID_Abastecimento = " + IDOrc;
 
         OperacaoBanco operacaoOrc = new OperacaoBanco();
@@ -26,10 +26,13 @@ public partial class Abastecimento_Ficha : System.Web.UI.Page
         while (rcrdsetORC.Read())
         {
             ScriptDados = "<script type=\"text/javascript\">" +
-                "document.getElementById('inputPlaca').value = \"" + Convert.ToString(rcrdsetORC[1]) + "\";" +
-                "document.getElementById('inputNome').value = \"" + Convert.ToString(rcrdsetORC[2]) + "\";" +
-                "document.getElementById('inputValor').value = \"" + Convert.ToString(rcrdsetORC[3]) + "\";" +
-                "document.getElementById('inputData').value = \"" + Convert.ToString(rcrdsetORC[4]) + "\";" +
+                "document.getElementById('inputPlaca').value = \"" + Convert.ToString(rcrdsetORC[0]) + "\";" +
+                "document.getElementById('inputNome').value = \"" + Convert.ToString(rcrdsetORC[1]) + "\";" +
+                "document.getElementById('inputValor').value = \"" + Convert.ToString(rcrdsetORC[2]) + "\";" +
+                "document.getElementById('inputData').value = \"" + Convert.ToString(rcrdsetORC[3]) + "\";" +
+                "document.getElementById('inputModelo').value = \"" + Convert.ToString(rcrdsetORC[4]) + "\";" +
+                "document.getElementById('inputKm').value = \"" + Convert.ToString(rcrdsetORC[5]) + "\";" +
+                "document.getElementById('inputID').value = \"" + IDOrc + "\";" +
                 "document.getElementById('IDHidden').value = \"" + IDOrc + "\";" +
                 "</script>";
         }

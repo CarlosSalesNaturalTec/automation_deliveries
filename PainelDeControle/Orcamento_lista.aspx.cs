@@ -24,7 +24,6 @@ public partial class Orcamento_lista : System.Web.UI.Page
             "<th>ID</th>" +
             "<th>EMPRESA</th>" +
             "<th>CONTATO</th>" +
-            "<th>TELEFONE</th>" +
             "<th>NECESSIDADE</th>" +
             "<th>DISPONIB.</th>" +
             "<th>DATA SOLIC.</th>" +
@@ -42,7 +41,7 @@ public partial class Orcamento_lista : System.Web.UI.Page
         string stringselect = @"select ID_Solicitacao, Empresa, Contato, Telefone, Necessidade, Disponibilidade," +
                 " format(Data_Solicitacao,'dd/MM/yyyy') as DataOrc, StatusORC  " +
                 " from Tbl_Orcamentos" +
-                " order by Data_Solicitacao desc";
+                " order by ID_Solicitacao desc";
         int TotalRegistros = 0;
 
         OperacaoBanco operacao = new OperacaoBanco();
@@ -65,7 +64,6 @@ public partial class Orcamento_lista : System.Web.UI.Page
                 "<td>" + Coluna0 + "</td>" +
                 "<td>" + Coluna1 + "</td>" +
                 "<td>" + Coluna2 + "</td>" +
-                "<td>" + Coluna3 + "</td>" +
                 "<td>" + Coluna4 + "</td>" +
                 "<td>" + Coluna5 + "</td>" +
                 "<td>" + Coluna6 + "</td>" +

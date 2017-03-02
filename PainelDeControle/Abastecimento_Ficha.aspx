@@ -24,16 +24,13 @@
             <input type="hidden" id="IDHidden" />
 
             <div class="form-group">
-                <label for="inputData" class="col-md-1 control-label">Data</label>
-                <div class="col-md-8">
-                    <input type="text" class="form-control" id="inputData" readonly>
+                <label for="inputID" class="col-md-1 control-label">Número</label>
+                <div class="col-md-3">
+                    <input type="text" class="form-control" id="inputID" readonly>
                 </div>
-            </div>
-
-            <div class="form-group">
-                <label for="inputPlaca" class="col-md-1 control-label">Placa</label>
-                <div class="col-md-8">
-                    <input type="text" class="form-control" id="inputPlaca" readonly>
+                <label for="inputData" class="col-md-1 control-label">Data</label>
+                <div class="col-md-4">
+                    <input type="text" class="form-control" id="inputData" readonly>
                 </div>
             </div>
 
@@ -45,8 +42,23 @@
             </div>
 
             <div class="form-group">
-                <label for="inputValor" class="col-md-1 control-label">Valor: R$</label>
-                <div class="col-md-8">
+                <label for="inputModelo" class="col-md-1 control-label">Modelo</label>
+                <div class="col-md-4">
+                    <input type="text" class="form-control" id="inputModelo" readonly>
+                </div>
+                <label for="inputPlaca" class="col-md-1 control-label">Placa</label>
+                <div class="col-md-3">
+                    <input type="text" class="form-control" id="inputPlaca" readonly>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="inputKm" class="col-md-1 control-label">Kilometragem</label>
+                <div class="col-md-4">
+                    <input type="number" class="form-control" id="inputKm" readonly>
+                </div>
+                <label for="inputValor" class="col-md-1 control-label">Valor (R$)</label>
+                <div class="col-md-3">
                     <input type="number" class="form-control" id="inputValor" readonly>
                 </div>
             </div>

@@ -37,9 +37,9 @@ public partial class Abastecimento_Lista : System.Web.UI.Page
     {
         string datastatus = DateTime.Now.ToString("yyyy-MM-dd");
         string stringselect = @"select ID_Abastecimento, Placa , Nome, Valor," +
-                " format(DataSolicita,'dd/MM/yyyy') as DataAbast" +
+                " format(DataAutoriza,'dd/MM/yyyy') as DataAbast" +
                 " from Tbl_Abastecimentos" +
-                " order by DataSolicita desc";
+                " order by DataAutoriza desc";
         int TotalRegistros = 0;
 
         OperacaoBanco operacao = new OperacaoBanco();

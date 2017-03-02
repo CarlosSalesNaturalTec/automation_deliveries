@@ -32,10 +32,16 @@ public class WebService : System.Web.Services.WebService
                 string idcli = Convert.ToString(rcrdset[1]);
                 string nivelUSer = Convert.ToString(rcrdset[2]);
 
+                string vValida1, vValida2;
+                vValida1 = DateTime.Now.ToString("dd");
+                vValida2 = DateTime.Now.ToString("MM");
+                int vValida3 = Convert.ToInt16(vValida1) * Convert.ToInt16(vValida2);
+                string vValida4 = vValida3.ToString();
+
                 switch (nivelUSer)
                 {
                     case "1":
-                        url = "http://logmaster.azurewebsites.net";
+                        url = "http://logmaster.azurewebsites.net/Default.aspx?p1=" + vValida4 + "&p2=" + idcli;
                         break;
                     default:
                         url = "http://logcliente.azurewebsites.net?IDCli=" + idcli;
