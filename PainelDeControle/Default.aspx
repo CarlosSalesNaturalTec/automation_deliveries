@@ -35,7 +35,7 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="Default.aspx" class="site_title"><i class="fa fa-motorcycle"></i> <span>Log Transportes</span></a>
+              <a href="Default.aspx" class="site_title"><i class="fa fa-motorcycle"></i> <span>LOG Transportes</span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -46,7 +46,7 @@
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
                 <ul class="nav side-menu">
-                  <li><a><i class="fa fa-home"></i> Cadastros <span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-table"></i> Cadastros <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="Clientes.aspx" target="iframe_a">Clientes</a></li>
                       <li><a href="Entregadores.aspx" target="iframe_a">Entregadores</a></li>
@@ -57,15 +57,22 @@
 
                   <li><a><i class="fa fa-truck"></i> Operacional <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="Abastecimento_Lista.aspx" target="iframe_a">Abastecimentos</a></li>
+                        <li><a>Abastecimentos<span class="fa fa-chevron-down"></span></a>
+                          <ul class="nav child_menu">
+                            <li class="sub_menu"><a href="Abastecimento_Lista.aspx" target="iframe_a">Autorizações</a>
+                            </li>
+                            <li><a href="Abastecimento_Planilha.aspx" target="iframe_a">Planilha</a>
+                            </li>
+                          </ul>
+                        </li>
                     </ul>
                   </li>
 
-                  <li><a><i class="fa fa-bar-chart-o"></i> Relatórios <span class="fa fa-chevron-down"></span></a>
-                   <ul class="nav child_menu">
-                      <li><a href="SorryBlank.aspx" target="iframe_a">Performance</a></li>
-                      <li><a href="SorryBlank.aspx" target="iframe_a">Produtividade</a></li>
-                       <li><a href="SorryBlank.aspx" target="iframe_a">Distância Percorrida</a></li>
+                    <li><a><i class="fa fa-bar-chart-o"></i> Relatórios <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="#" target="iframe_a">Produtividade</a></li>
+                      <li><a href="#" target="iframe_a">Performance</a></li>
+                        <li><a href="#" target="iframe_a">Distância Percorrida</a></li>
                     </ul>
                   </li>
 

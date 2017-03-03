@@ -1,11 +1,11 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Abastecimento_Novo.aspx.cs" Inherits="Abastecimento_Novo" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Abastecimento_Credito.aspx.cs" Inherits="Abastecimento_Credito" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 
-    <title>Novo Abastecimento</title>
+    <title>Lançamento de Crédito - Pagamento antecipado</title>
 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,7 +19,7 @@
 
     <form class="form-horizontal">
         <fieldset>
-            <legend>Nova Autorização de Abastecimento</legend>
+            <legend>Lançamento de Crédito</legend>
 
 
             <div class="form-group">
@@ -30,28 +30,11 @@
             </div>
 
             <div class="form-group">
-                <label for="inputNome" class="col-md-1 control-label">Nome</label>
-                <div class="col-md-8">
-                    <input type="text" class="form-control" id="inputNome">
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="inputModelo" class="col-md-1 control-label">Modelo</label>
+                <label for="inputData" class="col-md-1 control-label">Data</label>
                 <div class="col-md-4">
-                    <input type="text" class="form-control" id="inputModelo">
+                    <input type="text" class="form-control" id="inputData">
                 </div>
-                <label for="inputPlaca" class="col-md-1 control-label">Placa</label>
-                <div class="col-md-3">
-                    <input type="text" class="form-control" id="inputPlaca">
-                </div>
-            </div>
 
-            <div class="form-group">
-                <label for="inputKm" class="col-md-1 control-label">Kilometragem</label>
-                <div class="col-md-4">
-                    <input type="number" class="form-control" id="inputKm">
-                </div>
                 <label for="inputValor" class="col-md-1 control-label">Valor (R$)</label>
                 <div class="col-md-3">
                     <input type="number" class="form-control" id="inputValor">
@@ -70,24 +53,25 @@
         </fieldset>
     </form>
 
+    <!-- Preenche Data  -->
+    <asp:Literal ID="Literal1" runat="server"></asp:Literal>
+    <!-- Preenche Data  -->
+
     <!-- Operações com Registro  -->
     <script type="text/javascript">
 
         function Salvar() {
 
-            var v1 = document.getElementById("inputModelo").value
-            var v2 = document.getElementById("inputPlaca").value
-            var v3 = document.getElementById("inputNome").value
-            var v4 = document.getElementById("inputValor").value
-            var v5 = document.getElementById("inputKm").value
+            var v1 = document.getElementById("inputData").value
+            var v2 = document.getElementById("inputValor").value
 
             $("body").css("cursor", "progress");
             document.getElementById("btsalvar").disabled = true;
            
             $.ajax({
                 type: "POST",
-                url: "wspainel.asmx/AbastecimentoNovo",
-                data: '{param1: "' + v1 + '", param2: "' + v2 + '", param3: "' + v3 + '", param4: "' + v4 + '", param5: "' + v5 + '"}',
+                url: "wspainel.asmx/AbastecimentoCredito",
+                data: '{param1: "' + v1 + '", param2: "' + v2 + '"}',
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (response) {
@@ -101,7 +85,7 @@
         }
 
         function cancelar() {
-            var linkurl = "../Abastecimento_Lista.aspx";
+            var linkurl = "../Abastecimento_Planilha.aspx";
             window.location.href = linkurl;
         }
     </script>
@@ -109,7 +93,7 @@
 
     <!-- Foco  -->
     <script type="text/javascript">
-        document.getElementById("inputNome").focus();
+        document.getElementById("inputValor").focus();
     </script>
     <!-- Foco  -->
 

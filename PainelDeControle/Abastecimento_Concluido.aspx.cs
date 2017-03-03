@@ -24,8 +24,8 @@ public partial class Abastecimento_Concluido : System.Web.UI.Page
         //Host da porta SMTP
         string SMTP = "smtp.terra.com.br";
 
-        string emailDestinatario = "sergiosuarez@loglogistica.com.br";
-        //string emailDestinatario = "naturalbahia@gmail.com";
+        //string emailDestinatario = "sergiosuarez@loglogistica.com.br";
+        string emailDestinatario = "naturalbahia@gmail.com";
         //string emailComCopia        = "email@comcopia.com.br";
         //string emailComCopiaOculta  = "email@comcopiaoculta.com.br";
 

@@ -14,11 +14,10 @@
 </head>
 
 <body>
-
-    <h3>Autorizações de Abastecimentos</h3>
-
-    <a href="Abastecimento_Novo.aspx" class="btn btn-success">Novo</a>
+     <br />
+    <a href="Abastecimento_Novo.aspx" class="btn btn-success">NOVA AUTORIZAÇÃO</a>
     <br />
+    <h3>Autorizações de Abastecimento</h3>
     
     <asp:Literal ID="Literal1" runat="server"></asp:Literal>
 
@@ -44,6 +43,7 @@
 		    });
 		});
 	    </script>
+     <!-- Busca e Paginação modelo: datatables.net -->
 
 </body>
 </html>

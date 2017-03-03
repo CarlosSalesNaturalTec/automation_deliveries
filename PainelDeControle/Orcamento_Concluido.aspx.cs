@@ -87,7 +87,7 @@ public partial class Orcamento_Concluido : System.Web.UI.Page
         }
         catch (Exception ex)
         {
-            //Response.Write("Ocorreram problemas no envio do e-mail. Erro = " + ex.Message);
+            Response.Write("Ocorreram problemas no envio do e-mail. Erro = " + ex.Message);
         }
         finally
         {

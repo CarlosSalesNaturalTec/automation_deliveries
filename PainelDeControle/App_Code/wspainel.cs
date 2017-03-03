@@ -233,12 +233,32 @@ public class wspainel : System.Web.Services.WebService
     {
         string url = "";
         OperacaoBanco operacao = new OperacaoBanco();
-        bool inserir = operacao.Insert(@"INSERT INTO Tbl_Abastecimentos (Modelo, Placa, Nome, Valor, Kilometragem , DataAutoriza ) " +
-           "VALUES ('" + param1 + "', '" + param2 + "', '" + param3 + "', " + param4 + ", '" + param5 + "', getdate())");
+        bool inserir = operacao.Insert(@"INSERT INTO Tbl_Abastecimentos (Modelo, Placa, Nome, Valor, Kilometragem , DataAutoriza, Posto ) " +
+           "VALUES ('" + param1 + "', '" + param2 + "', '" + param3 + "', " + param4 + ", '" + param5 + "', getdate(), 'POSTO TREVO')");
         ConexaoBancoSQL.fecharConexao();
         if (inserir == true)
         {
             url = "../Abastecimento_Concluido.aspx?modelo=" + param1 + "&placa="+param2 + "&nome=" + param3 + "&valor=" + param4 + "&Km=" + param5;
+        }
+        else
+        {
+            url = "../Sorry.aspx";
+        }
+
+        return url;
+    }
+
+    [WebMethod]
+    public string AbastecimentoCredito(string param1, string param2)
+    {
+        string url = "";
+        OperacaoBanco operacao = new OperacaoBanco();
+        bool inserir = operacao.Insert(@"INSERT INTO Tbl_Abastecimentos_Creditos (DataCredito , Valor, Posto ) " +
+           "VALUES ('" + param1 + "', " + param2 + ", 'POSTO TREVO')");
+        ConexaoBancoSQL.fecharConexao();
+        if (inserir == true)
+        {
+            url = "../Abastecimento_Planilha.aspx";
         }
         else
         {
