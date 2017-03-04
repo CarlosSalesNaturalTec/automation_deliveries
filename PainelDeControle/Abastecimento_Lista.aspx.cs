@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Text;
 
 public partial class Abastecimento_Lista : System.Web.UI.Page
@@ -21,11 +22,12 @@ public partial class Abastecimento_Lista : System.Web.UI.Page
         string stringcomaspas = "<table id=\"tabela\" class=\"table table-striped table-hover \">" +
             "<thead>" +
             "<tr>" +
+            "<th>ID</th>" +
             "<th>PLACA</th>" +
             "<th>NOME</th>" +
-            "<th>VALOR</th>" +
             "<th>DATA</th>" +
-            "<th>ID</th>" +
+            "<th>KM</th>" +
+            "<th style=\"text-align:right\">VALOR</th>" +
             "</tr>" +
             "</thead>" +
             "<tbody>";
@@ -36,11 +38,10 @@ public partial class Abastecimento_Lista : System.Web.UI.Page
     private void dadosCorpo()
     {
         string datastatus = DateTime.Now.ToString("yyyy-MM-dd");
-        string stringselect = @"select ID_Abastecimento, Placa , Nome, Valor," +
-                " format(DataAutoriza,'dd/MM/yyyy') as DataAbast" +
+        string stringselect = @"select ID_Abastecimento, Placa , Nome, " +
+                " format(DataAutoriza,'dd/MM/yyyy') as DataAbast, Kilometragem , Valor" +
                 " from Tbl_Abastecimentos" +
                 " order by DataAutoriza desc";
-        int TotalRegistros = 0;
 
         OperacaoBanco operacao = new OperacaoBanco();
         System.Data.SqlClient.SqlDataReader dados = operacao.Select(stringselect);
@@ -49,22 +50,27 @@ public partial class Abastecimento_Lista : System.Web.UI.Page
         {
             string linkUrl = "<a href=\"../Abastecimento_Ficha.aspx?IDAbast=" + Convert.ToString(dados[0]) + "\" target=\"_self\">";
 
-            string Coluna1 = linkUrl + Convert.ToString(dados[1]) + "</a>";
+            string Coluna1 = Convert.ToString(dados[1]);
             string Coluna2 = Convert.ToString(dados[2]);
             string Coluna3 = Convert.ToString(dados[3]);
             string Coluna4 = Convert.ToString(dados[4]);
-            string Coluna0 = Convert.ToString(dados[0]);
+            string Coluna5 = "";
+            string Coluna6 = linkUrl + Convert.ToString(dados[0]) + "</a>";
+
+            string valorSTR = Convert.ToString(dados[5]); //valor - auxiliar
+            decimal valor = Convert.ToDecimal(valorSTR);
+            Coluna5 = "<td style=\"text-align:right\"> <strong>" + valor.ToString("N", CultureInfo.CreateSpecificCulture("pt-BR")) + "</strong></td>";
 
             string stringcomaspas = "<tr>" +
+                "<td>" + Coluna6 + "</td>" +
                 "<td>" + Coluna1 + "</td>" +
                 "<td>" + Coluna2 + "</td>" +
                 "<td>" + Coluna3 + "</td>" +
                 "<td>" + Coluna4 + "</td>" +
-                "<td>" + Coluna0 + "</td>" +
+                Coluna5 + 
                 "</tr>";
 
             str.Append(stringcomaspas);
-            TotalRegistros++;
         }
         ConexaoBancoSQL.fecharConexao();
 

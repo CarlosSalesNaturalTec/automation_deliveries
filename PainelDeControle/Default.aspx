@@ -49,7 +49,8 @@
                   <li><a><i class="fa fa-table"></i> Cadastros <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="Clientes.aspx" target="iframe_a">Clientes</a></li>
-                      <li><a href="Entregadores.aspx" target="iframe_a">Entregadores</a></li>
+                      <li><a href="Entregadores.aspx" target="iframe_a">Colaboradores</a></li>
+                      <li><a href="Veiculos_Lista.aspx" target="iframe_a">Veículos</a></li>
                       <li><a href="Curriculuns.aspx" target="iframe_a">Banco de Curriculos</a></li>
                       <li><a href="Orcamento_lista.aspx" target="iframe_a">Orçamentos</a></li>
                     </ul>

@@ -32,7 +32,6 @@ public partial class Abastecimento_Ficha : System.Web.UI.Page
                 "document.getElementById('inputData').value = \"" + Convert.ToString(rcrdsetORC[3]) + "\";" +
                 "document.getElementById('inputModelo').value = \"" + Convert.ToString(rcrdsetORC[4]) + "\";" +
                 "document.getElementById('inputKm').value = \"" + Convert.ToString(rcrdsetORC[5]) + "\";" +
-                "document.getElementById('inputID').value = \"" + IDOrc + "\";" +
                 "document.getElementById('IDHidden').value = \"" + IDOrc + "\";" +
                 "</script>";
         }

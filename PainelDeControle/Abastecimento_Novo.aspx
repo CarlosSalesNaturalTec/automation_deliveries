@@ -21,7 +21,6 @@
         <fieldset>
             <legend>Nova Autorização de Abastecimento</legend>
 
-
             <div class="form-group">
                 <label for="inputPosto" class="col-md-1 control-label">Posto</label>
                 <div class="col-md-8">
@@ -29,33 +28,25 @@
                 </div>
             </div>
 
-            <div class="form-group">
-                <label for="inputNome" class="col-md-1 control-label">Nome</label>
-                <div class="col-md-8">
-                    <input type="text" class="form-control" id="inputNome">
-                </div>
-            </div>
+            <!-- Colaboradores -->
+            <asp:Literal ID="LIteral_Colaborador" runat="server"></asp:Literal>
+            <!-- Colaboradores -->
 
-            <div class="form-group">
-                <label for="inputModelo" class="col-md-1 control-label">Modelo</label>
-                <div class="col-md-4">
-                    <input type="text" class="form-control" id="inputModelo">
-                </div>
-                <label for="inputPlaca" class="col-md-1 control-label">Placa</label>
-                <div class="col-md-3">
-                    <input type="text" class="form-control" id="inputPlaca">
-                </div>
-            </div>
+            <!-- Veiculos -->
+            <asp:Literal ID="LIteral_Veiculos" runat="server"></asp:Literal>
+            <!-- Veiculos -->
 
             <div class="form-group">
                 <label for="inputKm" class="col-md-1 control-label">Kilometragem</label>
                 <div class="col-md-4">
-                    <input type="number" class="form-control" id="inputKm">
+                    <input type="number" class="form-control" id="inputKm" value="0">
                 </div>
+
                 <label for="inputValor" class="col-md-1 control-label">Valor (R$)</label>
                 <div class="col-md-3">
                     <input type="number" class="form-control" id="inputValor">
                 </div>
+
             </div>
 
             <legend></legend>
@@ -75,11 +66,10 @@
 
         function Salvar() {
 
-            var v1 = document.getElementById("inputModelo").value
-            var v2 = document.getElementById("inputPlaca").value
-            var v3 = document.getElementById("inputNome").value
-            var v4 = document.getElementById("inputValor").value
-            var v5 = document.getElementById("inputKm").value
+            var v1 = document.getElementById("inputPlaca").value
+            var v2 = document.getElementById("inputNome").value
+            var v3 = document.getElementById("inputValor").value
+            var v4 = document.getElementById("inputKm").value
 
             $("body").css("cursor", "progress");
             document.getElementById("btsalvar").disabled = true;
@@ -87,7 +77,7 @@
             $.ajax({
                 type: "POST",
                 url: "wspainel.asmx/AbastecimentoNovo",
-                data: '{param1: "' + v1 + '", param2: "' + v2 + '", param3: "' + v3 + '", param4: "' + v4 + '", param5: "' + v5 + '"}',
+                data: '{param1: "' + v1 + '", param2: "' + v2 + '", param3: "' + v3 + '", param4: "' + v4 + '"}',
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (response) {

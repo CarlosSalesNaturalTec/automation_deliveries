@@ -19,7 +19,6 @@
     <br />
     <p><asp:Literal ID="literal_ID" runat="server"></asp:Literal></p>
     <p><asp:Literal ID="literal_nome" runat="server"></asp:Literal></p>
-    <p><asp:Literal ID="literal_modelo" runat="server"></asp:Literal></p>
     <p><asp:Literal ID="literal_placa" runat="server"></asp:Literal></p>
     <p><asp:Literal ID="literal_Km" runat="server"></asp:Literal></p>
     <p><asp:Literal ID="literal_valor" runat="server"></asp:Literal></p>

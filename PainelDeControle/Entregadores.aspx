@@ -14,8 +14,11 @@
 </head>
 
 <body>
+    <div class="divbt" >
+       <a href="EntregadorNovo.aspx" class="btn btn-success">NOVO COLABORADOR</a>
+    </div>
 
-    <h3>Cadastro de Entregadores</h3>
+    <h3>Cadastro de Colaboradores</h3>
 
     <asp:Literal ID="Literal1" runat="server"></asp:Literal>
 
@@ -33,7 +36,7 @@
 		    	"language": {
 		            "lengthMenu": "Mostrando _MENU_ registros por página",
 		            "zeroRecords": "Nada encontrado",
-		            "info": "Mostrando página _PAGE_ de _PAGES_",
+		            "info": " _MAX_ registros no total",
 		            "infoEmpty": "Nenhum registro disponível",
 		            "infoFiltered": "(filtrado de _MAX_ registros no total)",
 		            "search": "Pesquisa:"
@@ -41,10 +44,6 @@
 		    });
 		});
 	    </script>
-
-    <div class="divbt" >
-        <a href="EntregadorNovo.aspx" class="btn btn-success">Novo</a>
-    </div>
 
 </body>
 </html>

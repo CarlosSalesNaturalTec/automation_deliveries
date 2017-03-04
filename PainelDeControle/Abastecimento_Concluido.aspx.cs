@@ -1,55 +1,56 @@
 ﻿using System;
 using System.Net.Mail;
+using System.Globalization;
 
 public partial class Abastecimento_Concluido : System.Web.UI.Page
 {
+    string autID = "";
+    string autNome = "";
+    string autPlaca = "";
+    string autKM = "";
+    string autValor = "";
+
     protected void Page_Load(object sender, EventArgs e)
     {
+        //dados da autorização
+        IDAutoriza();
 
-        string idaut = IDAutoriza();
-
-        literal_ID.Text = "Número  : " + idaut;
-        literal_nome.Text =  "Nome  : " + Request.QueryString["nome"];
-        literal_modelo.Text = "Modelo  : " + Request.QueryString["modelo"];
-        literal_placa.Text = "Placa : " +  Request.QueryString["placa"];
-        literal_Km.Text = "Kilometragem : " + Request.QueryString["Km"];
-        literal_valor.Text = "Valor : R$ " + Request.QueryString["valor"];
-
+        decimal valor = Convert.ToDecimal(autValor);
+        string valorFormatado = valor.ToString("N", CultureInfo.CreateSpecificCulture("pt-BR"));
 
         //Define os dados do e-mail
-        string nomeRemetente = "Painel de Controle";
-        string emailRemetente = "paineldecontrole@loglogistica.com.br";
+        string nomeRemetente = "LOG Transportes";
+        string emailRemetente = "sergiosuarez@loglogistica.com.br";
         string senha = "ss040470";
 
         //Host da porta SMTP
         string SMTP = "smtp.terra.com.br";
 
-        //string emailDestinatario = "sergiosuarez@loglogistica.com.br";
-        string emailDestinatario = "naturalbahia@gmail.com";
-        //string emailComCopia        = "email@comcopia.com.br";
+        string emailDestinatario = "trevo03@redetrevo.com.br";
+        string emailComCopia  = "emilia@redetrevo.com.br";
+        string emailComCopia1 = "anderson.amorin@postotrevo.com.br";
         //string emailComCopiaOculta  = "email@comcopiaoculta.com.br";
 
         string assuntoMensagem = "Autorização de Abastecimento - LOG TRANSPORTES";
 
         string l0 = "<img alt=\"LOG-Transportes\" src=\"http://logmaster.azurewebsites.net/images/logologt.png\"/>";
-        string l1 = "<b><p>AUTORIZAÇÃO DE ABASTECIMENTO</p></b>";
+        string l1 = "<b><p>AUTORIZAÇÃO DE ABASTECIMENTO - Nº : " + autID + "</p></b>";
         string l2 = "<br/>";
         string l3 = "<p>De: LOG TRANSPORTES</p>";
         string l4 = "<p>Para: POSTO TREVO</p>";
-        string l5 = "<p>Data:" + DateTime.Now.ToString("dd/MM/yyyy") + " - Número Autorização: " + idaut + "</p>";
+        string l5 = "<p>Data:" + DateTime.Now.ToString("dd/MM/yyyy") + "</p>";
         string l6 = "<br/>";
-        string l7 = "<p>Autorizamos o abastecimento do veículo:</p><br/>";
-        string l8 = "<p>Modelo:" + Request.QueryString["modelo"] + "</p>";
-        string l9 = "<p>Placa :" + Request.QueryString["placa"] + "</p>";
-        string l10 = "<p>Motorista:" + Request.QueryString["nome"] + "</p>";
-        string l11 = "<p>Valor: R$ " + Request.QueryString["valor"] + "</p>";
+        string l7 = "<p><b>Autorizamos o abastecimento do veículo:</p></b><br/>";
+        string l9 = "<p><b>Placa :</b>" + autPlaca + "</p>";
+        string l10 = "<p><b>Motorista:</b>" + autNome + "</p>";
+        string l11 = "<p><b>Valor:</b> R$ " + valorFormatado + "</p>";
         string l12 = "<br/>";
         string l13 = "<p>Atencionamente</p>";
         string l14 = "<br/>";
-        string l15 = "<p><b>Sergio Suarez y Martis</b></p>";
+        string l15 = "<p><b>Sergio Suarez y Martins</b></p>";
         string l16 = "<p><i>Diretor</i></p>";
 
-        string conteudoMensagem = l0 + l1 + l2 + l3 + l4 + l5 + l6 + l7 + l8 + l9 + l10 + l11 + l12 + l13 + l14 + l15 + l16;
+        string conteudoMensagem = l0 + l1 + l2 + l3 + l4 + l5 + l6 + l7 + l9 + l10 + l11 + l12 + l13 + l14 + l15 + l16;
 
         //Cria objeto com dados do e-mail.
         MailMessage objEmail = new MailMessage();
@@ -61,7 +62,8 @@ public partial class Abastecimento_Concluido : System.Web.UI.Page
         objEmail.To.Add(emailDestinatario);
 
         //Enviar cópia para.
-        //objEmail.CC.Add(emailComCopia);
+        objEmail.CC.Add(emailComCopia);
+        objEmail.CC.Add(emailComCopia1);
 
         //Enviar cópia oculta para.
         //objEmail.Bcc.Add(emailComCopiaOculta);
@@ -77,7 +79,6 @@ public partial class Abastecimento_Concluido : System.Web.UI.Page
 
         //Define o corpo do e-mail.
         objEmail.Body = conteudoMensagem;
-
 
         //Para evitar problemas de caracteres "estranhos", configuramos o charset para "ISO-8859-1"
         objEmail.SubjectEncoding = System.Text.Encoding.GetEncoding("ISO-8859-1");
@@ -126,20 +127,30 @@ public partial class Abastecimento_Concluido : System.Web.UI.Page
         }
     }
 
-    public string IDAutoriza()
+    public void IDAutoriza()
     {
-        string idaut = "";
-        string stringselect = @"select ID_Abastecimento from Tbl_Abastecimentos order by ID_Abastecimento desc";
+
+        string stringselect = "select ID_Abastecimento, Nome , Placa, Kilometragem, Valor from Tbl_Abastecimentos order by ID_Abastecimento desc";
         OperacaoBanco operacao = new OperacaoBanco();
         System.Data.SqlClient.SqlDataReader dados = operacao.Select(stringselect);
 
         while (dados.Read())
         {
-            idaut= Convert.ToString(dados[0]);
+            autID = Convert.ToString(dados[0]);
+            autNome = Convert.ToString(dados[1]);
+            autPlaca = Convert.ToString(dados[2]);
+            autKM = Convert.ToString(dados[3]);
+            autValor = Convert.ToString(dados[4]);
             break;
         }
         ConexaoBancoSQL.fecharConexao();
 
-        return idaut;
+        //apresenta dados na tela
+        literal_ID.Text = "Número  : " + autID;
+        literal_nome.Text = "Nome  : " + autNome;
+        literal_placa.Text = "Placa : " + autPlaca;
+        literal_Km.Text = "Kilometragem : " + autKM;
+        literal_valor.Text = "Valor : R$ " + autValor;
+
     }
 }

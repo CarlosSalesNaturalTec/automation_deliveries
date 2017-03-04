@@ -119,7 +119,6 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (response) {
-                    alert("Ok");
                     var linkurl = response.d;
                     window.location.href = linkurl;
                 },

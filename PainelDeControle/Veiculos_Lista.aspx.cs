@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 
-public partial class Clientes : System.Web.UI.Page
+public partial class Veiculos_Lista : System.Web.UI.Page
 {
     StringBuilder str = new StringBuilder();
 
@@ -18,13 +18,11 @@ public partial class Clientes : System.Web.UI.Page
 
     private void montaCabecalho()
     {
-        string stringcomaspas = "<table id=\"tabelaCli\" class=\"table table-striped table-hover \">" +
+        string stringcomaspas = "<table id=\"tabela\" class=\"table table-striped table-hover \">" +
             "<thead>" +
             "<tr>" +
-            "<th>NOME</th>" +
-            "<th>RESPONSÁVEL</th>" +
-            "<th>EMAIL</th>" +
-            "<th>TELEFONE</th>" +
+            "<th>MODELO</th>" +
+            "<th>PLACA</th>" +
             "<th>ID</th>" +
             "</tr>" +
             "</thead>" +
@@ -36,9 +34,9 @@ public partial class Clientes : System.Web.UI.Page
     private void dadosCorpo()
     {
         string datastatus = DateTime.Now.ToString("yyyy-MM-dd");
-        string stringselect = @"select Nome, Responsavel , email , Telefone, ID_Cliente " +
-                " from Tbl_Clientes where nivel = 2" +
-                " order by Nome";
+        string stringselect = @"select Placa, Modelo, ID_Veiculo " +
+                " from Tbl_Veiculos" +
+                " order by Modelo, Placa";
         int TotalRegistros = 0;
 
         OperacaoBanco operacao = new OperacaoBanco();
@@ -46,20 +44,16 @@ public partial class Clientes : System.Web.UI.Page
 
         while (dados.Read())
         {
-            string linkUrl = "<a href=\"../ClienteFicha.aspx?IDCli=" + Convert.ToString(dados[4]) + "\" target=\"_self\">";
+            string linkUrl = "<a href=\"../Veiculos_Ficha.aspx?IDVeic=" + Convert.ToString(dados[2]) + "\" target=\"_self\">";
 
             string Coluna1 = linkUrl + Convert.ToString(dados[0]) + "</a>";
             string Coluna2 = Convert.ToString(dados[1]);
             string Coluna3 = Convert.ToString(dados[2]);
-            string Coluna4 = Convert.ToString(dados[3]);
-            string Coluna5 = Convert.ToString(dados[4]);
-
+            
             string stringcomaspas = "<tr>" +
                 "<td>" + Coluna1 + "</td>" +
                 "<td>" + Coluna2 + "</td>" +
                 "<td>" + Coluna3 + "</td>" +
-                "<td>" + Coluna4 + "</td>" +
-                "<td>" + Coluna5 + "</td>" +
                 "</tr>";
 
             str.Append(stringcomaspas);

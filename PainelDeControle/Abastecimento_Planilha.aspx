@@ -14,12 +14,11 @@
 </head>
 
 <body>
-    <br />
     <a href="Abastecimento_Credito.aspx" class="btn btn-success">LANÇAR CRÉDITO</a>
     <br />
     <h3>Planilha Consolidação de Abastecimentos</h3>
+    <h4 class="text-primary"><asp:Literal ID="Literal_Saldo" runat="server"></asp:Literal></h4>
     <br />
-
     <asp:Literal ID="Literal1" runat="server"></asp:Literal>
 
 </body>

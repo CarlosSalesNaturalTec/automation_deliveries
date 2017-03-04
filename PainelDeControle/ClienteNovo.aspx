@@ -103,7 +103,6 @@
                 dataType: "json",
                 success: function (response) {
                     document.getElementById("btSalvar").style.cursor = "default";
-                    alert("Ok");
                     var linkurl = response.d;
                     window.location.href = linkurl;
                 },

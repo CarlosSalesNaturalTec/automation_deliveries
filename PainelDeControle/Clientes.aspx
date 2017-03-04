@@ -14,11 +14,10 @@
 </head>
 
 <body>
-
-    <h3>Cadastro de Clientes</h3>
     <div class="divbt" >
-        <a href="ClienteNovo.aspx" class="btn btn-success">Novo</a>
+        <a href="ClienteNovo.aspx" class="btn btn-success">NOVO CLIENTE</a>
     </div>
+    <h3>Cadastro de Clientes</h3>
     
     <asp:Literal ID="Literal1" runat="server"></asp:Literal>
 
@@ -36,7 +35,7 @@
 		    	"language": {
 		            "lengthMenu": "Mostrando _MENU_ registros por página",
 		            "zeroRecords": "Nada encontrado",
-		            "info": "Mostrando página _PAGE_ de _PAGES_",
+		            "info": " _MAX_ registros no total",
 		            "infoEmpty": "Nenhum registro disponível",
 		            "infoFiltered": "(filtrado de _MAX_ registros no total)",
 		            "search": "Pesquisa:"

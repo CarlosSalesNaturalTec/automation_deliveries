@@ -14,13 +14,19 @@ public partial class Orcamento_Concluido : System.Web.UI.Page
         //Host da porta SMTP
         string SMTP = "smtp.terra.com.br";
 
-        string emailDestinatario = "comercial@loglogistica.com.br";
-        //string emailDestinatario = "comercial@loglogistica.com.br";
+        //string emailDestinatario = "naturalbahia@gmail.com";
+        string emailDestinatario = "sergiosuarez@loglogistica.com.br";
         //string emailComCopia        = "email@comcopia.com.br";
         //string emailComCopiaOculta  = "email@comcopiaoculta.com.br";
 
         string assuntoMensagem = "Novo Orçamento Solicitado pelo Site";
-        string conteudoMensagem = "<a href=\"http://logmaster.azurewebsites.net" + "\" target=\"_blank\">Solicitante: " + Request.QueryString["Empresa"] + "</a>";
+        string conteudoMensagem = "<p><b>Empresa:</b> " + Request.QueryString["p1"] + "</p>";
+        conteudoMensagem = conteudoMensagem + "<p><b>Contato:</b> " + Request.QueryString["p2"] + "</p>";
+        conteudoMensagem = conteudoMensagem + "<p><b>E-mail:</b> " + Request.QueryString["p3"] + "</p>";
+        conteudoMensagem = conteudoMensagem + "<p><b>Telefone:</b> " + Request.QueryString["p4"] + "</p>";
+        conteudoMensagem = conteudoMensagem + "<p><b>Necessidade:</b> " + Request.QueryString["p6"] + "</p>";
+        conteudoMensagem = conteudoMensagem + "<p><b>Disponibilidade:</b> " + Request.QueryString["p7"] + "</p>";
+        conteudoMensagem = conteudoMensagem + "<p><b>Perfil:</b> " + Request.QueryString["p5"] + "</p>";
 
         //Cria objeto com dados do e-mail.
         MailMessage objEmail = new MailMessage();

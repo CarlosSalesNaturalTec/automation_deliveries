@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Text;
 
 public partial class Abastecimento_Planilha : System.Web.UI.Page
@@ -52,12 +53,11 @@ public partial class Abastecimento_Planilha : System.Web.UI.Page
             "<tr>" +
             "<th>DATA</th>" +
             "<th>HORÁRIO</th>" +
-            "<th>EVENTO</th>" +
             "<th>MOTORISTA</th>" +
             "<th>PLACA</th>" +
             "<th>KM</th>" +
-            "<th>VALOR</th>" +
-            "<th>SALDO</th>" +
+            "<th style=\"text-align:right\">VALOR</th>" +
+            "<th style=\"text-align:right\">SALDO</th>" +
             "</tr>" +
             "</thead>" +
             "<tbody>";
@@ -76,46 +76,53 @@ public partial class Abastecimento_Planilha : System.Web.UI.Page
         OperacaoBanco operacao = new OperacaoBanco();
         System.Data.SqlClient.SqlDataReader dados = operacao.Select(stringselect);
 
-        int saldo = 0;
+        decimal saldo = 0;
 
         while (dados.Read())
         {
-            string evento = Convert.ToString(dados[2]);
-            string valorSTR = Convert.ToString(dados[6]);
-            int valor = Convert.ToInt16(valorSTR);
+
+            string Coluna1 = Convert.ToString(dados[0]);  //data
+            string Coluna2 = Convert.ToString(dados[1]);  //horario
+            string Coluna3 = Convert.ToString(dados[2]);  //evento
+            string Coluna4 = Convert.ToString(dados[3]);  //motorista
+            string Coluna5 = Convert.ToString(dados[4]);  //placa
+            string Coluna6 = Convert.ToString(dados[5]);  //Km
+            string valorSTR = Convert.ToString(dados[6]); //valor - auxiliar
+            string Coluna7 = "";                          //valor - formatada
+            string Coluna8 = "";                          //saldo - formatada
+            string Coluna7Cor = "";
+
+            decimal valor = Convert.ToDecimal(valorSTR);
+            string evento = Coluna3;
 
             if (evento == "DEPOSITO")
             {
                 saldo = saldo + valor;
+                Coluna7Cor = "success";
             }
             else
             {
                 saldo = saldo - valor;
+                Coluna7Cor = "danger";
             }
-
-            string Coluna1 = Convert.ToString(dados[0]);
-            string Coluna2 = Convert.ToString(dados[1]);
-            string Coluna3 = Convert.ToString(dados[2]);
-            string Coluna4 = Convert.ToString(dados[3]);
-            string Coluna5 = Convert.ToString(dados[4]);
-            string Coluna6 = Convert.ToString(dados[5]);
-            string Coluna7 = Convert.ToString(dados[6]);
-            string Coluna8 = saldo.ToString();
+            
+            Coluna7 = "<td class=\"text-" + Coluna7Cor + "\" style=\"text-align:right\"> <strong>" + valor.ToString("N", CultureInfo.CreateSpecificCulture("pt-BR")) + "</strong></td>";
+            Coluna8 = "<td style=\"text-align:right\"> <strong>" + saldo.ToString("N",CultureInfo.CreateSpecificCulture("pt-BR")) + "</strong></td>";
 
             string stringcomaspas = "<tr>" +
                 "<td>" + Coluna1 + "</td>" +
                 "<td>" + Coluna2 + "</td>" +
-                "<td>" + Coluna3 + "</td>" +
                 "<td>" + Coluna4 + "</td>" +
                 "<td>" + Coluna5 + "</td>" +
                 "<td>" + Coluna6 + "</td>" +
-                "<td>" + Coluna7 + "</td>" +
-                "<td>" + Coluna8 + "</td>" +
+                Coluna7 +
+                Coluna8 + 
                 "</tr>";
 
             str.Append(stringcomaspas);
         }
         ConexaoBancoSQL.fecharConexao();
+        Literal_Saldo.Text = "Saldo Atual : " + saldo.ToString("N", CultureInfo.CreateSpecificCulture("pt-BR"));
 
     }
 

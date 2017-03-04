@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Abastecimento_Lista.aspx.cs" Inherits="Abastecimento_Lista" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Veiculos_Lista.aspx.cs" Inherits="Veiculos_Lista" %>
 
 <!DOCTYPE html>
 
@@ -14,9 +14,10 @@
 </head>
 
 <body>
-    <a href="Abastecimento_Novo.aspx" class="btn btn-success">NOVA AUTORIZAÇÃO</a>
-    <br />
-    <h3>Autorizações de Abastecimento</h3>
+    <div class="divbt" >
+        <a href="Veiculos_Novo.aspx" class="btn btn-success">NOVO VEÍCULO</a>
+    </div>
+    <h3>Cadastro de Veículos</h3>
     
     <asp:Literal ID="Literal1" runat="server"></asp:Literal>
 
@@ -31,8 +32,8 @@
 	    <script>
 	    $(document).ready(function(){
 	        $('#tabela').DataTable({
-		    	    "language": {
-		    	    "lengthMenu": "Mostrando _MENU_ registros por página",
+		    	"language": {
+		            "lengthMenu": "Mostrando _MENU_ registros por página",
 		            "zeroRecords": "Nada encontrado",
 		            "info": " _MAX_ registros no total",
 		            "infoEmpty": "Nenhum registro disponível",
@@ -42,7 +43,6 @@
 		    });
 		});
 	    </script>
-     <!-- Busca e Paginação modelo: datatables.net -->
 
 </body>
 </html>
