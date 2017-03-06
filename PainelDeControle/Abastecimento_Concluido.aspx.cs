@@ -29,6 +29,9 @@ public partial class Abastecimento_Concluido : System.Web.UI.Page
         string emailDestinatario = "trevo03@redetrevo.com.br";
         string emailComCopia  = "emilia@redetrevo.com.br";
         string emailComCopia1 = "anderson.amorin@postotrevo.com.br";
+        string emailComCopia2 = "sergiosuarez@loglogistica.com.br";
+        string emailComCopia3 = "regis@loglogistica.com.br";
+
         //string emailComCopiaOculta  = "email@comcopiaoculta.com.br";
 
         string assuntoMensagem = "Autorização de Abastecimento - LOG TRANSPORTES";
@@ -64,6 +67,8 @@ public partial class Abastecimento_Concluido : System.Web.UI.Page
         //Enviar cópia para.
         objEmail.CC.Add(emailComCopia);
         objEmail.CC.Add(emailComCopia1);
+        objEmail.CC.Add(emailComCopia2);
+        objEmail.CC.Add(emailComCopia3);
 
         //Enviar cópia oculta para.
         //objEmail.Bcc.Add(emailComCopiaOculta);

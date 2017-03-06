@@ -45,7 +45,9 @@ public class wspainel : System.Web.Services.WebService
         ConexaoBancoSQL.fecharConexao();
         if (inserir == true)
         {
-            url = "../CurriculoOK.aspx?Nome=" + param1 + "&Funcao=" + param19;
+            url = "../CurriculoOK.aspx?p1=" + param1 + "&p2=" + param4 + "-" + param41  +"&p3=" + param13 + "&p4=" + param16 + "&p5=" + param17 
+                  + "&p6=" + param19 + "&p7=" + param20 + "&p8=" + param22 + "&p9=" + param24 + "&p10=" + param26
+                  + "&p11=" + param28 + "&p12=" + param30 + "&p13=" + param38 + "&p14=" + param43;
         }
         else
         {

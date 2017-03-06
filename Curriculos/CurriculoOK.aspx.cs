@@ -6,7 +6,7 @@ public partial class CurriculoOK : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         //Define os dados do e-mail
-        string nomeRemetente = "Painel de Controle";
+        string nomeRemetente = "LOG - Painel de Controle";
         string emailRemetente = "paineldecontrole@loglogistica.com.br";
         string senha = "ss040470";
 
@@ -14,14 +14,27 @@ public partial class CurriculoOK : System.Web.UI.Page
         string SMTP = "smtp.terra.com.br";
 
         string emailDestinatario = "rh@loglogistica.com.br";
+        //string emailDestinatario = "naturalbahia@gmail.com";
         //string emailComCopia        = "email@comcopia.com.br";
         //string emailComCopiaOculta  = "email@comcopiaoculta.com.br";
 
         string assuntoMensagem = "Novo Curriculum Cadastrado";
-        string conteudoMensagem = "<a href=\"http://logmaster.azurewebsites.net" + 
-            "\" target=\"_blank\">Nome: " + Request.QueryString["Nome"] +
-            " - Função: " + Request.QueryString["Funcao"] +
-            "</a>";
+        string conteudoMensagem = "<h2>Novo Curriculum Cadastrado no Site</h2>"
+            + "<p><b>Nome: </b>" + Request.QueryString["p1"] + "</p>"
+            + "<p><b>Endereço:</b> " + Request.QueryString["p2"] + "</p>"
+            + "<p><b>Cat. Habilitação:</b> " + Request.QueryString["p3"] + "</p>"
+            + "<p><b>Veículo Próprio:</b> " + Request.QueryString["p4"] + "</p>"
+            + "<p><b>Ano/Modelo:</b> " + Request.QueryString["p5"] + "</p>"
+            + "<p><b>Função desejada:</b> " + Request.QueryString["p6"] + "</p>"
+            + "<p><b>Empresa1:</b> " + Request.QueryString["p7"] + "</p>"
+            + "<p><b>Cargo:</b> " + Request.QueryString["p8"] + "</p>"
+            + "<p><b>Empresa2:</b> " + Request.QueryString["p9"] + "</p>"
+            + "<p><b>Cargo:</b> " + Request.QueryString["p10"] + "</p>"
+            + "<p><b>Empresa3:</b> " + Request.QueryString["p11"] + "</p>"
+            + "<p><b>Cargo:</b> " + Request.QueryString["p12"] + "</p>"
+            + "<p><b>Indicação:</b> " + Request.QueryString["p13"] + "</p>"
+            + "<p><b>Pretensão Salarial:</b> " + Request.QueryString["p14"] + "</p>"
+            ;
 
         //Cria objeto com dados do e-mail.
         MailMessage objEmail = new MailMessage();

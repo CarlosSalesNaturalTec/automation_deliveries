@@ -7,6 +7,8 @@
     <title></title>
 </head>
 <body>
-    <h3>Obrigado. Curriculum Cadastrado com Sucesso!</h3>
+    <h1>LOG Transportes</h1>
+    <h3>Curriculum Cadastrado com Sucesso!</h3>
+
 </body>
 </html>

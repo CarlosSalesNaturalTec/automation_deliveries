@@ -16,7 +16,7 @@ public partial class Orcamento_Concluido : System.Web.UI.Page
 
         //string emailDestinatario = "naturalbahia@gmail.com";
         string emailDestinatario = "sergiosuarez@loglogistica.com.br";
-        //string emailComCopia        = "email@comcopia.com.br";
+        string emailComCopia = "comercial@loglogistica.com.br";
         //string emailComCopiaOculta  = "email@comcopiaoculta.com.br";
 
         string assuntoMensagem = "Novo Orçamento Solicitado pelo Site";
@@ -38,7 +38,7 @@ public partial class Orcamento_Concluido : System.Web.UI.Page
         objEmail.To.Add(emailDestinatario);
 
         //Enviar cópia para.
-        //objEmail.CC.Add(emailComCopia);
+        objEmail.CC.Add(emailComCopia);
 
         //Enviar cópia oculta para.
         //objEmail.Bcc.Add(emailComCopiaOculta);

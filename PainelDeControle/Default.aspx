@@ -64,6 +64,8 @@
                             </li>
                             <li><a href="Abastecimento_Planilha.aspx" target="iframe_a">Planilha</a>
                             </li>
+                              <li><a href="Abastecimento_Relatorios.aspx" target="iframe_a">Relatórios</a>
+                            </li>
                           </ul>
                         </li>
                     </ul>
