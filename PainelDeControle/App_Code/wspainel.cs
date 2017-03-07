@@ -230,10 +230,14 @@ public class wspainel : System.Web.Services.WebService
     [WebMethod]
     public string AbastecimentoNovo(string param1, string param2, string param3, string param4)
     {
+        int Posto_ID = 1;
+        string Posto_Nome = "POSTO TREVO";
+        string PostoLTGasolina = "3.52";
+
         string url = "";
         OperacaoBanco operacao = new OperacaoBanco();
-        bool inserir = operacao.Insert(@"INSERT INTO Tbl_Abastecimentos (Placa, Nome, Valor, Kilometragem , DataAutoriza, Posto ) " +
-           "VALUES ('" + param1 + "', '" + param2 + "', '" + param3 + "', " + param4 + ",  getdate(), 'POSTO TREVO')");
+        bool inserir = operacao.Insert(@"INSERT INTO Tbl_Abastecimentos (Placa, Nome, Valor, Kilometragem , DataAutoriza, Posto, ID_Posto, LTGasolina  ) " +
+           "VALUES ('" + param1 + "', '" + param2 + "', '" + param3 + "', " + param4 + ",  getdate(), '" + Posto_Nome + "'," + Posto_ID + "," + PostoLTGasolina + ")");
         ConexaoBancoSQL.fecharConexao();
         if (inserir == true)
         {

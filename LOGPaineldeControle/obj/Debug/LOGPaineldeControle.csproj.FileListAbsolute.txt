@@ -1,0 +1,8 @@
+C:\Users\Sergio\Source\Repos\automation_deliveries\LOGPaineldeControle\obj\Debug\LOGPaineldeControle.Form1.resources
+C:\Users\Sergio\Source\Repos\automation_deliveries\LOGPaineldeControle\obj\Debug\LOGPaineldeControle.Properties.Resources.resources
+C:\Users\Sergio\Source\Repos\automation_deliveries\LOGPaineldeControle\obj\Debug\LOGPaineldeControle.csproj.GenerateResource.Cache
+C:\Users\Sergio\Source\Repos\automation_deliveries\LOGPaineldeControle\bin\Debug\LOGPaineldeControle.exe.config
+C:\Users\Sergio\Source\Repos\automation_deliveries\LOGPaineldeControle\bin\Debug\LOGPaineldeControle.exe
+C:\Users\Sergio\Source\Repos\automation_deliveries\LOGPaineldeControle\bin\Debug\LOGPaineldeControle.pdb
+C:\Users\Sergio\Source\Repos\automation_deliveries\LOGPaineldeControle\obj\Debug\LOGPaineldeControle.exe
+C:\Users\Sergio\Source\Repos\automation_deliveries\LOGPaineldeControle\obj\Debug\LOGPaineldeControle.pdb

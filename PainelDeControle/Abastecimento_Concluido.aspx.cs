@@ -26,11 +26,12 @@ public partial class Abastecimento_Concluido : System.Web.UI.Page
         //Host da porta SMTP
         string SMTP = "smtp.terra.com.br";
 
+        //string emailDestinatario = "naturalbahia@gmail.com";
         string emailDestinatario = "trevo03@redetrevo.com.br";
         string emailComCopia  = "emilia@redetrevo.com.br";
         string emailComCopia1 = "anderson.amorin@postotrevo.com.br";
         string emailComCopia2 = "sergiosuarez@loglogistica.com.br";
-        string emailComCopia3 = "regis@loglogistica.com.br";
+        string emailComCopia3 = "regiscorreia@loglogistica.com.br";
 
         //string emailComCopiaOculta  = "email@comcopiaoculta.com.br";
 
