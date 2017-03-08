@@ -2,3 +2,12 @@ C:\Users\Sergio\Source\Repos\automation_deliveries\LOGPaineldeControle\bin\Relea
 C:\Users\Sergio\Source\Repos\automation_deliveries\LOGPaineldeControle\obj\Release\LOGPaineldeControle.Form1.resources
 C:\Users\Sergio\Source\Repos\automation_deliveries\LOGPaineldeControle\obj\Release\LOGPaineldeControle.Properties.Resources.resources
 C:\Users\Sergio\Source\Repos\automation_deliveries\LOGPaineldeControle\obj\Release\LOGPaineldeControle.csproj.GenerateResource.Cache
+C:\Users\Sergio\Source\Repos\automation_deliveries\LOGPaineldeControle\bin\Release\LOGPaineldeControle.exe.manifest
+C:\Users\Sergio\Source\Repos\automation_deliveries\LOGPaineldeControle\bin\Release\LOGPaineldeControle.application
+C:\Users\Sergio\Source\Repos\automation_deliveries\LOGPaineldeControle\bin\Release\LOGPaineldeControle.exe
+C:\Users\Sergio\Source\Repos\automation_deliveries\LOGPaineldeControle\bin\Release\LOGPaineldeControle.pdb
+C:\Users\Sergio\Source\Repos\automation_deliveries\LOGPaineldeControle\obj\Release\LOGPaineldeControle.csprojResolveAssemblyReference.cache
+C:\Users\Sergio\Source\Repos\automation_deliveries\LOGPaineldeControle\obj\Release\LOGPaineldeControle.exe.manifest
+C:\Users\Sergio\Source\Repos\automation_deliveries\LOGPaineldeControle\obj\Release\LOGPaineldeControle.application
+C:\Users\Sergio\Source\Repos\automation_deliveries\LOGPaineldeControle\obj\Release\LOGPaineldeControle.exe
+C:\Users\Sergio\Source\Repos\automation_deliveries\LOGPaineldeControle\obj\Release\LOGPaineldeControle.pdb

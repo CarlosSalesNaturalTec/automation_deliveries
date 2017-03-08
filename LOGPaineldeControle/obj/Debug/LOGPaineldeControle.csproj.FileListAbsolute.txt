@@ -6,3 +6,8 @@ C:\Users\Sergio\Source\Repos\automation_deliveries\LOGPaineldeControle\bin\Debug
 C:\Users\Sergio\Source\Repos\automation_deliveries\LOGPaineldeControle\bin\Debug\LOGPaineldeControle.pdb
 C:\Users\Sergio\Source\Repos\automation_deliveries\LOGPaineldeControle\obj\Debug\LOGPaineldeControle.exe
 C:\Users\Sergio\Source\Repos\automation_deliveries\LOGPaineldeControle\obj\Debug\LOGPaineldeControle.pdb
+C:\Users\Sergio\Source\Repos\automation_deliveries\LOGPaineldeControle\obj\Debug\LOGPaineldeControle.csprojResolveAssemblyReference.cache
+C:\Users\Sergio\Source\Repos\automation_deliveries\LOGPaineldeControle\bin\Debug\LOGPaineldeControle.exe.manifest
+C:\Users\Sergio\Source\Repos\automation_deliveries\LOGPaineldeControle\bin\Debug\LOGPaineldeControle.application
+C:\Users\Sergio\Source\Repos\automation_deliveries\LOGPaineldeControle\obj\Debug\LOGPaineldeControle.exe.manifest
+C:\Users\Sergio\Source\Repos\automation_deliveries\LOGPaineldeControle\obj\Debug\LOGPaineldeControle.application

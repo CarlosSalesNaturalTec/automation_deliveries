@@ -70,8 +70,41 @@
         }
 
         function Selecao_Periodo(selecao) {
-            document.getElementById("inputData1").value = "2017-01-01";
-            document.getElementById("inputData2").value = "2017-01-31";
+
+            dataPer1 = '';
+            dataPer2 = '';
+            hoje = new Date();
+            
+            dia = hoje.getDate();
+            mes = hoje.getMonth() + 1 ;
+            ano = hoje.getFullYear();
+
+            switch (selecao) {
+                case 'COMPLETO':
+                    dataPer1 = '2017-01-01';
+                    dataPer2 = ano + '-' + pad(mes) + '-' + pad(dia);
+                    break;
+                case 'ESTA SEMANA':
+                    dataPer1 = ano + '-' + pad(mes) + '-01';
+                    dataPer2 = ano + '-' + pad(mes) + '-' + pad(dia);
+                    break;
+                case 'ESTE MÊS':
+                    dataPer1 = ano + '-' + pad(mes) + '-01';
+                    dataPer2 = ano + '-' + pad(mes) + '-' + pad(dia);
+                    break;
+                case 'ESPECÍFICO':
+                    document.getElementById("inputData1").focus();
+                    break;
+
+                default:
+                    break;
+            }
+            document.getElementById("inputData1").value = dataPer1;
+            document.getElementById("inputData2").value = dataPer2;
+        }
+
+        function pad(n) {
+            return (n < 10) ? ("0" + n) : n;
         }
 
     </script>
