@@ -51,11 +51,13 @@
     <br />
 
     <div class="row">
-        <div class="col-md-1">
-            
+        <div class="col-md-1">         
         </div>
         <div class="col-md-2">
             <button type="button" class="btn btn-primary" onclick="verificar()">GERAR RELATÓRIO</button>
+        </div>
+        <div class="col-md-2">
+            <button type="button" class="btn btn-primary" onclick="voltar()">VOLTAR</button>
         </div>
     </div>
 
@@ -105,6 +107,11 @@
 
         function pad(n) {
             return (n < 10) ? ("0" + n) : n;
+        }
+
+        function voltar() {
+            var linkurl = "../Abastecimento_Planilha.aspx";
+            window.location.href = linkurl;
         }
 
     </script>

@@ -76,7 +76,7 @@ public partial class Abastecimento_Planilha : System.Web.UI.Page
         OperacaoBanco operacao = new OperacaoBanco();
         System.Data.SqlClient.SqlDataReader dados = operacao.Select(stringselect);
 
-        decimal saldo = 0;
+        decimal saldo = 0, totalCR = 0, TotalDB = 0;
 
         while (dados.Read())
         {
@@ -98,11 +98,13 @@ public partial class Abastecimento_Planilha : System.Web.UI.Page
             if (evento == "DEPOSITO")
             {
                 saldo = saldo + valor;
+                totalCR = totalCR + valor;
                 Coluna7Cor = "success";
             }
             else
             {
                 saldo = saldo - valor;
+                TotalDB = TotalDB + valor;
                 Coluna7Cor = "danger";
             }
             
@@ -122,7 +124,10 @@ public partial class Abastecimento_Planilha : System.Web.UI.Page
             str.Append(stringcomaspas);
         }
         ConexaoBancoSQL.fecharConexao();
+
         Literal_Saldo.Text = "Saldo Atual : " + saldo.ToString("N", CultureInfo.CreateSpecificCulture("pt-BR"));
+        Literal_TotalCR.Text = "Total de Créditos : " + totalCR.ToString("N", CultureInfo.CreateSpecificCulture("pt-BR"));
+        Literal_TotalDB.Text = "Total de Débitos : " + TotalDB.ToString("N", CultureInfo.CreateSpecificCulture("pt-BR"));
 
     }
 

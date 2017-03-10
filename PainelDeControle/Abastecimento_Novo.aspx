@@ -91,7 +91,7 @@
         }
 
         function cancelar() {
-            var linkurl = "../Abastecimento_Lista.aspx";
+            var linkurl = "../Abastecimento_Planilha.aspx";
             window.location.href = linkurl;
         }
     </script>

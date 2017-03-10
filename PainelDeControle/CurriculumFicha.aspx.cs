@@ -52,15 +52,15 @@ public partial class CurriculumFicha : System.Web.UI.Page
                 "document.getElementById('inputExperiencia1').value = \"" + Convert.ToString(rcrdsetCURRIC[19]) + "\";" +
                 "document.getElementById('inputPeriodo1').value = \"" + Convert.ToString(rcrdsetCURRIC[20]) + "\";" +
                 "document.getElementById('inputCargo1').value = \"" + Convert.ToString(rcrdsetCURRIC[21]) + "\";" +
-                "document.getElementById('inputAtividades1').value = \"" + Convert.ToString(rcrdsetCURRIC[22]) + "\";" +
+                "document.getElementById('inputAtividades1').value = \"" + Convert.ToString(rcrdsetCURRIC[22]).Replace("\n", " ") + "\";" +
                 "document.getElementById('inputExperiencia2').value = \"" + Convert.ToString(rcrdsetCURRIC[23]) + "\";" +
                 "document.getElementById('inputPeriodo2').value = \"" + Convert.ToString(rcrdsetCURRIC[24]) + "\";" +
                 "document.getElementById('inputCargo2').value = \"" + Convert.ToString(rcrdsetCURRIC[25]) + "\";" +
-                "document.getElementById('inputAtividades2').value = \"" + Convert.ToString(rcrdsetCURRIC[26]) + "\";" +
+                "document.getElementById('inputAtividades2').value = \"" + Convert.ToString(rcrdsetCURRIC[26]).Replace("\n", " ") + "\";" +
                 "document.getElementById('inputExperiencia3').value = \"" + Convert.ToString(rcrdsetCURRIC[27]) + "\";" +
                 "document.getElementById('inputPeriodo3').value = \"" + Convert.ToString(rcrdsetCURRIC[28]) + "\";" +
                 "document.getElementById('inputCargo3').value = \"" + Convert.ToString(rcrdsetCURRIC[29]) + "\";" +
-                "document.getElementById('inputAtividades3').value = \"" + Convert.ToString(rcrdsetCURRIC[30]) + "\";" +
+                "document.getElementById('inputAtividades3').value = \"" + Convert.ToString(rcrdsetCURRIC[30]).Replace("\n", " ") + "\";" +
                 "document.getElementById('inputEscolaridade1').value = \"" + Convert.ToString(rcrdsetCURRIC[31]) + "\";" +
                 "document.getElementById('inputConclusao1').value = \"" + Convert.ToString(rcrdsetCURRIC[32]) + "\";" +
                 "document.getElementById('inputEscolaridade2').value = \"" + Convert.ToString(rcrdsetCURRIC[33]) + "\";" +
@@ -68,7 +68,7 @@ public partial class CurriculumFicha : System.Web.UI.Page
                 "document.getElementById('inputEscolaridade3').value = \"" + Convert.ToString(rcrdsetCURRIC[35]) + "\";" +
                 "document.getElementById('inputConclusao3').value = \"" + Convert.ToString(rcrdsetCURRIC[36]) + "\";" +
                 "document.getElementById('inputIndicacao').value = \"" + Convert.ToString(rcrdsetCURRIC[37]) + "\";" +
-                "document.getElementById('inputComentarios').value = \"" + Convert.ToString(rcrdsetCURRIC[38]) + "\";" +
+                "document.getElementById('inputComentarios').value = \"" + Convert.ToString(rcrdsetCURRIC[38]).Replace("\n", " ") + "\";" +
                 "document.getElementById('results').innerHTML = '<img src=\"" + Convert.ToString(rcrdsetCURRIC[39]) + "\"/>'; " +
                 "document.getElementById('inputDataCad').value = \"" + Convert.ToString(rcrdsetCURRIC[40]) + "\";" +
                 "document.getElementById('inputBairro').value = \"" + Convert.ToString(rcrdsetCURRIC[41]) + "\";" +
