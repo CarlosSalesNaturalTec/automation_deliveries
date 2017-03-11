@@ -24,15 +24,15 @@
     <asp:Literal ID="Literal_Dados" runat="server"></asp:Literal>
     <!-- Dados -->
 
-    <!-- Operações  -->
-    <script type="text/javascript">
 
+    <!-- VOLTAR  -->
+    <script type="text/javascript">
         function cancelar() {
             var linkurl = "../Abastecimento_Relatorios.aspx";
             window.location.href = linkurl;
         }
     </script>
-    <!-- Operações  -->
+    <!-- VOLTAR  -->
 
 </body>
 </html>

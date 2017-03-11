@@ -74,10 +74,7 @@
               <div class="clearfix"></div>
 
               <div class="separator">
-                <p class="change_link">Primeiro Acesso?
-                  <a href="#signup" class="to_register">Solicitar uma Conta</a>
-                </p>
-
+                
                 <div class="clearfix"></div>
                 <br />
 

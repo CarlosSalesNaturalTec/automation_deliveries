@@ -14,11 +14,7 @@ public partial class Abastecimento_Planilha : System.Web.UI.Page
             InsereDebitos();
             InsereCreditos();
 
-            montaCabecalho();
-            dadosCorpo();
-            montaRodape();
-
-            Literal1.Text = str.ToString();
+            CalculaTotais();
         }
     }
 
@@ -46,30 +42,9 @@ public partial class Abastecimento_Planilha : System.Web.UI.Page
         Boolean inserir = operacao.Insert(stringinsert);
     }
 
-    private void montaCabecalho()
+    private void CalculaTotais()
     {
-        string stringcomaspas = "<table id=\"tabela\" class=\"table table-striped table-hover \">" +
-            "<thead>" +
-            "<tr>" +
-            "<th>DATA</th>" +
-            "<th>HORÁRIO</th>" +
-            "<th>MOTORISTA</th>" +
-            "<th>PLACA</th>" +
-            "<th>KM</th>" +
-            "<th style=\"text-align:right\">VALOR</th>" +
-            "<th style=\"text-align:right\">SALDO</th>" +
-            "</tr>" +
-            "</thead>" +
-            "<tbody>";
-        str.Clear();
-        str.Append(stringcomaspas);
-    }
-
-    private void dadosCorpo()
-    {
-        string datastatus = DateTime.Now.ToString("yyyy-MM-dd");
-        string stringselect = "select format(DataOperacao ,'dd/MM/yyyy') as DataOper, format(DataOperacao ,'hh:mm:ss') as HoraOper," +
-                " Evento , Motorista , Placa , Kilometragem , Valor " +
+        string stringselect = "select Evento , Valor " +
                 " from Tbl_Abastecimento_Planilha" +
                 " order by DataOperacao";
 
@@ -80,17 +55,8 @@ public partial class Abastecimento_Planilha : System.Web.UI.Page
 
         while (dados.Read())
         {
-
-            string Coluna1 = Convert.ToString(dados[0]);  //data
-            string Coluna2 = Convert.ToString(dados[1]);  //horario
-            string Coluna3 = Convert.ToString(dados[2]);  //evento
-            string Coluna4 = Convert.ToString(dados[3]);  //motorista
-            string Coluna5 = Convert.ToString(dados[4]);  //placa
-            string Coluna6 = Convert.ToString(dados[5]);  //Km
-            string valorSTR = Convert.ToString(dados[6]); //valor - auxiliar
-            string Coluna7 = "";                          //valor - formatada
-            string Coluna8 = "";                          //saldo - formatada
-            string Coluna7Cor = "";
+            string Coluna3 = Convert.ToString(dados[0]);  //evento
+            string valorSTR = Convert.ToString(dados[1]); //valor - auxiliar
 
             decimal valor = Convert.ToDecimal(valorSTR);
             string evento = Coluna3;
@@ -99,42 +65,20 @@ public partial class Abastecimento_Planilha : System.Web.UI.Page
             {
                 saldo = saldo + valor;
                 totalCR = totalCR + valor;
-                Coluna7Cor = "success";
             }
             else
             {
                 saldo = saldo - valor;
                 TotalDB = TotalDB + valor;
-                Coluna7Cor = "danger";
             }
-            
-            Coluna7 = "<td class=\"text-" + Coluna7Cor + "\" style=\"text-align:right\"> <strong>" + valor.ToString("N", CultureInfo.CreateSpecificCulture("pt-BR")) + "</strong></td>";
-            Coluna8 = "<td style=\"text-align:right\"> <strong>" + saldo.ToString("N",CultureInfo.CreateSpecificCulture("pt-BR")) + "</strong></td>";
-
-            string stringcomaspas = "<tr>" +
-                "<td>" + Coluna1 + "</td>" +
-                "<td>" + Coluna2 + "</td>" +
-                "<td>" + Coluna4 + "</td>" +
-                "<td>" + Coluna5 + "</td>" +
-                "<td>" + Coluna6 + "</td>" +
-                Coluna7 +
-                Coluna8 + 
-                "</tr>";
-
-            str.Append(stringcomaspas);
         }
         ConexaoBancoSQL.fecharConexao();
 
-        Literal_Saldo.Text = "Saldo Atual : " + saldo.ToString("N", CultureInfo.CreateSpecificCulture("pt-BR"));
-        Literal_TotalCR.Text = "Total de Créditos : " + totalCR.ToString("N", CultureInfo.CreateSpecificCulture("pt-BR"));
-        Literal_TotalDB.Text = "Total de Débitos : " + TotalDB.ToString("N", CultureInfo.CreateSpecificCulture("pt-BR"));
+        Literal_Saldo.Text = "R$ " + saldo.ToString("N", CultureInfo.CreateSpecificCulture("pt-BR"));
+        Literal_TotalCR.Text = "R$ " + totalCR.ToString("N", CultureInfo.CreateSpecificCulture("pt-BR"));
+        Literal_TotalDB.Text = "R$ " + TotalDB.ToString("N", CultureInfo.CreateSpecificCulture("pt-BR"));
+        Literal_Rel.Text = " ";
 
-    }
-
-    private void montaRodape()
-    {
-        string footer = "</tbody></table>";
-        str.Append(footer);
     }
 
 

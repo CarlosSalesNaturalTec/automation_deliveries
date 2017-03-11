@@ -38,13 +38,15 @@
         </div>
 
         <div class="col-md-2">
-            <input type="date" class="form-control" id="inputData1">
+            <input type="date" class="form-control" id="inputData1" style="visibility:hidden">
         </div>
         <div class="col-md-2">
-            <input type="date" class="form-control" id="inputData2">
+            <input type="date" class="form-control" id="inputData2" style="visibility:hidden">
         </div>
-
         <!-- Periodo -->
+
+        <!-- Tipo de Relatório:  1=Completo   2=Esta Semana  3=Este Mes    4=Especifico-->
+        <input type="hidden" id="tipoRel" value="1">
 
     </div>
     
@@ -62,10 +64,15 @@
     </div>
 
     <script type="text/javascript">
+
         function verificar() {
 
             var v1 = document.getElementById("inputPlaca").value;
-            var linkurl = "../Abastecimento_RelatorioOK.aspx?p1=" + v1;
+            var v2 = document.getElementById("tipoRel").value;
+            var v3 = document.getElementById("inputData1").value;
+            var v4 = document.getElementById("inputData2").value;
+
+            var linkurl = "../Abastecimento_RelatorioOK.aspx?p1=" + v1 + "&p2=" + v2 + "&p3=" + v3 + "&p4=" + v4;
 
             window.location.href = linkurl;
 
@@ -73,36 +80,15 @@
 
         function Selecao_Periodo(selecao) {
 
-            dataPer1 = '';
-            dataPer2 = '';
-            hoje = new Date();
-            
-            dia = hoje.getDate();
-            mes = hoje.getMonth() + 1 ;
-            ano = hoje.getFullYear();
-
-            switch (selecao) {
-                case 'COMPLETO':
-                    dataPer1 = '2017-01-01';
-                    dataPer2 = ano + '-' + pad(mes) + '-' + pad(dia);
-                    break;
-                case 'ESTA SEMANA':
-                    dataPer1 = ano + '-' + pad(mes) + '-01';
-                    dataPer2 = ano + '-' + pad(mes) + '-' + pad(dia);
-                    break;
-                case 'ESTE MÊS':
-                    dataPer1 = ano + '-' + pad(mes) + '-01';
-                    dataPer2 = ano + '-' + pad(mes) + '-' + pad(dia);
-                    break;
-                case 'ESPECÍFICO':
-                    document.getElementById("inputData1").focus();
-                    break;
-
-                default:
-                    break;
+            if (selecao == 'ESPECÍFICO') {
+                document.getElementById("inputData1").style.visibility = "visible";
+                document.getElementById("inputData2").style.visibility = "visible";
+                document.getElementById("inputData1").focus();
+            } else {
+                document.getElementById("inputData1").style.visibility = "hidden";
+                document.getElementById("inputData2").style.visibility = "hidden";
             }
-            document.getElementById("inputData1").value = dataPer1;
-            document.getElementById("inputData2").value = dataPer2;
+            
         }
 
         function pad(n) {

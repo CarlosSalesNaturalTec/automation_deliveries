@@ -5,13 +5,17 @@ using System.Text;
 public partial class Abastecimento_RelatorioOK : System.Web.UI.Page
 {
     StringBuilder str = new StringBuilder();
-    string placa = "";
+    string placa = "", tipoRel = "", per1 = "", per2 = "";
 
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
         {
             placa = Request.QueryString["p1"];
+            tipoRel = Request.QueryString["p2"];
+            per1 = Request.QueryString["p3"];
+            per2 = Request.QueryString["p4"];
+
             Literal_Placa.Text = "Placa : " + placa;
 
             montaCabecalho();
@@ -76,11 +80,21 @@ public partial class Abastecimento_RelatorioOK : System.Web.UI.Page
             string coluna4f = Coluna4.ToString("N", CultureInfo.CreateSpecificCulture("pt-BR"));
 
             //quant de litros
-            decimal quantLitros = Convert.ToDecimal(Coluna4) / Convert.ToDecimal(Coluna5);
-            Coluna6 = quantLitros.ToString("N", CultureInfo.CreateSpecificCulture("pt-BR"));
+            decimal quantLitros;
+            decimal kmLT;
 
-            //indice KM/LT
-            decimal kmLT = Convert.ToDecimal(Coluna3) / quantLitros;
+            if (Convert.ToInt16(Coluna4) == 0)
+            {
+                quantLitros = 0;
+                kmLT = 0;
+            }
+            else
+            {
+                quantLitros = Convert.ToDecimal(Coluna4) / Convert.ToDecimal(Coluna5);
+                kmLT = Convert.ToDecimal(Coluna3) / quantLitros;
+            }
+
+            Coluna6 = quantLitros.ToString("N", CultureInfo.CreateSpecificCulture("pt-BR"));       
             Coluna7 = kmLT.ToString("N", CultureInfo.CreateSpecificCulture("pt-BR"));
 
             string stringcomaspas = "<tr>" +
@@ -96,9 +110,8 @@ public partial class Abastecimento_RelatorioOK : System.Web.UI.Page
 
             str.Append(stringcomaspas);
         }
-        ConexaoBancoSQL.fecharConexao();
-        
 
+        ConexaoBancoSQL.fecharConexao();
     }
 
     private void montaRodape()
@@ -107,38 +120,4 @@ public partial class Abastecimento_RelatorioOK : System.Web.UI.Page
         str.Append(footer);
     }
 
-    private string DiaDaSemana(string dia)
-    {
-        string diaSemana = "xx";
-
-        switch (dia)
-        {
-            case "0" :
-                diaSemana = "Domingo";
-                break;
-            case "1":
-                diaSemana = "Segunda";
-                break;
-            case "2":
-                diaSemana = "Terça";
-                break;
-            case "3":
-                diaSemana = "Quarta";
-                break;
-            case "4":
-                diaSemana = "Quinta";
-                break;
-            case "5":
-                diaSemana = "Sexta";
-                break;
-            case "7":
-                diaSemana = "Sábado";
-                break;
-            default:
-                break;
-        }
-
-
-        return diaSemana;
-    }
 }
