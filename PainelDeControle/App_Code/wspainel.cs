@@ -169,7 +169,7 @@ public class wspainel : System.Web.Services.WebService
         string url = "";
         OperacaoBanco operacao = new OperacaoBanco();
         bool inserir = operacao.Insert("INSERT INTO Tbl_Orcamentos (Empresa, Contato, email,Telefone, Observacoes, Necessidade, Disponibilidade, Data_Solicitacao,StatusORC ) " +
-            "VALUES ('" + param1 + "', '" + param2 + "', '" + param3 + "', '" + param4 + "', '" + param5 + "', '" + param6 + "', '" + param7 + "', getdate(),'EM ABERTO')");
+            "VALUES ('" + param1 + "', '" + param2 + "', '" + param3 + "', '" + param4 + "', '" + param5 + "', '" + param6 + "', '" + param7 + "', getdate()-'03:00:00','EM ABERTO')");
         ConexaoBancoSQL.fecharConexao();
         if (inserir == true)
         {
@@ -237,7 +237,7 @@ public class wspainel : System.Web.Services.WebService
         string url = "";
         OperacaoBanco operacao = new OperacaoBanco();
         bool inserir = operacao.Insert(@"INSERT INTO Tbl_Abastecimentos (Placa, Nome, Valor, Kilometragem , DataAutoriza, Posto, ID_Posto, LTGasolina  ) " +
-           "VALUES ('" + param1 + "', '" + param2 + "', '" + param3 + "', " + param4 + ",  getdate(), '" + Posto_Nome + "'," + Posto_ID + "," + PostoLTGasolina + ")");
+           "VALUES ('" + param1 + "', '" + param2 + "', '" + param3 + "', " + param4 + ",  getdate()-'03:00:00', '" + Posto_Nome + "'," + Posto_ID + "," + PostoLTGasolina + ")");
         ConexaoBancoSQL.fecharConexao();
         if (inserir == true)
         {
@@ -257,7 +257,7 @@ public class wspainel : System.Web.Services.WebService
         string url = "";
         OperacaoBanco operacao = new OperacaoBanco();
         bool inserir = operacao.Insert(@"INSERT INTO Tbl_Abastecimentos_Creditos (DataCredito , Valor, Posto ) " +
-           "VALUES (getdate(), " + param1 + ", 'POSTO TREVO')");
+           "VALUES (getdate()-'03:00:00', " + param1 + ", 'POSTO TREVO')");
         ConexaoBancoSQL.fecharConexao();
         if (inserir == true)
         {

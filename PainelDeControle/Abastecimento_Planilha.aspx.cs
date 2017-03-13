@@ -77,7 +77,10 @@ public partial class Abastecimento_Planilha : System.Web.UI.Page
         Literal_Saldo.Text = "R$ " + saldo.ToString("N", CultureInfo.CreateSpecificCulture("pt-BR"));
         Literal_TotalCR.Text = "R$ " + totalCR.ToString("N", CultureInfo.CreateSpecificCulture("pt-BR"));
         Literal_TotalDB.Text = "R$ " + TotalDB.ToString("N", CultureInfo.CreateSpecificCulture("pt-BR"));
-        Literal_Rel.Text = " ";
+        Literal_Rel.Text = ".";
+
+        TotalCRHidden.Value = totalCR.ToString();
+        TotalSaldoHidden.Value = saldo.ToString();
 
     }
 

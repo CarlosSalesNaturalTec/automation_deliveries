@@ -11,7 +11,6 @@
     <script src="~/vendors/jquery/dist/jquery.min.js"></script>
     <script src="~/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
 
-
 </head>
 
 <body>
@@ -21,11 +20,11 @@
     <div class="row">
         <div class="col-md-3">
             <div class="well">
-                <h4 class="text-primary">
+                <h4>
                     <p>Saldo Atual:</p>
                 </h4>
                 <h3 class="text-primary"><b>
-                    <asp:Literal ID="Literal_Saldo" runat="server"></asp:Literal></b></h3>
+                <asp:Literal ID="Literal_Saldo" runat="server"></asp:Literal></b></h3>
                 <a href="Abastecimento_PlanilhaSimples.aspx" class="btn btn-primary">PLANILHA</a>
                 <p></p>
             </div>
@@ -33,7 +32,7 @@
 
         <div class="col-md-3">
             <div class="well">
-                <h4 class="text-primary">
+                <h4>
                     <p>Total de Créditos:</p>
                 </h4>
                 <h3 class="text-success"><b>
@@ -45,7 +44,7 @@
 
         <div class="col-md-3">
             <div class="well">
-                <h4 class="text-primary">
+                <h4>
                     <p>Total de Débitos:</p>
                 </h4>
                 <h3 class="text-danger"><b>
@@ -57,7 +56,7 @@
 
         <div class="col-md-3">
             <div class="well">
-                <h4 class="text-primary">
+                <h4>
                     <p>Relatórios</p>
                 </h4>
                 <h3 class="text-danger"><b>
@@ -66,6 +65,9 @@
                 <p></p>
             </div>
         </div>
+
+        <input type="hidden" id="TotalCRHidden"  name="TotalCR" runat="server"/>
+        <input type="hidden" id="TotalSaldoHidden" name="TotalSaldo" runat="server"/>
 
     </div>
 

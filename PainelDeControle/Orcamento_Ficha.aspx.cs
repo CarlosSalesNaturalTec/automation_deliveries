@@ -34,7 +34,7 @@ public partial class Orcamento_Ficha : System.Web.UI.Page
                 "document.getElementById('inputEmail').value = \"" + Convert.ToString(rcrdsetORC[4]) + "\";" +
                 "document.getElementById('inputNecessidade').value = \"" + Convert.ToString(rcrdsetORC[5]) + "\";" +
                 "document.getElementById('inputDisponibilidade').value = \"" + Convert.ToString(rcrdsetORC[6]) + "\";" +
-                "document.getElementById('inputPerfil').value = \"" + Convert.ToString(rcrdsetORC[7]) + "\";" +
+                "document.getElementById('inputPerfil').value = \"" + Convert.ToString(rcrdsetORC[7]).Replace("\n", " ") + "\";" +
                 "document.getElementById('inputData').value = \"" + Convert.ToString(rcrdsetORC[8]) + "\";" +
                 "document.getElementById('inputStatus').value = \"" + Convert.ToString(rcrdsetORC[9]) + "\";" +
                 "document.getElementById('inputRoteiro').value = \"" + Convert.ToString(rcrdsetORC[10]) + "\";" +

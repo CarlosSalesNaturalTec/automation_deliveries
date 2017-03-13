@@ -11,10 +11,11 @@
     <script src="~/vendors/jquery/dist/jquery.min.js"></script>
     <script src="~/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
 
-
 </head>
 
 <body>
+
+   <a href="Abastecimento_Planilha.aspx" class="btn btn-primary">VOLTAR</a>
 
     <h3>Planilha Consolidação de Abastecimentos</h3>
     <br />
@@ -22,21 +23,21 @@
     <div class="row">
         <div class="col-md-3">
             <div class="well">
-                <h4 class="text-primary"><p>Saldo Atual:</p></h4>
+                <h4><p>Saldo Atual:</p></h4>
                 <h3 class="text-primary"><b><asp:Literal ID="Literal_Saldo" runat="server"></asp:Literal></b></h3>
             </div>
         </div>
 
         <div class="col-md-3">
             <div class="well">
-                <h4 class="text-primary"><p>Total de Créditos:</p></h4>
+                <h4><p>Total de Créditos:</p></h4>
                 <h3 class="text-success"><b><asp:Literal ID="Literal_TotalCR" runat="server"></asp:Literal></b></h3>
             </div>
         </div>
 
         <div class="col-md-3">
             <div class="well">
-                <h4 class="text-primary"><p>Total de Débitos:</p></h4>
+                <h4><p>Total de Débitos:</p></h4>
                 <h3 class="text-danger"><b><asp:Literal ID="Literal_TotalDB" runat="server"></asp:Literal></b></h3>
             </div>
         </div>
