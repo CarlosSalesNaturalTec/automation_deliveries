@@ -59,9 +59,9 @@
       <div class="login_wrapper">
         <div class="animate form login_form">
           <section class="login_content">
-              <img alt="" src="images/logologt.png"  />
+              <img alt="" src="images/logo.png" width="60%"/>
             <form>
-              <h1>S I G</h1>
+              <h1><strong>S I G</strong></h1>
               <div>
                 <input type="text" class="form-control" placeholder="Usuário" required="" id="txtNome"/>
               </div>
@@ -80,7 +80,7 @@
                 <br />
 
                 <div><h1>Sistema de Gestão</h1>
-                    <h1><i class="fa fa-motorcycle"></i></h1>
+                    <h2><i class="fa fa-motorcycle"></i> 2017</h2>
                     
                 </div>
               </div>

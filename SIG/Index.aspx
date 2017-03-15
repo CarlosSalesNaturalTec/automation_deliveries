@@ -32,7 +32,8 @@
             <div class="col-md-3 left_col">
                 <div class="left_col scroll-view">
                     <div class="navbar nav_title" style="border: 0;">
-                        <a class="site_title"><span>S I G</span></a>
+                        <a class="site_title">
+                            <img alt="" src="images/logo.png" width="25%" /><span><strong> S I G</strong></span></a>
                     </div>
 
                     <div class="clearfix"></div>
@@ -40,11 +41,8 @@
                     <!-- menu profile quick info -->
                     <div class="profile clearfix">
                         <div class="profile_pic">
-                            <img src="images/userdefault.jpg" alt="Foto Usuario" class="img-circle profile_img">
                         </div>
                         <div class="profile_info">
-                            <span>Bem vindo,</span>
-                            <h2><asp:Label ID="lblUsuario" runat="server"></asp:Label></h2>
                         </div>
                     </div>
                     <!-- /menu profile quick info -->
@@ -55,7 +53,7 @@
                             <ul class="nav side-menu">
                                 <li><a><i class="fa fa-edit"></i>Cadastros <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="PainelPrincipal.aspx" target="iframe_a">Clientes</a></li>
+                                        <li><a href="/Cadastros/Clientes.aspx" target="iframe_a">Clientes</a></li>
                                         <li><a href="PainelPrincipal.aspx" target="iframe_a">Contratos</a></li>
                                         <li><a href="PainelPrincipal.aspx" target="iframe_a">Funcionários</a></li>
                                         <li><a href="PainelPrincipal.aspx" target="iframe_a">Veículos/Frota</a></li>
@@ -87,10 +85,10 @@
                         </div>
 
                         <ul class="nav navbar-nav navbar-right">
+
                             <li class="">
                                 <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                    <img src="images/userdefault.jpg" alt=""><asp:Label ID="lblUsuario2" runat="server"></asp:Label>
-                   
+                                    <img src="images/userdefault.jpg" alt=""><asp:Label ID="lblUsuario1" runat="server" CssClass="text-primary"></asp:Label>
                                     <span class=" fa fa-angle-down"></span>
                                 </a>
                                 <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -98,6 +96,42 @@
                                     <li><a href="Default.aspx"><i class="fa fa-sign-out pull-right"></i>Sair</a></li>
                                 </ul>
                             </li>
+
+
+                            <li role="presentation" class="dropdown">
+                                <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa fa-envelope-o"></i>
+                                    <span class="badge bg-green">3</span>
+                                </a>
+                                <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
+                                    <li>
+                                        <a>
+                                            <span>
+                                                <span>Solicitações de Orçamento</span>
+                                                <span class="time">3 Novas</span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a>
+                                            <span>
+                                                <span>Curriculuns Cadastrados</span>
+                                                <span class="time">5 novos</span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a>
+                                            <span>
+                                                <span>Solicitações Clientes</span>
+                                                <span class="time">5 novas</span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+
                         </ul>
                     </nav>
                 </div>
@@ -106,7 +140,7 @@
 
             <!-- page content -->
             <div class="right_col" role="main">
-                <iframe src="PainelPrincipal.aspx" height="200px" width="100%" frameborder="0" name="iframe_a">
+                <iframe src="PainelPrincipal.aspx" height="600px" width="100%" frameborder="0" name="iframe_a">
                     <p>Seu browser não suporta iframes.</p>
                 </iframe>
             </div>

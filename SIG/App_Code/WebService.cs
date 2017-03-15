@@ -21,7 +21,7 @@ public class WebService : System.Web.Services.WebService
         string url = "#signup";
 
         // localiza usuario
-        string stringSelect = "select senha from Tbl_Usuarios where usuario = '" + user + "'";
+        string stringSelect = "select senha,nome from Tbl_Usuarios where usuario = '" + user + "'";
         OperacaoBanco operacao = new OperacaoBanco();
         System.Data.SqlClient.SqlDataReader rcrdset = operacao.Select(stringSelect);
         while (rcrdset.Read())
@@ -35,7 +35,7 @@ public class WebService : System.Web.Services.WebService
                 int vValida3 = Convert.ToInt16(vValida1) * Convert.ToInt16(vValida2);
                 string vValida4 = vValida3.ToString();
 
-                url = "Index.aspx?p1=" + vValida4 + "&p2=" + user;
+                url = "Index.aspx?p1=" + vValida4 + "&p2=" + Convert.ToString(rcrdset[1]);
             }
             else
             {

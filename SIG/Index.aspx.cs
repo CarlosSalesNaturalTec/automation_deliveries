@@ -30,9 +30,7 @@ public partial class Index : System.Web.UI.Page
             Response.Redirect("Default.aspx");
         }
 
-        lblUsuario.Text = Request.QueryString["p2"];
-        lblUsuario2.Text = Request.QueryString["p2"];
-
+        lblUsuario1.Text = Request.QueryString["p2"];
 
     }
 }
