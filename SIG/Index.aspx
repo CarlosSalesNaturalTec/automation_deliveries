@@ -34,6 +34,7 @@
                     <div class="navbar nav_title" style="border: 0;">
                         <a class="site_title">
                             <img alt="" src="images/logo.png" width="25%" /><span><strong> S I G</strong></span></a>
+                        <a class="text-center"><small> ::: SISTEMA DE GESTÃO INTEGRADA</small></a>
                     </div>
 
                     <div class="clearfix"></div>
@@ -53,15 +54,15 @@
                             <ul class="nav side-menu">
                                 <li><a><i class="fa fa-edit"></i>Cadastros <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="/Cadastros/Clientes.aspx" target="iframe_a">Clientes</a></li>
+                                        <li><a href="http://sigcad.azurewebsites.net/Clientes.aspx" target="iframe_a">Clientes</a></li>
                                         <li><a href="PainelPrincipal.aspx" target="iframe_a">Contratos</a></li>
-                                        <li><a href="PainelPrincipal.aspx" target="iframe_a">Funcionários</a></li>
-                                        <li><a href="PainelPrincipal.aspx" target="iframe_a">Veículos/Frota</a></li>
+                                        <li><a href="http://sigcad.azurewebsites.net/Funcionarios.aspx" target="iframe_a">Funcionários</a></li>
+                                        <li><a href="http://sigcad.azurewebsites.net/Veiculos_Lista.aspx" target="iframe_a">Veículos/Frota</a></li>
                                     </ul>
                                 </li>
                                 <li><a><i class="fa fa-truck"></i>Operacional <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="PainelPrincipal.aspx" target="iframe_a">Abastecimentos</a></li>
+                                        <li><a href="http://sigoper.azurewebsites.net/Abastecimento_Planilha.aspx" target="iframe_a">Abastecimentos</a></li>
                                     </ul>
                                 </li>
                                 <li><a><i class="fa fa-table"></i>Comercial <span class="fa fa-chevron-down"></span></a>
@@ -140,7 +141,7 @@
 
             <!-- page content -->
             <div class="right_col" role="main">
-                <iframe src="PainelPrincipal.aspx" height="600px" width="100%" frameborder="0" name="iframe_a">
+                <iframe src="PainelPrincipal.aspx" height="1000px" width="100%" frameborder="0" name="iframe_a">
                     <p>Seu browser não suporta iframes.</p>
                 </iframe>
             </div>

@@ -79,7 +79,7 @@
                 <div class="clearfix"></div>
                 <br />
 
-                <div><h1>Sistema de Gestão</h1>
+                <div><h1><strong>Gestão Integrada</strong></h1>
                     <h2><i class="fa fa-motorcycle"></i> 2017</h2>
                     
                 </div>
