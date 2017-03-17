@@ -9,7 +9,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <link href="vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="~/vendors/bootstrap/dist/css/bootstrap.min.css">
+
     <script type="text/javascript" src="Scripts/jquery-3.1.1.min.js"></script>
     
 </head>
@@ -65,9 +67,9 @@
 
             <div class="form-group">
                 <div class="col-md-4 col-md-offset-1">
-                    <button type="button" class="btn btn-danger" onclick="ExcluirRegistro()">Excluir</button>
-                    <button type="reset" class="btn btn-primary" onclick="cancelar()">Cancelar</button>
-                    <button type="button" class="btn btn-success" onclick="AtualizarRegistro()">Salvar</button>
+                    <button type="reset" class="btn btn-primary" onclick="cancelar()"><i class="fa fa-undo"></i> VOLTAR</button>
+                    <button type="button" class="btn btn-danger" onclick="ExcluirRegistro()"><i class="fa fa-trash"></i> EXCLUIR</button>
+                    <button type="button" class="btn btn-success" onclick="AtualizarRegistro()"><i class="fa fa-save"></i> SALVAR</button>
                 </div>
             </div>
 

@@ -1,52 +1,29 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Abastecimento_PlanilhaSimples.aspx.cs" Inherits="Abastecimento_PlanilhaSimples" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Clientes_Pesquisa.aspx.cs" Inherits="Clientes_Pesquisa" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 
+    <title>Listagem de Clientes</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="~/vendors/bootstrap/dist/css/bootstrap.min.css">
+    <link href="vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
     <script src="~/vendors/jquery/dist/jquery.min.js"></script>
     <script src="~/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+
 
 </head>
 
 <body>
 
-   <a href="Abastecimento_Planilha.aspx" class="btn btn-primary">VOLTAR</a>
-
-    <h3>Planilha Consolidação de Abastecimentos</h3>
+    <h3><a href="Clientes.aspx" class="btn btn-primary"><i class="fa fa-undo"></i> VOLTAR</a>  Listagem de Clientes</h3>
+    <hr />
     <br />
 
-    <div class="row">
-        <div class="col-md-3">
-            <div class="well">
-                <h4><p>Saldo Atual:</p></h4>
-                <h3 class="text-primary"><b><asp:Literal ID="Literal_Saldo" runat="server"></asp:Literal></b></h3>
-            </div>
-        </div>
-
-        <div class="col-md-3">
-            <div class="well">
-                <h4><p>Total de Créditos:</p></h4>
-                <h3 class="text-success"><b><asp:Literal ID="Literal_TotalCR" runat="server"></asp:Literal></b></h3>
-            </div>
-        </div>
-
-        <div class="col-md-3">
-            <div class="well">
-                <h4><p>Total de Débitos:</p></h4>
-                <h3 class="text-danger"><b><asp:Literal ID="Literal_TotalDB" runat="server"></asp:Literal></b></h3>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- Planilha  -->
     <asp:Literal ID="Literal1" runat="server"></asp:Literal>
-    <!-- Planilha  -->
 
     <!-- Busca e Paginação modelo: datatables.net -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -58,7 +35,7 @@
 
     <script>
         $(document).ready(function () {
-            $('#tabela').DataTable({
+            $('#tabelaCli').DataTable({
                 "language": {
                     "lengthMenu": "Mostrando _MENU_ registros por página",
                     "zeroRecords": "Nada encontrado",
@@ -69,7 +46,7 @@
                 }
             });
         });
-    </script>
+	    </script>
 
 </body>
 </html>

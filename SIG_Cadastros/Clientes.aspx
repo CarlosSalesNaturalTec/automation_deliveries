@@ -21,47 +21,31 @@
     <h3>Cadastro de Clientes</h3>
 
     <div class="row">
+
         <div class="col-md-3">
             <div class="well">
-                <h4 class="text-primary">
-                    <p>Quantidade</p>
-                </h4>
-                <h3 class="text-primary"><b><i class="fa fa-suitcase"></i>
-                    <asp:Literal ID="Literal_Quant" runat="server"></asp:Literal></b>
+                <h5 class="text-primary">
+                    <p>Total de Clientes Cadastrados</p>
+                </h5>
+                <h3 class="text-primary"><i class="fa fa-suitcase"></i>
+                    <b><asp:Literal ID="Literal_Quant" runat="server"></asp:Literal></b> 
                 </h3>
-                <a href="ClienteNovo.aspx" class="btn btn-success">NOVO CLIENTE</a>
-                <p></p>
+                <a href="ClienteNovo.aspx" class="btn btn-block btn-success"><i class="fa fa-plus-square"></i> NOVO CLIENTE</a>
             </div>
         </div>
+
+        <div class="col-md-3">
+            <div class="well">
+                <h5 class="text-primary">
+                    <p>Listagem de Clientes</p>
+                </h5>
+                <h3 class="text-primary"><i class="fa fa-users"></i>
+                </h3>
+                <a href="Clientes_Pesquisa.aspx" class="btn btn-block btn-success"><i class="fa fa-search"></i> PESQUISAR</a>
+            </div>
+        </div>
+
     </div>
-
-    <hr />
-    <br />
-
-    <asp:Literal ID="Literal1" runat="server"></asp:Literal>
-
-    <!-- Busca e Paginação modelo: datatables.net -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-
-    <link rel="stylesheet" href="//cdn.datatables.net/1.10.10/css/jquery.dataTables.min.css">
-    <script src="//cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script>
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.10/css/dataTables.bootstrap.min.css">
-
-    <script>
-        $(document).ready(function () {
-            $('#tabelaCli').DataTable({
-                "language": {
-                    "lengthMenu": "Mostrando _MENU_ registros por página",
-                    "zeroRecords": "Nada encontrado",
-                    "info": " _MAX_ registros no total",
-                    "infoEmpty": "Nenhum registro disponível",
-                    "infoFiltered": "(filtrado de _MAX_ registros no total)",
-                    "search": "Pesquisa:"
-                }
-            });
-        });
-	    </script>
 
 </body>
 </html>

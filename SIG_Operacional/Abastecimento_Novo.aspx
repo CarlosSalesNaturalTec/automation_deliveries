@@ -55,8 +55,8 @@
 
             <div class="form-group">
                 <div class="col-md-4 col-md-offset-1">
-                    <button type="reset" class="btn btn-block btn-primary" onclick="cancelar()"><i class="fa fa-ban" aria-hidden="true"></i> CANCELAR</button>
-                    <button type="button" class="btn btn-block btn-success" onclick="Salvar()" id="btsalvar">
+                    <button type="reset" class="btn btn-primary" onclick="cancelar()"><i class="fa fa-ban" aria-hidden="true"></i> VOLTAR</button>
+                    <button type="button" class="btn btn-success" onclick="Salvar()" id="btsalvar">
                         <span class="fa fa-floppy-o"></span> SALVAR</button>
                 </div>
             </div>
