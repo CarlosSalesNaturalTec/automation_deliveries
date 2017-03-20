@@ -1,23 +1,13 @@
 ﻿using System;
 using System.Text;
 
-
 public partial class Funcionarios_Ficha : System.Web.UI.Page
 {
     StringBuilder str = new StringBuilder();
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        string operacao = Request.QueryString["p1"];
-        if (operacao == "1")
-        {
-            NovoRegistro();
-        }
-        else
-        {
-            PreencheCampos(Request.QueryString["p2"]);
-        }
-
+        PreencheCampos(Request.QueryString["p1"]);
         Literal1.Text = str.ToString();
     }
 
@@ -48,18 +38,5 @@ public partial class Funcionarios_Ficha : System.Web.UI.Page
         str.Append(ScriptDados);
     }
 
-    private void NovoRegistro()
-    {
-        string ScriptNovoReg;
-
-        ScriptNovoReg = "<script type=\"text/javascript\">" +
-                "document.getElementById('btExcluir').style.visibility = 'hidden';" +
-                "document.getElementById('inputNome').focus();" +
-                "</script>";
-        str.Clear();
-        str.Append(ScriptNovoReg);
-
-    }
-
-
+    
 }

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Funcionarios_Ficha.aspx.cs" Inherits="Funcionarios_Ficha" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Funcionarios_Novo.aspx.cs" Inherits="Funcionarios_Novo" %>
 
 <!DOCTYPE html>
 
@@ -22,7 +22,7 @@
     <link href="vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="~/vendors/bootstrap/dist/css/bootstrap.min.css">
 
-    <script type="text/javascript" src="Scripts/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="Scripts/jquery-3.1.1.min.js" ></script>
     <script type="text/javascript" src="Scripts/webcam.js"></script>
 
 </head>
@@ -30,21 +30,7 @@
 
     <form class="form-horizontal">
         <fieldset>
-            <legend>FICHA FUNCIONÁRIO</legend>
-
-            <!-- Camera  -->
-            <div id="results"></div>
-            <div id="my_camera"></div>
-            <br />
-            <div class="row">
-                <div class="col-sm-6">
-                    <label for="filePicker">Carregar Foto:</label><br>
-                    <input type="file" id="filePicker">
-                </div>
-            </div>
-            <input id="Hidden1" name="fotouri" type="hidden" />
-            <br />
-            <!-- Camera  -->
+            <legend>NOVO FUNCIONÁRIO</legend>
 
             <legend></legend>
 
@@ -75,86 +61,77 @@
 
             <div class="form-group">
                 <label for="inputIDCli" class="col-md-1 control-label">Cliente</label>
-                <div class="col-md-1">
-                    <input type="text" class="form-control" id="inputIDCli">
+                <div class="col-md-8">
+                    <select class="form-control" id="selectCliente">
+                        <asp:Literal ID="literal_clientes" runat="server"></asp:Literal>
+                    </select>
                 </div>
-                <div class="col-md-7">
-                    <input type="text" class="form-control" id="inputCli">
-                </div>
-            </div>          
+            </div>
 
             <legend></legend>
 
-            <input id="IDHidden" name="IDHidden" type="hidden" />
+
+            <!-- Camera  -->
+            <div id="results"></div>
+            <div id="my_camera"></div>
+
+            <br />
+            <div class="row">
+                <div class="col-sm-6">
+                    <label for="filePicker">Carregar Foto:</label><br>
+                    <input type="file" id="filePicker">
+                </div>
+            </div>
+            <input id="Hidden1" name="fotouri" type="hidden" />
+            <br />
+            <!-- Camera  -->
+
+           <legend></legend>
 
             <div class="form-group">
                 <div class="col-md-4 col-md-offset-1">
-                    <button id="btVoltar" type="reset" class="btn btn-primary" onclick="cancelar()"><i class="fa fa-undo"></i> VOLTAR</button>
-                    <button id="btExcluir" type="button" class="btn btn-danger" onclick="ExcluirRegistro()"><i class="fa fa-trash"></i> EXCLUIR</button>
-                    <button id="btSalvar" type="button" class="btn btn-success" onclick="AtualizarRegistro()"><i class="fa fa-save"></i> SALVAR</button>
+                    <button type="reset" class="btn btn-primary" onclick="cancelar()"><i class="fa fa-undo"></i> VOLTAR</button>
+                    <button type="button" class="btn btn-success" onclick="SalvarRegistro()" id="btSalvar"><i class="fa fa-save"></i> SALVAR</button>
                 </div>
             </div>
 
         </fieldset>
     </form>
 
-    <!-- preenche campos  -->
-    <asp:Literal ID="Literal1" runat="server"></asp:Literal>
-    <!-- preenche campos  -->
-
-    <!-- Operações com Registro  -->
+    <!-- Salvar Registro  -->
     <script type="text/javascript">
-
-        function AtualizarRegistro() {
-
-            document.getElementById("btSalvar").style.cursor = "progress";
-            document.getElementById("btSalvar").disabled = true;
-            document.getElementById("btVoltar").disabled = true;
-            document.getElementById("btExcluir").disabled = true;
+        function SalvarRegistro() {
 
             var v1 = document.getElementById("inputNome").value
             var v2 = document.getElementById("selectVeiculo").value
             var v3 = document.getElementById("inputModelo").value
             var v4 = document.getElementById("inputPlaca").value
-            var v5 = document.getElementById("inputIDCli").value
-            var v6 = document.getElementById("inputCli").value
+
+            var e = document.getElementById("selectCliente")
+            var v5 = e.options[e.selectedIndex].value
+            var v6 = e.options[e.selectedIndex].text
+
             var v7 = document.getElementById("Hidden1").value
-            var v8 = document.getElementById("IDHidden").value
 
-            $.ajax({
-                type: "POST",
-                url: "WebService.asmx/EditarEntregador",
-                data: '{param1: "' + v1 + '", param2: "' + v2 + '", param3: "' + v3 + '", param4: "' + v4 + '", param5: "' + v5 + '", param6: "' + v6 + '", param7: "' + v7 + '", param8: "' + v8 + '"  }',
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: function (response) {
-                    var linkurl = response.d;
-                    window.location.href = linkurl;
-                },
-                failure: function (response) {
-                    alert(response.d);
-                }
-            });
-        }
-
-        function ExcluirRegistro() {
-
-            var r = confirm("CONFIRMA EXCLUSÂO ?");
-            if (r == false) {
+            if (v1 == "") {
+                alert("ATENÇÃO! INFORME NOME DO FUNCIONÁRIO");
+                document.getElementById("inputNome").focus();
                 return;
             }
 
-            document.getElementById("btExcluir").style.cursor = "progress";
-            document.getElementById("btSalvar").disabled = true;
-            document.getElementById("btVoltar").disabled = true;
-            document.getElementById("btExcluir").disabled = true;
+            if (v5 == "0") {
+                alert("ATENÇÃO! SELECIONE UM CLIENTE DA LISTA");
+                document.getElementById("selectCliente").focus();
+                return;
+            }
 
-            var v1 = document.getElementById("IDHidden").value
+            document.getElementById("btSalvar").style.cursor = "progress";
+            document.getElementById("btSalvar").disabled = true;
 
             $.ajax({
                 type: "POST",
-                url: "WebService.asmx/ExcluirEntregador",
-                data: '{param1: "' + v1 + '" }',
+                url: "WebService.asmx/SalvarEntregador",
+                data: '{param1: "' + v1 + '", param2: "' + v2 + '", param3: "' + v3 + '", param4: "' + v4 + '", param5: "' + v5 + '", param6: "' + v6 + '", param7: "' + v7 + '"  }',
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (response) {
@@ -166,13 +143,12 @@
                 }
             });
         }
-
         function cancelar() {
             var linkurl = "Funcionarios.aspx";
             window.location.href = linkurl;
         }
     </script>
-    <!-- Operações com Registro  -->
+    <!-- Salvar Registro  -->
 
     <!-- Foto  -->
     <script language="JavaScript">
@@ -205,5 +181,12 @@
     </script>
     <!-- Foto  -->
 
+     <!-- Foco  -->
+    <script type="text/javascript">
+        document.getElementById("inputNome").focus();
+    </script>
+
+    
 </body>
+
 </html>

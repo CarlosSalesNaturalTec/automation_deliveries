@@ -17,7 +17,7 @@
 
 <body>
 
-    <h3>Listagem de Funcionários</h3>
+     <h3><a href="Funcionarios.aspx" class="btn btn-primary"><i class="fa fa-undo"></i> VOLTAR</a>  LISTAGEM DE FUNCIONÁRIOS</h3>
     <hr />
     <br />
 

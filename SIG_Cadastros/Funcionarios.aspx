@@ -18,28 +18,22 @@
 
 <body>
 
-    <h3>Cadastro de Funcionários</h3>
+    <h3>CADASTRO DE FUNCIONÁRIOS</h3>
 
     <div class="row">
         
         <div class="col-md-3">
             <div class="well">
-                <h5 class="text-primary">
-                    <p>Funcionários Cadastrados</p>
-                </h5>
-                <h3 class="text-primary"><i class="fa fa-user"></i>
-                    <b><asp:Literal ID="Literal_Quant" runat="server"></asp:Literal></b> 
+                <h3 class="text-primary"><i class="fa fa-users"></i>
+                    <b><asp:Literal ID="Literal_Quant" runat="server"></asp:Literal></b> <small> Cadastrados</small>
                 </h3>
-                <a href="Funcionarios_Ficha.aspx?p1=1" class="btn btn-block btn-success"><i class="fa fa-plus-square"></i> NOVO FUNCIONÁRIO</a>
+                <a href="Funcionarios_Novo.aspx" class="btn btn-block btn-success"><i class="fa fa-user"></i> NOVO FUNCIONÁRIO</a>
             </div>
         </div>
 
         <div class="col-md-3">
             <div class="well">
-                <h5 class="text-primary">
-                    <p>Listagem de Funcionários</p>
-                </h5>
-                <h3 class="text-primary"><i class="fa fa-users"></i>
+                <h3 class="text-primary"><i class="fa fa-table"></i> <small> Listagem</small>
                 </h3>
                 <a href="Funcionarios_Pesquisa.aspx" class="btn btn-block btn-success"><i class="fa fa-search"></i> PESQUISAR</a>
             </div>

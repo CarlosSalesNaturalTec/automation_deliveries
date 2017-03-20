@@ -143,6 +143,72 @@ public class WebService : System.Web.Services.WebService
 
         return url;
     }
+
+    [WebMethod]
+    public string SalvarEntregador(string param1, string param2, string param3, string param4, string param5, string param6, string param7)
+    {
+        string url = "";
+        OperacaoBanco operacao = new OperacaoBanco();
+        bool inserir = operacao.Insert(@"INSERT INTO Tbl_Motoboys (Nome, Veiculo, Modelo, Placa, ID_Cliente, Cliente, FotoDataURI, usuario,GeoLatitude,Geolongitude,GeoDataLoc) " +
+            "VALUES ('" + param1 + "', '" + param2 + "', '" + param3 + "', '" + param4 + "', " + param5 + ", '" + param6 + "', '" + param7 + "','','','','')");
+        ConexaoBancoSQL.fecharConexao();
+        if (inserir == true)
+        {
+            url = "Funcionarios.aspx";
+        }
+        else
+        {
+            url = "Sorry.aspx";
+        }
+
+        return url;
+    }
+
+    [WebMethod]
+    public string ExcluirEntregador(string param1)
+    {
+        string url = "";
+        OperacaoBanco operacao = new OperacaoBanco();
+        Boolean deletar = operacao.Delete("delete from Tbl_Motoboys where ID_Motoboy =" + param1);
+        ConexaoBancoSQL.fecharConexao();
+        if (deletar == true)
+        {
+            url = "Funcionarios.aspx";
+        }
+        else
+        {
+            url = "Sorry.aspx";
+        }
+
+        return url;
+    }
+
+    [WebMethod]
+    public string EditarEntregador(string param1, string param2, string param3, string param4, string param5, string param6, string param7, string param8)
+    {
+        string url = "";
+        OperacaoBanco operacao = new OperacaoBanco();
+        bool inserir = operacao.Insert(@"update Tbl_Motoboys set nome = '" + param1 + "', " +
+            "veiculo = '" + param2 + "', " +
+            "modelo = '" + param3 + "', " +
+            "placa = '" + param4 + "', " +
+            "ID_Cliente = " + param5 + ", " +
+            "Cliente = '" + param6 + "', " +
+            "FotoDataURI  = '" + param7 + "' " +
+            "where ID_Motoboy =" + param8);
+
+        ConexaoBancoSQL.fecharConexao();
+        if (inserir == true)
+        {
+            url = "Funcionarios.aspx";
+        }
+        else
+        {
+            url = "Sorry.aspx";
+        }
+
+        return url;
+    }
 }
 
 public class ConexaoBancoSQL
