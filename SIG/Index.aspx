@@ -54,7 +54,7 @@
                                 <li><a><i class="fa fa-edit"></i>Cadastros <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li><a href="https://sigcad.azurewebsites.net/Clientes.aspx" target="iframe_a">Clientes</a></li>
-                                        <li><a href="PainelPrincipal.aspx" target="iframe_a">Contratos</a></li>
+                                        <li><a href="https://sigcad.azurewebsites.net/Contratos.aspx" target="iframe_a">Contratos</a></li>
                                         <li><a href="https://sigcad.azurewebsites.net/Funcionarios.aspx" target="iframe_a">Funcionários</a></li>
                                         <li><a href="https://sigcad.azurewebsites.net/Veiculos_Lista.aspx" target="iframe_a">Veículos/Frota</a></li>
                                     </ul>
@@ -101,14 +101,14 @@
                             <li role="presentation" class="dropdown">
                                 <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
                                     <i class="fa fa-envelope-o"></i>
-                                    <span class="badge bg-green">3</span>
+                                    <span class="badge bg-green"></span>
                                 </a>
                                 <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
                                     <li>
                                         <a>
                                             <span>
                                                 <span>Solicitações de Orçamento</span>
-                                                <span class="time">3 Novas</span>
+                                                <span class="time">0 Novas</span>
                                             </span>
                                         </a>
                                     </li>
@@ -116,7 +116,7 @@
                                         <a>
                                             <span>
                                                 <span>Curriculuns Cadastrados</span>
-                                                <span class="time">5 novos</span>
+                                                <span class="time">0 novos</span>
                                             </span>
                                         </a>
                                     </li>
@@ -124,7 +124,7 @@
                                         <a>
                                             <span>
                                                 <span>Solicitações Clientes</span>
-                                                <span class="time">5 novas</span>
+                                                <span class="time">0 novas</span>
                                             </span>
                                         </a>
                                     </li>

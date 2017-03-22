@@ -27,7 +27,9 @@
     <script src="Scripts/jquery-3.1.1.min.js" type="text/javascript"></script>
 
     <script type = "text/javascript">
-        function TentarLogin() {            
+        function TentarLogin() {
+
+            document.getElementById("btLogin").style.cursor = "progress";
 
             $.ajax({
                 type: "POST",
@@ -38,6 +40,7 @@
                 success: OnSuccess,
                 failure: function (response) {
                     alert(response.d);
+                    document.getElementById("btLogin").style.cursor = "default";
                 }
             });
         }
@@ -69,7 +72,7 @@
                 <input type="password" class="form-control" placeholder="Senha" required="" id="txtpwd"/>
               </div>
               <div>
-                 <input type="button" value="ENTRAR" onclick="TentarLogin()" class="btn btn-default" />
+                 <input id="btLogin" type="button" value="ENTRAR" onclick="TentarLogin()" class="btn btn-default" />
               </div>
 
               <div class="clearfix"></div>
@@ -79,9 +82,8 @@
                 <div class="clearfix"></div>
                 <br />
 
-                <div><h1><strong>Gestão Integrada</strong></h1>
-                    <h2><i class="fa fa-motorcycle"></i> 2017</h2>
-                    
+                <div><h4><strong>SISTEMA INTEGRADO DE GESTÃO</strong></h4>
+                    <h5><i class="fa fa-copyright"></i> LOG Transportes. 2017</h5>
                 </div>
               </div>
             </form>
@@ -104,8 +106,8 @@
                 <div class="clearfix"></div>
                 <br />
 
-                <div>
-                  <h1><i class="fa fa-motorcycle"></i> LOG Transportes</h1>
+                <div><h4><strong>SISTEMA INTEGRADO DE GESTÃO</strong></h4>
+                    <h5><i class="fa fa-copyright"></i> LOG Transportes. 2017</h5>
                 </div>
               </div>
             </form>

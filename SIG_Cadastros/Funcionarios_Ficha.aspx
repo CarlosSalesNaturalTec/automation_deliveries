@@ -76,12 +76,22 @@
             <div class="form-group">
                 <label for="inputIDCli" class="col-md-1 control-label">Cliente</label>
                 <div class="col-md-1">
-                    <input type="text" class="form-control" id="inputIDCli">
+                    <input type="text" class="form-control" id="inputIDCli" readonly>
                 </div>
                 <div class="col-md-7">
-                    <input type="text" class="form-control" id="inputCli">
+                    <input type="text" class="form-control" id="inputCliente" readonly>
                 </div>
-            </div>          
+            </div>   
+            
+            <div class="form-group">
+                 <div class="col-md-1">
+                     </div>
+                <div class="col-md-8">
+                    <select class="form-control" id="selectCliente" onclick="IdentificaCLiente()">
+                        <asp:Literal ID="literal_clientes" runat="server"></asp:Literal>
+                    </select>
+                </div>
+            </div>         
 
             <legend></legend>
 
@@ -105,19 +115,22 @@
     <!-- Operações com Registro  -->
     <script type="text/javascript">
 
+        function IdentificaCLiente() {
+            var e = document.getElementById("selectCliente")
+            document.getElementById("inputIDCli").value = e.options[e.selectedIndex].value
+            document.getElementById("inputCliente").value = e.options[e.selectedIndex].text
+        }
+
         function AtualizarRegistro() {
 
             document.getElementById("btSalvar").style.cursor = "progress";
-            document.getElementById("btSalvar").disabled = true;
-            document.getElementById("btVoltar").disabled = true;
-            document.getElementById("btExcluir").disabled = true;
 
             var v1 = document.getElementById("inputNome").value
             var v2 = document.getElementById("selectVeiculo").value
             var v3 = document.getElementById("inputModelo").value
             var v4 = document.getElementById("inputPlaca").value
             var v5 = document.getElementById("inputIDCli").value
-            var v6 = document.getElementById("inputCli").value
+            var v6 = document.getElementById("inputCliente").value
             var v7 = document.getElementById("Hidden1").value
             var v8 = document.getElementById("IDHidden").value
 
@@ -145,9 +158,6 @@
             }
 
             document.getElementById("btExcluir").style.cursor = "progress";
-            document.getElementById("btSalvar").disabled = true;
-            document.getElementById("btVoltar").disabled = true;
-            document.getElementById("btExcluir").disabled = true;
 
             var v1 = document.getElementById("IDHidden").value
 

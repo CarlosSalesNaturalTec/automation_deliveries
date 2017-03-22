@@ -22,84 +22,151 @@
     <link href="vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="~/vendors/bootstrap/dist/css/bootstrap.min.css">
 
-    <script type="text/javascript" src="Scripts/jquery-3.1.1.min.js" ></script>
+    <link rel="stylesheet" href="custom/StyleTAB.css">
+
+    <script type="text/javascript" src="Scripts/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="Scripts/webcam.js"></script>
 
 </head>
 <body>
 
-    <form class="form-horizontal">
-        <fieldset>
-            <legend>NOVO FUNCIONÁRIO</legend>
+    <h3>NOVO FUNCIONÁRIO</h3>
+    <br />
 
-            <legend></legend>
+    <input id="tab1" type="radio" name="tabs" checked>
+    <label for="tab1">Funcionário</label>
 
-            <div class="form-group">
-                <label for="inputNome" class="col-md-1 control-label">Nome</label>
-                <div class="col-md-8">
-                    <input type="text" class="form-control" id="inputNome">
+    <input id="tab2" type="radio" name="tabs">
+    <label for="tab2">Dados Pessoais</label>
+
+    <input id="tab3" type="radio" name="tabs">
+    <label for="tab3">Documentos</label>
+
+    <input id="tab4" type="radio" name="tabs">
+    <label for="tab4">Veículo</label>
+
+    <input id="tab5" type="radio" name="tabs">
+    <label for="tab5">OcorrÊncias</label>
+
+    <!-- Funcionário  -->
+    <section id="content1">
+        <form class="form-horizontal">
+            <fieldset>
+
+                <div class="form-group">
+                    <label for="inputNome" class="col-md-1 control-label">Nome</label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" id="inputNome">
+                    </div>
                 </div>
+
+                <div class="form-group">
+                    <label for="inputIDCli" class="col-md-1 control-label">Cliente</label>
+                    <div class="col-md-8">
+                        <select class="form-control" id="selectCliente">
+                            <asp:Literal ID="literal_clientes" runat="server"></asp:Literal>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputadmissao" class="col-md-1 control-label">Data Admissão</label>
+                    <div class="col-md-2">
+                        <input type="date" class="form-control" id="inputadmissao">
+                    </div>
+
+                    <label for="selectCargo" class="col-md-1 control-label">Cargo</label>
+                    <div class="col-md-2">
+                        <select class="form-control" id="selectCargo">
+                            <option>Motoboy</option>
+                            <option>Motorista</option>
+                        </select>
+                    </div>
+
+                    <label for="inputSalario" class="col-md-1 control-label">Salário</label>
+                    <div class="col-md-2">
+                        <input type="number" class="form-control" id="inputSalario">
+                    </div>
+
+                </div>
+
+            </fieldset>
+        </form>
+    </section>
+    <!-- Funcionário  -->
+
+    <!-- Dados Pessoais  -->
+    <section id="content2">
+
+        <!-- Camera  -->
+        <div id="results"></div>
+        <div id="my_camera"></div>
+
+        <br />
+        <div class="row">
+            <div class="col-sm-6">
+                <label for="filePicker">Carregar Foto:</label><br>
+                <input type="file" id="filePicker">
             </div>
+        </div>
+        <input id="Hidden1" name="fotouri" type="hidden" />
+        <br />
+        <!-- Camera  -->
 
-            <div class="form-group">
-                <label for="selectVeiculo" class="col-md-1 control-label">Veiculo</label>
-                <div class="col-md-2">
-                    <select class="form-control" id="selectVeiculo">
-                        <option>MOTO</option>
-                        <option>CARRO</option>
-                    </select>
+    </section>
+    <!-- Dados Pessoais  -->
+
+    <!-- Documentos  -->
+    <section id="content3">
+    </section>
+    <!-- Documentos  -->
+
+
+    <!-- Veículo -->
+    <section id="content4">
+        <form class="form-horizontal">
+            <fieldset>
+
+                <div class="form-group">
+                    <label for="selectVeiculo" class="col-md-1 control-label">Veiculo</label>
+                    <div class="col-md-2">
+                        <select class="form-control" id="selectVeiculo">
+                            <option>MOTO</option>
+                            <option>CARRO</option>
+                        </select>
+                    </div>
+                    <label for="inputModelo" class="col-md-1 control-label">Modelo</label>
+                    <div class="col-md-2">
+                        <input type="text" class="form-control" id="inputModelo">
+                    </div>
+                    <label for="inputPlaca" class="col-md-1 control-label">Placa</label>
+                    <div class="col-md-2">
+                        <input type="text" class="form-control" id="inputPlaca">
+                    </div>
                 </div>
-                <label for="inputModelo" class="col-md-1 control-label">Modelo</label>
-                <div class="col-md-2">
-                    <input type="text" class="form-control" id="inputModelo">
-                </div>
-                <label for="inputPlaca" class="col-md-1 control-label">Placa</label>
-                <div class="col-md-2">
-                    <input type="text" class="form-control" id="inputPlaca">
-                </div>
-            </div>
 
-            <div class="form-group">
-                <label for="inputIDCli" class="col-md-1 control-label">Cliente</label>
-                <div class="col-md-8">
-                    <select class="form-control" id="selectCliente">
-                        <asp:Literal ID="literal_clientes" runat="server"></asp:Literal>
-                    </select>
-                </div>
-            </div>
+            </fieldset>
+        </form>
+    </section>
+    <!-- Veículo  -->
 
-            <legend></legend>
+    <!-- Ocorrências e Avalizações  -->
+    <section id="content5">
+    </section>
+    <!-- Ocorrências e Avalizações  -->
 
 
-            <!-- Camera  -->
-            <div id="results"></div>
-            <div id="my_camera"></div>
+    <div class="form-group">
+        <div class="col-md-4 col-md-offset-1">
+            <button type="reset" class="btn btn-primary" onclick="cancelar()"><i class="fa fa-undo"></i> VOLTAR</button>
+            <button type="button" class="btn btn-success" onclick="SalvarRegistro()" id="btSalvar"><i class="fa fa-save"></i> SALVAR</button>
+        </div>
+    </div>
 
-            <br />
-            <div class="row">
-                <div class="col-sm-6">
-                    <label for="filePicker">Carregar Foto:</label><br>
-                    <input type="file" id="filePicker">
-                </div>
-            </div>
-            <input id="Hidden1" name="fotouri" type="hidden" />
-            <br />
-            <!-- Camera  -->
-
-           <legend></legend>
-
-            <div class="form-group">
-                <div class="col-md-4 col-md-offset-1">
-                    <button type="reset" class="btn btn-primary" onclick="cancelar()"><i class="fa fa-undo"></i> VOLTAR</button>
-                    <button type="button" class="btn btn-success" onclick="SalvarRegistro()" id="btSalvar"><i class="fa fa-save"></i> SALVAR</button>
-                </div>
-            </div>
-
-        </fieldset>
-    </form>
 
     <!-- Salvar Registro  -->
     <script type="text/javascript">
+
         function SalvarRegistro() {
 
             var v1 = document.getElementById("inputNome").value
@@ -143,6 +210,7 @@
                 }
             });
         }
+
         function cancelar() {
             var linkurl = "Funcionarios.aspx";
             window.location.href = linkurl;
@@ -181,12 +249,10 @@
     </script>
     <!-- Foto  -->
 
-     <!-- Foco  -->
+    <!-- Foco  -->
     <script type="text/javascript">
         document.getElementById("inputNome").focus();
     </script>
-
-    
 </body>
 
 </html>
