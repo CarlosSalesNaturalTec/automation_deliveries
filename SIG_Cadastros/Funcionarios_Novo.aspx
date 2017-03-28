@@ -97,22 +97,56 @@
 
     <!-- Dados Pessoais  -->
     <section id="content2">
+        <form class="form-horizontal">
+            <fieldset>
+                <div class="form-group">
+                    <label for="inputMae" class="col-md-1 control-label">Nome da Mãe</label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" id="inputMae">
+                    </div>
+                </div>
 
-        <!-- Camera  -->
-        <div id="results"></div>
-        <div id="my_camera"></div>
+                <div class="form-group">
+                    <label for="inputPai" class="col-md-1 control-label">Nome do Pai</label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" id="inputPai">
+                    </div>
+                </div>
 
-        <br />
-        <div class="row">
-            <div class="col-sm-6">
-                <label for="filePicker">Carregar Foto:</label><br>
-                <input type="file" id="filePicker">
-            </div>
-        </div>
-        <input id="Hidden1" name="fotouri" type="hidden" />
-        <br />
-        <!-- Camera  -->
+                <div class="form-group">
+                    <label for="selectSexo" class="col-md-1 control-label">Sexo</label>
+                    <div class="col-md-1">
+                        <select class="form-control" id="selectSexo">
+                            <option>M</option>
+                            <option>F</option>
+                        </select>
+                    </div>
 
+                    <label for="inputNasc" class="col-md-1 control-label">Nascimento</label>
+                    <div class="col-md-3">
+                        <input type="date" class="form-control" id="inputNasc">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <!-- Camera  -->
+                    <div id="results"></div>
+                    <div id="my_camera"></div>
+
+                    <br />
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <label for="filePicker">Carregar Foto:</label><br>
+                            <input type="file" id="filePicker">
+                        </div>
+                    </div>
+                    <input id="Hidden1" name="fotouri" type="hidden" />
+                    <br />
+                    <!-- Camera  -->
+                </div>
+
+            </fieldset>
+        </form>
     </section>
     <!-- Dados Pessoais  -->
 
@@ -158,8 +192,8 @@
 
     <div class="form-group">
         <div class="col-md-4 col-md-offset-1">
-            <button type="reset" class="btn btn-primary" onclick="cancelar()"><i class="fa fa-undo"></i> VOLTAR</button>
-            <button type="button" class="btn btn-success" onclick="SalvarRegistro()" id="btSalvar"><i class="fa fa-save"></i> SALVAR</button>
+            <button type="reset" class="btn btn-primary" onclick="cancelar()"><i class="fa fa-undo"></i>VOLTAR</button>
+            <button type="button" class="btn btn-success" onclick="SalvarRegistro()" id="btSalvar"><i class="fa fa-save"></i>SALVAR</button>
         </div>
     </div>
 
