@@ -57,6 +57,7 @@
                                         <li><a href="https://sigcad.azurewebsites.net/Contratos.aspx" target="iframe_a">Contratos</a></li>
                                         <li><a href="https://sigcad.azurewebsites.net/Funcionarios.aspx" target="iframe_a">Funcionários</a></li>
                                         <li><a href="https://sigcad.azurewebsites.net/Veiculos_Lista.aspx" target="iframe_a">Veículos/Frota</a></li>
+                                        <li><a href="https://sigcad.azurewebsites.net/Extras_Tabelas.aspx" target="iframe_a">Extras - Tabela de Preços</a></li>
                                     </ul>
                                 </li>
                                 <li><a><i class="fa fa-truck"></i>Operacional <span class="fa fa-chevron-down"></span></a>
