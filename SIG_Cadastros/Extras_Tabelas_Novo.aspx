@@ -49,13 +49,34 @@
     <section id="content1">
         <form class="form-horizontal">
             <fieldset>
-
                 <div class="form-group">
                     <label for="inputNome" class="col-md-1 control-label">Nome</label>
                     <div class="col-md-8">
                         <input type="text" class="form-control" id="inputNome">
                     </div>
                 </div>
+
+                <div class="form-group">
+                    <label for="inputadmissao" class="col-md-1 control-label">Data Admissão</label>
+                    <div class="col-md-2">
+                        <input type="date" class="form-control" id="inputadmissao">
+                    </div>
+
+                    <label for="selectCargo" class="col-md-1 control-label">Cargo</label>
+                    <div class="col-md-2">
+                        <select class="form-control" id="selectCargo">
+                            <option>Motoboy</option>
+                            <option>Motorista</option>
+                        </select>
+                    </div>
+
+                    <label for="inputSalario" class="col-md-1 control-label">Salário</label>
+                    <div class="col-md-2">
+                        <input type="number" class="form-control" id="inputSalario">
+                    </div>
+
+                </div>
+
 
             </fieldset>
         </form>
@@ -86,8 +107,8 @@
 
     <div class="form-group">
         <div class="col-md-4 col-md-offset-1">
-            <button type="reset" class="btn btn-primary" onclick="cancelar()"><i class="fa fa-undo"></i> VOLTAR</button>
-            <button type="button" class="btn btn-success" onclick="SalvarRegistro()" id="btSalvar"><i class="fa fa-save"></i> SALVAR</button>
+            <button type="reset" class="btn btn-primary" onclick="cancelar()"><i class="fa fa-undo"></i>VOLTAR</button>
+            <button type="button" class="btn btn-success" onclick="SalvarRegistro()" id="btSalvar"><i class="fa fa-save"></i>SALVAR</button>
         </div>
     </div>
 

@@ -32,7 +32,6 @@ public partial class Extras_Tabelas_Novo : System.Web.UI.Page
             str.Append(dadosCLiente);   
         }
         ConexaoBancoSQL.fecharConexao();
-        literal_clientes.Text = str.ToString();
     }
 
 }
