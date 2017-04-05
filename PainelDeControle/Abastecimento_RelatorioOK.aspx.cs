@@ -98,7 +98,7 @@ public partial class Abastecimento_RelatorioOK : System.Web.UI.Page
             Coluna7 = kmLT.ToString("N", CultureInfo.CreateSpecificCulture("pt-BR"));
 
             string stringcomaspas = "<tr>" +
-                "<td>" + Coluna0 + " (" + Convert.ToDateTime(dados[0]).ToString("ddd", new CultureInfo("pt-BR")) + ")</td>" +
+                "<td>" + Coluna0 + "</td>" +
                 "<td>" + Coluna1 + "</td>" +
                 "<td style=\"text-align:right\">" + Coluna2 + "</td>" +
                 "<td style=\"text-align:right\">" + Coluna3 + "</td>" +
