@@ -18,6 +18,7 @@
     <h3>Resumo de Abastecimentos</h3>
 
     <div class="row">
+
         <div class="col-md-3">
             <div class="well">
                 <h4>
@@ -25,7 +26,7 @@
                 </h4>
                 <h3 class="text-primary"><b>
                 <asp:Literal ID="Literal_Saldo" runat="server"></asp:Literal></b></h3>
-                <a href="Abastecimento_PlanilhaSimples.aspx" class="btn btn-primary">PLANILHA</a>
+                <a href="Abastecimento_PlanilhaSimples.aspx?p1=1" class="btn btn-primary">PLANILHA</a>
                 <p></p>
             </div>
         </div>

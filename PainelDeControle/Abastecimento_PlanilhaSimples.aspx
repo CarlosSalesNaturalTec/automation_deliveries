@@ -15,33 +15,100 @@
 
 <body>
 
-   <a href="Abastecimento_Planilha.aspx" class="btn btn-primary">VOLTAR</a>
-
     <h3>Planilha Consolidação de Abastecimentos</h3>
     <br />
 
     <div class="row">
+        <!-- Periodo -->
+        <label for="inputPeriodo" class="col-md-1 control-label">Período</label>
+        <div class="col-md-2">
+            <select class="form-control" id="inputPeriodo" name="inputPeriodo" onchange="Selecao_Periodo(this.value)">
+                <option>COMPLETO</option>
+                <option>ESTA SEMANA</option>
+                <option>ESTE MÊS</option>
+                <option>ESPECÍFICO</option>
+            </select>
+        </div>
+
+        <div class="col-md-2">
+            <input type="date" class="form-control" id="inputData1" style="visibility: hidden">
+        </div>
+        <div class="col-md-2">
+            <input type="date" class="form-control" id="inputData2" style="visibility: hidden">
+        </div>
+        <div class="col-md-2">
+            <button id="btRel" type="button" class="btn btn-primary" onclick="verificar()">VERIFICAR</button>
+        </div>
+        <!-- Periodo -->
+
+    </div>
+    <br />
+
+    <div class="row">
+
         <div class="col-md-3">
             <div class="well">
-                <h4><p>Saldo Atual:</p></h4>
-                <h3 class="text-primary"><b><asp:Literal ID="Literal_Saldo" runat="server"></asp:Literal></b></h3>
+                <h4>
+                    <p>Total de Créditos:</p>
+                </h4>
+                <h3 class="text-success"><b>
+                    <asp:Literal ID="Literal_TotalCR" runat="server"></asp:Literal></b></h3>
             </div>
         </div>
 
         <div class="col-md-3">
             <div class="well">
-                <h4><p>Total de Créditos:</p></h4>
-                <h3 class="text-success"><b><asp:Literal ID="Literal_TotalCR" runat="server"></asp:Literal></b></h3>
-            </div>
-        </div>
-
-        <div class="col-md-3">
-            <div class="well">
-                <h4><p>Total de Débitos:</p></h4>
-                <h3 class="text-danger"><b><asp:Literal ID="Literal_TotalDB" runat="server"></asp:Literal></b></h3>
+                <h4>
+                    <p>Total de Débitos:</p>
+                </h4>
+                <h3 class="text-danger"><b>
+                    <asp:Literal ID="Literal_TotalDB" runat="server"></asp:Literal></b></h3>
             </div>
         </div>
     </div>
+
+    <br />
+    <br />
+
+    <script type="text/javascript">
+
+        function Selecao_Periodo(selecao) {
+
+            if (selecao == 'ESPECÍFICO') {
+                document.getElementById("inputData1").style.visibility = "visible";
+                document.getElementById("inputData2").style.visibility = "visible";
+                document.getElementById("inputData1").focus();
+            } else {
+                document.getElementById("inputData1").style.visibility = "hidden";
+                document.getElementById("inputData2").style.visibility = "hidden";
+            }            
+        }
+
+        function verificar() {
+
+            if (selecao == 'ESPECÍFICO') {
+                
+                var v2 = document.getElementById("inputData1").value;
+                var v3 = document.getElementById("inputData2").value;
+                var linkurl = "Abastecimento_PlanilhaSimples.aspx?p1=4&p2=" + v2 + "&p3=" + v3;
+
+            } else {
+                document.getElementById("inputData1").style.visibility = "hidden";
+                document.getElementById("inputData2").style.visibility = "hidden";
+                document.getElementById("btRel").style.visibility = "hidden";
+
+                var linkurl = "";
+                if (selecao == 'COMPLETO') { linkurl = "Abastecimento_PlanilhaSimples.aspx?p1=1"; }
+                if (selecao == 'ESTA SEMANA') { linkurl = "Abastecimento_PlanilhaSimples.aspx?p1=2"; }
+                if (selecao == 'ESTE MÊS') { linkurl = "Abastecimento_PlanilhaSimples.aspx?p1=3"; }
+
+                window.location.href = linkurl;
+            }
+
+            window.location.href = linkurl;
+        }
+
+    </script>
 
 
     <!-- Planilha  -->

@@ -5,11 +5,18 @@ using System.Text;
 public partial class Abastecimento_PlanilhaSimples : System.Web.UI.Page
 {
     StringBuilder str = new StringBuilder();
+    string tipoRel = "", per1 = "", per2 = "";
+
 
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
         {
+            //Tipo de Relatório:  1=Completo   2=Esta Semana  3=Este Mes    4=Especifico
+            tipoRel = Request.QueryString["p1"];
+            per1 = Request.QueryString["p2"];
+            per2 = Request.QueryString["p3"];
+
             LimpaTabela();
             InsereDebitos();
             InsereCreditos();
@@ -80,7 +87,6 @@ public partial class Abastecimento_PlanilhaSimples : System.Web.UI.Page
 
         while (dados.Read())
         {
-
             string Coluna1 = Convert.ToString(dados[0]);  //data
             string Coluna2 = Convert.ToString(dados[1]);  //horario
             string Coluna3 = Convert.ToString(dados[2]);  //evento
@@ -125,7 +131,6 @@ public partial class Abastecimento_PlanilhaSimples : System.Web.UI.Page
         }
         ConexaoBancoSQL.fecharConexao();
 
-        Literal_Saldo.Text = "R$ " + saldo.ToString("N", CultureInfo.CreateSpecificCulture("pt-BR"));
         Literal_TotalCR.Text = "R$ " + totalCR.ToString("N", CultureInfo.CreateSpecificCulture("pt-BR"));
         Literal_TotalDB.Text = "R$ " + TotalDB.ToString("N", CultureInfo.CreateSpecificCulture("pt-BR"));
     }
