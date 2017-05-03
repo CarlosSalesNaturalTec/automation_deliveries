@@ -5,18 +5,78 @@ using System.Text;
 public partial class Abastecimento_RelatorioOK : System.Web.UI.Page
 {
     StringBuilder str = new StringBuilder();
-    string placa = "", tipoRel = "", per1 = "", per2 = "";
+    string placa = "", tipoRel = "", per1 = "", per2 = "", filtro="";
 
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
         {
-            placa = Request.QueryString["p1"];
-            tipoRel = Request.QueryString["p2"];
-            per1 = Request.QueryString["p3"];
-            per2 = Request.QueryString["p4"];
 
+            //Tipo de Relatório:  1=Completo   2=Esta Semana  3=Este Mes    4=Especifico
+            tipoRel = Request.QueryString["p1"];
+            placa = Request.QueryString["p4"];
             Literal_Placa.Text = "Placa : " + placa;
+
+            switch (tipoRel)
+            {
+                case "1":
+                    //completo
+                    filtro = " where Placa = '" + placa + "'";
+                    lblPer.Text = "COMPLETO";
+                    break;
+
+                case "2":
+                    // esta semana
+                    DateTime dt = DateTime.Today;
+                    DateTime dt1, dt2;
+
+                    var culture = System.Threading.Thread.CurrentThread.CurrentCulture;
+                    var diff = dt.DayOfWeek - culture.DateTimeFormat.FirstDayOfWeek;
+                    if (diff < 0)
+                        diff += 7;
+                    dt1 = dt.AddDays(-diff).Date;
+                    dt2 = dt1.AddDays(1);  // para adequar a brasil
+
+                    per1 = dt2.ToString("yyyy-MM-dd");
+                    per2 = DateTime.Today.ToString("yyyy-MM-dd");
+                    lblPer.Text = "ESTA SEMANA";
+
+                    filtro = " where Placa = '" + placa + "' and " +
+                        "format(Tbl_Abastecimentos.DataAutoriza,'yyyy-MM-dd') >='" + per1 + "' and " +
+                        "format(Tbl_Abastecimentos.DataAutoriza,'yyyy-MM-dd') <='" + per2 + "'"; 
+
+                    break;
+
+                case "3":
+                    //este mês
+                    int d1 = DateTime.Today.Day - 1;
+                    DateTime d2 = DateTime.Today.AddDays(-d1);
+
+                    per1 = d2.ToString("yyyy-MM-dd");
+                    per2 = DateTime.Today.ToString("yyyy-MM-dd");
+                    lblPer.Text = "ESTE MÊS";
+
+                    filtro = " where Placa = '" + placa + "' and " +
+                        "format(Tbl_Abastecimentos.DataAutoriza,'yyyy-MM-dd') >='" + per1 + "' and " +
+                        "format(Tbl_Abastecimentos.DataAutoriza,'yyyy-MM-dd') <='" + per2 + "'";
+
+                    break;
+
+                case "4":
+                    //especifico
+                    per1 = Request.QueryString["p2"];
+                    per2 = Request.QueryString["p3"];
+
+                    var per3 = Convert.ToDateTime(per1).ToString("dd/MM/yyyy");
+                    var per4 = Convert.ToDateTime(per2).ToString("dd/MM/yyyy");
+                    lblPer.Text = per3 + " à " + per4;
+
+                    filtro = " where Placa = '" + placa + "' and " +
+                        "format(Tbl_Abastecimentos.DataAutoriza,'yyyy-MM-dd') >='" + per1 + "' and " +
+                        "format(Tbl_Abastecimentos.DataAutoriza,'yyyy-MM-dd') <='" + per2 + "'";
+
+                    break;
+            }
 
             montaCabecalho();
             dadosCorpo();
@@ -32,6 +92,7 @@ public partial class Abastecimento_RelatorioOK : System.Web.UI.Page
             "<thead>" +
             "<tr>" +
             "<th>DATA</th>" +
+            "<th>HORÁRIO</th>" +
             "<th>MOTORISTA</th>" +
             "<th style=\"text-align:right\">KILOMETRAGEM</th>" +
             "<th style=\"text-align:right\">DIST.(KM)</th>" +
@@ -49,9 +110,9 @@ public partial class Abastecimento_RelatorioOK : System.Web.UI.Page
     private void dadosCorpo()
     {
         String stringselect = "select format(DataAutoriza,'dd/MM/yyyy') as DataOper," +
-                " Nome, Kilometragem, Valor, LTGasolina" +
-                " from Tbl_Abastecimentos" +
-                " where Placa = '"  +  placa + "'" +
+                " Nome, Kilometragem, Valor, LTGasolina, format(DataAutoriza ,'HH:mm:ss') as HoraOper" +
+                " from Tbl_Abastecimentos " + 
+                filtro  + 
                 " order by DataAutoriza ";
 
         OperacaoBanco operacao = new OperacaoBanco();
@@ -60,13 +121,17 @@ public partial class Abastecimento_RelatorioOK : System.Web.UI.Page
         int distAnterior = 0;
         int dist = 0;
 
+        decimal totalValor = 0;
+        decimal totalLts = 0;
+
         while (dados.Read())
         {
             string Coluna0 = Convert.ToString(dados[0]);    //data
+            string Coluna00 = Convert.ToString(dados[5]);    //hora
             string Coluna1 = Convert.ToString(dados[1]);    //motorista
             string Coluna2 = Convert.ToString(dados[2]);    //Kilometragem
             string Coluna3 = "";                            //distancia
-            decimal Coluna4 = Convert.ToDecimal(dados[3]);    //valor
+            decimal Coluna4 = Convert.ToDecimal(dados[3]);  //valor
             string Coluna5 = Convert.ToString(dados[4]);    //valor do litro
             string Coluna6 = "";                            //quant de litros
             string Coluna7 = "";                            //indice KM/LT
@@ -94,11 +159,16 @@ public partial class Abastecimento_RelatorioOK : System.Web.UI.Page
                 kmLT = Convert.ToDecimal(Coluna3) / quantLitros;
             }
 
+            //totalizador de valor e Lts
+            totalLts += quantLitros;
+            totalValor += Coluna4;
+
             Coluna6 = quantLitros.ToString("N", CultureInfo.CreateSpecificCulture("pt-BR"));       
             Coluna7 = kmLT.ToString("N", CultureInfo.CreateSpecificCulture("pt-BR"));
 
             string stringcomaspas = "<tr>" +
                 "<td>" + Coluna0 + "</td>" +
+                "<td>" + Coluna00 + "</td>" +
                 "<td>" + Coluna1 + "</td>" +
                 "<td style=\"text-align:right\">" + Coluna2 + "</td>" +
                 "<td style=\"text-align:right\">" + Coluna3 + "</td>" +
@@ -112,6 +182,9 @@ public partial class Abastecimento_RelatorioOK : System.Web.UI.Page
         }
 
         ConexaoBancoSQL.fecharConexao();
+
+        lbltotalValor.Text = "R$ " + totalValor.ToString("N", CultureInfo.CreateSpecificCulture("pt-BR"));
+        lbltotalLts.Text = totalLts.ToString("N", CultureInfo.CreateSpecificCulture("pt-BR"));
     }
 
     private void montaRodape()

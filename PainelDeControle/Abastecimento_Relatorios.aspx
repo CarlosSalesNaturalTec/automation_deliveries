@@ -37,16 +37,13 @@
             </select>
         </div>
 
-        <div class="col-md-2">
-            <input type="date" class="form-control" id="inputData1" style="visibility:hidden">
+        <div id="divInput1" class="col-md-3" style="display:none">
+            <input type="date" class="form-control" id="inputData1">
         </div>
-        <div class="col-md-2">
-            <input type="date" class="form-control" id="inputData2" style="visibility:hidden">
+        <div id="divInput2" class="col-md-3" style="display:none">
+            <input type="date" class="form-control" id="inputData2">
         </div>
         <!-- Periodo -->
-
-        <!-- Tipo de Relatório:  1=Completo   2=Esta Semana  3=Este Mes    4=Especifico-->
-        <input type="hidden" id="tipoRel" value="1">
 
     </div>
     
@@ -58,46 +55,49 @@
         <div class="col-md-2">
             <button type="button" class="btn btn-primary" onclick="verificar()">GERAR RELATÓRIO</button>
         </div>
-        <div class="col-md-2">
-            <button type="button" class="btn btn-primary" onclick="voltar()">VOLTAR</button>
-        </div>
     </div>
 
     <script type="text/javascript">
 
         function verificar() {
 
-            var v1 = document.getElementById("inputPlaca").value;
-            var v2 = document.getElementById("tipoRel").value;
-            var v3 = document.getElementById("inputData1").value;
-            var v4 = document.getElementById("inputData2").value;
+            var v4 = document.getElementById('inputPlaca').value;
+            if (v4 == "") {
+                alert("Selecione a Placa do Veículo");
+                return;
+            }
 
-            var linkurl = "../Abastecimento_RelatorioOK.aspx?p1=" + v1 + "&p2=" + v2 + "&p3=" + v3 + "&p4=" + v4;
+            var linkurl = "Abastecimento_RelatorioOK.aspx";
+            var params = "";
 
-            window.location.href = linkurl;
-
+            var selecao = document.getElementById('inputPeriodo').value;
+            if (selecao == 'ESPECÍFICO') {
+                var v2 = document.getElementById("inputData1").value;
+                var v3 = document.getElementById("inputData2").value;
+                params = "?p1=4&p2=" + v2 + "&p3=" + v3 + "&p4=" + v4;
+            } else {
+                if (selecao == 'COMPLETO') { params = "?p1=1&p4=" + v4; }
+                if (selecao == 'ESTA SEMANA') { params = "?p1=2&p4=" + v4; }
+                if (selecao == 'ESTE MÊS') { params = "?p1=3&p4=" + v4; }
+            }
+            window.location.href = linkurl + params;
         }
 
         function Selecao_Periodo(selecao) {
 
             if (selecao == 'ESPECÍFICO') {
-                document.getElementById("inputData1").style.visibility = "visible";
-                document.getElementById("inputData2").style.visibility = "visible";
+                document.getElementById("divInput1").style.display = "block";
+                document.getElementById("divInput2").style.display = "block";
                 document.getElementById("inputData1").focus();
             } else {
-                document.getElementById("inputData1").style.visibility = "hidden";
-                document.getElementById("inputData2").style.visibility = "hidden";
+                document.getElementById("divInput1").style.display = "none";
+                document.getElementById("divInput2").style.display = "none";
             }
             
         }
 
         function pad(n) {
             return (n < 10) ? ("0" + n) : n;
-        }
-
-        function voltar() {
-            var linkurl = "../Abastecimento_Planilha.aspx";
-            window.location.href = linkurl;
         }
 
     </script>

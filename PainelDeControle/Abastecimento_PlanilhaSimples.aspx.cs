@@ -7,15 +7,60 @@ public partial class Abastecimento_PlanilhaSimples : System.Web.UI.Page
     StringBuilder str = new StringBuilder();
     string tipoRel = "", per1 = "", per2 = "";
 
-
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
         {
             //Tipo de Relatório:  1=Completo   2=Esta Semana  3=Este Mes    4=Especifico
             tipoRel = Request.QueryString["p1"];
-            per1 = Request.QueryString["p2"];
-            per2 = Request.QueryString["p3"];
+           
+            switch (tipoRel)
+            {
+                case "1":
+                    //completo
+                    per1 = "";
+                    per2 = "";
+                    lblPer.Text = "COMPLETO";
+                    break;
+
+                case "2":
+                    // esta semana
+                    DateTime dt = DateTime.Today;
+                    DateTime dt1, dt2;
+
+                    var culture = System.Threading.Thread.CurrentThread.CurrentCulture;
+                    var diff = dt.DayOfWeek - culture.DateTimeFormat.FirstDayOfWeek;
+                    if (diff < 0)
+                        diff += 7;
+                    dt1 = dt.AddDays(-diff).Date;
+                    dt2 = dt1.AddDays(1);  // para adequar a brasil
+
+                    per1 = dt2.ToString("yyyy-MM-dd");
+                    per2 = DateTime.Today.ToString("yyyy-MM-dd");
+                    lblPer.Text = "ESTA SEMANA";
+                    break;
+
+                case "3":
+                    //este mês
+                    int d1 = DateTime.Today.Day - 1;
+                    DateTime d2 = DateTime.Today.AddDays(-d1);
+
+                    per1 = d2.ToString("yyyy-MM-dd");
+                    per2 = DateTime.Today.ToString("yyyy-MM-dd");
+                    lblPer.Text = "ESTE MÊS";
+                    break;
+
+                case "4":
+                    //especifico
+                    per1 = Request.QueryString["p2"];
+                    per2 = Request.QueryString["p3"];
+
+                    var per3 = Convert.ToDateTime(per1).ToString("dd/MM/yyyy");
+                    var per4 = Convert.ToDateTime(per2).ToString("dd/MM/yyyy");
+
+                    lblPer.Text = per3 + " à " + per4;
+                    break;
+            }
 
             LimpaTabela();
             InsereDebitos();
@@ -37,19 +82,41 @@ public partial class Abastecimento_PlanilhaSimples : System.Web.UI.Page
 
     private void InsereDebitos()
     {
+        string filtroPer;
+
+        if (tipoRel == "1") {
+            filtroPer = "";
+        } else
+        {
+            filtroPer = "where format(Tbl_Abastecimentos.DataAutoriza,'yyyy-MM-dd') >='" + per1 + "' and " +
+                "format(Tbl_Abastecimentos.DataAutoriza,'yyyy-MM-dd') <='" + per2 + "'";
+        }
+
         OperacaoBanco operacao = new OperacaoBanco();
         string stringinsert = @"INSERT INTO Tbl_Abastecimento_Planilha (DataOperacao,Valor,Motorista ,Placa ,Kilometragem ,  Evento )
                             SELECT DataAutoriza, Valor,Nome , Placa, Kilometragem, 'ABASTECIMENTO'
-                            FROM Tbl_Abastecimentos";
+                            FROM Tbl_Abastecimentos " + filtroPer ;
         Boolean inserir = operacao.Insert(stringinsert);
     }
 
     private void InsereCreditos()
     {
+        string filtroPer;
+
+        if (tipoRel == "1")
+        {
+            filtroPer = "";
+        }
+        else
+        {
+            filtroPer = "where format(Tbl_Abastecimentos_Creditos.DataCredito,'yyyy-MM-dd') >='" + per1 + "' and " +
+                "format(Tbl_Abastecimentos_Creditos.DataCredito,'yyyy-MM-dd') <='" + per2 + "'";
+        }
+
         OperacaoBanco operacao = new OperacaoBanco();
         string stringinsert = @"INSERT INTO Tbl_Abastecimento_Planilha (DataOperacao,Valor,Evento )
                             SELECT DataCredito , Valor, 'DEPOSITO'
-                            FROM Tbl_Abastecimentos_Creditos;";
+                            FROM Tbl_Abastecimentos_Creditos " + filtroPer ;
         Boolean inserir = operacao.Insert(stringinsert);
     }
 
@@ -75,7 +142,7 @@ public partial class Abastecimento_PlanilhaSimples : System.Web.UI.Page
     private void dadosCorpo()
     {
         string datastatus = DateTime.Now.ToString("yyyy-MM-dd");
-        string stringselect = "select format(DataOperacao ,'dd/MM/yyyy') as DataOper, format(DataOperacao ,'hh:mm:ss') as HoraOper," +
+        string stringselect = "select format(DataOperacao ,'dd/MM/yyyy') as DataOper, format(DataOperacao ,'HH:mm:ss') as HoraOper," +
                 " Evento , Motorista , Placa , Kilometragem , Valor " +
                 " from Tbl_Abastecimento_Planilha" +
                 " order by DataOperacao";

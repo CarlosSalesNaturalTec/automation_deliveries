@@ -18,7 +18,12 @@
     <button type="reset" class="btn btn-primary" onclick="cancelar()">VOLTAR</button>
 
     <h3>Relatório de Abastecimentos</h3>
+    <br />
+
     <h4 class="text-primary"><asp:Literal ID="Literal_Placa" runat="server"></asp:Literal></h4>
+    <p><em>Período Selecionado:</em>  <strong><asp:Label ID="lblPer" runat="server"></asp:Label></strong> </p> 
+    <p><em>Total: </em><strong><asp:Label ID="lbltotalValor" runat="server"></asp:Label></strong>&nbsp;&nbsp;&nbsp;<em>Lts: </em><strong><asp:Label ID="lbltotalLts" runat="server"></asp:Label></strong> </p>
+    <br />
 
     <!-- Dados -->
     <asp:Literal ID="Literal_Dados" runat="server"></asp:Literal>
