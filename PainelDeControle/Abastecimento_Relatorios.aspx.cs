@@ -20,10 +20,12 @@ public partial class Abastecimento_Relatorios : System.Web.UI.Page
         str.Clear();
         str.Append("<select class=\"form-control\" id=\"inputPlaca\" name=\"inputPlaca\">");
         str.Append("<option></option>");
+        str.Append("<option>TODOS</option>");
 
         string stringSelect = "select Placa from Tbl_Veiculos order by Placa";
         OperacaoBanco operacao = new OperacaoBanco();
         System.Data.SqlClient.SqlDataReader rcrdset = operacao.Select(stringSelect);
+        
         while (rcrdset.Read())
         {
             str.Append("<option>" + Convert.ToString(rcrdset[0]) + "</option>");

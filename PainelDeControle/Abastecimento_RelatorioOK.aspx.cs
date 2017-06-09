@@ -5,7 +5,7 @@ using System.Text;
 public partial class Abastecimento_RelatorioOK : System.Web.UI.Page
 {
     StringBuilder str = new StringBuilder();
-    string placa = "", tipoRel = "", per1 = "", per2 = "", filtro="";
+    string placa = "", tipoRel = "", per1 = "", per2 = "", filtro = "", filtroPlaca = "";
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -17,11 +17,21 @@ public partial class Abastecimento_RelatorioOK : System.Web.UI.Page
             placa = Request.QueryString["p4"];
             Literal_Placa.Text = "Placa : " + placa;
 
+            if (placa == "TODOS")
+            {
+                filtroPlaca = "";
+            }
+            else
+            {
+                filtroPlaca = " where Placa = '" + placa + "'";
+            }
+
+
             switch (tipoRel)
             {
                 case "1":
                     //completo
-                    filtro = " where Placa = '" + placa + "'";
+                    filtro = filtroPlaca;
                     lblPer.Text = "COMPLETO";
                     break;
 
@@ -41,9 +51,18 @@ public partial class Abastecimento_RelatorioOK : System.Web.UI.Page
                     per2 = DateTime.Today.ToString("yyyy-MM-dd");
                     lblPer.Text = "ESTA SEMANA";
 
-                    filtro = " where Placa = '" + placa + "' and " +
+                    if (filtroPlaca == "")
+                    {
+                        filtroPlaca = " where ";
+                    }
+                    else
+                    {
+                        filtroPlaca += " and ";
+                    }
+
+                    filtro = filtroPlaca +
                         "format(Tbl_Abastecimentos.DataAutoriza,'yyyy-MM-dd') >='" + per1 + "' and " +
-                        "format(Tbl_Abastecimentos.DataAutoriza,'yyyy-MM-dd') <='" + per2 + "'"; 
+                        "format(Tbl_Abastecimentos.DataAutoriza,'yyyy-MM-dd') <='" + per2 + "'";
 
                     break;
 
@@ -56,7 +75,16 @@ public partial class Abastecimento_RelatorioOK : System.Web.UI.Page
                     per2 = DateTime.Today.ToString("yyyy-MM-dd");
                     lblPer.Text = "ESTE MÊS";
 
-                    filtro = " where Placa = '" + placa + "' and " +
+                    if (filtroPlaca == "")
+                    {
+                        filtroPlaca = " where ";
+                    }
+                    else
+                    {
+                        filtroPlaca += " and ";
+                    }
+
+                    filtro = filtroPlaca +
                         "format(Tbl_Abastecimentos.DataAutoriza,'yyyy-MM-dd') >='" + per1 + "' and " +
                         "format(Tbl_Abastecimentos.DataAutoriza,'yyyy-MM-dd') <='" + per2 + "'";
 
@@ -71,7 +99,16 @@ public partial class Abastecimento_RelatorioOK : System.Web.UI.Page
                     var per4 = Convert.ToDateTime(per2).ToString("dd/MM/yyyy");
                     lblPer.Text = per3 + " à " + per4;
 
-                    filtro = " where Placa = '" + placa + "' and " +
+                    if (filtroPlaca == "")
+                    {
+                        filtroPlaca = " where ";
+                    }
+                    else
+                    {
+                        filtroPlaca += " and ";
+                    }
+
+                    filtro = filtroPlaca +
                         "format(Tbl_Abastecimentos.DataAutoriza,'yyyy-MM-dd') >='" + per1 + "' and " +
                         "format(Tbl_Abastecimentos.DataAutoriza,'yyyy-MM-dd') <='" + per2 + "'";
 
@@ -88,21 +125,43 @@ public partial class Abastecimento_RelatorioOK : System.Web.UI.Page
 
     private void montaCabecalho()
     {
-        string stringcomaspas = "<table id=\"tabela\" class=\"table table-striped table-hover \">" +
-            "<thead>" +
-            "<tr>" +
-            "<th>DATA</th>" +
-            "<th>HORÁRIO</th>" +
-            "<th>MOTORISTA</th>" +
-            "<th style=\"text-align:right\">KILOMETRAGEM</th>" +
-            "<th style=\"text-align:right\">DIST.(KM)</th>" +
-            "<th style=\"text-align:right\">VALOR (R$)</th>" +
-            "<th style=\"text-align:right\">VALOR LT.(R$)</th>" +
-            "<th style=\"text-align:right\">LITROS</th>" +
-            "<th style=\"text-align:right\">KM/LT</th>" +
-            "</tr>" +
-            "</thead>" +
-            "<tbody>";
+
+        string stringcomaspas = "";
+
+        if (placa == "TODOS")
+        {
+            stringcomaspas = "<table id=\"tabela\" class=\"table table-striped table-hover \">" +
+                "<thead>" +
+                "<tr>" +
+                "<th>DATA</th>" +
+                "<th>HORÁRIO</th>" +
+                "<th>MOTORISTA</th>" +
+                "<th style=\"text-align:right\">KILOMETRAGEM</th>" +
+                "<th style=\"text-align:right\">VALOR (R$)</th>" +
+                "<th style=\"text-align:right\">VALOR LT.(R$)</th>" +
+                "<th style=\"text-align:right\">LITROS</th>" +
+                "</tr>" +
+                "</thead>" +
+                "<tbody>";
+        } else {
+            stringcomaspas = "<table id=\"tabela\" class=\"table table-striped table-hover \">" +
+                "<thead>" +
+                "<tr>" +
+                "<th>DATA</th>" +
+                "<th>HORÁRIO</th>" +
+                "<th>MOTORISTA</th>" +
+                "<th style=\"text-align:right\">KILOMETRAGEM</th>" +
+                "<th style=\"text-align:right\">DIST.(KM)</th>" +
+                "<th style=\"text-align:right\">VALOR (R$)</th>" +
+                "<th style=\"text-align:right\">VALOR LT.(R$)</th>" +
+                "<th style=\"text-align:right\">LITROS</th>" +
+                "<th style=\"text-align:right\">KM/LT</th>" +
+                "</tr>" +
+                "</thead>" +
+                "<tbody>";
+        }
+
+
         str.Clear();
         str.Append(stringcomaspas);
     }
@@ -111,8 +170,8 @@ public partial class Abastecimento_RelatorioOK : System.Web.UI.Page
     {
         String stringselect = "select format(DataAutoriza,'dd/MM/yyyy') as DataOper," +
                 " Nome, Kilometragem, Valor, LTGasolina, format(DataAutoriza ,'HH:mm:ss') as HoraOper" +
-                " from Tbl_Abastecimentos " + 
-                filtro  + 
+                " from Tbl_Abastecimentos " +
+                filtro +
                 " order by DataAutoriza ";
 
         OperacaoBanco operacao = new OperacaoBanco();
@@ -127,7 +186,7 @@ public partial class Abastecimento_RelatorioOK : System.Web.UI.Page
         while (dados.Read())
         {
             string Coluna0 = Convert.ToString(dados[0]);    //data
-            string Coluna00 = Convert.ToString(dados[5]);    //hora
+            string Coluna00 = Convert.ToString(dados[5]);   //hora
             string Coluna1 = Convert.ToString(dados[1]);    //motorista
             string Coluna2 = Convert.ToString(dados[2]);    //Kilometragem
             string Coluna3 = "";                            //distancia
@@ -136,7 +195,7 @@ public partial class Abastecimento_RelatorioOK : System.Web.UI.Page
             string Coluna6 = "";                            //quant de litros
             string Coluna7 = "";                            //indice KM/LT
 
-            if (distAnterior == 0) {distAnterior = Convert.ToInt32(Coluna2);}
+            if (distAnterior == 0) { distAnterior = Convert.ToInt32(Coluna2); }
             dist = Convert.ToInt32(Coluna2) - distAnterior;
             distAnterior = Convert.ToInt32(Coluna2);
 
@@ -163,10 +222,25 @@ public partial class Abastecimento_RelatorioOK : System.Web.UI.Page
             totalLts += quantLitros;
             totalValor += Coluna4;
 
-            Coluna6 = quantLitros.ToString("N", CultureInfo.CreateSpecificCulture("pt-BR"));       
+            Coluna6 = quantLitros.ToString("N", CultureInfo.CreateSpecificCulture("pt-BR"));
             Coluna7 = kmLT.ToString("N", CultureInfo.CreateSpecificCulture("pt-BR"));
 
-            string stringcomaspas = "<tr>" +
+            string stringcomaspas = "";
+
+            if (placa == "TODOS")
+            {
+                stringcomaspas = "<tr>" +
+                "<td>" + Coluna0 + "</td>" +
+                "<td>" + Coluna00 + "</td>" +
+                "<td>" + Coluna1 + "</td>" +
+                "<td style=\"text-align:right\">" + Coluna2 + "</td>" +
+                "<td style=\"text-align:right\">" + coluna4f + "</td>" +
+                "<td style=\"text-align:right\">" + Coluna5 + "</td>" +
+                "<td style=\"text-align:right\">" + Coluna6 + "</td>" +
+                "</tr>";
+            } else
+            {
+                stringcomaspas = "<tr>" +
                 "<td>" + Coluna0 + "</td>" +
                 "<td>" + Coluna00 + "</td>" +
                 "<td>" + Coluna1 + "</td>" +
@@ -177,6 +251,7 @@ public partial class Abastecimento_RelatorioOK : System.Web.UI.Page
                 "<td style=\"text-align:right\">" + Coluna6 + "</td>" +
                 "<td style=\"text-align:right\">" + Coluna7 + "</td>" +
                 "</tr>";
+            }
 
             str.Append(stringcomaspas);
         }
