@@ -6,6 +6,7 @@ public partial class Abastecimento_RelatorioOK : System.Web.UI.Page
 {
     StringBuilder str = new StringBuilder();
     string placa = "", tipoRel = "", per1 = "", per2 = "", filtro = "", filtroPlaca = "";
+    string organizador = "";
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -135,6 +136,7 @@ public partial class Abastecimento_RelatorioOK : System.Web.UI.Page
                 "<tr>" +
                 "<th>DATA</th>" +
                 "<th>HORÁRIO</th>" +
+                "<th>PLACA</th>" +
                 "<th>MOTORISTA</th>" +
                 "<th style=\"text-align:right\">KILOMETRAGEM</th>" +
                 "<th style=\"text-align:right\">VALOR (R$)</th>" +
@@ -143,7 +145,12 @@ public partial class Abastecimento_RelatorioOK : System.Web.UI.Page
                 "</tr>" +
                 "</thead>" +
                 "<tbody>";
-        } else {
+
+            organizador = "placa";
+
+        }
+        else
+        {
             stringcomaspas = "<table id=\"tabela\" class=\"table table-striped table-hover \">" +
                 "<thead>" +
                 "<tr>" +
@@ -159,6 +166,9 @@ public partial class Abastecimento_RelatorioOK : System.Web.UI.Page
                 "</tr>" +
                 "</thead>" +
                 "<tbody>";
+
+            organizador = "DataAutoriza";
+
         }
 
 
@@ -169,10 +179,10 @@ public partial class Abastecimento_RelatorioOK : System.Web.UI.Page
     private void dadosCorpo()
     {
         String stringselect = "select format(DataAutoriza,'dd/MM/yyyy') as DataOper," +
-                " Nome, Kilometragem, Valor, LTGasolina, format(DataAutoriza ,'HH:mm:ss') as HoraOper" +
+                " Nome, Kilometragem, Valor, LTGasolina, format(DataAutoriza ,'HH:mm:ss') as HoraOper, placa" +
                 " from Tbl_Abastecimentos " +
                 filtro +
-                " order by DataAutoriza ";
+                " order by " + organizador;
 
         OperacaoBanco operacao = new OperacaoBanco();
         System.Data.SqlClient.SqlDataReader dados = operacao.Select(stringselect);
@@ -182,6 +192,9 @@ public partial class Abastecimento_RelatorioOK : System.Web.UI.Page
 
         decimal totalValor = 0;
         decimal totalLts = 0;
+
+        decimal subtotal = 0;
+        string placaAnt = "";
 
         while (dados.Read())
         {
@@ -194,6 +207,7 @@ public partial class Abastecimento_RelatorioOK : System.Web.UI.Page
             string Coluna5 = Convert.ToString(dados[4]);    //valor do litro
             string Coluna6 = "";                            //quant de litros
             string Coluna7 = "";                            //indice KM/LT
+            string Coluna8 = Convert.ToString(dados[6]);    //Placa
 
             if (distAnterior == 0) { distAnterior = Convert.ToInt32(Coluna2); }
             dist = Convert.ToInt32(Coluna2) - distAnterior;
@@ -227,18 +241,45 @@ public partial class Abastecimento_RelatorioOK : System.Web.UI.Page
 
             string stringcomaspas = "";
 
+            if (Coluna8 != placaAnt)
+            {
+                if (placa == "TODOS")
+                {
+                    stringcomaspas = "<tr>" +
+                    "<td>-</td>" +
+                    "<td>-</td>" +
+                    "<td>-</td>" +
+                    "<td><strong>SUB-TOTAL PLACA: " + placaAnt + "</strong></td>" +
+                    "<td style=\"text-align:right\">-</td>" +
+                    "<td style=\"text-align:right\"><strong>" + subtotal.ToString("N", CultureInfo.CreateSpecificCulture("pt-BR")) + "</strong></td>" +
+                    "<td style=\"text-align:right\">-</td>" +
+                    "<td style=\"text-align:right\">-</td>" +
+                    "</tr>";
+                    if (subtotal != 0 )
+                    {
+                        str.Append(stringcomaspas);
+                    }
+                    
+                }
+                placaAnt = Coluna8;
+                subtotal = 0;
+            }
+            subtotal += Coluna4;
+
             if (placa == "TODOS")
             {
                 stringcomaspas = "<tr>" +
                 "<td>" + Coluna0 + "</td>" +
                 "<td>" + Coluna00 + "</td>" +
+                "<td>" + Coluna8 + "</td>" +
                 "<td>" + Coluna1 + "</td>" +
                 "<td style=\"text-align:right\">" + Coluna2 + "</td>" +
                 "<td style=\"text-align:right\">" + coluna4f + "</td>" +
                 "<td style=\"text-align:right\">" + Coluna5 + "</td>" +
                 "<td style=\"text-align:right\">" + Coluna6 + "</td>" +
                 "</tr>";
-            } else
+            }
+            else
             {
                 stringcomaspas = "<tr>" +
                 "<td>" + Coluna0 + "</td>" +
@@ -253,6 +294,21 @@ public partial class Abastecimento_RelatorioOK : System.Web.UI.Page
                 "</tr>";
             }
 
+            str.Append(stringcomaspas);
+        }
+
+        if (placa == "TODOS")
+        {
+            string stringcomaspas = "<tr>" +
+            "<td>-</td>" +
+            "<td>-</td>" +
+            "<td>-</td>" +
+            "<td><strong>SUB-TOTAL PLACA: " + placaAnt + "</strong></td>" +
+            "<td style=\"text-align:right\">-</td>" +
+            "<td style=\"text-align:right\"><strong>" + subtotal.ToString("N", CultureInfo.CreateSpecificCulture("pt-BR")) + "</strong></td>" +
+            "<td style=\"text-align:right\">-</td>" +
+            "<td style=\"text-align:right\">-</td>" +
+            "</tr>";
             str.Append(stringcomaspas);
         }
 
