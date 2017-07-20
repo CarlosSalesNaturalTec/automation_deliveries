@@ -33,7 +33,7 @@ namespace delivcli
                 // tenta identificar se houve login. caso contrário vai para página de erro
                 string v_id_cli = Session["Cli_ID"].ToString();
 
-                obtemcoordenadas("On-Line");
+                //obtemcoordenadas("On-Line");
 
                 EntregasEmAberto();
                 EntregasEmAndamento();
@@ -52,7 +52,7 @@ namespace delivcli
             try
             {
                 string stringselect = "";
-                stringselect = @"select usuario, GeoLatitude, GeoLongitude , format(GeoDataLoc,'dd-MM-yyyy') as UltimaData," +
+                stringselect = @"select nome, GeoLatitude, GeoLongitude , format(GeoDataLoc,'dd-MM-yyyy') as UltimaData," +
                         " format(GeoDataLoc,'HH:mm:ss') as UltimaHora, DATEDIFF(MINUTE, GeoDataLoc, getdate()) AS Intervalo, ID_Motoboy  " +
                         " from Tbl_Motoboys where ID_Cliente = " + Session["Cli_ID"].ToString() +
                         " order by usuario";

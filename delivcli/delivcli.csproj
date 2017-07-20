@@ -158,6 +158,7 @@
     <Content Include="images\flagEmAndamento.png" />
     <Content Include="images\flagOk.png" />
     <Content Include="images\flagRetorno.png" />
+    <Content Include="Scripts\codeMapa1.js" />
     <Content Include="utilitarios\ImportClientes.aspx" />
     <Content Include="ListagemEntregas.aspx" />
     <Content Include="DetalhesStatus.aspx" />

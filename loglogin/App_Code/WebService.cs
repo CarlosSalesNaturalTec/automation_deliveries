@@ -42,10 +42,8 @@ public class WebService : System.Web.Services.WebService
                 {
                     case "1":
                         url = "http://logmaster.azurewebsites.net/Default.aspx?p1=" + vValida4 + "&p2=" + idcli;
-                        //url = "http://siglog.azurewebsites.net";
                         break;
-                    default:
-                        
+                    default:                   
                         url = "http://logcliente.azurewebsites.net?IDCli=" + idcli;
                         break;
                 } 

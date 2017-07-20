@@ -31,7 +31,7 @@ namespace delivcli
 
             // Listagem de Entregadores e intevalo desde a ultima atualização
             string stringselect = "";
-            stringselect = @"select usuario, DATEDIFF(MINUTE, GeoDataLoc, getdate()) AS Intervalo, ID_Motoboy   " +
+            stringselect = @"select Nome, DATEDIFF(MINUTE, GeoDataLoc, getdate()) AS Intervalo, ID_Motoboy   " +
                     " from Tbl_Motoboys where ID_Cliente = " + Session["Cli_ID"].ToString() +
                     " order by usuario";
             OperacaoBanco operacao = new OperacaoBanco();

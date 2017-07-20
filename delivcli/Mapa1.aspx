@@ -27,5 +27,7 @@
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCOmedP-f3N7W7CPxaRoCZJ5mTMm6g0Ycc&callback=initMap"
         async defer></script>
     
+    <script type="text/javascript" src="Scripts/codeMapa1.js"></script>
+
 </body>
 </html>

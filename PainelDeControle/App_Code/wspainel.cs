@@ -332,4 +332,51 @@ public class wspainel : System.Web.Services.WebService
         return url;
     }
 
+    [WebMethod]
+    public string AbastLocalExcluir(string param1)
+    {
+        string url;
+
+        OperacaoBanco operacao3 = new OperacaoBanco();
+        Boolean deletar = operacao3.Delete("delete from Tbl_Abastecimento_Local where ID_Abast =" + param1);   
+        ConexaoBancoSQL.fecharConexao();
+
+        if (deletar == true)
+        {
+            url = "Abastecimento_Local_Listagem.aspx";  
+        }
+        else
+        {
+            url = "Sorry.aspx";
+        }
+
+        return url;
+    }
+
+    [WebMethod]
+    public string AbastLocalSalvar(string param0, string param1, string param2, string param3, string param4)
+    {
+        string url = "";
+        OperacaoBanco operacao = new OperacaoBanco();
+        bool inserir = operacao.Insert(@"INSERT INTO Tbl_Abastecimento_Local (Nome, Placa,Data_Abastecimento,Talao,valor ) " +
+            "VALUES (" +
+            "'" + param0 + "'," +
+            "'" + param1 + "'," +
+            "'" + param2 + "'," +
+            "'" + param3 + "'," +
+            param4 + 
+            ")");
+        ConexaoBancoSQL.fecharConexao();
+        if (inserir == true)
+        {
+            url = "../Veiculos_Lista.aspx";
+        }
+        else
+        {
+            url = "../Sorry.aspx";
+        }
+
+        return url;
+    }
+
 }

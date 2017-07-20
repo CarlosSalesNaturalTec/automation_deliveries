@@ -2,8 +2,6 @@
 
 public partial class _Default : System.Web.UI.Page
 {
-    string vUSerID;
-
     protected void Page_Load(object sender, EventArgs e)
     {
         ValidaAcesso();
@@ -25,10 +23,11 @@ public partial class _Default : System.Web.UI.Page
         if (vSec != vValida5)
         {
             Response.Redirect("http://logmaster.azurewebsites.net/SorryConect.aspx");
+        } else
+        {
+            Session["UserID"] = Request.QueryString["p2"];
+            Response.Redirect("Painel.aspx");
         }
-
-        vUSerID = Request.QueryString["p2"];
-
 
     }
 

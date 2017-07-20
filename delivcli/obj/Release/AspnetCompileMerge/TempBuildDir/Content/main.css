@@ -2,7 +2,7 @@
  
 /* COLOR REFERENCE
 - #1f1f1f (Background Color)
-- #3d3d3d (Dash-unit and half-unit Section) 
+- #f5f5f5 (Dash-unit and half-unit Section) 
 - #262626 (Footer) 
 - #fa1d2d (Red - Used in selectors, parragraphs, bars and other) 
 - #b2c831 (Green - Used in titles, badges, bars and other) 
@@ -45,8 +45,8 @@ h5 {
 	padding-bottom:10px;
 	border: 1px solid #383737;
 	background-image:url('../img/sep-half.png');
-	background-color: #3d3d3d;
-	color:white;
+	background-color: #f5f5f5;
+	color:black;
 	height:390px;
 }
 
@@ -55,22 +55,22 @@ h5 {
 	padding-bottom:10px;
 	border: 1px solid #383737;
 	background-image:url('../images/sep-half.png');
-	background-color: #3d3d3d;
-	color:white;
+	background-color: #f5f5f5;
+	color:black;
 	height:180px;
     text-align:center;
 }
 
 .dash-unitc{
 	border: 1px solid #383737;
-	background-color: #3d3d3d;
+	background-color: #f5f5f5;
     height:40px;
-	color:white;
+	color:black;
     text-align:center;
 }
 
 .dash-unit:hover {
-	background-color: #4f4f4f;
+	background-color: #d3d3d3;
 	-moz-box-shadow:    3px 3px 2px 0px #151515;
     -webkit-box-shadow: 3px 3px 2px 0px #151515;
     box-shadow:         3px 3px 2px 0px #151515;
@@ -78,7 +78,7 @@ h5 {
 }
 
 .dash-unitb:hover {
-	background-color: #4f4f4f;
+	background-color: #d3d3d3;
 	-moz-box-shadow:    3px 3px 2px 0px #151515;
     -webkit-box-shadow: 3px 3px 2px 0px #151515;
     box-shadow:         3px 3px 2px 0px #151515;
@@ -88,7 +88,7 @@ h5 {
 .dash-unit dtitle {
 	font-size:11px;
 	text-transform:uppercase;
-	color:#ffffff;
+	color:black;
 	margin:8px;
 	padding:0px;
 	height:inherit	
@@ -97,7 +97,7 @@ h5 {
 .dash-unitb dtitle {
 	font-size:11px;
 	text-transform:uppercase;
-	color:#ffffff;
+	color:black;
 	margin:8px;
 	padding:0px;
 	height:inherit	
@@ -123,7 +123,7 @@ h5 {
 	font-size: 20px;
 	line-height: 2px;
 	letter-spacing: 0px;
-	color: #ffffff;
+	color: black;
 	padding-top:10px;
 	padding-left:5px;
 	margin-top:2px;
@@ -136,7 +136,7 @@ h5 {
 	font-size: 30px;
 	line-height: 26px;
 	letter-spacing: 0px;
-	color: #ffffff;
+	color: black;
 	padding-top:10px;
 	padding-left:5px;
 	margin-top:2px;
@@ -192,7 +192,7 @@ h5 {
     width:auto;
 	line-height: 2px;
 	letter-spacing: 0px;
-	color: #ffffff;
+	color: black;
 }
 
 .dash-unitb h2 {
@@ -203,7 +203,7 @@ h5 {
     width:auto;
 	line-height: 2px;
 	letter-spacing: 0px;
-	color: #ffffff;
+	color: black;
     text-align:center;
 }
 
@@ -213,13 +213,13 @@ h5 {
 	padding-bottom: 4px;
 	border: 1px solid #383737;
 	background-image:url('../img/sep-half.png');
-	background-color: #3d3d3d;
-	color:white;
+	background-color: #f5f5f5;
+	color:black;
 	height:130px;
 }
 
 .half-unit:hover {
-	background-color: #4f4f4f;
+	background-color: #d3d3d3;
 	-moz-box-shadow:    3px 3px 2px 0px #151515;
     -webkit-box-shadow: 3px 3px 2px 0px #151515;
     box-shadow:         3px 3px 2px 0px #151515;
@@ -229,7 +229,7 @@ h5 {
 .half-unit dtitle {
 	font-size:10px;
 	text-transform:uppercase;
-	color:#ffffff;
+	color:black;
 	margin:8px;
 	padding:0px;
 	height:inherit	
@@ -248,7 +248,7 @@ h5 {
 	font-size: 20px;
 	line-height: 1;
 	letter-spacing: 0px;
-	color: #ffffff;
+	color: black;
 	padding-top:10px;
 	padding-left:5px;
 	margin-top:2px;
@@ -329,7 +329,7 @@ h5 {
 
 .modal-header {
 	background-image:url('../img/sep-half.png');
-	background-color: #4f4f4f;
+	background-color: #d3d3d3;
 	color:#fff;
 }
 

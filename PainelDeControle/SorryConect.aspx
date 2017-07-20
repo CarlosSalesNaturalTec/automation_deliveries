@@ -10,11 +10,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" href="~/vendors/bootstrap/dist/css/bootstrap.min.css">
-    <script type="text/javascript" src="Scripts/jquery-3.1.1.min.js" ></script>
-
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-    <h3>Tentativa de Login Nao Autorizada</h3>
+
+    <div class="w3-container w3-center w3-text-grey">
+        <p><i class="fa fa-3x fa-exclamation-triangle" aria-hidden="true"></i></p>
+        <h1>Tentativa de Login Nao Autorizada!</h1>
+    </div>
+
 </body>
 </html>
