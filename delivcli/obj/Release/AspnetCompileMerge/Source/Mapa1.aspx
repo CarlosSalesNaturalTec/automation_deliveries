@@ -5,6 +5,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 
+   <title>Mapa</title>
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   
     <style>
       html, body {
         height: 100%;
@@ -20,6 +24,8 @@
 
 <body>
 
+    <input id="IDCli" type="hidden" />
+
     <div id="map"></div>
 
     <asp:Literal ID="Literal1" runat="server"></asp:Literal>
@@ -27,5 +33,7 @@
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCOmedP-f3N7W7CPxaRoCZJ5mTMm6g0Ycc&callback=initMap"
         async defer></script>
     
+    <script type="text/javascript" src="Scripts/codeMapa1.js"></script>
+
 </body>
 </html>

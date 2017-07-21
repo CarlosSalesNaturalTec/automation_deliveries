@@ -3,8 +3,6 @@
     //validações
     if (document.getElementById('input1').value == "") {
         alert("Informe Nome do Motorista");   
-        openLink(event, 'grupo1')
-        $('#bt1').addClass(' w3-blue');
         document.getElementById("input1").focus();  
         return;
     }
@@ -24,7 +22,7 @@
 
     $.ajax({
         type: "POST",
-        url: "WebService.asmx/InstituicaoSalvar",  //<!--*******Customização*******-->
+        url: "wspainel.asmx/AbastLocalSalvar",
         data: '{' + strLine + '}',
         contentType: "application/json; charset=utf-8",
         dataType: "json",
@@ -41,10 +39,8 @@ function AlterarRegistro() {
 
     //validações
     if (document.getElementById('input1').value == "") {
-        alert("Informe Nome da instituição");   //<!--*******Customização******-->
-        openLink(event, 'grupo1')
-        $('#bt1').addClass(' w3-blue');
-        document.getElementById("input1").focus();  //<!--*******Customização******-->
+        alert("Informe Nome do Motorista");
+        document.getElementById("input1").focus();  
         return;
     }
 
@@ -55,20 +51,15 @@ function AlterarRegistro() {
         strLine = strLine + "param" + i + ":'" + x[i].value + "',";
     }
 
-    var foto = document.getElementById('FotoHidden').value;
-    strLine = strLine + "param" + i + ":'" + foto + "',";
-
-    i++;
     var idAux = document.getElementById('IDAuxHidden').value;
     strLine = strLine + "param" + i + ":'" + idAux + "'";
-
 
     //UI - exibir animações - aguarde...
     UIAguardar();
 
     $.ajax({
         type: "POST",
-        url: "WebService.asmx/InstituicaoAlterar",   //<!--*******Customização*******-->
+        url: "wspainel.asmx/AbastLocalEditar",
         data: '{' + strLine + '}',
         contentType: "application/json; charset=utf-8",
         dataType: "json",

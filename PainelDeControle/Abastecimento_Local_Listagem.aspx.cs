@@ -66,7 +66,6 @@ public partial class Abastecimento_Local_Listagem : System.Web.UI.Page
                 "<td>" + Coluna2 + "</td>" +
                 "<td>" + Coluna3 + "</td>" +
                 "<td>" + Coluna4 + "</td>" +
-                "<td>" + Coluna4 + "</td>" +
                 "<td>" + Coluna5 + "</td>" +
                 "</tr>";
 

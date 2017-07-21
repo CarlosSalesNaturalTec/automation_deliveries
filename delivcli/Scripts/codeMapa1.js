@@ -4,9 +4,12 @@ var myVar = setInterval(MostraMotoboys, 3000);
 
 function MostraMotoboys() {
 
+    var IDcli = document.getElementById('IDCli').value;
+
     $.ajax({
         type: "POST",
-        url: "WebService.asmx/MotoboysOnLine",
+        url: "WebService1.asmx/MotoboysOnLine",
+        data: '{param1: "' + IDcli + '"}',
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (response) {
@@ -52,6 +55,8 @@ function addMarker(location, conteudo) {
     var infowindow = new google.maps.InfoWindow({
         content: conteudo
     });
+    //infowindow.open(marker.get('map'), marker);
+
     // aguarda click para exibir infowindow
     marker.addListener('click', function () {
         infowindow.open(marker.get('map'), marker);

@@ -26,12 +26,14 @@ namespace delivcli
         string centromapa = "{ lat: -12.9886458, lng: -38.4715624 }";
         int contagem = 1;
 
+        string v_id_cli;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 // tenta identificar se houve login. caso contrário vai para página de erro
-                string v_id_cli = Session["Cli_ID"].ToString();
+                v_id_cli = Session["Cli_ID"].ToString();
 
                 //obtemcoordenadas("On-Line");
 
@@ -268,8 +270,10 @@ namespace delivcli
         {
             str.Clear();
             str.Append(@"<script type='text/javascript'> 
+            document.getElementById('IDCli').value = " + v_id_cli + "; ");
 
-            var coordEntregador = [");
+            str.Append(@"var coordEntregador = [");
+
             str.Append(coordenadas.ToString());
             str.Append(@"];
 
@@ -329,7 +333,7 @@ namespace delivcli
 
         function initMap() {
             map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 12,
+                zoom: 13,
                 center: CentroDoMapa
             });
 

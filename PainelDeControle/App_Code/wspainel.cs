@@ -358,7 +358,7 @@ public class wspainel : System.Web.Services.WebService
     {
         string url = "";
         OperacaoBanco operacao = new OperacaoBanco();
-        bool inserir = operacao.Insert(@"INSERT INTO Tbl_Abastecimento_Local (Nome, Placa,Data_Abastecimento,Talao,valor ) " +
+        bool inserir = operacao.Insert("INSERT INTO Tbl_Abastecimento_Local (Nome, Placa,Data_Abastecimento,Talao,valor ) " +
             "VALUES (" +
             "'" + param0 + "'," +
             "'" + param1 + "'," +
@@ -369,7 +369,33 @@ public class wspainel : System.Web.Services.WebService
         ConexaoBancoSQL.fecharConexao();
         if (inserir == true)
         {
-            url = "../Veiculos_Lista.aspx";
+            url = "../Abastecimento_Local_Listagem.aspx";
+        }
+        else
+        {
+            url = "../Sorry.aspx";
+        }
+
+        return url;
+    }
+
+    [WebMethod]
+    public string AbastLocalEditar(string param0, string param1, string param2, string param3, string param4, string param5)
+    {
+        string url = "";
+        OperacaoBanco operacao = new OperacaoBanco();
+        bool inserir = operacao.Insert("update Tbl_Abastecimento_Local set " +
+            "nome = '" + param0 + "', " +
+            "Placa  = '" + param1 + "', " +
+            "Data_Abastecimento = '" + param2 + "', " +
+            "Talao = '" + param3 + "', " +
+            "valor = " + param4 +
+            " where ID_Abast =" + param5);
+
+        ConexaoBancoSQL.fecharConexao();
+        if (inserir == true)
+        {
+            url = "../Abastecimento_Local_Listagem.aspx";
         }
         else
         {

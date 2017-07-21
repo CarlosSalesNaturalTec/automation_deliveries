@@ -5,6 +5,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 
+   <title>Mapa</title>
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   
     <style>
       html, body {
         height: 100%;
@@ -19,6 +23,8 @@
 </head>
 
 <body>
+
+    <input id="IDCli" type="hidden" />
 
     <div id="map"></div>
 
