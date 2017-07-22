@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Text;
 
 public partial class Abastecimento_Local_Listagem : System.Web.UI.Page
@@ -24,10 +25,10 @@ public partial class Abastecimento_Local_Listagem : System.Web.UI.Page
         string stringcomaspas = "<table id=\"tabela\" class=\"table table-striped table-hover \">" +
             "<thead>" +
             "<tr>" +
-            "<th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DATA</th>" +
+            "<th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TALÃO</th>" +
+            "<th>DATA</th>" +
             "<th>NOME</th>" +
             "<th>PLACA</th>" +
-            "<th>TALÃO</th>" +
             "<th>VALOR</th>" +
             "</tr>" +
             "</thead>" +
@@ -39,7 +40,7 @@ public partial class Abastecimento_Local_Listagem : System.Web.UI.Page
     private void dadosCorpo()
     {
         // <!--*******Customização*******-->
-        string stringselect = "select ID_Abast , Data_Abastecimento, nome, placa, talao, valor " +
+        string stringselect = "select ID_Abast , talao, format(Data_Abastecimento,'dd/mm/yyyy') as d1, nome, placa, valor " +
                 "from Tbl_Abastecimento_Local " +
                 "order by Data_Abastecimento desc"; 
 
@@ -54,7 +55,9 @@ public partial class Abastecimento_Local_Listagem : System.Web.UI.Page
             string Coluna2 = Convert.ToString(dados[2]);
             string Coluna3 = Convert.ToString(dados[3]);
             string Coluna4 = Convert.ToString(dados[4]);
-            string Coluna5 = Convert.ToString(dados[5]);
+
+            decimal valor = Convert.ToDecimal(dados[5]);
+            string Coluna5 = "R$ " + valor.ToString("N", CultureInfo.CreateSpecificCulture("pt-BR"));
 
             // <!--*******Customização*******-->
             string bt1 = "<a class='w3-btn w3-round w3-hover-blue w3-text-green' href='Abastecimento_Local_Ficha.aspx?v1=" + Coluna0 + "'><i class='fa fa-id-card-o' aria-hidden='true'></i></a>";

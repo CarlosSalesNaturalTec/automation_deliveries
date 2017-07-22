@@ -37,14 +37,14 @@
                     <div class="form-group">
                         <label for="input1" class="col-md-2 control-label">Nome</label>
                         <div class="col-md-9">
-                            <input type="text" class="form-control" id="input1">
+                            <asp:Literal ID="literal_Nome" runat="server" />
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="input2" class="col-md-2 control-label">Placa</label>
+                        <label for="select_placa" class="col-md-2 control-label">Placa</label>
                         <div class="col-md-3">
-                            <input type="text" class="form-control" id="input2">
+                            <asp:Literal ID="literal_Placa" runat="server" />
                         </div>
 
                         <label for="input_data" class="col-md-2 control-label">Data</label>
@@ -56,7 +56,7 @@
                     <div class="form-group">
                         <label for="input_talao" class="col-md-2 control-label">Talão</label>
                         <div class="col-md-3">
-                            <input type="number" class="form-control" id="input_talao">
+                            <asp:Literal ID="Literal_Talao" runat="server" />
                         </div>
 
                         <label for="input_valor" class="col-md-2 control-label">Valor</label>

@@ -1,4 +1,6 @@
-﻿function SalvarRegistro() {
+﻿document.getElementById('input1').focus();
+
+function SalvarRegistro() {
 
     //validações
     if (document.getElementById('input1').value == "") {
@@ -91,3 +93,4 @@ function UIAguardar() {
         x[i].style.display = "block";
     }
 }
+

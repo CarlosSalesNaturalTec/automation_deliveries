@@ -25,7 +25,7 @@
     <!-- GRUPO 1 -->
     <div class="w3-container w3-animate-left" style="margin-left: 2%; margin-right: 2%">
         <br />
-        <div class="col-md-9 w3-border w3-round w3-light-gray">
+        <div class="w3-container w3-border w3-round w3-padding-16 w3-light-green">
             <h3><i class="fa fa-check-square-o" aria-hidden="true"></i>&nbsp;Ficha de Abastecimento - Posto Local</h3>
         </div>
 

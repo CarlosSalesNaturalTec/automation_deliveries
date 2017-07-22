@@ -38,7 +38,7 @@ namespace delivcli
                 {
                     //validações diversas
                     int min1 = Convert.ToInt32(dados1[4]);  // diferença em minutos
-                    if (min1 > 181) { continue; } // verifica se diferença é maior que 5minutos (+dif+3horas getdate not brazilian server)
+                    if (min1 > 185) { continue; } // verifica se diferença é maior que 5minutos (+dif+3horas getdate not brazilian server)
 
                     resultado.Add(new
                     {
