@@ -405,4 +405,26 @@ public class wspainel : System.Web.Services.WebService
         return url;
     }
 
+
+
+    [WebMethod]
+    public string ParametrosAlterar(string param0)
+    {
+        string msg = "";
+        OperacaoBanco operacao = new OperacaoBanco();
+        bool inserir = operacao.Insert("update Tbl_Parametros set Abast_Sequencia = " + param0);
+
+        ConexaoBancoSQL.fecharConexao();
+        if (inserir == true)
+        {
+            msg = "Ok! Parâmetros Alterados";
+        }
+        else
+        {
+            msg = "NÃO FOI POSSÍVEL ALTERAR PARÂMETROS";
+        }
+
+        return msg;
+    }
+
 }

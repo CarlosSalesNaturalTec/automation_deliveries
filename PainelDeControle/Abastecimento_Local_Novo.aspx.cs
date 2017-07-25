@@ -102,7 +102,7 @@ public partial class Abastecimento_Local_Novo : System.Web.UI.Page
         }
         else
         {
-            string stringselect = "select MAX(Talao) as controle from Tbl_Abastecimento_Local";
+            string stringselect = "select Sequencia from Tbl_Abastecimento_Local_Seq ";
             OperacaoBanco operacao = new OperacaoBanco();
             System.Data.SqlClient.SqlDataReader dados = operacao.Select(stringselect);
             Int32 Coluna0;

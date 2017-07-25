@@ -26,9 +26,9 @@ public partial class Abastecimento_Concluido : System.Web.UI.Page
         //Host da porta SMTP
         string SMTP = "smtp.terra.com.br";
 
-        //string emailDestinatario = "naturalbahia@gmail.com";
+        //destinatarios - emails
         string emailDestinatario = "trevo03@redetrevo.com.br";
-        string emailComCopia  = "emilia@redetrevo.com.br";
+        string emailComCopia = "emilia@redetrevo.com.br";
         string emailComCopia1 = "anderson.amorin@postotrevo.com.br";
         string emailComCopia2 = "sergiosuarez@loglogistica.com.br";
         string emailComCopia3 = "regiscorreia@loglogistica.com.br";
@@ -37,7 +37,6 @@ public partial class Abastecimento_Concluido : System.Web.UI.Page
 
         string assuntoMensagem = "Autorização de Abastecimento - LOG TRANSPORTES";
 
-        string l0 = "<img alt=\"LOG-Transportes\" src=\"http://logmaster.azurewebsites.net/images/logologt.png\"/>";
         string l1 = "<b><p>AUTORIZAÇÃO DE ABASTECIMENTO - Nº : " + autID + "</p></b>";
         string l2 = "<br/>";
         string l3 = "<p>De: LOG TRANSPORTES</p>";
@@ -54,7 +53,7 @@ public partial class Abastecimento_Concluido : System.Web.UI.Page
         string l15 = "<p><b>Sergio Suarez y Martins</b></p>";
         string l16 = "<p><i>Diretor</i></p>";
 
-        string conteudoMensagem = l0 + l1 + l2 + l3 + l4 + l5 + l6 + l7 + l9 + l10 + l11 + l12 + l13 + l14 + l15 + l16;
+        string conteudoMensagem = l1 + l2 + l3 + l4 + l5 + l6 + l7 + l9 + l10 + l11 + l12 + l13 + l14 + l15 + l16;
 
         //Cria objeto com dados do e-mail.
         MailMessage objEmail = new MailMessage();

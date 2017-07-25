@@ -40,6 +40,13 @@
                 </div>
             </div>
 
+            <div class="w3-dropdown-hover w3-right">
+                <button class="w3-btn w3-hover-green"><i class="fa fa-cog"></i>&nbsp;Cofigurações</button>
+                <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                    <a href="parametros.aspx" target="iframe" class="w3-bar-item w3-button">Parâmetros</a>
+                </div>
+            </div>
+
             <a href="Home.aspx" target="iframe" class="w3-bar-item w3-btn w3-hover-green w3-right"><i class="fa fa-home"></i>&nbsp;Home</a>
 
         </div>
