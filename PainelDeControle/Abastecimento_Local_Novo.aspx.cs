@@ -95,25 +95,17 @@ public partial class Abastecimento_Local_Novo : System.Web.UI.Page
         string stringcomaspas;
         str.Clear();
 
-        if (TotaldeRegistros == 0)
+        string stringselect = "select Abast_Sequencia from Tbl_Parametros ";
+        OperacaoBanco operacao = new OperacaoBanco();
+        System.Data.SqlClient.SqlDataReader dados = operacao.Select(stringselect);
+        Int32 Coluna0;
+        while (dados.Read())
         {
-            stringcomaspas = "<input type='number' class='form-control' id='input_talao' value=1>";
+            Coluna0 = Convert.ToInt32(dados[0]) + 1;
+            stringcomaspas = "<input type='number' class='form-control' id='input_talao' value=" + Coluna0 + ">";
             str.Append(stringcomaspas);
         }
-        else
-        {
-            string stringselect = "select Sequencia from Tbl_Abastecimento_Local_Seq ";
-            OperacaoBanco operacao = new OperacaoBanco();
-            System.Data.SqlClient.SqlDataReader dados = operacao.Select(stringselect);
-            Int32 Coluna0;
-            while (dados.Read())
-            {
-                Coluna0 = Convert.ToInt32(dados[0]) + 1;
-                stringcomaspas = "<input type='number' class='form-control' id='input_talao' value=" + Coluna0 + ">";
-                str.Append(stringcomaspas);
-            }
-            ConexaoBancoSQL.fecharConexao();
-        }
+        ConexaoBancoSQL.fecharConexao();
 
         Literal_Talao.Text = str.ToString();
     }

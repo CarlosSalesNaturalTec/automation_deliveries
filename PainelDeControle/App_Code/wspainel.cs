@@ -384,7 +384,7 @@ public class wspainel : System.Web.Services.WebService
     {
         string url = "";
         OperacaoBanco operacao = new OperacaoBanco();
-        bool inserir = operacao.Insert("update Tbl_Abastecimento_Local set " +
+        bool alterar = operacao.Update("update Tbl_Abastecimento_Local set " +
             "nome = '" + param0 + "', " +
             "Placa  = '" + param1 + "', " +
             "Data_Abastecimento = '" + param2 + "', " +
@@ -393,7 +393,7 @@ public class wspainel : System.Web.Services.WebService
             " where ID_Abast =" + param5);
 
         ConexaoBancoSQL.fecharConexao();
-        if (inserir == true)
+        if (alterar == true)
         {
             url = "../Abastecimento_Local_Listagem.aspx";
         }
@@ -412,10 +412,10 @@ public class wspainel : System.Web.Services.WebService
     {
         string msg = "";
         OperacaoBanco operacao = new OperacaoBanco();
-        bool inserir = operacao.Insert("update Tbl_Parametros set Abast_Sequencia = " + param0);
+        bool alterar = operacao.Update("update Tbl_Parametros set Abast_Sequencia = " + param0);
 
         ConexaoBancoSQL.fecharConexao();
-        if (inserir == true)
+        if (alterar == true)
         {
             msg = "Ok! Parâmetros Alterados";
         }

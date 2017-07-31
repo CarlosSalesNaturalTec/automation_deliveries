@@ -25,7 +25,7 @@ public partial class Abastecimento_Local_Ficha : System.Web.UI.Page
         string stringSelect = "select " +
             "Nome," +
             "Placa, " +
-            "format(Data_Abastecimento,'MM-dd-yyyy') as d1, " +
+            "Data_Abastecimento, " +
             "Talao, " +
             "Valor " +
             "from Tbl_Abastecimento_Local   " +

@@ -40,7 +40,7 @@ public partial class Abastecimento_Local_Listagem : System.Web.UI.Page
     private void dadosCorpo()
     {
         // <!--*******Customização*******-->
-        string stringselect = "select ID_Abast , talao, format(Data_Abastecimento,'dd/mm/yyyy') as d1, nome, placa, valor " +
+        string stringselect = "select ID_Abast , talao, Data_Abastecimento, nome, placa, valor " +
                 "from Tbl_Abastecimento_Local " +
                 "order by Data_Abastecimento desc"; 
 

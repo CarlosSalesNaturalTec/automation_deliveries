@@ -30,7 +30,7 @@
             <br />
             <div class="col-md-9 w3-border w3-round w3-light-gray">
                 <!--*******Customização*******-->
-                <h3><i class="fa fa-check-square-o" aria-hidden="true"></i>&nbsp;Abastecimento</h3>
+                <h3><i class="fa fa-cog" aria-hidden="true"></i>&nbsp;Configurações - Abastecimento</h3>
             </div>
 
             <div class="w3-threequarter w3-border w3-light-gray" style="margin-top: 20px">
@@ -59,10 +59,7 @@
                 <p>
                     <button class="w3-btn w3-round w3-border w3-light-green w3-hover-green btcontroles" onclick="cancelar()">
                         <i class="fa fa-undo" aria-hidden="true"></i>&nbsp;Sair</button>
-
-                    <button class="w3-btn w3-round w3-border w3-light-green w3-hover-green btcontroles" onclick="classeBt2()">
-                        <i class="fa fa-forward" aria-hidden="true"></i>&nbsp;Avançar</button>
-
+                   
                     <button class="w3-btn w3-round w3-border w3-light-green w3-hover-green btcontroles" onclick="AlterarRegistro()">
                         <i class="fa fa-check-square-o" aria-hidden="true"></i>&nbsp;Finalizar&nbsp;&nbsp;
                     </button>
@@ -80,7 +77,7 @@
             <br />
             <div class="col-md-9 w3-border w3-round w3-light-gray">
                 <!--*******Customização*******-->
-                <h3><i class="fa fa-check-square-o" aria-hidden="true"></i>&nbsp;Outros</h3>
+                <h3><i class="fa fa-cog" aria-hidden="true"></i>&nbsp;Configurações - Outros</h3>
             </div>
 
             <div class="w3-threequarter w3-border w3-light-gray" style="margin-top: 20px">
@@ -100,9 +97,6 @@
                 <p>
                     <button class="w3-btn w3-round w3-border w3-light-green w3-hover-green btcontroles" onclick="cancelar()">
                         <i class="fa fa-undo" aria-hidden="true"></i>&nbsp;Sair</button>
-
-                    <button class="w3-btn w3-round w3-border w3-light-green w3-hover-green btcontroles" onclick="btvoltar1()">
-                        <i class="fa fa-backward" aria-hidden="true"></i>&nbsp;Voltar</button>
 
                     <button class="w3-btn w3-round w3-border w3-light-green w3-hover-green btcontroles" onclick="AlterarRegistro()">
                         <i class="fa fa-check-square-o" aria-hidden="true"></i>&nbsp;Finalizar&nbsp;&nbsp;

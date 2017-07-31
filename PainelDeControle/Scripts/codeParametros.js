@@ -15,12 +15,14 @@
 
     $.ajax({
         type: "POST",
-        url: "WebService.asmx/ParametrosAlterar",   //<!--*******Customização*******-->
+        url: "wspainel.asmx/ParametrosAlterar",   //<!--*******Customização*******-->
         data: '{' + strLine + '}',
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (response) {
             alert(response.d);
+            var linkurl = "Home.aspx";   //<!--*******Customização*******-->
+            window.location.href = linkurl;
         },
         failure: function (response) {
             alert(response.d);

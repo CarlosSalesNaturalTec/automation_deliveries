@@ -21,6 +21,13 @@
             <a href="#" class="w3-bar-item w3-btn w3-hover-green w3-right" onclick="sair()">Sair <i class="fa fa-sign-out"></i></a>
 
             <div class="w3-dropdown-hover w3-right">
+                <button class="w3-btn w3-hover-green"><i class="fa fa-cog"></i>&nbsp;Cofigurações</button>
+                <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                    <a href="parametros.aspx" target="iframe" class="w3-bar-item w3-button">Parâmetros</a>
+                </div>
+            </div>
+
+            <div class="w3-dropdown-hover w3-right">
                 <button class="w3-btn w3-hover-green"><i class="fa fa-truck"></i>&nbsp;Operacional</button>
                 <div class="w3-dropdown-content w3-bar-block w3-card-4">
                     <a href="Abastecimento_Planilha.aspx" target="iframe" class="w3-bar-item w3-button">Abastecimento Polo</a>
@@ -37,13 +44,6 @@
                     <a href="Veiculos_Lista.aspx" target="iframe" class="w3-bar-item w3-button">Veículos</a>
                     <a href="Curriculuns.aspx" target="iframe" class="w3-bar-item w3-button">Banco de Currículos</a>
                     <a href="Orcamento_lista.aspx" target="iframe" class="w3-bar-item w3-button">Orçamentos</a>
-                </div>
-            </div>
-
-            <div class="w3-dropdown-hover w3-right">
-                <button class="w3-btn w3-hover-green"><i class="fa fa-cog"></i>&nbsp;Cofigurações</button>
-                <div class="w3-dropdown-content w3-bar-block w3-card-4">
-                    <a href="parametros.aspx" target="iframe" class="w3-bar-item w3-button">Parâmetros</a>
                 </div>
             </div>
 
