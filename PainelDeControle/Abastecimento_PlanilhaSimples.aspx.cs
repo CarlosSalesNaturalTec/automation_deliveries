@@ -122,9 +122,10 @@ public partial class Abastecimento_PlanilhaSimples : System.Web.UI.Page
 
     private void montaCabecalho()
     {
-        string stringcomaspas = "<table id=\"tabela\" class=\"table table-striped table-hover \">" +
+        string stringcomaspas = "<table id=\"tabela\" class=\"table table-striped table-hover table-bordered \">" +
             "<thead>" +
             "<tr>" +
+            "<th>ORDEM</th>" +
             "<th>DATA</th>" +
             "<th>HORÁRIO</th>" +
             "<th>MOTORISTA</th>" +
@@ -151,9 +152,11 @@ public partial class Abastecimento_PlanilhaSimples : System.Web.UI.Page
         System.Data.SqlClient.SqlDataReader dados = operacao.Select(stringselect);
 
         decimal saldo = 0, totalCR = 0, TotalDB = 0;
+        int ordem = 1;
 
         while (dados.Read())
         {
+            string Coluna0 = Convert.ToString(ordem);     //ordem
             string Coluna1 = Convert.ToString(dados[0]);  //data
             string Coluna2 = Convert.ToString(dados[1]);  //horario
             string Coluna3 = Convert.ToString(dados[2]);  //evento
@@ -185,6 +188,7 @@ public partial class Abastecimento_PlanilhaSimples : System.Web.UI.Page
             Coluna8 = "<td style=\"text-align:right\"> <strong>" + saldo.ToString("N",CultureInfo.CreateSpecificCulture("pt-BR")) + "</strong></td>";
 
             string stringcomaspas = "<tr>" +
+                "<td>" + Coluna0 + "</td>" +
                 "<td>" + Coluna1 + "</td>" +
                 "<td>" + Coluna2 + "</td>" +
                 "<td>" + Coluna4 + "</td>" +
@@ -195,6 +199,7 @@ public partial class Abastecimento_PlanilhaSimples : System.Web.UI.Page
                 "</tr>";
 
             str.Append(stringcomaspas);
+            ordem++;
         }
         ConexaoBancoSQL.fecharConexao();
 

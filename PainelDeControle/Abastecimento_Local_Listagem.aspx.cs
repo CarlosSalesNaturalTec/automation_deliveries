@@ -42,7 +42,7 @@ public partial class Abastecimento_Local_Listagem : System.Web.UI.Page
         // <!--*******Customização*******-->
         string stringselect = "select ID_Abast , talao, Data_Abastecimento, nome, placa, valor " +
                 "from Tbl_Abastecimento_Local " +
-                "order by Data_Abastecimento desc"; 
+                "order by talao desc"; 
 
         OperacaoBanco operacao = new OperacaoBanco();
         System.Data.SqlClient.SqlDataReader dados = operacao.Select(stringselect);

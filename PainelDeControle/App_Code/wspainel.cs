@@ -25,7 +25,8 @@ public class wspainel : System.Web.Services.WebService
         if (inserir == true)
         {
             url = "../Entregadores.aspx";
-        } else
+        }
+        else
         {
             url = "../Sorry.aspx";
         }
@@ -58,7 +59,7 @@ public class wspainel : System.Web.Services.WebService
         string url = "";
         OperacaoBanco operacao = new OperacaoBanco();
         bool inserir = operacao.Insert(@"update Tbl_Motoboys set nome = '" + param1 + "', " +
-            "veiculo = '" +  param2 + "', " +
+            "veiculo = '" + param2 + "', " +
             "modelo = '" + param3 + "', " +
             "placa = '" + param4 + "', " +
             "ID_Cliente = " + param5 + ", " +
@@ -203,7 +204,7 @@ public class wspainel : System.Web.Services.WebService
     }
 
     [WebMethod]
-    public string GerarProposta(string param1, string param2, string param3, string param4, string param5, 
+    public string GerarProposta(string param1, string param2, string param3, string param4, string param5,
         string param6, string param7, string param8, string param9, string param10,
         string param11, string param12, string param13)
     {
@@ -338,12 +339,12 @@ public class wspainel : System.Web.Services.WebService
         string url;
 
         OperacaoBanco operacao3 = new OperacaoBanco();
-        Boolean deletar = operacao3.Delete("delete from Tbl_Abastecimento_Local where ID_Abast =" + param1);   
+        Boolean deletar = operacao3.Delete("delete from Tbl_Abastecimento_Local where ID_Abast =" + param1);
         ConexaoBancoSQL.fecharConexao();
 
         if (deletar == true)
         {
-            url = "Abastecimento_Local_Listagem.aspx";  
+            url = "Abastecimento_Local_Listagem.aspx";
         }
         else
         {
@@ -354,7 +355,7 @@ public class wspainel : System.Web.Services.WebService
     }
 
     [WebMethod]
-    public string AbastLocalSalvar(string param0, string param1, string param2, string param3, string param4)
+    public string AbastLocalSalvar(string param0, string param1, string param2, string param3, string param4, string param5)
     {
         string url = "";
         OperacaoBanco operacao = new OperacaoBanco();
@@ -364,12 +365,27 @@ public class wspainel : System.Web.Services.WebService
             "'" + param1 + "'," +
             "'" + param2 + "'," +
             "'" + param3 + "'," +
-            param4 + 
+            param4 +
             ")");
         ConexaoBancoSQL.fecharConexao();
-        if (inserir == true)
+        if (inserir)
         {
-            url = "../Abastecimento_Local_Listagem.aspx";
+
+            int talaonew = Convert.ToInt16(param5) + 1;
+
+            OperacaoBanco operacao1 = new OperacaoBanco();
+            bool alterar = operacao1.Update("update Tbl_Parametros set Abast_Sequencia = " + talaonew);
+            ConexaoBancoSQL.fecharConexao();
+
+            if (alterar)
+            {
+                url = "../Abastecimento_Local_Listagem.aspx";
+            }
+            else
+            {
+                url = "../Sorry.aspx";
+            }
+
         }
         else
         {

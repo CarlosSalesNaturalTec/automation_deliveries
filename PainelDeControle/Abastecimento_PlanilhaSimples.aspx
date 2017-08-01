@@ -5,20 +5,25 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 
+    <title>Listagem Abastecimentos</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" href="~/vendors/bootstrap/dist/css/bootstrap.min.css">
-    <script src="~/vendors/jquery/dist/jquery.min.js"></script>
-    <script src="~/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- Paginação -->
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" />
 
 </head>
 
-<body>
-
-    <h3>Planilha Consolidação de Abastecimentos</h3>
-    <br />
+<body  style="margin-left: 2%; margin-right: 2%">
 
     <div class="row">
+
+        <h3>Planilha Consolidação de Abastecimentos</h3>
+        <br />
+
         <!-- Periodo -->
         <label for="inputPeriodo" class="col-md-1 control-label">Filtro Período</label>
         <div class="col-md-2">
@@ -30,10 +35,10 @@
             </select>
         </div>
 
-        <div id="divInput1" class="col-md-3" style="display:none">
+        <div id="divInput1" class="col-md-3" style="display: none">
             <input type="date" class="form-control" id="inputData1">
         </div>
-        <div id="divInput2" class="col-md-3" style="display:none">
+        <div id="divInput2" class="col-md-3" style="display: none">
             <input type="date" class="form-control" id="inputData2">
         </div>
         <div class="col-md-3">
@@ -67,10 +72,23 @@
         </div>
     </div>
 
-    <br />
-    <p><em>Período Selecionado:</em>  <strong><asp:Label ID="lblPer" runat="server"></asp:Label></strong> </p> 
-    <br />
+    <div class="row">
+        <br />
+        <p>
+            <em>Período Selecionado:</em>  <strong>
+                <asp:Label ID="lblPer" runat="server"></asp:Label></strong>
+        </p>
+        <br />
+    </div>
 
+    <!-- Planilha  -->
+    <div class="row">
+        <asp:Literal ID="Literal1" runat="server"></asp:Literal>
+    </div>
+    <!-- Planilha  -->
+    
+
+    <!-- Script Periodo  -->
     <script type="text/javascript">
 
         function Selecao_Periodo(selecao) {
@@ -82,7 +100,7 @@
             } else {
                 document.getElementById("divInput1").style.display = "none";
                 document.getElementById("divInput2").style.display = "none";
-            }            
+            }
         }
 
         function verificar() {
@@ -109,9 +127,31 @@
     </script>
 
 
-    <!-- Planilha  -->
-    <asp:Literal ID="Literal1" runat="server"></asp:Literal>
-    <!-- Planilha  -->
+    <!-- Script Paginação  -->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#tabela').DataTable({
+                "order": [[0, "desc"]],
+                "language": {
+                    "emptyTable": "Sem dados",
+                    "info": "Exibindo _START_ a _END_ de _TOTAL_ registros",
+                    "infoEmpty": "Exibindo 0 a 0 de 0 registros",
+                    "infoFiltered": "(Filtrado de _MAX_ registros)",
+                    "lengthMenu": "Exibindo _MENU_ registros",
+                    "loadingRecords": "Carregando...",
+                    "processing": "Processando...",
+                    "search": "Pesquisa:",
+                    "zeroRecords": "Sem Registros",
+                    "paginate": {
+                        "first": "Primeiro",
+                        "last": "Último",
+                        "next": "Próximo",
+                        "previous": "Anterior"
+                    }
+                }
+            });
+        });
+    </script>
 
 
 </body>

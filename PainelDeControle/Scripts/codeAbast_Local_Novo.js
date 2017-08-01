@@ -16,8 +16,8 @@ function SalvarRegistro() {
         strLine = strLine + "param" + i + ":'" + x[i].value + "',";
     }
 
-    // retira ultima virgula da string recem formada
-    strLine = strLine.substring(0, strLine.length - 1);
+    var talao = document.getElementById('input_talao').value;
+    strLine = strLine + "param" + i + ":'" + talao + "'";
 
     //UI - exibir animações - aguarde...
     UIAguardar();

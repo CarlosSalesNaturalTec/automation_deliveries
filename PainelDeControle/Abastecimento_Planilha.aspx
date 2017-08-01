@@ -5,6 +5,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 
+    <title>Planilha Abastecimento</title>
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="~/vendors/bootstrap/dist/css/bootstrap.min.css">
@@ -13,7 +15,7 @@
 
 </head>
 
-<body>
+<body style="margin-left: 2%; margin-right: 2%">
 
     <h3>Resumo de Abastecimentos</h3>
 

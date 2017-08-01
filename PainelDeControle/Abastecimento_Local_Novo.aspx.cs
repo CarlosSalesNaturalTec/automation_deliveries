@@ -5,88 +5,53 @@ public partial class Abastecimento_Local_Novo : System.Web.UI.Page
 {
 
     StringBuilder str = new StringBuilder();
-    int TotaldeRegistros = 0;
+    StringBuilder strPlaca = new StringBuilder();
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        Placas_Listagem();
-        Nomes_Listagem();
+        Preenche_AutoComplete();
         Numero_Controle();
     }
 
-    private void Placas_Listagem()
+    private void Preenche_AutoComplete()
     {
-
-        string stringselect = "select placa from Tbl_Abastecimento_Local group by placa";
-
-        OperacaoBanco operacao = new OperacaoBanco();
-        System.Data.SqlClient.SqlDataReader dados = operacao.Select(stringselect);
-
-        string Coluna0;
-        string stringcomaspas;
-        string tagIni="", tagFim="";
+        string TagIni = "", TagFim = "", TagNomes = "", TagPlacas = "", TagAutocompNome = "", TagAutocompPlaca = "";
         str.Clear();
+        strPlaca.Clear();
 
-        while (dados.Read())
-        {
-            Coluna0 =  Convert.ToString(dados[0]);
-            stringcomaspas = "<option value='" + Coluna0 + "'>" + Coluna0 + "</option>";
-            str.Append(stringcomaspas);
-            TotaldeRegistros++;
-        }
-
-        ConexaoBancoSQL.fecharConexao();
-
-        if (TotaldeRegistros == 0)
-        {
-            stringcomaspas = "<input type=\"text\" class=\"form-control\" id=\"input_placa\">";
-            str.Append(stringcomaspas);
-        } else
-        {
-            tagIni = "<select id=\"select_placa\" class=\"form-control w3-select w3-border\">";
-            tagFim = "</select>";
-        }
-
-        literal_Placa.Text = tagIni + str.ToString() + tagFim;
-
-    }
-
-    private void Nomes_Listagem()
-    {
-
+        //nomes
         string stringselect = "select Nome from Tbl_Abastecimento_Local group by Nome";
-
         OperacaoBanco operacao = new OperacaoBanco();
         System.Data.SqlClient.SqlDataReader dados = operacao.Select(stringselect);
-
-        string Coluna0;
-        string stringcomaspas;
-        string tagIni = "", tagFim = "";
-        int totalReg = 0;
-        str.Clear();
-
         while (dados.Read())
         {
-            Coluna0 = Convert.ToString(dados[0]);
-            stringcomaspas = "<option value='" + Coluna0 + "'>" + Coluna0 + "</option>";
-            str.Append(stringcomaspas);
-            totalReg++;
+            str.Append("\"" + Convert.ToString(dados[0]) + "\",");
         }
-
         ConexaoBancoSQL.fecharConexao();
 
-        if (totalReg == 0)
+        //placas
+        stringselect = "select Placa from Tbl_Abastecimento_Local group by Placa";
+        OperacaoBanco operacao1 = new OperacaoBanco();
+        System.Data.SqlClient.SqlDataReader dados1 = operacao.Select(stringselect);
+        while (dados1.Read())
         {
-            stringcomaspas = "<input type=\"text\" class=\"form-control\" id=\"input1\">";
-            str.Append(stringcomaspas);
+            strPlaca.Append("\"" + Convert.ToString(dados1[0]) + "\",");
         }
-        else
-        {
-            tagIni = "<select id=\"input1\" class=\"form-control w3-select w3-border\">";
-            tagFim = "</select>";
-        }
+        ConexaoBancoSQL.fecharConexao();
 
-        literal_Nome.Text = tagIni + str.ToString() + tagFim;
+        TagIni = "<script> $(function() {";
+
+        TagNomes = "var TagsNomes = [" + str.ToString() + "];";
+        TagPlacas = "var TagsPlacas = [" + strPlaca.ToString() + "];";
+
+        TagAutocompNome = "$(\"#input1\").autocomplete({source: TagsNomes}); ";
+        TagAutocompPlaca = "$(\"#input_placa\").autocomplete({source: TagsPlacas}); ";
+
+        TagFim = "});</script> ";
+
+        
+        Literal_AutoComplete.Text = TagIni + TagNomes + TagPlacas + TagAutocompNome + TagAutocompPlaca + TagFim ;
+
     }
 
     private void Numero_Controle()
@@ -99,9 +64,10 @@ public partial class Abastecimento_Local_Novo : System.Web.UI.Page
         OperacaoBanco operacao = new OperacaoBanco();
         System.Data.SqlClient.SqlDataReader dados = operacao.Select(stringselect);
         Int32 Coluna0;
+
         while (dados.Read())
         {
-            Coluna0 = Convert.ToInt32(dados[0]) + 1;
+            Coluna0 = Convert.ToInt32(dados[0]);
             stringcomaspas = "<input type='number' class='form-control' id='input_talao' value=" + Coluna0 + ">";
             str.Append(stringcomaspas);
         }
