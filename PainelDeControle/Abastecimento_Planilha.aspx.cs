@@ -10,11 +10,31 @@ public partial class Abastecimento_Planilha : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
+
+            //Monta Tabela
+            //======================================
             LimpaTabela();
             InsereDebitos();
             InsereCreditos();
-
             CalculaTotais();
+
+            montaCabecalho();
+            dadosCorpo();
+            montaRodape();
+
+
+            //dados para graficos   - Customize Aqui
+            //======================================
+            string stringDadosGraf;
+
+            // Gasto Total por Placa
+            stringDadosGraf = "select Placa, sum(valor) as ValorTotal from Tbl_Abastecimentos where Placa<>'' group by Placa ";
+            Literal_Bloco1_Dados.Text = Dados_Graf_Pizza("Bloco1_Dados", stringDadosGraf);
+
+            // Gasto Total por Motorista
+            stringDadosGraf = "select Nome, sum(valor) as ValorTotal from Tbl_Abastecimentos where Nome<>'' group by Nome ";
+            Literal_Bloco2_Dados.Text = Dados_Graf_Pizza("Bloco2_Dados", stringDadosGraf);  
+
         }
     }
 
@@ -51,7 +71,7 @@ public partial class Abastecimento_Planilha : System.Web.UI.Page
         OperacaoBanco operacao = new OperacaoBanco();
         System.Data.SqlClient.SqlDataReader dados = operacao.Select(stringselect);
 
-        decimal saldo = 0, totalCR = 0, TotalDB = 0;
+        decimal saldo = 0;
 
         while (dados.Read())
         {
@@ -64,25 +84,132 @@ public partial class Abastecimento_Planilha : System.Web.UI.Page
             if (evento == "DEPOSITO")
             {
                 saldo = saldo + valor;
+            }
+            else
+            {
+                saldo = saldo - valor;
+            }
+        }
+        ConexaoBancoSQL.fecharConexao();
+
+        Bloco3_Info.Text = "R$ " + saldo.ToString("N", CultureInfo.CreateSpecificCulture("pt-BR"));
+
+    }
+
+    private void montaCabecalho()
+    {
+        string stringcomaspas = "<table id=\"tabela\" class=\"table table-striped table-hover table-bordered \">" +
+            "<thead>" +
+            "<tr>" +
+            "<th>ORDEM</th>" +
+            "<th>DATA</th>" +
+            "<th>HORÁRIO</th>" +
+            "<th>MOTORISTA</th>" +
+            "<th>PLACA</th>" +
+            "<th>KM</th>" +
+            "<th style=\"text-align:right\">VALOR</th>" +
+            "<th style=\"text-align:right\">SALDO</th>" +
+            "</tr>" +
+            "</thead>" +
+            "<tbody>";
+        str.Clear();
+        str.Append(stringcomaspas);
+    }
+
+    private void dadosCorpo()
+    {
+       
+        string stringselect = "select format(DataOperacao ,'dd/MM/yyyy') as DataOper, format(DataOperacao ,'HH:mm:ss') as HoraOper," +
+                " Evento , Motorista , Placa , Kilometragem , Valor " +
+                " from Tbl_Abastecimento_Planilha" +
+                " order by DataOperacao ";
+
+        OperacaoBanco operacao = new OperacaoBanco();
+        System.Data.SqlClient.SqlDataReader dados = operacao.Select(stringselect);
+
+        decimal saldo = 0, totalCR = 0, TotalDB = 0;
+        int ordem = 1;
+
+        while (dados.Read())
+        {
+            string Coluna0 = Convert.ToString(ordem);     //ordem
+            string Coluna1 = Convert.ToString(dados[0]);  //data
+            string Coluna2 = Convert.ToString(dados[1]);  //horario
+            string Coluna3 = Convert.ToString(dados[2]);  //evento
+            string Coluna4 = Convert.ToString(dados[3]);  //motorista
+            string Coluna5 = Convert.ToString(dados[4]);  //placa
+            string Coluna6 = Convert.ToString(dados[5]);  //Km
+            string valorSTR = Convert.ToString(dados[6]); //valor - auxiliar
+            string Coluna7 = "";                          //valor - formatada
+            string Coluna8 = "";                          //saldo - formatada
+            string Coluna7Cor = "";
+
+            decimal valor = Convert.ToDecimal(valorSTR);
+            string evento = Coluna3;
+
+            if (evento == "DEPOSITO")
+            {
+                saldo = saldo + valor;
                 totalCR = totalCR + valor;
+                Coluna7Cor = "success";
             }
             else
             {
                 saldo = saldo - valor;
                 TotalDB = TotalDB + valor;
+                Coluna7Cor = "danger";
             }
+
+            Coluna7 = "<td class=\"text-" + Coluna7Cor + "\" style=\"text-align:right\"> <strong>" + valor.ToString("N", CultureInfo.CreateSpecificCulture("pt-BR")) + "</strong></td>";
+            Coluna8 = "<td style=\"text-align:right\"> <strong>" + saldo.ToString("N", CultureInfo.CreateSpecificCulture("pt-BR")) + "</strong></td>";
+
+            string stringcomaspas = "<tr>" +
+                "<td>" + Coluna0 + "</td>" +
+                "<td>" + Coluna1 + "</td>" +
+                "<td>" + Coluna2 + "</td>" +
+                "<td>" + Coluna4 + "</td>" +
+                "<td>" + Coluna5 + "</td>" +
+                "<td>" + Coluna6 + "</td>" +
+                Coluna7 +
+                Coluna8 +
+                "</tr>";
+
+            str.Append(stringcomaspas);
+            ordem++;
         }
         ConexaoBancoSQL.fecharConexao();
-
-        Literal_Saldo.Text = "R$ " + saldo.ToString("N", CultureInfo.CreateSpecificCulture("pt-BR"));
-        Literal_TotalCR.Text = "R$ " + totalCR.ToString("N", CultureInfo.CreateSpecificCulture("pt-BR"));
-        Literal_TotalDB.Text = "R$ " + TotalDB.ToString("N", CultureInfo.CreateSpecificCulture("pt-BR"));
-        Literal_Rel.Text = ".";
-
-        TotalCRHidden.Value = totalCR.ToString();
-        TotalSaldoHidden.Value = saldo.ToString();
-
     }
 
+    private void montaRodape()
+    {
+        string footer = "</tbody></table>";
+        str.Append(footer);
+
+        Literal_Tabela.Text = str.ToString();
+    }
+
+    private string Dados_Graf_Pizza(string id_input, string stringselect)
+    {
+
+        string tagIni = "<input type=\"hidden\" id=\"" + id_input + "\" value= \"";
+        string tagFim = "\"/>";
+        string tagDados = "";
+        string txtAux = "";
+        str.Clear();
+
+        //dados
+        OperacaoBanco operacao = new OperacaoBanco();
+        System.Data.SqlClient.SqlDataReader dados = operacao.Select(stringselect);
+        while (dados.Read())
+        {
+            txtAux = "{name: '" + Convert.ToString(dados[0]) + "', y: " + Convert.ToString(dados[1]) + "},";
+            str.Append(txtAux);
+        }
+        ConexaoBancoSQL.fecharConexao();
+        tagDados = str.ToString();
+
+        return tagIni + tagDados + tagFim  ;
+
+    }
 
 }
