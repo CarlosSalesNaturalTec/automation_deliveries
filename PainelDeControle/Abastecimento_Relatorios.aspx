@@ -62,7 +62,7 @@
             <div class="row">
                 <div class="col-md-1">
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-4">
                     <button type="reset" class="btn btn-primary" onclick="cancelar()">Voltar</button>
                     <button type="button" class="btn btn-success" onclick="verificar()">Gerar Relatório</button>
                 </div>

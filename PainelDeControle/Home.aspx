@@ -33,7 +33,8 @@
     <br>
 
     <div class="w3-row-padding">
-        <div id="Bloco1" class="w3-col s3 m3 l3">
+
+        <div id="Bloco1" class="w3-col s6 m3 l3 w3-padding">
             <div class="panel panel-success">
 
                 <div class="panel-heading text-center">
@@ -50,6 +51,25 @@
 
             </div>
         </div>
+
+        <div id="Bloco2" class="w3-col s6 m3 l3 w3-padding">
+            <div class="panel panel-success">
+
+                <div class="panel-heading text-center">
+                    <h4 class="panel-title">Total Combustível - Local</h4>
+                </div>
+
+                <div class="panel-body text-center">
+                    <h1><asp:Literal ID="Bloco2_Info" runat="server"></asp:Literal></h1>
+                </div>
+
+                <div class="panel-footer text-center">
+                    <asp:Literal ID="Bloco2_Link" runat="server"></asp:Literal>
+                </div>
+
+            </div>
+        </div>
+
     </div>
 
 </body>

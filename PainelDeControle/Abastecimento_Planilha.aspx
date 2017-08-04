@@ -59,7 +59,7 @@
             <div class="panel panel-success">
 
                 <div class="panel-heading text-center">
-                    <h4 class="panel-title">Total por Motorista</h4>
+                    <h4 class="panel-title">Total por Mês</h4>
                 </div>
 
                 <div class="panel-body">

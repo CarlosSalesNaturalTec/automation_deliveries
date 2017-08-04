@@ -15,18 +15,11 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="/resources/demos/style.css">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
-    <style>
-        body {
-            background-image: url("images/fundo.jpg");
-        }
-    </style>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>  
 
 </head>
 <body>
 
-    <!-- GRUPO 1 -->
     <div class="w3-container w3-animate-left" style="margin-left: 2%; margin-right: 2%">
         <br />
         <div class="col-md-9 w3-border w3-round w3-light-gray">
@@ -65,7 +58,7 @@
 
                         <label for="input_valor" class="col-md-2 control-label">Valor</label>
                         <div class="col-md-3">
-                            <input type="number" class="form-control" id="input_valor">
+                            <input type="number" class="form-control" id="input_valor" value="0">
                         </div>
                     </div>
                 </fieldset>
@@ -97,6 +90,7 @@
 
     <!-- auxiliares -->
     <input id="IDAuxHidden" type="hidden" />
+    <asp:Literal ID="Literal_Aux" runat="server"></asp:Literal>
 
     <!-- Autocomplete -->
     <asp:Literal ID="Literal_AutoComplete" runat="server"></asp:Literal>

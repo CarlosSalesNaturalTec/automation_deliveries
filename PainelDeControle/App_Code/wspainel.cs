@@ -9,9 +9,7 @@ public class wspainel : System.Web.Services.WebService
 {
     public wspainel()
     {
-        //Uncomment the following line if using designed components 
-        //InitializeComponent(); 
-        // ALELUIA ! LOUVADO SEJA O SENHOR JESUS . ELE ME TEM AJUDADO E ME TORNADO SEU PRINCIPE
+        
     }
 
     [WebMethod]

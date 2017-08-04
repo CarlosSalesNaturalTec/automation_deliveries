@@ -9,20 +9,31 @@ public partial class Abastecimento_Local_Listagem : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
 
-        string iduser = Session["UserID"].ToString();
-
         montaCabecalho();
         dadosCorpo();
         montaRodape();
 
-        Literal1.Text = str.ToString();
+        //============================================================================
+        //graficos - Customize Aqui
+        //============================================================================
+        string stringDadosGraf;
+
+        // Gasto Total por Placa
+        stringDadosGraf = "select Placa, sum(valor) as ValorTotal from Tbl_Abastecimento_Local where Placa<>'' group by Placa ";
+        Literal_Bloco1.Text = Monta_Graf_Morris_Donut(stringDadosGraf, "Bloco1_Chart");
+
+        // Gasto Total por Mês
+        stringDadosGraf = "select format(Data_Abastecimento,'MM-yyyy') as Mes, sum(valor) as ValorTotal " +
+            "from Tbl_Abastecimento_Local group by format(Data_Abastecimento,'MM-yyyy')";
+        Literal_Bloco2.Text = Monta_Graf_Morris_Bar(stringDadosGraf, "Bloco2_Chart");
+        //============================================================================
 
     }
 
     private void montaCabecalho()
     {
         // <!--*******Customização*******-->
-        string stringcomaspas = "<table id=\"tabela\" class=\"table table-striped table-hover \">" +
+        string stringcomaspas = "<table id=\"tabela\" class=\"table table-striped table-hover table-bordered \">" +
             "<thead>" +
             "<tr>" +
             "<th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TALÃO</th>" +
@@ -40,7 +51,7 @@ public partial class Abastecimento_Local_Listagem : System.Web.UI.Page
     private void dadosCorpo()
     {
         // <!--*******Customização*******-->
-        string stringselect = "select ID_Abast , talao, Data_Abastecimento, nome, placa, valor " +
+        string stringselect = "select ID_Abast , talao, format(Data_Abastecimento,'dd/MM/yyyy') as d1, nome, placa, valor " +
                 "from Tbl_Abastecimento_Local " +
                 "order by talao desc"; 
 
@@ -84,5 +95,80 @@ public partial class Abastecimento_Local_Listagem : System.Web.UI.Page
     {
         string footer = "</tbody></table>";
         str.Append(footer);
+        Literal_Tabela.Text = str.ToString();
+    }
+
+    private string Monta_Graf_Morris_Donut(string stringselect, string ID_Chart)
+    {
+        string txtAux = "";
+        str.Clear();
+
+        txtAux = "<script type=\"text/javascript\">";
+        str.Append(txtAux);
+
+        txtAux = "Morris.Donut({element: '" + ID_Chart + "', data: [";
+        str.Append(txtAux);
+
+        //dados
+        OperacaoBanco operacao = new OperacaoBanco();
+        System.Data.SqlClient.SqlDataReader dados = operacao.Select(stringselect);
+        while (dados.Read())
+        {
+            txtAux = "{label: \"" + Convert.ToString(dados[0]) + "\", value: " + Convert.ToString(dados[1]) + "},";
+            str.Append(txtAux);
+        }
+        ConexaoBancoSQL.fecharConexao();
+
+        txtAux = "]});";
+        str.Append(txtAux);
+
+        txtAux = "</script>";
+        str.Append(txtAux);
+
+        return str.ToString();
+
+    }
+
+    private string Monta_Graf_Morris_Bar(string stringselect, string ID_Chart)
+    {
+        string txtAux = "";
+        str.Clear();
+
+        txtAux = "<script type=\"text/javascript\">";
+        str.Append(txtAux);
+
+        txtAux = "Morris.Bar({element: '" + ID_Chart + "', data: [";
+        str.Append(txtAux);
+
+        //dados
+        OperacaoBanco operacao = new OperacaoBanco();
+        System.Data.SqlClient.SqlDataReader dados = operacao.Select(stringselect);
+        while (dados.Read())
+        {
+            txtAux = "{mes: \"" + Convert.ToString(dados[0]) + "\", valor: " + Convert.ToString(dados[1]) + "},";
+            str.Append(txtAux);
+        }
+        ConexaoBancoSQL.fecharConexao();
+
+        txtAux = "],";
+        str.Append(txtAux);
+
+        txtAux = "xkey: 'mes',";
+        str.Append(txtAux);
+
+        txtAux = "ykeys: ['valor'],";
+        str.Append(txtAux);
+
+        txtAux = "labels: ['Total no Mês']";
+        str.Append(txtAux);
+
+        txtAux = "});";
+        str.Append(txtAux);
+
+        txtAux = "</script>";
+        str.Append(txtAux);
+
+        return str.ToString();
+
     }
 }

@@ -31,12 +31,11 @@ public partial class Abastecimento_Reenvio : System.Web.UI.Page
         string SMTP = "smtp.terra.com.br";
 
         //destinatarios - emails
-        //string emailDestinatario = "trevo03@redetrevo.com.br";
-        string emailDestinatario = "suporte@loglogistica.com.br";
-        string emailComCopia = "regiscorreia@loglogistica.com.br";
-        //string emailComCopia1 = "anderson.amorin@postotrevo.com.br";
-        //string emailComCopia2 = "sergiosuarez@loglogistica.com.br";
-        //string emailComCopia3 = "regiscorreia@loglogistica.com.br";
+        string emailDestinatario = "trevo03@redetrevo.com.br";
+        string emailComCopia = "emilia@redetrevo.com.br";
+        string emailComCopia1 = "anderson.amorin@postotrevo.com.br";
+        string emailComCopia2 = "sergiosuarez@loglogistica.com.br";
+        string emailComCopia3 = "regiscorreia@loglogistica.com.br";
 
         //string emailComCopiaOculta  = "email@comcopiaoculta.com.br";
 
@@ -71,9 +70,9 @@ public partial class Abastecimento_Reenvio : System.Web.UI.Page
 
         //Enviar cópia para.
         objEmail.CC.Add(emailComCopia);
-        //objEmail.CC.Add(emailComCopia1);
-        //objEmail.CC.Add(emailComCopia2);
-        //objEmail.CC.Add(emailComCopia3);
+        objEmail.CC.Add(emailComCopia1);
+        objEmail.CC.Add(emailComCopia2);
+        objEmail.CC.Add(emailComCopia3);
 
         //Enviar cópia oculta para.
         //objEmail.Bcc.Add(emailComCopiaOculta);

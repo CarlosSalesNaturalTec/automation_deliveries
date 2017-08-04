@@ -9,24 +9,22 @@ public partial class Home : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        
-        // Personalizáveis
-        //===========================================
-        string link1 = "Abastecimento_Planilha.aspx";
-        string textolink1 = "Detalhes";
 
+        string link, textolink;
 
         // Monta Blocos
         //===========================================
+        link = "Abastecimento_Planilha.aspx";
+        textolink = "Detalhes";
         Bloco1_MontaInfo();
-        Bloco1_MontaLink(link1, textolink1);
+        Bloco1_MontaLink(link, textolink);
 
-        
-    }
+        link = "Abastecimento_Local_Listagem.aspx";
+        textolink = "Detalhes";
+        Bloco2_MontaInfo();
+        Bloco2_MontaLink(link, textolink);
 
-    private void Bloco1_MontaLink(string url, string txtLink)
-    {
-        Bloco1_Link.Text = "<a href='" + url + "'>" + txtLink + "&nbsp;<i class=\"fa fa-arrow-circle-right\"></i></a>&nbsp;&nbsp;";
+
     }
 
     private void Bloco1_MontaInfo()
@@ -59,5 +57,39 @@ public partial class Home : System.Web.UI.Page
         
     }
 
-    
+    private void Bloco1_MontaLink(string url, string txtLink)
+    {
+        Bloco1_Link.Text = "<a href='" + url + "'>" + txtLink + "&nbsp;<i class=\"fa fa-arrow-circle-right\"></i></a>&nbsp;&nbsp;";
+    }
+
+
+
+    private void Bloco2_MontaInfo()
+    {
+        // Total de Abastecimentos
+        decimal ValorTotal = 0;
+        string mesAtual = DateTime.Now.ToString("MM-yyyy");
+
+        string stringselect = "SELECT format(Data_Abastecimento,'MM-yyyy') as d1, sum(valor) as t1 " +
+            "from Tbl_Abastecimento_Local  " +
+            "where format(Data_Abastecimento ,'MM-yyyy') = '" + mesAtual +"' " +
+            "group by format(Data_Abastecimento ,'MM-yyyy')";
+
+        OperacaoBanco operacao = new OperacaoBanco();
+        System.Data.SqlClient.SqlDataReader dados = operacao.Select(stringselect);
+        while (dados.Read())
+        {
+            ValorTotal = Convert.ToDecimal(dados[1]);
+        }
+        ConexaoBancoSQL.fecharConexao();
+
+        Bloco2_Info.Text = "R$ " + ValorTotal.ToString("N", CultureInfo.CreateSpecificCulture("pt-BR"));
+
+    }
+
+    private void Bloco2_MontaLink(string url, string txtLink)
+    {
+        Bloco2_Link.Text = "<a href='" + url + "'>" + txtLink + "&nbsp;<i class=\"fa fa-arrow-circle-right\"></i></a>&nbsp;&nbsp;";
+    }
+
 }

@@ -11,6 +11,7 @@ public partial class Abastecimento_Local_Novo : System.Web.UI.Page
     {
         Preenche_AutoComplete();
         Numero_Controle();
+        DadosIniciais();
     }
 
     private void Preenche_AutoComplete()
@@ -68,11 +69,21 @@ public partial class Abastecimento_Local_Novo : System.Web.UI.Page
         while (dados.Read())
         {
             Coluna0 = Convert.ToInt32(dados[0]);
-            stringcomaspas = "<input type='number' class='form-control' id='input_talao' value=" + Coluna0 + ">";
+            stringcomaspas = "<input type='number' class='form-control' id='input_talao' readonly value=" + Coluna0 + ">";
             str.Append(stringcomaspas);
         }
         ConexaoBancoSQL.fecharConexao();
 
         Literal_Talao.Text = str.ToString();
+    }
+
+    private void DadosIniciais()
+    {
+        // data da operação
+        string ScriptDados = "";
+        ScriptDados = "<script type=\"text/javascript\">" +
+            "document.getElementById('input_data').value = \"" + DateTime.Now.ToString("yyyy-MM-dd") + "\";" +
+            "</script>";
+        Literal_Aux.Text = ScriptDados;
     }
 }

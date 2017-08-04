@@ -31,10 +31,10 @@ public partial class Abastecimento_Planilha : System.Web.UI.Page
             // Gasto Total por Placa
             stringDadosGraf = "select Placa, sum(valor) as ValorTotal from Tbl_Abastecimentos where Placa<>'' group by Placa ";
             Literal_Bloco1.Text = Monta_Graf_Morris_Donut(stringDadosGraf, "Bloco1_Chart");
-            
-            // Gasto Total por Motorista
-            stringDadosGraf = "select Nome, sum(valor) as ValorTotal from Tbl_Abastecimentos where Nome<>'' group by Nome ";
-            Literal_Bloco2.Text = Monta_Graf_Morris_Donut(stringDadosGraf, "Bloco2_Chart");
+
+            // Gasto Total por Mês
+            stringDadosGraf = "select format(DataAutoriza,'MM-yyyy') as Mes, sum(valor) as ValorTotal from Tbl_Abastecimentos group by format(DataAutoriza,'MM-yyyy')";
+            Literal_Bloco2.Text = Monta_Graf_Morris_Bar(stringDadosGraf, "Bloco2_Chart");
 
             //============================================================================
         }
@@ -221,4 +221,46 @@ public partial class Abastecimento_Planilha : System.Web.UI.Page
 
     }
 
+    private string Monta_Graf_Morris_Bar(string stringselect, string ID_Chart)
+    {
+        string txtAux = "";
+        str.Clear();
+
+        txtAux = "<script type=\"text/javascript\">";
+        str.Append(txtAux);
+
+        txtAux = "Morris.Bar({element: '" + ID_Chart + "', data: [";
+        str.Append(txtAux);
+
+        //dados
+        OperacaoBanco operacao = new OperacaoBanco();
+        System.Data.SqlClient.SqlDataReader dados = operacao.Select(stringselect);
+        while (dados.Read())
+        {
+            txtAux = "{mes: \"" + Convert.ToString(dados[0]) + "\", valor: " + Convert.ToString(dados[1]) + "},";
+            str.Append(txtAux);
+        }
+        ConexaoBancoSQL.fecharConexao();
+
+        txtAux = "],";
+        str.Append(txtAux);
+
+        txtAux = "xkey: 'mes',";
+        str.Append(txtAux);
+
+        txtAux = "ykeys: ['valor'],";
+        str.Append(txtAux);
+
+        txtAux = "labels: ['Total no Mês']";
+        str.Append(txtAux);
+
+        txtAux = "});";
+        str.Append(txtAux);
+
+        txtAux = "</script>";
+        str.Append(txtAux);
+
+        return str.ToString();
+
+    }
 }
