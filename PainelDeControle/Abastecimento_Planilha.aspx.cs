@@ -23,18 +23,20 @@ public partial class Abastecimento_Planilha : System.Web.UI.Page
             montaRodape();
 
 
-            //dados para graficos   - Customize Aqui
-            //======================================
+            //============================================================================
+            //graficos - Customize Aqui
+            //============================================================================
             string stringDadosGraf;
 
             // Gasto Total por Placa
             stringDadosGraf = "select Placa, sum(valor) as ValorTotal from Tbl_Abastecimentos where Placa<>'' group by Placa ";
-            Literal_Bloco1_Dados.Text = Dados_Graf_Pizza("Bloco1_Dados", stringDadosGraf);
-
+            Literal_Bloco1.Text = Monta_Graf_Morris_Donut(stringDadosGraf, "Bloco1_Chart");
+            
             // Gasto Total por Motorista
             stringDadosGraf = "select Nome, sum(valor) as ValorTotal from Tbl_Abastecimentos where Nome<>'' group by Nome ";
-            Literal_Bloco2_Dados.Text = Dados_Graf_Pizza("Bloco2_Dados", stringDadosGraf);  
+            Literal_Bloco2.Text = Monta_Graf_Morris_Donut(stringDadosGraf, "Bloco2_Chart");
 
+            //============================================================================
         }
     }
 
@@ -188,27 +190,34 @@ public partial class Abastecimento_Planilha : System.Web.UI.Page
         Literal_Tabela.Text = str.ToString();
     }
 
-    private string Dados_Graf_Pizza(string id_input, string stringselect)
+    private string Monta_Graf_Morris_Donut(string stringselect, string ID_Chart)
     {
-
-        string tagIni = "<input type=\"hidden\" id=\"" + id_input + "\" value= \"";
-        string tagFim = "\"/>";
-        string tagDados = "";
         string txtAux = "";
         str.Clear();
+
+        txtAux = "<script type=\"text/javascript\">";
+        str.Append(txtAux);
+
+        txtAux = "Morris.Donut({element: '" + ID_Chart + "', data: [";
+        str.Append(txtAux);
 
         //dados
         OperacaoBanco operacao = new OperacaoBanco();
         System.Data.SqlClient.SqlDataReader dados = operacao.Select(stringselect);
         while (dados.Read())
         {
-            txtAux = "{name: '" + Convert.ToString(dados[0]) + "', y: " + Convert.ToString(dados[1]) + "},";
+            txtAux = "{label: \"" + Convert.ToString(dados[0]) + "\", value: " + Convert.ToString(dados[1]) + "},";
             str.Append(txtAux);
         }
         ConexaoBancoSQL.fecharConexao();
-        tagDados = str.ToString();
+       
+        txtAux = "]});";
+        str.Append(txtAux);
 
-        return tagIni + tagDados + tagFim  ;
+        txtAux = "</script>";
+        str.Append(txtAux);
+
+        return str.ToString();
 
     }
 

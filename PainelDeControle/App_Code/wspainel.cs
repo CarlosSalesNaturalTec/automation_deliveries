@@ -228,6 +228,10 @@ public class wspainel : System.Web.Services.WebService
         return url;
     }
 
+
+
+
+
     [WebMethod]
     public string AbastecimentoNovo(string param1, string param2, string param3, string param4)
     {
@@ -271,6 +275,8 @@ public class wspainel : System.Web.Services.WebService
 
         return url;
     }
+
+
 
     [WebMethod]
     public string SalvarVeiculo(string param1, string param2)
@@ -332,6 +338,8 @@ public class wspainel : System.Web.Services.WebService
 
         return url;
     }
+
+
 
     [WebMethod]
     public string AbastLocalExcluir(string param1)

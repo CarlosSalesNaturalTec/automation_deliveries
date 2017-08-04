@@ -15,50 +15,61 @@
     <script src="~/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
 </head>
 
-<body>
+<body style="margin-left: 2%; margin-right: 2%">
 
-    <h3>Relatório de Abastecimentos</h3>
     <br />
 
-    <div class="row">
+    <div class="panel panel-success">
 
-        <!-- Veiculos -->
-        <label for="inputPlaca" class="col-md-1 control-label">Placa</label>
-        <div class="col-md-2">
-            <asp:Literal ID="Literal_Veiculos" runat="server"></asp:Literal>
-        </div>
-        <!-- Veiculos -->
-
-        <!-- Periodo -->
-        <label for="inputPeriodo" class="col-md-1 control-label">Período</label>
-        <div class="col-md-2">
-            <select class="form-control" id="inputPeriodo" name="inputPeriodo" onchange="Selecao_Periodo(this.value)">
-                <option>COMPLETO</option>
-                <option>ESTA SEMANA</option>
-                <option>ESTE MÊS</option>
-                <option>ESPECÍFICO</option>
-            </select>
+        <div class="panel-heading text-center">
+            <h4 class="panel-title">Relatório de Abastecimentos</h4>
         </div>
 
-        <div id="divInput1" class="col-md-2" style="display:none">
-            <input type="date" class="form-control" id="inputData1">
-        </div>
-        <div id="divInput2" class="col-md-2" style="display:none">
-            <input type="date" class="form-control" id="inputData2">
-        </div>
-        <!-- Periodo -->
+        <div class="panel-body">
 
+            <div class="row">
+
+                <!-- Veiculos -->
+                <label for="inputPlaca" class="col-md-1 control-label">Placa</label>
+                <div class="col-md-2">
+                    <asp:Literal ID="Literal_Veiculos" runat="server"></asp:Literal>
+                </div>
+                <!-- Veiculos -->
+
+                <!-- Periodo -->
+                <label for="inputPeriodo" class="col-md-1 control-label">Período</label>
+                <div class="col-md-2">
+                    <select class="form-control" id="inputPeriodo" name="inputPeriodo" onchange="Selecao_Periodo(this.value)">
+                        <option>COMPLETO</option>
+                        <option>ESTA SEMANA</option>
+                        <option>ESTE MÊS</option>
+                        <option>ESPECÍFICO</option>
+                    </select>
+                </div>
+
+                <div id="divInput1" class="col-md-2" style="display: none">
+                    <input type="date" class="form-control" id="inputData1">
+                </div>
+                <div id="divInput2" class="col-md-2" style="display: none">
+                    <input type="date" class="form-control" id="inputData2">
+                </div>
+                <!-- Periodo -->
+
+            </div>
+
+            <br />
+
+            <div class="row">
+                <div class="col-md-1">
+                </div>
+                <div class="col-md-2">
+                    <button type="reset" class="btn btn-primary" onclick="cancelar()">Voltar</button>
+                    <button type="button" class="btn btn-success" onclick="verificar()">Gerar Relatório</button>
+                </div>
+            </div>
+        </div>
     </div>
-    
-    <br />
 
-    <div class="row">
-        <div class="col-md-1">         
-        </div>
-        <div class="col-md-2">
-            <button type="button" class="btn btn-primary" onclick="verificar()">GERAR RELATÓRIO</button>
-        </div>
-    </div>
 
     <script type="text/javascript">
 
@@ -96,11 +107,16 @@
                 document.getElementById("divInput1").style.display = "none";
                 document.getElementById("divInput2").style.display = "none";
             }
-            
+
         }
 
         function pad(n) {
             return (n < 10) ? ("0" + n) : n;
+        }
+
+        function cancelar() {
+            var linkurl = "../Abastecimento_Planilha.aspx";
+            window.location.href = linkurl;
         }
 
     </script>
