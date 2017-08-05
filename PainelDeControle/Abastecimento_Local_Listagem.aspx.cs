@@ -41,6 +41,8 @@ public partial class Abastecimento_Local_Listagem : System.Web.UI.Page
             "<th>NOME</th>" +
             "<th>PLACA</th>" +
             "<th>VALOR</th>" +
+            "<th>BONIFICADO</th>" +
+            "<th>OBS</th>" +
             "</tr>" +
             "</thead>" +
             "<tbody>";
@@ -51,7 +53,7 @@ public partial class Abastecimento_Local_Listagem : System.Web.UI.Page
     private void dadosCorpo()
     {
         // <!--*******Customização*******-->
-        string stringselect = "select ID_Abast , talao, format(Data_Abastecimento,'dd/MM/yyyy') as d1, nome, placa, valor " +
+        string stringselect = "select ID_Abast, talao, format(Data_Abastecimento,'dd/MM/yyyy') as d1, nome, placa, valor, Bonificado ,Obs " +
                 "from Tbl_Abastecimento_Local " +
                 "order by talao desc"; 
 
@@ -70,6 +72,9 @@ public partial class Abastecimento_Local_Listagem : System.Web.UI.Page
             decimal valor = Convert.ToDecimal(dados[5]);
             string Coluna5 = "R$ " + valor.ToString("N", CultureInfo.CreateSpecificCulture("pt-BR"));
 
+            string Coluna6 = Convert.ToString(dados[6]);
+            string Coluna7 = Convert.ToString(dados[7]);
+
             // <!--*******Customização*******-->
             string bt1 = "<a class='w3-btn w3-round w3-hover-blue w3-text-green' href='Abastecimento_Local_Ficha.aspx?v1=" + Coluna0 + "'><i class='fa fa-id-card-o' aria-hidden='true'></i></a>";
             string bt2 = "<a class='w3-btn w3-round w3-hover-red w3-text-green' onclick='Excluir(" + Coluna0 + ")'><i class='fa fa-trash-o' aria-hidden='true'></i></a>&nbsp;&nbsp;";
@@ -81,6 +86,8 @@ public partial class Abastecimento_Local_Listagem : System.Web.UI.Page
                 "<td>" + Coluna3 + "</td>" +
                 "<td>" + Coluna4 + "</td>" +
                 "<td>" + Coluna5 + "</td>" +
+                "<td>" + Coluna6 + "</td>" +
+                "<td>" + Coluna7 + "</td>" +
                 "</tr>";
 
             str.Append(stringcomaspas);

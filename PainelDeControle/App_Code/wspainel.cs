@@ -361,23 +361,25 @@ public class wspainel : System.Web.Services.WebService
     }
 
     [WebMethod]
-    public string AbastLocalSalvar(string param0, string param1, string param2, string param3, string param4, string param5)
+    public string AbastLocalSalvar(string param0, string param1, string param2, string param3, string param4, string param5, string param6, string param7)
     {
         string url = "";
         OperacaoBanco operacao = new OperacaoBanco();
-        bool inserir = operacao.Insert("INSERT INTO Tbl_Abastecimento_Local (Nome, Placa,Data_Abastecimento,Talao,valor ) " +
+        bool inserir = operacao.Insert("INSERT INTO Tbl_Abastecimento_Local (Nome, Placa,Data_Abastecimento,Talao,valor,Bonificado , Obs ) " +
             "VALUES (" +
             "'" + param0 + "'," +
             "'" + param1 + "'," +
             "'" + param2 + "'," +
             "'" + param3 + "'," +
-            param4 +
+            param4 + "," +
+            "'" + param5 + "'," +
+            "'" + param6 + "'" +
             ")");
         ConexaoBancoSQL.fecharConexao();
         if (inserir)
         {
 
-            int talaonew = Convert.ToInt16(param5) + 1;
+            int talaonew = Convert.ToInt16(param7) + 1;
 
             OperacaoBanco operacao1 = new OperacaoBanco();
             bool alterar = operacao1.Update("update Tbl_Parametros set Abast_Sequencia = " + talaonew);

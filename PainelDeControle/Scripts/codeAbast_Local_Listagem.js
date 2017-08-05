@@ -31,3 +31,8 @@ function Excluir(IDExc) {
 function Excluir_cancel() {
     document.getElementById('DivModal').style.display = 'none';
 }
+
+function Relatorios() {
+    var linkurl = "../Abastecimento_Local_Relatorios.aspx";
+    window.location.href = linkurl;
+}

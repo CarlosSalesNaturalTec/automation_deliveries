@@ -76,7 +76,7 @@ function AlterarRegistro() {
 }
 
 function cancelar() {
-    var linkurl = "Abastecimento_Local_Listagem.aspx";  
+    var linkurl = "../Abastecimento_Local_Listagem.aspx";
     window.location.href = linkurl;
 }
 

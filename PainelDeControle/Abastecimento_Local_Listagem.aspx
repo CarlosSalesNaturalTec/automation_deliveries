@@ -38,44 +38,43 @@
 
     <div class="w3-row w3-container w3-border w3-round w3-padding-16 w3-light-gray">
 
-        <div id="Bloco1" class="w3-col s8 m4 l4 w3-padding">          
+        <div id="Bloco1" class="w3-col s12 m6 l4 w3-padding">          
             <div class="panel panel-success">
                 <div class="panel-heading text-center">
-                     <!-- Customize Aqui-->
-                    <h4 class="panel-title">Total por Placa</h4>
+                    <h4 class="panel-title w3-small">Total por Placa</h4>
                 </div>
 
                 <div class="panel-body">
-                    <div id="Bloco1_Chart" style="min-width: 310px; height: 200px; margin: 0 auto"></div>
+                    <div id="Bloco1_Chart" style="min-width: 280px; height: 200px; margin: 0 auto"></div>
                 </div>
 
             </div>
         </div>
 
-        <div id="Bloco2" class="w3-col s8 m4 l4 w3-padding">         
+        <div id="Bloco2" class="w3-col s12 m6 l4 w3-padding">         
             <div class="panel panel-success">
                 <div class="panel-heading text-center">
-                    <!-- Customize Aqui-->
-                    <h4 class="panel-title">Total por Mês</h4>
+                    <h4 class="panel-title w3-small">Total por Mês</h4>
                 </div>
 
                 <div class="panel-body">
-                    <div id="Bloco2_Chart" style="min-width: 310px; height: 200px; margin: 0 auto"></div>
+                    <div id="Bloco2_Chart" style="min-width: 280px; height: 200px; margin: 0 auto"></div>
                 </div>
 
             </div>
         </div>
 
-        <div id="Bloco3" class="w3-col s8 m4 l4 w3-padding">
+        <div id="Bloco3" class="w3-col s12 m6 l4 w3-padding">
             <div class="panel panel-success">
-                <!-- Customize Aqui-->
                 <div class="panel-heading text-center">
-                    <h4 class="panel-title">Abastecimento Local</h4>
+                    <h4 class="panel-title w3-small">Abastecimento Local</h4>
                 </div>
 
-                <div class="panel-body text-center" style="min-width: 310px; height: 200px; margin: 0 auto">
+                <div class="panel-body text-center" style="min-width: 280px; height: 200px; margin: 0 auto">
                     <h1><asp:Literal ID="Bloco3_Info" runat="server"></asp:Literal></h1>
-                    <a onclick="NovoRegistro()" class="btn btn-block btn-danger"><i class="fa fa-plus"></i>&nbsp;Novo Abastecimento</a>
+                    <a onclick="NovoRegistro()" class="btn btn-block btn-primary"><i class="fa fa-plus"></i>&nbsp;Novo Abastecimento</a>
+                    <p></p>
+                    <a onclick="Relatorios()" class="btn btn-block btn-primary"><i class="fa fa-file-text-o"></i>&nbsp;Relatórios</a>
                 </div>
                 <p>&nbsp;</p>
             </div>
@@ -88,7 +87,7 @@
     </div>
 
     <!-- Planilha  -->
-    <div class="w3-container w3-border w3-round w3-padding-16 w3-light-gray">
+    <div class="w3-container w3-border w3-round w3-padding-16 w3-light-gray w3-small">
         <asp:Literal ID="Literal_Tabela" runat="server"></asp:Literal>
     </div>
 

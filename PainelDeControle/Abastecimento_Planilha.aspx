@@ -37,55 +37,55 @@
 
     <div class="w3-row w3-container w3-border w3-round w3-padding-16 w3-light-gray">
 
-        <div id="Bloco1" class="w3-col s4 m4 l4 w3-padding">
+        <div id="Bloco1" class="w3-col s12 m6 l4 w3-padding">
            
             <div class="panel panel-success">
 
                 <div class="panel-heading text-center">
                      <!-- Customize Aqui-->
-                    <h4 class="panel-title">Total por Placa</h4>
+                    <h4 class="panel-title w3-small">Total por Placa</h4>
                 </div>
 
                 <div class="panel-body">
                     <!-- Customize Aqui-->
-                    <div id="Bloco1_Chart" style="min-width: 310px; height: 200px; margin: 0 auto"></div>
+                    <div id="Bloco1_Chart" style="min-width: 280px; height: 200px; margin: 0 auto"></div>
                 </div>
 
             </div>
         </div>
 
-        <div id="Bloco2" class="w3-col s4 m4 l4 w3-padding">
+        <div id="Bloco2" class="w3-col s12 m6 l4 w3-padding">
             <!-- Customize Aqui-->
             <div class="panel panel-success">
 
                 <div class="panel-heading text-center">
-                    <h4 class="panel-title">Total por Mês</h4>
+                    <h4 class="panel-title w3-small">Total por Mês</h4>
                 </div>
 
                 <div class="panel-body">
                     <!-- Customize Aqui-->
-                    <div id="Bloco2_Chart" style="min-width: 310px; height: 200px; margin: 0 auto"></div>
+                    <div id="Bloco2_Chart" style="min-width: 280px; height: 200px; margin: 0 auto"></div>
                 </div>
 
             </div>
         </div>
 
-        <div id="Bloco3" class="w3-col s4 m4 l4 w3-padding">
+        <div id="Bloco3" class="w3-col s12 m6 l4 w3-padding">
             <!-- Customize Aqui-->
             <div class="panel panel-success">
 
                 <div class="panel-heading text-center">
-                    <h4 class="panel-title">Saldo Crédito</h4>
+                    <h4 class="panel-title w3-small">Saldo Crédito</h4>
                 </div>
 
-                <div class="panel-body text-center" style="min-width: 310px; height: 200px; margin: 0 auto">
+                <div class="panel-body text-center" style="min-width: 280px; height: 200px; margin: 0 auto">
                     <h1><asp:Literal ID="Bloco3_Info" runat="server"></asp:Literal></h1>
 
-                    <a href="Abastecimento_Novo.aspx" class="btn btn-block btn-danger">AUTORIZAÇÕES</a>
+                    <a href="Abastecimento_Novo.aspx" class="btn btn-block btn-primary"><i class="fa fa-plus"></i>&nbsp;Autorizações</a>
                     <p></p>
-                    <a href="Abastecimento_Credito.aspx" class="btn btn-block btn-success">CRÉDITOS</a>
+                    <a href="Abastecimento_Credito.aspx" class="btn btn-block btn-primary"><i class="fa fa-plus"></i>&nbsp;Créditos</a>
                     <p></p>
-                    <a href="Abastecimento_Relatorios.aspx" class="btn btn-block btn-primary">RELATÓRIOS</a>
+                    <a href="Abastecimento_Relatorios.aspx" class="btn btn-block btn-primary"><i class="fa fa-file-text-o"></i>&nbsp;Relatórios</a>
                 </div>
 
                 

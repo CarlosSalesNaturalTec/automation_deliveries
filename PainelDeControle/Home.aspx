@@ -9,18 +9,21 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+     <!-- Jquery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
     <!-- Styles: W3, BootsStrap, Font-Awesome -->
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <!-- Jquery-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-    <!-- Gráficos HighCharts -->
-    <script src="https://code.highcharts.com/highcharts.js"></script>
-    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <!-- Paginação -->
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" />
 
 </head>
 
@@ -38,15 +41,15 @@
             <div class="panel panel-success">
 
                 <div class="panel-heading text-center">
-                    <h4 class="panel-title">Crédito de Combustível - Saldo</h4>
+                    <h4 class="panel-title w3-small">Crédito de Combustível - Saldo</h4>
                 </div>
 
                 <div class="panel-body text-center">
-                    <h1><asp:Literal ID="Bloco1_Info" runat="server"></asp:Literal></h1>
+                    <h1><i class="fa fa-car" aria-hidden="true"></i><asp:Literal ID="Bloco1_Info" runat="server"></asp:Literal></h1>
                 </div>
 
                 <div class="panel-footer text-center">
-                    <asp:Literal ID="Bloco1_Link" runat="server"></asp:Literal>
+                    <p class="w3-small"><asp:Literal ID="Bloco1_Link" runat="server"></asp:Literal></p>
                 </div>
 
             </div>
@@ -56,15 +59,15 @@
             <div class="panel panel-success">
 
                 <div class="panel-heading text-center">
-                    <h4 class="panel-title">Total Combustível - Local</h4>
+                    <h4 class="panel-title w3-small">Total de Combustível a Pagar</h4>
                 </div>
 
                 <div class="panel-body text-center">
-                    <h1><asp:Literal ID="Bloco2_Info" runat="server"></asp:Literal></h1>
+                    <h1><i class="fa fa-credit-card" aria-hidden="true"></i><asp:Literal ID="Bloco2_Info" runat="server"></asp:Literal></h1>
                 </div>
 
                 <div class="panel-footer text-center">
-                    <asp:Literal ID="Bloco2_Link" runat="server"></asp:Literal>
+                    <p class="w3-small"><asp:Literal ID="Bloco2_Link" runat="server"></asp:Literal></p>
                 </div>
 
             </div>

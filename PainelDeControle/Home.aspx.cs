@@ -53,13 +53,13 @@ public partial class Home : System.Web.UI.Page
 
         Decimal Saldo = TotalCR - TotalDB;
 
-        Bloco1_Info.Text = "R$ " + Saldo.ToString("N", CultureInfo.CreateSpecificCulture("pt-BR"));
-        
+        Bloco1_Info.Text = "<span class=\"small\"> R$ " + Saldo.ToString("N", CultureInfo.CreateSpecificCulture("pt-BR")) + "</span>";
+
     }
 
     private void Bloco1_MontaLink(string url, string txtLink)
     {
-        Bloco1_Link.Text = "<a href='" + url + "'>" + txtLink + "&nbsp;<i class=\"fa fa-arrow-circle-right\"></i></a>&nbsp;&nbsp;";
+        Bloco1_Link.Text = "<i class=\"fa fa-plus-square-o\"></i>&nbsp;&nbsp;<a href='" + url + "'>" + txtLink + "</a>";
     }
 
 
@@ -83,13 +83,13 @@ public partial class Home : System.Web.UI.Page
         }
         ConexaoBancoSQL.fecharConexao();
 
-        Bloco2_Info.Text = "R$ " + ValorTotal.ToString("N", CultureInfo.CreateSpecificCulture("pt-BR"));
+        Bloco2_Info.Text = "<span class=\"small\"> R$ " + ValorTotal.ToString("N", CultureInfo.CreateSpecificCulture("pt-BR")) + "</span>";
 
     }
 
     private void Bloco2_MontaLink(string url, string txtLink)
     {
-        Bloco2_Link.Text = "<a href='" + url + "'>" + txtLink + "&nbsp;<i class=\"fa fa-arrow-circle-right\"></i></a>&nbsp;&nbsp;";
+        Bloco2_Link.Text = "<i class=\"fa fa-plus-square-o\"></i>&nbsp;&nbsp;<a href='" + url + "'>" + txtLink + "</a>";
     }
 
 }
