@@ -63,6 +63,73 @@ namespace delivcli
             return Resultado;
         }
 
+        [WebMethod]
+        public string Registro_Simplif_Excluir(string param1)
+        {
+            string url = "";
+            OperacaoBanco operacao = new OperacaoBanco();
+            Boolean deletar = operacao.Delete("delete from Tbl_Entrega_Simplficada  where ID_Entrega  =" + param1);
+            ConexaoBancoSQL.fecharConexao();
+            if (deletar == true)
+            {
+                url = "../Registro_Simplif_Listagem.aspx";
+            }
+            else
+            {
+                url = "../Sorry.aspx";
+            }
+
+            return url;
+        }
+
+
+        [WebMethod]
+        public string Registro_Simplif_Novo(string param0, string param1, string param2, string param3, string param4, string param5, string param6)
+        {
+            string url = "";
+            OperacaoBanco operacao = new OperacaoBanco();
+            bool inserir = operacao.Insert(@"INSERT INTO Tbl_Entrega_Simplficada (Motoboy, DataEntrega , Quatidade , Entregues , Realizadas , Observacoes, ID_Cliente) " +
+                "VALUES ('" + param0 + "', '" +param1 +"', '" +  param2 + "', '" + param3 + "', '" + param4 + "', '" + param5 + "', " + param6 + ")");
+            ConexaoBancoSQL.fecharConexao();
+            if (inserir == true)
+            {
+                url = "../Registro_Simplif_Listagem.aspx";
+            }
+            else
+            {
+                url = "../ErroDefault.aspx";
+            }
+
+            return url;
+        }
+
+
+        [WebMethod]
+        public string Registro_Simplif_Alterar(string param0, string param1, string param2, string param3, string param4, string param5, string param6)
+        {
+            string url = "";
+            OperacaoBanco operacao = new OperacaoBanco();
+            bool inserir = operacao.Insert("update Tbl_Entrega_Simplficada set " +
+                "Motoboy = '" + param0 + "', " +
+                "DataEntrega = '" + param0 + "', " +
+                "Quatidade = '" + param0 + "', " +
+                "Entregues = '" + param0 + "', " +
+                "Realizadas = '" + param0 + "', " +
+                "Observacoes = '" + param0 + "' " +
+                "where ID_Entrega = "  + param6 );
+
+            ConexaoBancoSQL.fecharConexao();
+            if (inserir == true)
+            {
+                url = "../Registro_Simplif_Listagem.aspx";
+            }
+            else
+            {
+                url = "../ErroDefault.aspx";
+            }
+
+            return url;
+        }
 
     }
 

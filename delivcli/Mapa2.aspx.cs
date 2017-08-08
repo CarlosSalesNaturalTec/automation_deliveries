@@ -19,8 +19,20 @@ namespace delivcli
 
         private void montaScript()
         {
+            string Vlat, Vlng;
 
-            string markerPosition = "{ lat: " + Session["Busca_Latitude"].ToString() +", lng:" + Session["Busca_Longitude"].ToString() + " }";
+            try
+            {
+                Vlat = Session["Busca_Latitude"].ToString();
+                Vlng = Session["Busca_Longitude"].ToString();
+            }
+            catch
+            {
+                Vlat = "-12.9525123";
+                Vlng = "-38.4535139";
+            };
+
+            string markerPosition = "{ lat: " + Vlat + ", lng:" + Vlng + " }";
             
             str.Clear();
             str.Append(@"<script type='text/javascript'> 

@@ -140,6 +140,9 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Registro_Simplif_Fichaxxx.aspx" />
+    <Content Include="Registro_Simplif_Listagem.aspx" />
+    <Content Include="Registro_Simplif_Novo.aspx" />
     <Content Include="Cad_Entregas_Geocoding.aspx" />
     <Content Include="Cad_Entregas.aspx" />
     <Content Include="Cad_Entregas_Import.aspx" />
@@ -158,6 +161,9 @@
     <Content Include="images\flagEmAndamento.png" />
     <Content Include="images\flagOk.png" />
     <Content Include="images\flagRetorno.png" />
+    <Content Include="Registro_Simplif_Relatoriosxxxx.aspx" />
+    <Content Include="Scripts\codeRegistro_Simplif_Novo.js" />
+    <Content Include="Scripts\codeRegistro_Simplif_Listagem.js" />
     <Content Include="Scripts\codeMapa1.js" />
     <Content Include="utilitarios\ImportClientes.aspx" />
     <Content Include="ListagemEntregas.aspx" />
@@ -242,6 +248,27 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Registro_Simplif_Fichaxxx.aspx.cs">
+      <DependentUpon>Registro_Simplif_Fichaxxx.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Registro_Simplif_Fichaxxx.aspx.designer.cs">
+      <DependentUpon>Registro_Simplif_Fichaxxx.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Registro_Simplif_Listagem.aspx.cs">
+      <DependentUpon>Registro_Simplif_Listagem.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Registro_Simplif_Listagem.aspx.designer.cs">
+      <DependentUpon>Registro_Simplif_Listagem.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Registro_Simplif_Novo.aspx.cs">
+      <DependentUpon>Registro_Simplif_Novo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Registro_Simplif_Novo.aspx.designer.cs">
+      <DependentUpon>Registro_Simplif_Novo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AddressComponent.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -294,6 +321,13 @@
     </Compile>
     <Compile Include="Entregador_Ficha.aspx.designer.cs">
       <DependentUpon>Entregador_Ficha.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Registro_Simplif_Relatoriosxxxx.aspx.cs">
+      <DependentUpon>Registro_Simplif_Relatoriosxxxx.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Registro_Simplif_Relatoriosxxxx.aspx.designer.cs">
+      <DependentUpon>Registro_Simplif_Relatoriosxxxx.aspx</DependentUpon>
     </Compile>
     <Compile Include="utilitarios\ImportClientes.aspx.cs">
       <DependentUpon>ImportClientes.aspx</DependentUpon>
