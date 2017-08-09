@@ -25,8 +25,8 @@ namespace delivcli
         {
 
             str.Clear();
-            string stringComAspas = "<div class=\"panel panel-" + TipoHeader(escolha) + "\"><div class=\"panel-heading\"><h3 class=\"panel-title\"> " +
-                   escolha.ToUpper() + "</h3></div><div class=\"panel-body\">";
+            string stringComAspas = "<div class=\"panel panel-" + TipoHeader(escolha) + "\"><div class=\"panel-heading\"><h5 class=\"panel-title\"> " +
+                   escolha.ToUpper() + "</h5></div><div class=\"panel-body\">";
             str.Append(stringComAspas);
 
             // Listagem de Entregadores e intevalo desde a ultima atualização
@@ -44,8 +44,8 @@ namespace delivcli
                 if (escolha == "Off-Line") { if (min1 < 185) { continue; } }
 
                 //nome do Entregador + Total de Entregas do Dia + Total de Entregas Realizadas
-                stringComAspas = "<a href=\"FichaEntregador.aspx?ID=" + Convert.ToString(dados[2]) + "\" target=\"_parent\" class=\"list-group-item\"><h4 class=\"list-group-item-heading\">" + Convert.ToString(dados[0]) + 
-                    ". " + TotaldeEntregas(Convert.ToString(dados[2])) + "</h4>";
+                stringComAspas = "<a href=\"FichaEntregador.aspx?ID=" + Convert.ToString(dados[2]) + "\" target=\"_parent\" class=\"list-group-item\"><h6 class=\"list-group-item-heading\">" + Convert.ToString(dados[0]) + 
+                    ". " + TotaldeEntregas(Convert.ToString(dados[2])) + "</h6>";
                 str.Append(stringComAspas);
 
                 if (min1 > 185)

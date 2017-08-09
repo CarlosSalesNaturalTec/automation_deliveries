@@ -140,7 +140,7 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Registro_Simplif_Fichaxxx.aspx" />
+    <Content Include="Registro_Simplif_Ficha.aspx" />
     <Content Include="Registro_Simplif_Listagem.aspx" />
     <Content Include="Registro_Simplif_Novo.aspx" />
     <Content Include="Cad_Entregas_Geocoding.aspx" />
@@ -161,7 +161,8 @@
     <Content Include="images\flagEmAndamento.png" />
     <Content Include="images\flagOk.png" />
     <Content Include="images\flagRetorno.png" />
-    <Content Include="Registro_Simplif_Relatoriosxxxx.aspx" />
+    <Content Include="Registro_Simplif_Relatorios.aspx" />
+    <Content Include="Scripts\codePaginacao.js" />
     <Content Include="Scripts\codeRegistro_Simplif_Novo.js" />
     <Content Include="Scripts\codeRegistro_Simplif_Listagem.js" />
     <Content Include="Scripts\codeMapa1.js" />
@@ -248,12 +249,12 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Registro_Simplif_Fichaxxx.aspx.cs">
-      <DependentUpon>Registro_Simplif_Fichaxxx.aspx</DependentUpon>
+    <Compile Include="Registro_Simplif_Ficha.aspx.cs">
+      <DependentUpon>Registro_Simplif_Ficha.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Registro_Simplif_Fichaxxx.aspx.designer.cs">
-      <DependentUpon>Registro_Simplif_Fichaxxx.aspx</DependentUpon>
+    <Compile Include="Registro_Simplif_Ficha.aspx.designer.cs">
+      <DependentUpon>Registro_Simplif_Ficha.aspx</DependentUpon>
     </Compile>
     <Compile Include="Registro_Simplif_Listagem.aspx.cs">
       <DependentUpon>Registro_Simplif_Listagem.aspx</DependentUpon>
@@ -322,12 +323,12 @@
     <Compile Include="Entregador_Ficha.aspx.designer.cs">
       <DependentUpon>Entregador_Ficha.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Registro_Simplif_Relatoriosxxxx.aspx.cs">
-      <DependentUpon>Registro_Simplif_Relatoriosxxxx.aspx</DependentUpon>
+    <Compile Include="Registro_Simplif_Relatorios.aspx.cs">
+      <DependentUpon>Registro_Simplif_Relatorios.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Registro_Simplif_Relatoriosxxxx.aspx.designer.cs">
-      <DependentUpon>Registro_Simplif_Relatoriosxxxx.aspx</DependentUpon>
+    <Compile Include="Registro_Simplif_Relatorios.aspx.designer.cs">
+      <DependentUpon>Registro_Simplif_Relatorios.aspx</DependentUpon>
     </Compile>
     <Compile Include="utilitarios\ImportClientes.aspx.cs">
       <DependentUpon>ImportClientes.aspx</DependentUpon>

@@ -1,5 +1,22 @@
 ﻿document.getElementById('input1').focus();
 
+
+function calculo1() {
+    var v1 = document.getElementById("input_quant").value;
+    var v2 = document.getElementById("input_realiz").value;
+
+    var v3 = v1 - v2;
+    document.getElementById("input_devolv").value = v3;
+}
+
+function calculo2() {
+    var v1 = document.getElementById("input_quant").value;
+    var v2 = document.getElementById("input_devolv").value;
+
+    var v3 = v1 - v2;
+    document.getElementById("input_realiz").value = v3;
+}
+
 function SalvarRegistro() {
 
     //validações

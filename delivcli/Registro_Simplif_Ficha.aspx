@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Registro_Simplif_Novo.aspx.cs" Inherits="delivcli.Registro_Simplif_Novo" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Registro_Simplif_Ficha.aspx.cs" Inherits="delivcli.Registro_Simplif_Ficha1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
@@ -55,12 +55,12 @@
                 <div class="w3-row w3-padding">
                     <label for="input_realiz" class="col-md-2 control-label">Realizadas</label>
                     <div class="col-md-3">
-                        <input type="number" class="form-control" id="input_realiz" value="0" onblur="calculo1();">
+                        <input type="number" class="form-control" id="input_realiz" value="0" onblur="calculo1();" >
                     </div>
 
                     <label for="input_devolv" class="col-md-2 control-label">Devolvidas</label>
                     <div class="col-md-2">
-                        <input type="number" class="form-control" id="input_devolv" value="0" onblur="calculo2();">
+                        <input type="number" class="form-control" id="input_devolv" value="0" onblur="calculo2();" >
                     </div>
                 </div>
 
@@ -71,13 +71,12 @@
                     </div>
                 </div>
 
-
                 <div class="w3-row w3-padding">
                     <div class="col-md-4 col-md-offset-2">
                         <button type="button" class="w3-btn w3-round w3-border w3-light-green w3-hover-green btcontroles" onclick="cancelar();">
                             <i class="fa fa-undo" aria-hidden="true"></i>&nbsp;Sair</button>
 
-                        <button class="w3-btn w3-round w3-border w3-light-green w3-hover-green btcontroles" onclick="SalvarRegistro()">
+                        <button class="w3-btn w3-round w3-border w3-light-green w3-hover-green btcontroles" onclick="AlterarRegistro()">
                             <i class="fa fa-check-square-o" aria-hidden="true"></i>&nbsp;Salvar&nbsp;&nbsp;
                         </button>
 
@@ -87,6 +86,7 @@
             </div>
 
         </div>
+
 
         <!-- auxiliares -->
         <input id="IDAuxHidden" type="hidden" />
@@ -98,5 +98,6 @@
 
     </body>
     </html>
+
 
 </asp:Content>

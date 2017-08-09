@@ -111,11 +111,11 @@ namespace delivcli
             OperacaoBanco operacao = new OperacaoBanco();
             bool inserir = operacao.Insert("update Tbl_Entrega_Simplficada set " +
                 "Motoboy = '" + param0 + "', " +
-                "DataEntrega = '" + param0 + "', " +
-                "Quatidade = '" + param0 + "', " +
-                "Entregues = '" + param0 + "', " +
-                "Realizadas = '" + param0 + "', " +
-                "Observacoes = '" + param0 + "' " +
+                "DataEntrega = '" + param1 + "', " +
+                "Quatidade = '" + param2 + "', " +
+                "Entregues = '" + param3 + "', " +
+                "Realizadas = '" + param4 + "', " +
+                "Observacoes = '" + param5 + "' " +
                 "where ID_Entrega = "  + param6 );
 
             ConexaoBancoSQL.fecharConexao();

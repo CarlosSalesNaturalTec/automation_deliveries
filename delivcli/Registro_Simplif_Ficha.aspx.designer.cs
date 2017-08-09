@@ -10,7 +10,7 @@
 namespace delivcli {
     
     
-    public partial class Registro_Simplif_Ficha {
+    public partial class Registro_Simplif_Ficha1 {
         
         /// <summary>
         /// Literal_Aux control.
@@ -20,5 +20,14 @@ namespace delivcli {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal Literal_Aux;
+        
+        /// <summary>
+        /// Literal_AutoComplete control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal Literal_AutoComplete;
     }
 }

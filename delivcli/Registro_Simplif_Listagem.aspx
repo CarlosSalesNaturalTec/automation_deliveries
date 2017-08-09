@@ -77,7 +77,7 @@
                             <asp:Literal ID="Bloco3_Info" runat="server"></asp:Literal></h1>
                         <a onclick="NovoRegistro()" class="btn btn-block btn-primary"><i class="fa fa-plus"></i>&nbsp;Novo Lançamento</a>
                         <p></p>
-                        <a onclick="Relatorios()" class="btn btn-block btn-primary"><i class="fa fa-file-text-o"></i>&nbsp;Relatórios</a>
+                        <a onclick="" class="btn btn-block btn-primary"><i class="fa fa-file-text-o"></i>&nbsp;Relatórios</a>
                     </div>
                     <p>&nbsp;</p>
                 </div>

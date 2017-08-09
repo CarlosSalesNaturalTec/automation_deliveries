@@ -19,6 +19,17 @@ namespace delivcli
             dadosCorpo();
             montaRodape();
 
+            //============================================================================
+            //graficos - Customize Aqui
+            //============================================================================
+            string stringDadosGraf;
+
+            // Total de Entregas por Motoboy
+            stringDadosGraf = "select Motoboy, sum(valor) as ValorTotal " +
+                "from Tbl_Abastecimento_Local group by format(Data_Abastecimento,'MM-yyyy')";
+            Literal_Bloco2.Text = Monta_Graf_Morris_Bar(stringDadosGraf, "Bloco2_Chart");
+            //============================================================================
+
         }
 
         private void montaCabecalho()
@@ -89,6 +100,80 @@ namespace delivcli
             string footer = "</tbody></table>";
             str.Append(footer);
             Literal_Tabela.Text = str.ToString();
+        }
+
+        private string Monta_Graf_Morris_Donut(string stringselect, string ID_Chart)
+        {
+            string txtAux = "";
+            str.Clear();
+
+            txtAux = "<script type=\"text/javascript\">";
+            str.Append(txtAux);
+
+            txtAux = "Morris.Donut({element: '" + ID_Chart + "', data: [";
+            str.Append(txtAux);
+
+            //dados
+            OperacaoBanco operacao = new OperacaoBanco();
+            System.Data.SqlClient.SqlDataReader dados = operacao.Select(stringselect);
+            while (dados.Read())
+            {
+                txtAux = "{label: \"" + Convert.ToString(dados[0]) + "\", value: " + Convert.ToString(dados[1]) + "},";
+                str.Append(txtAux);
+            }
+            ConexaoBancoSQL.fecharConexao();
+
+            txtAux = "]});";
+            str.Append(txtAux);
+
+            txtAux = "</script>";
+            str.Append(txtAux);
+
+            return str.ToString();
+
+        }
+
+        private string Monta_Graf_Morris_Bar(string stringselect, string ID_Chart)
+        {
+            string txtAux = "";
+            str.Clear();
+
+            txtAux = "<script type=\"text/javascript\">";
+            str.Append(txtAux);
+
+            txtAux = "Morris.Bar({element: '" + ID_Chart + "', data: [";
+            str.Append(txtAux);
+
+            //dados
+            OperacaoBanco operacao = new OperacaoBanco();
+            System.Data.SqlClient.SqlDataReader dados = operacao.Select(stringselect);
+            while (dados.Read())
+            {
+                txtAux = "{mes: \"" + Convert.ToString(dados[0]) + "\", valor: " + Convert.ToString(dados[1]) + "},";
+                str.Append(txtAux);
+            }
+            ConexaoBancoSQL.fecharConexao();
+
+            txtAux = "],";
+            str.Append(txtAux);
+
+            txtAux = "xkey: 'mes',";
+            str.Append(txtAux);
+
+            txtAux = "ykeys: ['valor'],";
+            str.Append(txtAux);
+
+            txtAux = "labels: ['Total no Mês']";
+            str.Append(txtAux);
+
+            txtAux = "});";
+            str.Append(txtAux);
+
+            txtAux = "</script>";
+            str.Append(txtAux);
+
+            return str.ToString();
+
         }
 
 
