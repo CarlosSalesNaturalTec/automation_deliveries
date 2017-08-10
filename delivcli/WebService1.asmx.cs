@@ -88,7 +88,7 @@ namespace delivcli
         {
             string url = "";
             OperacaoBanco operacao = new OperacaoBanco();
-            bool inserir = operacao.Insert(@"INSERT INTO Tbl_Entrega_Simplficada (Motoboy, DataEntrega , Quatidade , Entregues , Realizadas , Observacoes, ID_Cliente) " +
+            bool inserir = operacao.Insert(@"INSERT INTO Tbl_Entrega_Simplficada (Motoboy, DataEntrega , Quantidade , Entregues , Devolvidas , Observacoes, ID_Cliente) " +
                 "VALUES ('" + param0 + "', '" +param1 +"', '" +  param2 + "', '" + param3 + "', '" + param4 + "', '" + param5 + "', " + param6 + ")");
             ConexaoBancoSQL.fecharConexao();
             if (inserir == true)
@@ -112,9 +112,9 @@ namespace delivcli
             bool inserir = operacao.Insert("update Tbl_Entrega_Simplficada set " +
                 "Motoboy = '" + param0 + "', " +
                 "DataEntrega = '" + param1 + "', " +
-                "Quatidade = '" + param2 + "', " +
+                "Quantidade  = '" + param2 + "', " +
                 "Entregues = '" + param3 + "', " +
-                "Realizadas = '" + param4 + "', " +
+                "Devolvidas = '" + param4 + "', " +
                 "Observacoes = '" + param5 + "' " +
                 "where ID_Entrega = "  + param6 );
 

@@ -40,7 +40,7 @@
 
         <div class="w3-row w3-container w3-border w3-round w3-padding-16 w3-light-gray">
 
-            <div id="Bloco1" class="w3-col s12 m6 l4 w3-padding">
+            <div id="Bloco1" class="w3-col s12 m6 l8 w3-padding">
                 <div class="panel panel-success">
                     <div class="panel-heading text-center">
                         <h4 class="panel-title w3-small">Total por Motoboy</h4>
@@ -48,19 +48,6 @@
 
                     <div class="panel-body">
                         <div id="Bloco1_Chart" style="min-width: 280px; height: 200px; margin: 0 auto"></div>
-                    </div>
-
-                </div>
-            </div>
-
-            <div id="Bloco2" class="w3-col s12 m6 l4 w3-padding">
-                <div class="panel panel-success">
-                    <div class="panel-heading text-center">
-                        <h4 class="panel-title w3-small">Resumo Mensal</h4>
-                    </div>
-
-                    <div class="panel-body">
-                        <div id="Bloco2_Chart" style="min-width: 280px; height: 200px; margin: 0 auto"></div>
                     </div>
 
                 </div>

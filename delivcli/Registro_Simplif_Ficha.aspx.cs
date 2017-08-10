@@ -31,9 +31,9 @@ namespace delivcli
             string stringSelect = "select " +
                 "Motoboy," +
                 "format(DataEntrega,'yyyy-MM-dd') as d1, " +
-                "Quatidade, " +
+                "Quantidade , " +
                 "Entregues, " +
-                "Realizadas, " +
+                "Devolvidas, " +
                 "Observacoes, " +
                 "ID_Entrega  " +
                 "from Tbl_Entrega_Simplficada " +

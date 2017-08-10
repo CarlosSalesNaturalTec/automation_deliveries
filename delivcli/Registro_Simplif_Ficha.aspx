@@ -45,7 +45,7 @@
 
                     <label for="input_quant" class="col-md-2 control-label">Quant.Entregas</label>
                     <div class="col-md-2">
-                        <input type="number" class="form-control" id="input_quant" value="0">
+                        <input type="number" class="form-control" id="input_quant" value="0" onClick="this.select();">
                     </div>
                     <div class="col-md-2">
                         &nbsp;
@@ -55,12 +55,12 @@
                 <div class="w3-row w3-padding">
                     <label for="input_realiz" class="col-md-2 control-label">Realizadas</label>
                     <div class="col-md-3">
-                        <input type="number" class="form-control" id="input_realiz" value="0" onblur="calculo1();" >
+                        <input type="number" class="form-control" id="input_realiz" value="0" onblur="calculo1();" onClick="this.select();" >
                     </div>
 
                     <label for="input_devolv" class="col-md-2 control-label">Devolvidas</label>
                     <div class="col-md-2">
-                        <input type="number" class="form-control" id="input_devolv" value="0" onblur="calculo2();" >
+                        <input type="number" class="form-control" id="input_devolv" value="0" onblur="calculo2();" onClick="this.select();" >
                     </div>
                 </div>
 

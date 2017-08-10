@@ -25,9 +25,9 @@ namespace delivcli
             string stringDadosGraf;
 
             // Total de Entregas por Motoboy
-            stringDadosGraf = "select Motoboy, sum(valor) as ValorTotal " +
-                "from Tbl_Abastecimento_Local group by format(Data_Abastecimento,'MM-yyyy')";
-            Literal_Bloco2.Text = Monta_Graf_Morris_Bar(stringDadosGraf, "Bloco2_Chart");
+            stringDadosGraf = "select Motoboy, sum(Quantidade ) as T1, sum(Entregues) as T2 " +
+                "from Tbl_Entrega_Simplficada group by Motoboy";
+            Literal_Bloco1.Text = Monta_Graf_Morris_Bar(stringDadosGraf, "Bloco1_Chart");
             //============================================================================
 
         }
@@ -42,7 +42,7 @@ namespace delivcli
                 "<th>MOTOBOY</th>" +
                 "<th>DATA</th>" +
                 "<th>QUANT.ENTREGAS</th>" +
-                "<th>REALIZADAS</th>" +
+                "<th>ENTREGUES</th>" +
                 "<th>DEVOLVIDAS</th>" +
                 "<th>OBSERVAÇÕES</th>" +
                 "</tr>" +
@@ -55,7 +55,7 @@ namespace delivcli
         private void dadosCorpo()
         {
             // <!--*******Customização*******-->
-            string stringselect = "select ID_Entrega, Motoboy , format(DataEntrega ,'dd/MM/yyyy') as d1, Quatidade , Entregues , Realizadas , Observacoes " +
+            string stringselect = "select ID_Entrega, Motoboy , format(DataEntrega ,'dd/MM/yyyy') as d1, Quantidade  , Entregues , Devolvidas , Observacoes " +
                     "from Tbl_Entrega_Simplficada " +
                     "where ID_Cliente = " + idCli +
                     " order by DataEntrega";
@@ -102,37 +102,6 @@ namespace delivcli
             Literal_Tabela.Text = str.ToString();
         }
 
-        private string Monta_Graf_Morris_Donut(string stringselect, string ID_Chart)
-        {
-            string txtAux = "";
-            str.Clear();
-
-            txtAux = "<script type=\"text/javascript\">";
-            str.Append(txtAux);
-
-            txtAux = "Morris.Donut({element: '" + ID_Chart + "', data: [";
-            str.Append(txtAux);
-
-            //dados
-            OperacaoBanco operacao = new OperacaoBanco();
-            System.Data.SqlClient.SqlDataReader dados = operacao.Select(stringselect);
-            while (dados.Read())
-            {
-                txtAux = "{label: \"" + Convert.ToString(dados[0]) + "\", value: " + Convert.ToString(dados[1]) + "},";
-                str.Append(txtAux);
-            }
-            ConexaoBancoSQL.fecharConexao();
-
-            txtAux = "]});";
-            str.Append(txtAux);
-
-            txtAux = "</script>";
-            str.Append(txtAux);
-
-            return str.ToString();
-
-        }
-
         private string Monta_Graf_Morris_Bar(string stringselect, string ID_Chart)
         {
             string txtAux = "";
@@ -149,7 +118,17 @@ namespace delivcli
             System.Data.SqlClient.SqlDataReader dados = operacao.Select(stringselect);
             while (dados.Read())
             {
-                txtAux = "{mes: \"" + Convert.ToString(dados[0]) + "\", valor: " + Convert.ToString(dados[1]) + "},";
+
+                var nomeMotoboy = "";
+                int v1 = Convert.ToString(dados[0]).Length;
+                if (Convert.ToString(dados[0]).Length > 10)
+                {
+                    nomeMotoboy = Convert.ToString(dados[0]).Substring(0, 9);
+                }else {
+                    nomeMotoboy = Convert.ToString(dados[0]).Substring(0, v1);
+                }
+
+                txtAux = "{serie: \"" + nomeMotoboy + "\", valor1: " + Convert.ToString(dados[1]) + ", valor2:" + Convert.ToString(dados[2]) + "},";
                 str.Append(txtAux);
             }
             ConexaoBancoSQL.fecharConexao();
@@ -157,13 +136,16 @@ namespace delivcli
             txtAux = "],";
             str.Append(txtAux);
 
-            txtAux = "xkey: 'mes',";
+            txtAux = "xkey: 'serie',";
             str.Append(txtAux);
 
-            txtAux = "ykeys: ['valor'],";
+            txtAux = "ykeys: ['valor1','valor2'],";
             str.Append(txtAux);
 
-            txtAux = "labels: ['Total no Mês']";
+            txtAux = "labels: ['Total de Entregas','Devolvidas'],";
+            str.Append(txtAux);
+
+            txtAux = "gridTextSize: 8";
             str.Append(txtAux);
 
             txtAux = "});";
