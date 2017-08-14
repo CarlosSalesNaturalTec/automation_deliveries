@@ -81,9 +81,9 @@
                 <div class="panel-body text-center" style="min-width: 280px; height: 200px; margin: 0 auto">
                     <h1><asp:Literal ID="Bloco3_Info" runat="server"></asp:Literal></h1>
 
-                    <a href="Abastecimento_Novo.aspx" class="btn btn-block btn-primary"><i class="fa fa-plus"></i>&nbsp;Autorizações</a>
+                    <a href="Abastecimento_Novo.aspx" class="btn btn-block btn-primary"><i class="fa fa-plus"></i>&nbsp;Nova Autorização</a>
                     <p></p>
-                    <a href="Abastecimento_Credito.aspx" class="btn btn-block btn-primary"><i class="fa fa-plus"></i>&nbsp;Créditos</a>
+                    <a href="Abastecimento_Credito.aspx" class="btn btn-block btn-primary"><i class="fa fa-plus"></i>&nbsp;Novo Crédito</a>
                     <p></p>
                     <a href="Abastecimento_Relatorios.aspx" class="btn btn-block btn-primary"><i class="fa fa-file-text-o"></i>&nbsp;Relatórios</a>
                 </div>

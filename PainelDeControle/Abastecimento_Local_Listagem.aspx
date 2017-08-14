@@ -60,7 +60,6 @@
                 <div class="panel-body">
                     <div id="Bloco2_Chart" style="min-width: 280px; height: 200px; margin: 0 auto"></div>
                 </div>
-
             </div>
         </div>
 
@@ -69,7 +68,6 @@
                 <div class="panel-heading text-center">
                     <h4 class="panel-title w3-small">Abastecimento Local</h4>
                 </div>
-
                 <div class="panel-body text-center" style="min-width: 280px; height: 200px; margin: 0 auto">
                     <h1><asp:Literal ID="Bloco3_Info" runat="server"></asp:Literal></h1>
                     <a onclick="NovoRegistro()" class="btn btn-block btn-primary"><i class="fa fa-plus"></i>&nbsp;Novo Abastecimento</a>

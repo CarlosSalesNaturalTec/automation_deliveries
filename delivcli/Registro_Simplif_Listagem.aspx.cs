@@ -45,6 +45,7 @@ namespace delivcli
                 "<th>ENTREGUES</th>" +
                 "<th>DEVOLVIDAS</th>" +
                 "<th>OBSERVAÇÕES</th>" +
+                "<th>COMANDOS</th>" +
                 "</tr>" +
                 "</thead>" +
                 "<tbody>";
@@ -81,13 +82,14 @@ namespace delivcli
 
                 // <!--*******Customização*******-->
                 string stringcomaspas = "<tr>" +
-                    "<td>" + bt1 + bt2 + ordem + "</td>" +
+                    "<td>" + ordem + "</td>" +
                     "<td>" + Coluna1 + "</td>" +
                     "<td>" + Coluna2 + "</td>" +
                     "<td>" + Coluna3 + "</td>" +
                     "<td>" + Coluna4 + "</td>" +
                     "<td>" + Coluna5 + "</td>" +
                     "<td>" + Coluna6 + "</td>" +
+                    "<td>" + bt1 + bt2 + "</td>" +
                     "</tr>";
                 str.Append(stringcomaspas);
                 ordem++;

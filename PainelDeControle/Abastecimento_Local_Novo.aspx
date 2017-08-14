@@ -63,11 +63,11 @@
                             <input type="number" class="form-control" id="input_valor" value="0">
                         </div>
 
-                        <label for="input_bonif" class="col-md-1 control-label">Bonificado</label>
+                        <label for="input_bonif" class="col-md-2 control-label">Tipo Bonificação</label>
                         <div class="col-md-2">
                             <select class="form-control" id="input_bonif">
-                                <option value="Não">Não</option>
-                                <option value="Sim">Sim</option>
+                                <option value="Não Bonificado">Não Bonificado</option>
+                                <option value="Bonificado">Bonificado</option>
                             </select>
                         </div>
                     </div>

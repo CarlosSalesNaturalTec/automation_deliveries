@@ -34,7 +34,7 @@
                     <a href="Abastecimento_Planilha.aspx" target="iframe" class="w3-bar-item w3-button">Abastecimento Polo</a>
                     <a href="Abastecimento_Local_Listagem.aspx" target="iframe" class="w3-bar-item w3-button">Abastecimento Local</a>
                     <a href="Home.aspx" target="iframe" class="w3-bar-item w3-button">Solicitações Extras</a>
-                    <a href="Registro_Simplificado_Listagem.aspx" target="iframe" class="w3-bar-item w3-button">Registro Simplificado</a>
+                    <a href="Registro_Simplif_Listagem.aspx" target="iframe" class="w3-bar-item w3-button">Registro Simplificado de Entregas</a>
                 </div>
             </div>
 

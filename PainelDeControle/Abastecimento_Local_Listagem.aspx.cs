@@ -36,13 +36,14 @@ public partial class Abastecimento_Local_Listagem : System.Web.UI.Page
         string stringcomaspas = "<table id=\"tabela\" class=\"table table-striped table-hover table-bordered \">" +
             "<thead>" +
             "<tr>" +
-            "<th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TALÃO</th>" +
+            "<th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nº TALÃO</th>" +
             "<th>DATA</th>" +
             "<th>NOME</th>" +
             "<th>PLACA</th>" +
             "<th>VALOR</th>" +
             "<th>BONIFICADO</th>" +
             "<th>OBS</th>" +
+            "<th>COMANDOS</th>" +
             "</tr>" +
             "</thead>" +
             "<tbody>";
@@ -81,13 +82,16 @@ public partial class Abastecimento_Local_Listagem : System.Web.UI.Page
 
             // <!--*******Customização*******-->
             string stringcomaspas = "<tr>" +
-                "<td>" + bt1 + bt2 + Coluna1 + "</td>" +
+                "<td>" + Coluna1 + "</td>" +
                 "<td>" + Coluna2 + "</td>" +
                 "<td>" + Coluna3 + "</td>" +
                 "<td>" + Coluna4 + "</td>" +
                 "<td>" + Coluna5 + "</td>" +
                 "<td>" + Coluna6 + "</td>" +
                 "<td>" + Coluna7 + "</td>" +
+                "<td>" + bt1 + bt2 + "</td>" +
+                
+
                 "</tr>";
 
             str.Append(stringcomaspas);
