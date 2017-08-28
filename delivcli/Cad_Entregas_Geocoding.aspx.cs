@@ -27,7 +27,7 @@ namespace delivcli
             //monta url para consulta de geolocalização
             string txtEnd = txtEndereco.Text + " " + txtNumero.Text + " " + txtBairro.Text + " " + txtCidade.Text;
             string Address = txtEnd.Replace(" ", "+");
-            string AddressURL = "https://maps.googleapis.com/maps/api/geocode/json?address=" + Address + "&key=AIzaSyCOmedP-f3N7W7CPxaRoCZJ5mTMm6g0Ycc";
+            string AddressURL = "https://maps.googleapis.com/maps/api/geocode/json?address=" + Address + "&key=AIzaSyB2PC8H2Mi0TZsYN-j17OtXsNb8DktSH64";
 
             //Faz a requisição das coordenadas
             var result = new System.Net.WebClient().DownloadString(AddressURL);

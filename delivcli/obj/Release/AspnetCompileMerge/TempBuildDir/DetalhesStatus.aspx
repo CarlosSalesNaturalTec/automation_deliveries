@@ -32,7 +32,7 @@
         <p><asp:Label ID="lblHoraEntrega" runat="server"></asp:Label></p>
     </div>
 
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCOmedP-f3N7W7CPxaRoCZJ5mTMm6g0Ycc&callback=initMap"
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2PC8H2Mi0TZsYN-j17OtXsNb8DktSH64&callback=initMap"
         async defer></script>
 
 </body>

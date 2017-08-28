@@ -144,7 +144,7 @@ namespace delivcli
             txtAux = "ykeys: ['valor1','valor2'],";
             str.Append(txtAux);
 
-            txtAux = "labels: ['Total de Entregas','Devolvidas'],";
+            txtAux = "labels: ['Total de Entregas','Entregues'],";
             str.Append(txtAux);
 
             txtAux = "gridTextSize: 8";
