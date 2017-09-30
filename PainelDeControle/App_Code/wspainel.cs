@@ -99,6 +99,47 @@ public class wspainel : System.Web.Services.WebService
     }
 
     [WebMethod]
+    public string ClienteNovaCidade(string param1, string param2, string param3)
+    {
+        string url = "";
+        OperacaoBanco operacao = new OperacaoBanco();
+        bool inserir = operacao.Insert("INSERT INTO Tbl_Clientes_Cidade_Custos (ID_Cliente , Cidade , Valor ) " +
+            "VALUES (" + param1 + ", '" + param2 + "', " + param3 + ")");
+        ConexaoBancoSQL.fecharConexao();
+        if (inserir == true)
+        {
+            url = "../Clientes.aspx";
+        }
+        else
+        {
+            url = "../Sorry.aspx";
+        }
+
+        return url;
+    }
+
+    [WebMethod]
+    public string ClienteDELCidade(string param1)
+    {
+        string url = "";
+        OperacaoBanco operacao = new OperacaoBanco();
+        Boolean deletar = operacao.Delete("delete from Tbl_Clientes_Cidade_Custos where ID_Cidade =" + param1);
+        ConexaoBancoSQL.fecharConexao();
+        if (deletar == true)
+        {
+            url = "../Clientes.aspx";
+        }
+        else
+        {
+            url = "../Sorry.aspx";
+        }
+
+        return url;
+    }
+
+
+
+    [WebMethod]
     public string ExcluirCliente(string param1)
     {
         string url = "";

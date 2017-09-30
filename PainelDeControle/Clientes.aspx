@@ -14,35 +14,38 @@
 </head>
 
 <body>
-    <div class="divbt" >
+    <p></p>
+    <div class="w3-container w3-border w3-round w3-padding-16 w3-light-green" style="margin-left: 2%; margin-right: 2%">
         <a href="ClienteNovo.aspx" class="btn btn-success">NOVO CLIENTE</a>
+        <h3>Cadastro de Clientes</h3>
     </div>
-    <h3>Cadastro de Clientes</h3>
     
-    <asp:Literal ID="Literal1" runat="server"></asp:Literal>
+    <div class="w3-container w3-border w3-round w3-padding-16 w3-light-gray w3-small" style="margin-left: 2%; margin-right: 2%">
+        <asp:Literal ID="Literal1" runat="server"></asp:Literal>
+    </div>
 
     <!-- Busca e Paginação modelo: datatables.net -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
-	    <link rel="stylesheet" href="//cdn.datatables.net/1.10.10/css/jquery.dataTables.min.css">
-	    <script src="//cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script>
-	    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-	    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.10/css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.10/css/jquery.dataTables.min.css">
+    <script src="//cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.10/css/dataTables.bootstrap.min.css">
 
-	    <script>
-	    $(document).ready(function(){
-	        $('#tabelaCli').DataTable({
-		    	"language": {
-		            "lengthMenu": "Mostrando _MENU_ registros por página",
-		            "zeroRecords": "Nada encontrado",
-		            "info": " _MAX_ registros no total",
-		            "infoEmpty": "Nenhum registro disponível",
-		            "infoFiltered": "(filtrado de _MAX_ registros no total)",
-		            "search": "Pesquisa:"
-		        }
-		    });
-		});
-	    </script>
+    <script>
+        $(document).ready(function () {
+            $('#tabelaCli').DataTable({
+                "language": {
+                    "lengthMenu": "Mostrando _MENU_ registros por página",
+                    "zeroRecords": "Nada encontrado",
+                    "info": " _MAX_ registros no total",
+                    "infoEmpty": "Nenhum registro disponível",
+                    "infoFiltered": "(filtrado de _MAX_ registros no total)",
+                    "search": "Pesquisa:"
+                }
+            });
+        });
+    </script>
 
 </body>
 </html>
