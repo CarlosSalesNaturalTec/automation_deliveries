@@ -9,6 +9,8 @@ public partial class ClienteFicha : System.Web.UI.Page
     {
         PreencheCampos(Request.QueryString["IDCli"]);
         Literal1.Text = str.ToString();
+
+        CidadesLista(Request.QueryString["IDCli"]);
     }
 
     private void PreencheCampos(string ID)

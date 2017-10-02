@@ -10,13 +10,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <link rel="stylesheet" href="~/vendors/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <script type="text/javascript" src="Scripts/jquery-3.1.1.min.js"></script>
 
 </head>
 <body>
 
+    <br />
     <div class="w3-container w3-border w3-round w3-padding-16 w3-light-gray w3-small" style="margin-left: 2%; margin-right: 2%">
         <form class="form-horizontal">
             <fieldset>
@@ -78,11 +80,10 @@
         </form>
     </div>
 
-    <div class="w3-container w3-padding">
-        <!--*******Customização*******-->
+    <br />
+    <div class="w3-container w3-border w3-round w3-padding-16 w3-light-gray w3-small" style="margin-left: 2%; margin-right: 2%">
         <h3><i class="fa fa-check-square-o" aria-hidden="true"></i>&nbsp;Custo dos Serviços</h3>
         <hr />
-
         <div class="w3-threequarter">
             <form class="form-horizontal">
                 <fieldset>
@@ -122,34 +123,6 @@
                     </div>
                 </fieldset>
             </form>
-
-            <!-- Botões Controle -->
-            <div class="form-group">
-                <div class="col-md-2"></div>
-                <div class="col-md-10 w3-border w3-padding w3-round">
-                    <p>
-                        <button class="w3-btn w3-round w3-border w3-light-green w3-hover-green btcontroles" onclick="cancelar()">
-                            <i class="fa fa-undo" aria-hidden="true"></i>&nbsp;Sair</button>
-
-                        <button class="w3-btn w3-round w3-border w3-light-green w3-hover-green btcontroles" onclick="btvoltar3()">
-                            <i class="fa fa-backward" aria-hidden="true"></i>&nbsp;Voltar</button>
-
-                        <button class="w3-btn w3-round w3-border w3-light-green w3-hover-green btcontroles" onclick="classeBt5()">
-                            <i class="fa fa-forward" aria-hidden="true"></i>&nbsp;Avançar</button>
-
-                        <button class="w3-btn w3-round w3-border w3-light-green w3-hover-green btcontroles" onclick="AlterarRegistro()">
-                            <i class="fa fa-check-square-o" aria-hidden="true"></i>&nbsp;Finalizar&nbsp;
-                        </button>
-
-                        <i style="display: none" class="aguarde fa-2x fa fa-cog fa-spin fa-fw w3-text-green w3-right"></i>
-                    </p>
-                </div>
-            </div>
-            <!-- Botões Controle -->
-
-        </div>
-
-        <div class="w3-quarter">
         </div>
     </div>
 

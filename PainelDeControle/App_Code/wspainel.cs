@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Web.Services;
+using System.Web.Script.Serialization;
+using System.Web.Script.Services;
+using System.Collections.Generic;
 
 [WebService(Namespace = "http://logmaster.azurewebsites.net/")]
 [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
@@ -490,6 +493,46 @@ public class wspainel : System.Web.Services.WebService
         }
 
         return msg;
+    }
+
+    [WebMethod]
+    [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+    public string Carrega_Cidades(string param1)
+    {
+
+        List<Object> resultado = new List<object>();
+        int totaldeRegistros = 0;
+
+        string stringSelect = "select Cidade, valor" +
+            " from Tbl_Clientes_Cidade_Custos" +
+            " where ID_Cliente = "  + param1 +
+            " order by Cidade";
+        OperacaoBanco operacao = new OperacaoBanco();
+        System.Data.SqlClient.SqlDataReader rcrdset = operacao.Select(stringSelect);
+        while (rcrdset.Read())
+        {
+            resultado.Add(new
+            {
+                nome = rcrdset[0].ToString(),
+                valor = rcrdset[1].ToString()
+            });
+            totaldeRegistros += 1;
+        }
+        ConexaoBancoSQL.fecharConexao();
+
+        if (totaldeRegistros == 0)
+        {
+            resultado.Add(new
+            {
+                nome = "X",
+                valor = "0"
+            });
+        }
+
+        //O JavaScriptSerializer vai fazer o web service retornar JSON
+        JavaScriptSerializer js = new JavaScriptSerializer();
+        return js.Serialize(resultado);
+
     }
 
 }
