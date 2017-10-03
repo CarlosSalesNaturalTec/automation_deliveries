@@ -535,4 +535,49 @@ public class wspainel : System.Web.Services.WebService
 
     }
 
+    [WebMethod]
+    public string Salvar_Roteiro(string param1, string param2, string param3, string param4, string param5, string param6, string param7)
+    {
+
+        string stringinsert = "INSERT INTO Tbl_Entregas (" +
+                    "ID_Cliente, " + 
+                    "ID_Motoboy, " +
+                    "Nome_Destinatario, " +
+                    "Endereco, " +
+                    "Bairro, " +
+                    "Cidade, " +
+                    "Valor_Encomenda, " +
+                    "Data_Encomenda, " +
+                    "Entregue, " +
+                    "Status_Entrega, " +
+                    "Partida_Iniciada" +
+                    ") VALUES (" +
+                    param1 + "," +
+                    param2 + "," +
+                    "'" + param3 + "'," +
+                    "'" + param4 + "'," +
+                    "'" + param5 + "'," +
+                    "'" + param6 + "'," +
+                    param7 + "," +
+                    "getdate(),  " +
+                    "0," +
+                    "'EM ABERTO'," +
+                    "0" +
+                    ")";
+        OperacaoBanco operacao = new OperacaoBanco();
+        bool inserir = operacao.Insert(stringinsert);
+        ConexaoBancoSQL.fecharConexao();
+
+        if (inserir == true)
+        {
+            url = "../Veiculos_Lista.aspx";
+        }
+        else
+        {
+            url = "../Sorry.aspx";
+        }
+
+        return url;
+    }
+
 }
