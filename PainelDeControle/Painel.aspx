@@ -34,6 +34,7 @@
                     <a href="Abastecimento_Planilha.aspx" target="iframe" class="w3-bar-item w3-button">Abastecimento Polo</a>
                     <a href="Abastecimento_Local_Listagem.aspx" target="iframe" class="w3-bar-item w3-button">Abastecimento Local</a>
                     <a href="Roteiros_Clientes.aspx" target="iframe" class="w3-bar-item w3-button">Lançar Roteiros</a>
+                    <a href="Roteiros_Status.aspx" target="iframe" class="w3-bar-item w3-button">Status Roteiros</a>
                 </div>
             </div>
 

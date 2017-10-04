@@ -5,18 +5,20 @@ using System.Text;
 public partial class Roteiros : System.Web.UI.Page
 {
     StringBuilder str = new StringBuilder();
+    string id_Mot, id_Cli;
 
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
         {
-            string id_Cli = Request.QueryString["v1"];  // id do cliente
-            string id_Mot = Request.QueryString["v2"];  // id do motoboy
+            id_Cli = Request.QueryString["v1"];  // id do cliente
+            id_Mot = Request.QueryString["v2"];  // id do motoboy
             string nome_cli = Request.QueryString["v3"];  // nome cliente
             string nome_mot = Request.QueryString["v4"];  // nome motoboy
 
             Carrega_Cidades(id_Cli);
             Preenche_dados(id_Cli, nome_cli, id_Mot, nome_mot);
+            Grid_Roteiros();
 
         }
     }
@@ -73,4 +75,46 @@ public partial class Roteiros : System.Web.UI.Page
 
     }
 
+    private void Grid_Roteiros()
+    {
+        string stringSelect = "select ID_Entrega, Nome_Destinatario, Endereco, Bairro , Cidade " +
+          " from Tbl_Entregas " +
+          " where ID_Motoboy  = " + id_Mot +
+          " and Status_Entrega = 'EM ABERTO'" +
+          " order by Bairro, Nome_Destinatario";
+        OperacaoBanco operacaoUsers = new OperacaoBanco();
+        System.Data.SqlClient.SqlDataReader rcrdsetUsers = operacaoUsers.Select(stringSelect);
+
+        str.Clear();
+        string ScriptDados;
+
+        while (rcrdsetUsers.Read())
+        {
+
+            string bt1 = "<a class='w3-btn w3-round w3-hover-red w3-text-green' onclick='Roteiro_Excluir(this," +
+                Convert.ToString(rcrdsetUsers[0]) +
+                ")'><i class='fa fa-trash-o' aria-hidden='true'></i></a>&nbsp;&nbsp;";
+
+            ScriptDados = "<tr>";
+            str.Append(ScriptDados);
+
+            ScriptDados = "<td>" + bt1 + Convert.ToString(rcrdsetUsers[1]) + "</td>";
+            str.Append(ScriptDados);
+
+            ScriptDados = "<td>" + Convert.ToString(rcrdsetUsers[2]) + "</td>";
+            str.Append(ScriptDados);
+
+            ScriptDados = "<td>" + Convert.ToString(rcrdsetUsers[3]) + "</td>";
+            str.Append(ScriptDados);
+
+            ScriptDados = "<td>" + Convert.ToString(rcrdsetUsers[4]) + "</td>";
+            str.Append(ScriptDados);
+
+            ScriptDados = "</tr>";
+            str.Append(ScriptDados);
+        }
+        ConexaoBancoSQL.fecharConexao();
+
+        Literal2.Text = str.ToString();
+    }
 }

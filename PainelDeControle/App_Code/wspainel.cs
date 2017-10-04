@@ -535,10 +535,12 @@ public class wspainel : System.Web.Services.WebService
 
     }
 
-    [WebMethod]
-    public string Salvar_Roteiro(string param1, string param2, string param3, string param4, string param5, string param6, string param7)
-    {
 
+
+    [WebMethod]
+    public string Roteiro_Salvar(string param1, string param2, string param3, string param4, string param5, string param6, string param7, string param8, string param9)
+    {
+        string url = "";
         string stringinsert = "INSERT INTO Tbl_Entregas (" +
                     "ID_Cliente, " + 
                     "ID_Motoboy, " +
@@ -547,10 +549,9 @@ public class wspainel : System.Web.Services.WebService
                     "Bairro, " +
                     "Cidade, " +
                     "Valor_Encomenda, " +
-                    "Data_Encomenda, " +
-                    "Entregue, " +
-                    "Status_Entrega, " +
-                    "Partida_Iniciada" +
+                    "Ponto_Ref, " +
+                    "Telefone, " +
+                    "Data_Encomenda " +
                     ") VALUES (" +
                     param1 + "," +
                     param2 + "," +
@@ -559,22 +560,35 @@ public class wspainel : System.Web.Services.WebService
                     "'" + param5 + "'," +
                     "'" + param6 + "'," +
                     param7 + "," +
-                    "getdate(),  " +
-                    "0," +
-                    "'EM ABERTO'," +
-                    "0" +
+                    "'" + param8 + "'," +
+                    "'" + param9 + "'," +
+                    "getdate()" +
                     ")";
         OperacaoBanco operacao = new OperacaoBanco();
         bool inserir = operacao.Insert(stringinsert);
         ConexaoBancoSQL.fecharConexao();
 
-        if (inserir == true)
+        if (inserir == true)  { url = "OK"; }  else  { url = "Sorry.aspx"; }
+
+        return url;
+    }
+
+    [WebMethod]
+    public string Roteiro_Excluir(string param1)
+    {
+        string url;
+
+        OperacaoBanco operacao3 = new OperacaoBanco();
+        Boolean deletar = operacao3.Delete("delete from Tbl_Entregas where ID_Entrega =" + param1);
+        ConexaoBancoSQL.fecharConexao();
+
+        if (deletar == true)
         {
-            url = "../Veiculos_Lista.aspx";
+            url = "OK";
         }
         else
         {
-            url = "../Sorry.aspx";
+            url = "Sorry.aspx";
         }
 
         return url;
