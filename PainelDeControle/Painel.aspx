@@ -5,12 +5,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>LOG Logística - Painel de Controle</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 
 </head>
 <body>
@@ -29,12 +29,18 @@
             </div>
 
             <div class="w3-dropdown-hover w3-right">
-                <button class="w3-btn w3-hover-green"><i class="fa fa-truck"></i>&nbsp;Operacional</button>
+                <button class="w3-btn w3-hover-green"><i class="fa fa-map-signs"></i>&nbsp;Roteiros</button>
+                <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                    <a href="Roteiros_Clientes.aspx" target="iframe" class="w3-bar-item w3-button">Lançar Roteiros</a>
+                    <a href="Roteiros_Status.aspx" target="iframe" class="w3-bar-item w3-button">Status Roteiros</a>
+                </div>
+            </div>
+
+            <div class="w3-dropdown-hover w3-right">
+                <button class="w3-btn w3-hover-green"><i class="fa fa-truck"></i>&nbsp;Abastecimentos</button>
                 <div class="w3-dropdown-content w3-bar-block w3-card-4">
                     <a href="Abastecimento_Planilha.aspx" target="iframe" class="w3-bar-item w3-button">Abastecimento Polo</a>
                     <a href="Abastecimento_Local_Listagem.aspx" target="iframe" class="w3-bar-item w3-button">Abastecimento Local</a>
-                    <a href="Roteiros_Clientes.aspx" target="iframe" class="w3-bar-item w3-button">Lançar Roteiros</a>
-                    <a href="Roteiros_Status.aspx" target="iframe" class="w3-bar-item w3-button">Status Roteiros</a>
                 </div>
             </div>
 
@@ -57,7 +63,7 @@
 
     <!-- page content -->
     <div >
-        <iframe src="Home.aspx" width="100%" height="1000px" frameborder="0" name="iframe">Atualize seu Navegador!</iframe>
+        <iframe src="Home.aspx" width="100%" height="1200px" frameborder="0" name="iframe">Atualize seu Navegador!</iframe>
     </div>
 
 

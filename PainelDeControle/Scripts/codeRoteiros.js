@@ -1,23 +1,35 @@
-﻿var input1 = document.getElementById('input_end');
+﻿var map;
 
-var defaultBounds = new google.maps.LatLngBounds(
-    new google.maps.LatLng(-13.0099, -38.5323),
-    new google.maps.LatLng(-12.7894, -38.2115)
-    );
+function initMap() {
 
-var options1 = {
-    bounds: defaultBounds
-};
+    map = new google.maps.Map(document.getElementById('map'), {
+        center: { lat: -12.9525123, lng: -38.4535139 },
+        zoom: 10
+    });
 
-google.maps.event.addDomListener(window, 'load', function () {
+    var input1 = document.getElementById('input_bairro');
+
+    var defaultBounds = new google.maps.LatLngBounds(
+        new google.maps.LatLng(-13.0099, -38.5323),
+        new google.maps.LatLng(-12.7894, -38.2115)
+        );
+
+    var options1 = {
+        bounds: defaultBounds
+    };
+
     var places1 = new google.maps.places.Autocomplete(input1, options1);
-    document.getElementById("input_dest").focus();
-});
+
+    document.getElementById("input_end").focus();
+
+    Marcadores();
+
+}
+
 
 function Roteiros_cancelar() {
     window.location.href = "Roteiros_Clientes.aspx";
 }
-
 
 function Roteiros_Salvar() {
 
@@ -28,12 +40,31 @@ function Roteiros_Salvar() {
     var valid2 = document.getElementById("input_bairro").value;
     if (valid2 == "") { alert("Informe Bairro"); return; }
 
-    var valid3 = document.getElementById("input_dest").value;
-    if (valid3 == "") { alert("Informe Destinatário"); return; }
-
-    //envia para webservice
     $("body").css("cursor", "progress");
     document.getElementById("btsalvar").disabled = true;
+
+    // coordenadas geográficas
+    //===============================================================
+    endereco = document.getElementById('input_bairro').value;
+    endereco1 = document.getElementById('input_end').value;
+    var geocoder = new google.maps.Geocoder();
+    geocoder.geocode({ address: endereco }, function (results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+            var ltlg = results[0].geometry.location;
+            var latPonto1 = ltlg.lat();
+            var lngPonto1 = ltlg.lng();
+
+            marker = new google.maps.Marker({
+                position: ltlg,
+                map: map,
+                title: endereco1,
+                animation: google.maps.Animation.DROP
+            });
+
+        };
+    });
+    //=================================================================
+
 
     var v1 = document.getElementById("ID_Cli_Hidden").value;
     var v2 = document.getElementById("ID_Mot_Hidden").value;
@@ -58,7 +89,7 @@ function Roteiros_Salvar() {
         success: function (response) {
             $("body").css("cursor", "default");
             document.getElementById("btsalvar").disabled = false;
-            RoteiroInsertLinha();
+            RoteiroInsertLinha(response.d);
         },
         failure: function (response) {
             window.location.href = response.d;
@@ -67,9 +98,11 @@ function Roteiros_Salvar() {
 
 }
 
-function RoteiroInsertLinha() {
+function RoteiroInsertLinha(idEntrega) {
+    
+    var btDel = "<a class='w3-btn w3-round w3-hover-red w3-text-green' onclick='Roteiro_Excluir(this," + idEntrega +")'><i class='fa fa-trash-o' aria-hidden='true'></i></a>&nbsp;&nbsp;";
+    var col1 = btDel + document.getElementById('input_dest').value;
 
-    var col1 = document.getElementById('input_dest').value;
     var col2 = document.getElementById('input_end').value;
     var col3 = document.getElementById('input_bairro').value;
 
@@ -95,7 +128,9 @@ function RoteiroInsertLinha() {
     document.getElementById('input_bairro').value = "";
     document.getElementById('input_pref').value = "";
     document.getElementById('input_tel').value = "";
-    
+
+    document.getElementById("input_end").focus();
+
 }
 
 function Roteiro_Excluir(r, USerID) {
@@ -118,6 +153,5 @@ function Roteiro_Excluir(r, USerID) {
             alert(response.d);
         }
     });
-
 
 }

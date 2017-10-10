@@ -12,7 +12,7 @@ public class wspainel : System.Web.Services.WebService
 {
     public wspainel()
     {
-        
+
     }
 
     [WebMethod]
@@ -505,7 +505,7 @@ public class wspainel : System.Web.Services.WebService
 
         string stringSelect = "select Cidade, valor" +
             " from Tbl_Clientes_Cidade_Custos" +
-            " where ID_Cliente = "  + param1 +
+            " where ID_Cliente = " + param1 +
             " order by Cidade";
         OperacaoBanco operacao = new OperacaoBanco();
         System.Data.SqlClient.SqlDataReader rcrdset = operacao.Select(stringSelect);
@@ -542,7 +542,7 @@ public class wspainel : System.Web.Services.WebService
     {
         string url = "";
         string stringinsert = "INSERT INTO Tbl_Entregas (" +
-                    "ID_Cliente, " + 
+                    "ID_Cliente, " +
                     "ID_Motoboy, " +
                     "Nome_Destinatario, " +
                     "Endereco, " +
@@ -568,7 +568,27 @@ public class wspainel : System.Web.Services.WebService
         bool inserir = operacao.Insert(stringinsert);
         ConexaoBancoSQL.fecharConexao();
 
-        if (inserir == true)  { url = "OK"; }  else  { url = "Sorry.aspx"; }
+        if (inserir == true)
+        {
+            string stringSelect = "select ID_Entrega " +
+           " from Tbl_Entregas " +
+           " where ( ID_Cliente = " + param1 +
+           " and ID_Motoboy = " + param2 +
+           " and Endereco = '" + param4 + "'" +
+           " and Bairro = '" + param5 + "')";
+
+            operacao = new OperacaoBanco();
+            System.Data.SqlClient.SqlDataReader rcrdset = operacao.Select(stringSelect);
+            while (rcrdset.Read())
+            {
+                url = rcrdset[0].ToString();
+            }
+            ConexaoBancoSQL.fecharConexao();
+        }
+        else
+        {
+            url = "Sorry.aspx";
+        }
 
         return url;
     }

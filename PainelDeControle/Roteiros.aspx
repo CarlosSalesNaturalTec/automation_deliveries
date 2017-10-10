@@ -20,6 +20,13 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 
+    <style>
+        #map {
+            height: 400px;
+            width: 100%;
+        }
+    </style>
+
 </head>
 
 <body style="margin-left: 2%; margin-right: 2%">
@@ -38,51 +45,60 @@
                 <fieldset>
 
                     <div class="form-group">
+
                         <label for="lbl_cliente" class="col-md-1 control-label">Cliente</label>
                         <div class="col-md-4">
                             <input type="text" id="lbl_cliente" class="form-control" disabled />
                         </div>
+
                         <label for="lbl_motoboy" class="col-md-1 control-label">Motoboy</label>
                         <div class="col-md-4">
                             <input type="text" id="lbl_motoboy" class="form-control" disabled />
                         </div>
+
                     </div>
 
                     <div class="form-group">
-                        <label for="input_dest" class="col-md-1 control-label">Destinatário</label>
-                        <div class="col-md-4">
-                            <input type="text" class="form-control" id="input_dest" />
-                        </div>
-                        <label for="input_bairro" class="col-md-1 control-label">Bairro</label>
-                        <div class="col-md-4">
-                            <input type="text" class="form-control" id="input_bairro" />
-                        </div>
-                    </div>
 
-                    <div class="form-group">
                         <label for="input_end" class="col-md-1 control-label">Endereço</label>
                         <div class="col-md-4">
                             <input type="text" class="form-control" id="input_end" />
                         </div>
+
+                        <label for="input_bairro" class="col-md-1 control-label">Bairro</label>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" id="input_bairro" />
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+
                         <label for="select_Cidade" class="col-md-1 control-label">Cidade</label>
                         <div class="col-md-4">
                             <asp:Literal ID="Literal_Cidade" runat="server"></asp:Literal>
                         </div>
+
+                        <label for="input_dest" class="col-md-1 control-label">Destinatário</label>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" id="input_dest" />
+                        </div>
+
                     </div>
 
                     <div class="form-group">
+
                         <label for="input_pref" class="col-md-1 control-label">P.Ref.:</label>
                         <div class="col-md-4">
                             <input type="text" class="form-control" id="input_pref" />
                         </div>
+
                         <label for="input_tel" class="col-md-1 control-label">Telefone</label>
-                        <div class="col-md-4">
+                        <div class="col-md-2">
                             <input id="input_tel" class="form-control" type="text" />
                         </div>
-                    </div>
 
-                    <div class="form-group">
-                        <div class="col-md-4 col-md-offset-1">
+                        <div class="col-md-2">
                             <button type="button" class="w3-btn w3-round w3-border w3-light-blue w3-hover-blue btcontroles" onclick="Roteiros_cancelar()">
                                 <i class="fa fa-undo" aria-hidden="true"></i>&nbsp;Voltar</button>
                             <button type="button" id="btsalvar" class="w3-btn w3-round w3-border w3-light-green w3-hover-green btcontroles" onclick="Roteiros_Salvar()">
@@ -95,6 +111,19 @@
             </form>
         </div>
 
+    </div>
+
+    <br />
+
+    <div id="map"></div>
+    <asp:Literal ID="Literal_mapa" runat="server"></asp:Literal>
+
+    <br />
+
+    <div class="panel panel-success">
+        <div class="panel-heading text-center">
+            <h4 class="panel-title">Entregas do Motoboy</h4>
+        </div>
     </div>
 
     <br />
@@ -119,10 +148,9 @@
     <input type="hidden" id="ID_Cli_Hidden" />
     <input type="hidden" id="ID_Mot_Hidden" />
 
-    <!-- Script Autocomplete-->
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2PC8H2Mi0TZsYN-j17OtXsNb8DktSH64&libraries=places"></script>
+    <!-- Script -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2PC8H2Mi0TZsYN-j17OtXsNb8DktSH64&libraries=places&callback=initMap" async defer></script>
     <script type="text/javascript" src="Scripts/codeRoteiros.js"></script>
-    <!-- Script Autocomplete-->
 
     <!-- Auxiliares -->
     <asp:Literal ID="Literal_aux" runat="server"></asp:Literal>

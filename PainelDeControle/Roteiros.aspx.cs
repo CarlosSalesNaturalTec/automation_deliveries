@@ -5,6 +5,9 @@ using System.Text;
 public partial class Roteiros : System.Web.UI.Page
 {
     StringBuilder str = new StringBuilder();
+    StringBuilder entregas = new StringBuilder();
+    StringBuilder strmarkers = new StringBuilder();
+
     string id_Mot, id_Cli;
 
     protected void Page_Load(object sender, EventArgs e)
@@ -77,7 +80,7 @@ public partial class Roteiros : System.Web.UI.Page
 
     private void Grid_Roteiros()
     {
-        string stringSelect = "select ID_Entrega, Nome_Destinatario, Endereco, Bairro , Cidade " +
+        string stringSelect = "select ID_Entrega, Nome_Destinatario, Endereco, Bairro , Cidade, Latitude , Longitude " +
           " from Tbl_Entregas " +
           " where ID_Motoboy  = " + id_Mot +
           " and Status_Entrega = 'EM ABERTO'" +
@@ -86,6 +89,7 @@ public partial class Roteiros : System.Web.UI.Page
         System.Data.SqlClient.SqlDataReader rcrdsetUsers = operacaoUsers.Select(stringSelect);
 
         str.Clear();
+        entregas.Clear();
         string ScriptDados;
 
         while (rcrdsetUsers.Read())
@@ -112,9 +116,54 @@ public partial class Roteiros : System.Web.UI.Page
 
             ScriptDados = "</tr>";
             str.Append(ScriptDados);
+
+            entregas.Append("{ lat: " + Convert.ToString(rcrdsetUsers[5]) + ", lng: " + Convert.ToString(rcrdsetUsers[6]) + " },");
+
         }
         ConexaoBancoSQL.fecharConexao();
 
         Literal2.Text = str.ToString();
+
+        //remove ultimo caracter "," 
+        if (entregas.Length == 0) { } else { entregas.Length--; }
     }
+
+    private void montaScript()
+    {
+        strmarkers.Clear();
+
+        strmarkers.Append(@"<script type='text/javascript'> 
+            var coordEntrega = [");
+        strmarkers.Append(entregas.ToString());
+        strmarkers.Append(@"];");
+
+        strmarkers.Append(@"function Marcadores(){
+            for (var i = 0; i < coordEntrega.length; i++) {
+                MarcadorEntregador(coordEntregador[i],NomeEntregador[i]);
+            }
+        }   
+     
+        function MarcadorEntregador(position,dadosc) {
+            var marker = new google.maps.Marker({
+            position: position,
+            icon: image,
+            title: dadosc,
+            map: map
+            });
+            var infowindow = new google.maps.InfoWindow({
+                content: dadosc
+            });
+            marker.addListener('click', function() {
+                infowindow.open(marker.get('map'), marker);
+            });
+        }
+        
+        </script>");
+
+        Literal_mapa.Text = str.ToString();
+
+    }
+
+
+
 }

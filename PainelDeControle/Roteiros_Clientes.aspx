@@ -64,7 +64,7 @@
                     <div class="form-group">
                         <div class="col-md-4 col-md-offset-1">
                             <button type="button" class="w3-btn w3-round w3-border w3-light-blue w3-hover-blue btcontroles" onclick="Roteiros_Cancelar()">
-                                <i class="fa fa-undo" aria-hidden="true"></i>&nbsp;Fechar</button>
+                                <i class="fa fa-undo" aria-hidden="true"></i>&nbsp;Voltar</button>
 
                             <button type="button" class="w3-btn w3-round w3-border w3-light-green w3-hover-green btcontroles" onclick="Roteiros_Avançar()">
                                 Avançar&nbsp;<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
@@ -81,6 +81,12 @@
     <br />
 
     <!-- GRID Roteiros Lançados -->
+
+    <div class="panel panel-success">
+        <div class="panel-heading text-center">
+            <h4 class="panel-title">Roteiros já Lançados</h4>
+        </div>
+    </div>
 
     <div class="w3-container w3-border w3-round w3-padding-16 w3-light-gray w3-small">
         <table id="tabela" class="w3-table-all w3-hoverable">
