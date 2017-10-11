@@ -538,7 +538,7 @@ public class wspainel : System.Web.Services.WebService
 
 
     [WebMethod]
-    public string Roteiro_Salvar(string param1, string param2, string param3, string param4, string param5, string param6, string param7, string param8, string param9)
+    public string Roteiro_Salvar(string param1, string param2, string param3, string param4, string param5, string param6, string param7, string param8, string param9, string param10, string param11)
     {
         string url = "";
         string stringinsert = "INSERT INTO Tbl_Entregas (" +
@@ -551,7 +551,9 @@ public class wspainel : System.Web.Services.WebService
                     "Valor_Encomenda, " +
                     "Ponto_Ref, " +
                     "Telefone, " +
-                    "Data_Encomenda " +
+                    "Data_Encomenda, " +
+                    "Latitude, " +
+                    "Longitude " +
                     ") VALUES (" +
                     param1 + "," +
                     param2 + "," +
@@ -562,7 +564,9 @@ public class wspainel : System.Web.Services.WebService
                     param7 + "," +
                     "'" + param8 + "'," +
                     "'" + param9 + "'," +
-                    "getdate()" +
+                    "getdate()," +
+                    "'" + param10 + "'," +
+                    "'" + param11 + "'" +
                     ")";
         OperacaoBanco operacao = new OperacaoBanco();
         bool inserir = operacao.Insert(stringinsert);
@@ -613,5 +617,29 @@ public class wspainel : System.Web.Services.WebService
 
         return url;
     }
+
+    [WebMethod]
+    public string Roteiro_Marcadores_Exibir(string param1)
+    {
+        string url;
+
+        OperacaoBanco operacao3 = new OperacaoBanco();
+        Boolean deletar = operacao3.Delete("delete from Tbl_Entregas where ID_Entrega =" + param1);
+        ConexaoBancoSQL.fecharConexao();
+
+        if (deletar == true)
+        {
+            url = "OK";
+        }
+        else
+        {
+            url = "Sorry.aspx";
+        }
+
+        return url;
+    }
+
+
+
 
 }

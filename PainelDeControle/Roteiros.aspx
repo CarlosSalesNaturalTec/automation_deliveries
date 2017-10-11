@@ -22,7 +22,7 @@
 
     <style>
         #map {
-            height: 400px;
+            height: 500px;
             width: 100%;
         }
     </style>
@@ -98,7 +98,7 @@
                             <input id="input_tel" class="form-control" type="text" />
                         </div>
 
-                        <div class="col-md-2">
+                        <div class="col-md-4">
                             <button type="button" class="w3-btn w3-round w3-border w3-light-blue w3-hover-blue btcontroles" onclick="Roteiros_cancelar()">
                                 <i class="fa fa-undo" aria-hidden="true"></i>&nbsp;Voltar</button>
                             <button type="button" id="btsalvar" class="w3-btn w3-round w3-border w3-light-green w3-hover-green btcontroles" onclick="Roteiros_Salvar()">
@@ -113,11 +113,7 @@
 
     </div>
 
-    <br />
-
     <div id="map"></div>
-    <asp:Literal ID="Literal_mapa" runat="server"></asp:Literal>
-
     <br />
 
     <div class="panel panel-success">
@@ -125,8 +121,6 @@
             <h4 class="panel-title">Entregas do Motoboy</h4>
         </div>
     </div>
-
-    <br />
 
     <!-- GRID Roteiros Lançados -->
     <div class="form-group">
@@ -154,6 +148,7 @@
 
     <!-- Auxiliares -->
     <asp:Literal ID="Literal_aux" runat="server"></asp:Literal>
+    <asp:Literal ID="Literal_mapa" runat="server"></asp:Literal>
 
 </body>
 </html>

@@ -1,10 +1,13 @@
 ﻿var map;
+var markers = [];
+var latPonto1;
+var lngPonto1;
 
 function initMap() {
 
     map = new google.maps.Map(document.getElementById('map'), {
         center: { lat: -12.9525123, lng: -38.4535139 },
-        zoom: 10
+        zoom: 11
     });
 
     var input1 = document.getElementById('input_bairro');
@@ -21,8 +24,6 @@ function initMap() {
     var places1 = new google.maps.places.Autocomplete(input1, options1);
 
     document.getElementById("input_end").focus();
-
-    Marcadores();
 
 }
 
@@ -43,29 +44,6 @@ function Roteiros_Salvar() {
     $("body").css("cursor", "progress");
     document.getElementById("btsalvar").disabled = true;
 
-    // coordenadas geográficas
-    //===============================================================
-    endereco = document.getElementById('input_bairro').value;
-    endereco1 = document.getElementById('input_end').value;
-    var geocoder = new google.maps.Geocoder();
-    geocoder.geocode({ address: endereco }, function (results, status) {
-        if (status == google.maps.GeocoderStatus.OK) {
-            var ltlg = results[0].geometry.location;
-            var latPonto1 = ltlg.lat();
-            var lngPonto1 = ltlg.lng();
-
-            marker = new google.maps.Marker({
-                position: ltlg,
-                map: map,
-                title: endereco1,
-                animation: google.maps.Animation.DROP
-            });
-
-        };
-    });
-    //=================================================================
-
-
     var v1 = document.getElementById("ID_Cli_Hidden").value;
     var v2 = document.getElementById("ID_Mot_Hidden").value;
 
@@ -80,16 +58,45 @@ function Roteiros_Salvar() {
     var v8 = document.getElementById("input_pref").value;
     var v9 = document.getElementById("input_tel").value;
 
+    var v10 = latPonto1;
+    var v11 = lngPonto1;
+
     $.ajax({
         type: "POST",
         url: "wspainel.asmx/Roteiro_Salvar",
-        data: '{param1: "' + v1 + '", param2: "' + v2 + '", param3: "' + v3 + '", param4: "' + v4 + '", param5: "' + v5 + '", param6: "' + v6 + '", param7: "' + v7 + '", param8: "' + v8 + '", param9: "' + v9 + '"}',
+        data: '{param1: "' + v1 + '", param2: "' + v2 + '", param3: "' + v3 + '", param4: "' + v4 + '", param5: "' + v5 +
+            '", param6: "' + v6 + '", param7: "' + v7 + '", param8: "' + v8 + '", param9: "' + v9 + '", param10: "' + v10 + '", param11: "' + v11 + '"}',
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (response) {
+
             $("body").css("cursor", "default");
             document.getElementById("btsalvar").disabled = false;
+
+            // coordenadas geográficas / Marcadror no Mapa
+            //===============================================================
+            endereco = document.getElementById('input_bairro').value;
+            endereco1 = document.getElementById('input_end').value;
+            var geocoder = new google.maps.Geocoder();
+            geocoder.geocode({ address: endereco }, function (results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    var ltlg = results[0].geometry.location;
+                    latPonto1 = ltlg.lat();
+                    lngPonto1 = ltlg.lng();
+
+                    marker = new google.maps.Marker({
+                        position: ltlg,
+                        map: map,
+                        title: endereco1,
+                        animation: google.maps.Animation.DROP
+                    });
+
+                };
+            });
+            //=================================================================
+
             RoteiroInsertLinha(response.d);
+
         },
         failure: function (response) {
             window.location.href = response.d;
@@ -148,10 +155,41 @@ function Roteiro_Excluir(r, USerID) {
             // excluir linha do Table
             var i = r.parentNode.parentNode.rowIndex;
             document.getElementById("MyTable").deleteRow(i);
+            AtualizaMarcadores();
         },
         failure: function (response) {
             alert(response.d);
         }
     });
+
+}
+
+function AtualizaMarcadores() {
+    //remove todos os marcadores
+    for (var i = 0; i < markers.length; i++) {
+        markers[i].setMap(null);
+    }
+
+    var v1 = document.getElementById("ID_Cli_Hidden").value;
+    var v2 = document.getElementById("ID_Mot_Hidden").value;
+
+    //monta marcadores
+    $.ajax({
+        type: "POST",
+        url: "wspainel.asmx/Roteiro_Excluir",
+        data: '{param1: "' + USerID + '"}',
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (response) {
+            // excluir linha do Table
+            var i = r.parentNode.parentNode.rowIndex;
+            document.getElementById("MyTable").deleteRow(i);
+            AtualizaMarcadores();
+        },
+        failure: function (response) {
+            alert(response.d);
+        }
+    });
+
 
 }

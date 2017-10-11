@@ -54,22 +54,20 @@
 
                     <div class="form-group">
                         <label for="select_motoboy" class="col-md-1 control-label">Motoboy</label>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <asp:Literal ID="Literal_Motoboy" runat="server"></asp:Literal>
                         </div>
-                    </div>
+                        <div class="col-md-4">
+                            <div class="col-md-4 col-md-offset-1">
+                                <button type="button" class="w3-btn w3-round w3-border w3-light-blue w3-hover-blue btcontroles" onclick="Roteiros_Cancelar()">
+                                    <i class="fa fa-undo" aria-hidden="true"></i>&nbsp;Voltar</button>
 
-                    <legend></legend>
-
-                    <div class="form-group">
-                        <div class="col-md-4 col-md-offset-1">
-                            <button type="button" class="w3-btn w3-round w3-border w3-light-blue w3-hover-blue btcontroles" onclick="Roteiros_Cancelar()">
-                                <i class="fa fa-undo" aria-hidden="true"></i>&nbsp;Voltar</button>
-
-                            <button type="button" class="w3-btn w3-round w3-border w3-light-green w3-hover-green btcontroles" onclick="Roteiros_Avançar()">
-                                Avançar&nbsp;<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
-                            <i style="display: none" class="aguarde fa-2x fa fa-cog fa-spin fa-fw w3-text-green w3-right"></i>
+                                <button type="button" class="w3-btn w3-round w3-border w3-light-green w3-hover-green btcontroles" onclick="Roteiros_Avançar()">
+                                    Avançar&nbsp;<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
+                                <i style="display: none" class="aguarde fa-2x fa fa-cog fa-spin fa-fw w3-text-green w3-right"></i>
+                            </div>
                         </div>
+
                     </div>
 
                 </fieldset>
@@ -77,8 +75,6 @@
         </div>
 
     </div>
-
-    <br />
 
     <!-- GRID Roteiros Lançados -->
 
