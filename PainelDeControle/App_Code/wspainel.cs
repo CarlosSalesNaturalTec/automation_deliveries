@@ -6,7 +6,6 @@ using System.Collections.Generic;
 
 [WebService(Namespace = "http://logmaster.azurewebsites.net/")]
 [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
-// To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
 [System.Web.Script.Services.ScriptService]
 public class wspainel : System.Web.Services.WebService
 {
@@ -619,27 +618,45 @@ public class wspainel : System.Web.Services.WebService
     }
 
     [WebMethod]
-    public string Roteiro_Marcadores_Exibir(string param1)
+    [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+    public string Roteiro_Marcadores_Exibir(string param1, string param2)
     {
-        string url;
+        List<Object> resultado = new List<object>();
+        int totaldeRegistros = 0;
 
-        OperacaoBanco operacao3 = new OperacaoBanco();
-        Boolean deletar = operacao3.Delete("delete from Tbl_Entregas where ID_Entrega =" + param1);
+        string stringSelect = "select Endereco, latitude, Longitude " +
+                  " from Tbl_Entregas " +
+                  " where ID_Cliente = " + param1 +
+                  " and ID_Motoboy = " + param2 +
+                  " and Status_Entrega = 'EM ABERTO'";
+
+        OperacaoBanco operacao = new OperacaoBanco();
+        System.Data.SqlClient.SqlDataReader rcrdset = operacao.Select(stringSelect);
+        while (rcrdset.Read())
+        {
+            resultado.Add(new
+            {
+                titulo = rcrdset[0].ToString(),
+                lat = rcrdset[1].ToString(),
+                lng = rcrdset[2].ToString()
+            });
+            totaldeRegistros += 1;
+        }
         ConexaoBancoSQL.fecharConexao();
 
-        if (deletar == true)
+        if (totaldeRegistros == 0)
         {
-            url = "OK";
-        }
-        else
-        {
-            url = "Sorry.aspx";
+            resultado.Add(new
+            {
+                titulo = "X",
+                lat = "0",
+                lng = "0"
+            });
         }
 
-        return url;
+        //O JavaScriptSerializer vai fazer o web service retornar JSON
+        JavaScriptSerializer js = new JavaScriptSerializer();
+        return js.Serialize(resultado);
     }
-
-
-
 
 }

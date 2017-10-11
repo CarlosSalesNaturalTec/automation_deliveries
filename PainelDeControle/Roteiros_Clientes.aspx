@@ -58,16 +58,13 @@
                             <asp:Literal ID="Literal_Motoboy" runat="server"></asp:Literal>
                         </div>
                         <div class="col-md-4">
-                            <div class="col-md-4 col-md-offset-1">
-                                <button type="button" class="w3-btn w3-round w3-border w3-light-blue w3-hover-blue btcontroles" onclick="Roteiros_Cancelar()">
-                                    <i class="fa fa-undo" aria-hidden="true"></i>&nbsp;Voltar</button>
+                            <button type="button" class="w3-btn w3-round w3-border w3-light-blue w3-hover-blue btcontroles" onclick="Roteiros_Cancelar()">
+                                <i class="fa fa-undo" aria-hidden="true"></i>&nbsp;Voltar</button>
 
-                                <button type="button" class="w3-btn w3-round w3-border w3-light-green w3-hover-green btcontroles" onclick="Roteiros_Avançar()">
-                                    Avançar&nbsp;<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
-                                <i style="display: none" class="aguarde fa-2x fa fa-cog fa-spin fa-fw w3-text-green w3-right"></i>
-                            </div>
+                            <button type="button" class="w3-btn w3-round w3-border w3-light-green w3-hover-green btcontroles" onclick="Roteiros_Avançar()">
+                                Avançar&nbsp;<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
+                            <i style="display: none" class="aguarde fa-2x fa fa-cog fa-spin fa-fw w3-text-green w3-right"></i>
                         </div>
-
                     </div>
 
                 </fieldset>

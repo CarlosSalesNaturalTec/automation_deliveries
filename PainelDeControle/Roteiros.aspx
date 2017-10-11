@@ -20,6 +20,13 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 
+     <!-- Paginação -->
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" />
+
     <style>
         #map {
             height: 500px;
@@ -67,7 +74,7 @@
 
                         <label for="input_bairro" class="col-md-1 control-label">Bairro</label>
                         <div class="col-md-4">
-                            <input type="text" class="form-control" id="input_bairro" />
+                            <input type="text" class="form-control" id="input_bairro" onblur="obtemCoord();" />
                         </div>
 
                     </div>
@@ -132,6 +139,8 @@
                         <th>Endereço</th>
                         <th>Bairro</th>
                         <th>Cidade</th>
+                        <th>Latitude</th>
+                        <th>Longitude</th>
                     </tr>
                 </thead>
                 <asp:Literal ID="Literal2" runat="server"></asp:Literal>
@@ -142,13 +151,16 @@
     <input type="hidden" id="ID_Cli_Hidden" />
     <input type="hidden" id="ID_Mot_Hidden" />
 
-    <!-- Script -->
+     <!-- Script -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2PC8H2Mi0TZsYN-j17OtXsNb8DktSH64&libraries=places&callback=initMap" async defer></script>
     <script type="text/javascript" src="Scripts/codeRoteiros.js"></script>
 
     <!-- Auxiliares -->
     <asp:Literal ID="Literal_aux" runat="server"></asp:Literal>
-    <asp:Literal ID="Literal_mapa" runat="server"></asp:Literal>
+
+    <!-- Script Paginação  -->
+    <script type="text/javascript" src="Scripts/codePaginacaoX.js"></script>
+
 
 </body>
 </html>

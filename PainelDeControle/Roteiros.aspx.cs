@@ -108,6 +108,12 @@ public partial class Roteiros : System.Web.UI.Page
             ScriptDados = "<td>" + Convert.ToString(rcrdsetUsers[4]) + "</td>";
             str.Append(ScriptDados);
 
+            ScriptDados = "<td>" + Convert.ToString(rcrdsetUsers[5]) + "</td>";
+            str.Append(ScriptDados);
+
+            ScriptDados = "<td>" + Convert.ToString(rcrdsetUsers[6]) + "</td>";
+            str.Append(ScriptDados);
+
             ScriptDados = "</tr>";
             str.Append(ScriptDados);
         }
