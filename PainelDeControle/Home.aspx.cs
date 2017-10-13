@@ -24,6 +24,9 @@ public partial class Home : System.Web.UI.Page
         Bloco2_MontaInfo();
         Bloco2_MontaLink(link, textolink);
 
+        link = "Roteiros_Status.aspx";
+        textolink = "Ver Status Atual";
+        Bloco3_MontaLink(link, textolink);
 
     }
 
@@ -62,8 +65,7 @@ public partial class Home : System.Web.UI.Page
         Bloco1_Link.Text = "<i class=\"fa fa-plus-square-o\"></i>&nbsp;&nbsp;<a href='" + url + "'>" + txtLink + "</a>";
     }
 
-
-
+    
     private void Bloco2_MontaInfo()
     {
         // Total de Abastecimentos
@@ -90,6 +92,12 @@ public partial class Home : System.Web.UI.Page
     private void Bloco2_MontaLink(string url, string txtLink)
     {
         Bloco2_Link.Text = "<i class=\"fa fa-plus-square-o\"></i>&nbsp;&nbsp;<a href='" + url + "'>" + txtLink + "</a>";
+    }
+
+
+    private void Bloco3_MontaLink(string url, string txtLink)
+    {
+        Bloco3_Link.Text = "<i class=\"fa fa-plus-square-o\"></i>&nbsp;&nbsp;<a href='" + url + "'>" + txtLink + "</a>";
     }
 
 }

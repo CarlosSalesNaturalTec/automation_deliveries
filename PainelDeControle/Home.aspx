@@ -73,6 +73,24 @@
             </div>
         </div>
 
+        <div id="Bloco3" class="w3-col s6 m3 l3 w3-padding">
+            <div class="panel panel-success">
+
+                <div class="panel-heading text-center">
+                    <h4 class="panel-title w3-small">Roteiros</h4>
+                </div>
+
+                <div class="panel-body text-center w3-text-black">
+                    <a href="Roteiros_Clientes1.aspx"><h1><i class="fa fa-map-signs" aria-hidden="true"></i><asp:Literal ID="Bloco3_Info" runat="server"></asp:Literal></h1></a>
+                </div>
+
+                <div class="panel-footer text-center">
+                    <p class="w3-small"><asp:Literal ID="Bloco3_Link" runat="server"></asp:Literal></p>
+                </div>
+
+            </div>
+        </div>
+
     </div>
 
 </body>

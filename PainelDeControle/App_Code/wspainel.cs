@@ -659,4 +659,54 @@ public class wspainel : System.Web.Services.WebService
         return js.Serialize(resultado);
     }
 
+    [WebMethod]
+    public string Roteiro_Salvar_2(string param1, string param2, string param3, string param4, string param5, string param6)
+    {
+        string url = "";
+        string stringinsert = "INSERT INTO Tbl_Entregas (" +
+                    "ID_Cliente, " +
+                    "Endereco, " +
+                    "Bairro, " +
+                    "Cidade, " +
+                    "valor_Encomenda , " +
+                    "valor_Encomenda , " +
+                    "Data_Encomenda, " +
+                    ") VALUES (" +
+                    param1 + "," +
+                    "'" + param2 + "'," +
+                    "'" + param3 + "'," +
+                    "'" + param4 + "'," +
+                    param5 + " ," +
+                    param6 + " ," +
+                    "getdate()" +
+                    ")";
+        OperacaoBanco operacao = new OperacaoBanco();
+        bool inserir = operacao.Insert(stringinsert);
+        ConexaoBancoSQL.fecharConexao();
+
+        if (inserir == true)
+        {
+            string stringSelect = "select ID_Entrega " +
+           " from Tbl_Entregas " +
+           " where ( ID_Cliente = " + param1 +
+           " and Endereco = '" + param2 + "'" +
+           " and Bairro = '" + param3 + "')";
+
+            operacao = new OperacaoBanco();
+            System.Data.SqlClient.SqlDataReader rcrdset = operacao.Select(stringSelect);
+            while (rcrdset.Read())
+            {
+                url = rcrdset[0].ToString();
+            }
+            ConexaoBancoSQL.fecharConexao();
+        }
+        else
+        {
+            url = "Sorry.aspx";
+        }
+
+        return url;
+    }
+
+
 }
