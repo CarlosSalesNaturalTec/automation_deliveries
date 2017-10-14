@@ -669,8 +669,8 @@ public class wspainel : System.Web.Services.WebService
                     "Bairro, " +
                     "Cidade, " +
                     "valor_Encomenda , " +
-                    "valor_Encomenda , " +
-                    "Data_Encomenda, " +
+                    "valor_Cliente , " +
+                    "Data_Encomenda " +
                     ") VALUES (" +
                     param1 + "," +
                     "'" + param2 + "'," +

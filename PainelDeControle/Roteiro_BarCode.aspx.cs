@@ -8,9 +8,11 @@ public partial class Roteiro_BarCode : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         string idAux = Request.QueryString["p1"];
+        string nomecli = Request.QueryString["p2"];
+
         Carrega_Cidades(idAux);
         Grid_Roteiros(idAux);
-        Preenche_dados(idAux);
+        Preenche_dados(idAux,nomecli);
         Preenche_AutoComplete();
     }
 
@@ -41,13 +43,16 @@ public partial class Roteiro_BarCode : System.Web.UI.Page
         Literal_Cidade.Text = str.ToString();
     }
 
-    private void Preenche_dados(string param1)
+    private void Preenche_dados(string param1, string param2)
     {
         str.Clear();
         string scrAux = "<script type=\"text/javascript\">";
         str.Append(scrAux);
 
         scrAux = "document.getElementById('ID_Cli_Hidden').value = \"" + param1 + "\";";
+        str.Append(scrAux);
+
+        scrAux = "document.getElementById('input_cli').value = \"" + param2 + "\";";
         str.Append(scrAux);
 
         scrAux = "</script>";
@@ -58,7 +63,7 @@ public partial class Roteiro_BarCode : System.Web.UI.Page
 
     private void Grid_Roteiros(string idaux)
     {
-        string stringSelect = "select ID_Entrega, Endereco, Bairro , Cidade, valor_Encomenda " +
+        string stringSelect = "select ID_Entrega, Endereco, Bairro , Cidade, valor_Cliente " +
           " from Tbl_Entregas " +
           " where ID_Cliente = " + idaux +
           " and Status_Entrega = 'EM ABERTO'" +
@@ -116,7 +121,7 @@ public partial class Roteiro_BarCode : System.Web.UI.Page
 
         TagIni = "<script> $(function() {";
         TagNomes = "var TagsNomes = [" + str.ToString() + "];";
-        TagAutocompNome = "$(\"#input1\").autocomplete({source: TagsNomes}); ";
+        TagAutocompNome = "$(\"#input_bairro\").autocomplete({source: TagsNomes}); ";
         TagFim = "});</script> ";
 
         Literal_AutoComplete.Text = TagIni + TagNomes + TagAutocompNome + TagFim;

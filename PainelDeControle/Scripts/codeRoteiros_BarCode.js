@@ -16,8 +16,9 @@ function Adicionar() {
     if (valid2 == "") { alert("Informe Bairro"); return; }
 
     var e = document.getElementById("select_Cidade")
-    var v4 = e.options[e.selectedIndex].text   //nome da cidade
-    if (v4 == "") { alert("Selecione uma Cidade"); return; }
+    var v4 = e.options[e.selectedIndex].text;   //nome da cidade
+    var v4aux = e.options[e.selectedIndex].value;  //id da cidade
+    if (v4aux == "0") { alert("Selecione uma Cidade"); return; }
 
     // envia para webservice
     $("body").css("cursor", "progress");
