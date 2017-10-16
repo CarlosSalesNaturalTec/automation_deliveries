@@ -708,5 +708,29 @@ public class wspainel : System.Web.Services.WebService
         return url;
     }
 
+    [WebMethod]
+    public string Roteiro_Motoboy_Setting(string[] param0)
+    {
+        string msg = "Aleluia";
+        string[] a = param0;
+
+        /*
+        OperacaoBanco operacao = new OperacaoBanco();
+        bool alterar = operacao.Update("update Tbl_Parametros set Abast_Sequencia = " + param0);
+
+        ConexaoBancoSQL.fecharConexao();
+        if (alterar == true)
+        {
+            msg = "Ok! Parâmetros Alterados";
+        }
+        else
+        {
+            msg = "NÃO FOI POSSÍVEL ALTERAR PARÂMETROS";
+        }
+        */
+
+        return msg;
+    }
+
 
 }

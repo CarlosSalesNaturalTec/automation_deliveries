@@ -19,3 +19,7 @@
 function Roteiros_Cancelar() {
     window.location.href = "Home.aspx";
 }
+
+function Roteiros_Setting() {
+    window.location.href = "Roteiros_Setting.aspx";
+}
