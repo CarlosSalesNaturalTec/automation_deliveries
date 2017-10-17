@@ -185,6 +185,28 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "SIG_Operacional", "SIG_Oper
 		DefaultWebSiteLanguage = "Visual C#"
 	EndProjectSection
 EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "aI_Logistic", "aI_Logistic\", "{A429C4E4-9AB1-48CE-8F3E-DCD5967B8A7A}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5.2"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_50018"
+		Debug.AspNetCompiler.PhysicalPath = "aI_Logistic\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_50018\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_50018"
+		Release.AspNetCompiler.PhysicalPath = "aI_Logistic\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_50018\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "50018"
+		SlnRelativePath = "aI_Logistic\"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -235,6 +257,10 @@ Global
 		{16B61C48-9B79-485A-8DBA-3F590414DF29}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{16B61C48-9B79-485A-8DBA-3F590414DF29}.Release|Any CPU.ActiveCfg = Debug|Any CPU
 		{16B61C48-9B79-485A-8DBA-3F590414DF29}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{A429C4E4-9AB1-48CE-8F3E-DCD5967B8A7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A429C4E4-9AB1-48CE-8F3E-DCD5967B8A7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A429C4E4-9AB1-48CE-8F3E-DCD5967B8A7A}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{A429C4E4-9AB1-48CE-8F3E-DCD5967B8A7A}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -709,25 +709,22 @@ public class wspainel : System.Web.Services.WebService
     }
 
     [WebMethod]
-    public string Roteiro_Motoboy_Setting(string[] param0)
+    public string Roteiro_Motoboy_Setting(string[] param0, string param1)
     {
-        string msg = "Aleluia";
-        string[] a = param0;
+        string msg = "Aleluia, deu certo!";
 
-        /*
+        string[] idsAux = param0;
+
         OperacaoBanco operacao = new OperacaoBanco();
-        bool alterar = operacao.Update("update Tbl_Parametros set Abast_Sequencia = " + param0);
+        bool alterar;
 
-        ConexaoBancoSQL.fecharConexao();
-        if (alterar == true)
+        for (int i = 0; i < idsAux.Length; i++)
         {
-            msg = "Ok! Parâmetros Alterados";
+            alterar = operacao.Update("update Tbl_Entregas set ID_Motoboy = " + param0);
+            ConexaoBancoSQL.fecharConexao();
+
         }
-        else
-        {
-            msg = "NÃO FOI POSSÍVEL ALTERAR PARÂMETROS";
-        }
-        */
+
 
         return msg;
     }

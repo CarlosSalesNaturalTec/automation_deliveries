@@ -23,3 +23,7 @@ function Roteiros_Cancelar() {
 function Roteiros_Setting() {
     window.location.href = "Roteiros_Setting.aspx";
 }
+
+function Roteiros_Bairro() {
+    window.location.href = "Roteiros_Bairros.aspx";
+}

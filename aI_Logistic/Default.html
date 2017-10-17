@@ -1,0 +1,147 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+    <title>Painel do Cliente</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+<body style="margin-left: 1%; margin-right: 1%">
+
+    <!--Menu -->
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="true">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#" onclick="pag_principal()">Log Logística</a>
+            </div>
+
+            <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1" aria-expanded="true" style="">
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#" onclick="pag_principal()"><i class="fa fa-home" aria-hidden="true"></i> Situação Atual</a></li>
+                    <li><a href="#" onclick="sairModal()">Sair <i class="fa fa-power-off" aria-hidden="true"></i></a></li>
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- Mapa -->
+    <div>
+        <iframe src="Mapa.html" width="100%" height="600px" frameborder="0" name="iframe">Atualize seu Navegador!</iframe>
+    </div>
+    <!-- Mapa -->
+
+
+    <br />
+
+    <!-- Blocos -->
+    <div class="w3-row w3-container w3-border w3-round w3-padding-16 w3-light-gray">
+
+        <div id="Bloco1" class="w3-col s12 m6 l4 w3-padding">
+            <div class="panel panel-success">
+                <div class="panel-heading text-center">
+                    <h4 class="panel-title w3-small">Resultado (Quantidade)</h4>
+                </div>
+
+                <div class="panel-body">
+                    <div id="Bloco1_Chart" style="min-width: 280px; height: 200px; margin: 0 auto"></div>
+                </div>
+
+            </div>
+        </div>
+
+        <div id="Bloco2" class="w3-col s12 m6 l4 w3-padding">
+            <div class="panel panel-success">
+                <div class="panel-heading text-center">
+                    <h4 class="panel-title w3-small">Resultado (Valores)</h4>
+                </div>
+
+                <div class="panel-body">
+                    <div id="Bloco2_Chart" style="min-width: 280px; height: 200px; margin: 0 auto"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="Bloco3" class="w3-col s12 m6 l4 w3-padding">
+            <div class="panel panel-success">
+                <div class="panel-heading text-center">
+                    <h4 class="panel-title w3-small">Resultado p/ Motoboy</h4>
+                </div>
+
+                <div class="panel-body">
+                    <div id="Bloco3_Chart" style="min-width: 280px; height: 200px; margin: 0 auto"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- Blocos -->
+
+    <!-- Modal LogOff -->
+    <div id="DivLogOut" class="w3-modal">
+        <div class="w3-modal-content w3-card-4 w3-animate-left" style="max-width: 400px">
+
+            <form class="w3-container">
+                <div class="w3-section w3-center">
+                    <header class="w3-container w3-blue w3-center">
+                        <h4><strong>Atenção</strong></h4>
+                    </header>
+                    <br />
+                    <i class="fa fa-3x fa-exclamation-triangle" aria-hidden="true"></i>
+                    <br />
+                    <h3><strong>Confirma Saida?</strong> </h3>
+                    <br />
+                    <p>
+                        <button type="button" class="w3-button w3-round w3-border w3-light-blue w3-hover-blue" onclick="sair_cancel()">Não</button>&nbsp;&nbsp;&nbsp;
+                        <button type="button" class="w3-button w3-round w3-border w3-light-blue w3-hover-red" onclick="sair_exit()">Sim</button>
+                    </p>
+                    <br />
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- Modal LogOff -->
+
+    <!-- Scripts -->
+    <script type="text/javascript">
+
+        function sairModal() {
+            document.getElementById('DivLogOut').style.display = "block";
+        }
+
+        function sair_cancel() {
+            document.getElementById('DivLogOut').style.display = 'none';
+        }
+
+        function sair_exit() {
+            window.open('LogOut.aspx', '_parent');
+        }
+
+        function pag_principal() {
+            window.open('Mapa.html', 'iframe');
+        }
+
+
+    </script>
+
+
+</body>
+</html>

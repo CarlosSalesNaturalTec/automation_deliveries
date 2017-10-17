@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Roteiros_Setting.aspx.cs" Inherits="Roteiros_Setting" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Roteiros_Bairros.aspx.cs" Inherits="Roteiros_Bairros" %>
 
 <!DOCTYPE html>
 
@@ -51,36 +51,26 @@
                             <button type="button" class="w3-btn w3-round w3-border w3-light-blue w3-hover-blue btcontroles" onclick="voltar()">
                                 <i class="fa fa-undo" aria-hidden="true"></i>&nbsp;Voltar&nbsp;</button>
 
-                            <button id="btselectmotoboy" type="button" class="w3-btn w3-round w3-border w3-light-green w3-hover-green btcontroles" onclick="VerificaCheck()">
+                            <button id="btselectmotoboy" type="button" class="w3-btn w3-round w3-border w3-light-green w3-hover-green btcontroles" onclick="">
                                 Definir&nbsp;<i class="fa fa-check-square-o" aria-hidden="true"></i></button>
 
                             <i style="display: none" class="aguarde fa-2x fa fa-cog fa-spin fa-fw w3-text-green w3-right"></i>
 
                         </div>
                     </div>
-
-                    <div class="form-group">
-                        <label for="marcar" class="col-md-1 control-label">Marcar Entregas</label>
-                        <div class="col-md-3">
-                            <input type="checkbox" class="w3-check" id="Check_All" onclick="MarcarDesmarcar()" />
-                        </div>
-                    </div>
-
                 </fieldset>
             </form>
         </div>
     </div>
 
-    <!-- GRID Roteiros Lançados -->
+    <!-- GRID Roteiros Lançados por Bairro-->
     <div class="form-group">
         <div class="col-md-12 w3-border w3-padding w3-round w3-light-gray">
             <table id="MyTable" class="w3-table-all w3-hoverable">
                 <thead>
                     <tr class="w3-grey">
-                        <th>Nº Entrega</th>
                         <th>Bairro</th>
-                        <th>Cidade</th>
-                        <th>Valor Cliente</th>
+                        <th>Quant. Entregas</th>
                     </tr>
                 </thead>
                 <asp:Literal ID="Literal_grid" runat="server"></asp:Literal>
@@ -90,57 +80,6 @@
 
     <!-- Auxiliares -->
     <script type="text/javascript">
-
-        function VerificaCheck() {
-
-            //validações
-            var idaux_1 = document.getElementById("select_motoboy");
-            var idaux_2 = idaux_1.options[idaux_1.selectedIndex].value;     //ID do cliente
-            if (idaux_2 == 0) { alert("Selecione o Motoboy"); return }
-
-            var registros = document.getElementsByName("chkselecao");
-            var registros_len = registros.length;
-            var marcados = 0;
-            var IDarray = [];
-            for (var i = 0; i < registros_len; i++) {
-                if (registros[i].checked) {
-                    marcados++;
-                    IDarray.push(registros[i].value);
-                }
-            }           
-            if (marcados == 0) { alert("Selecione ao menos uma Entrega"); return }
-
-            // REST
-            $("body").css("cursor", "progress");
-            document.getElementById("btselectmotoboy").disabled = true;
-
-            $.ajax({
-                type: "POST",
-                url: "wspainel.asmx/Roteiro_Motoboy_Setting",
-                data: JSON.stringify({ param0: IDarray }),
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: function (response) {
-                    alert(response.d);
-                },
-                failure: function (response) {
-                    alert(response.d);
-                }
-            });
-
-
-        }
-
-        function MarcarDesmarcar() {
-
-            var user_sel = document.getElementById("Check_All").checked;
-            var registros = document.getElementsByName("chkselecao");
-            var registros_len = registros.length;
-
-            for (var i = 0; i < registros_len; i++) {
-                registros[i].checked = user_sel;
-            }
-        }
 
         function voltar() {
             window.location.href = "Roteiros_Clientes1.aspx";

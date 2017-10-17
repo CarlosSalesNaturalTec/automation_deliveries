@@ -66,8 +66,8 @@
                 <fieldset>
                     <div class="form-group">
                         <label class="col-md-1 control-label">Motoboy</label>
-                        <div class="col-md-3">
-                            <button type="button" class="w3-btn w3-round w3-border w3-light-green w3-hover-green btcontroles" onclick="Roteiros_Setting()">Definir Motoboys&nbsp;&nbsp;<i class="fa fa-check-square-o" aria-hidden="true"></i></button>
+                        <div class="col-md-6">
+                            <button type="button" class="w3-btn w3-round w3-border w3-light-green w3-hover-green btcontroles" onclick="Roteiros_Bairro()">Definir Motoboys&nbsp;&nbsp;<i class="fa fa-check-square-o" aria-hidden="true"></i></button>
                         </div>
                     </div>
                 </fieldset>
