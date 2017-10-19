@@ -733,11 +733,17 @@ public class wspainel : System.Web.Services.WebService
         string msg = "Aleluia";
         string strupdate = "update Tbl_Entregas set " +
             " ID_Motoboy = " + param0 +
-            " where bairro = ''" + param1 + "'" +
-            " and ID_Motoboy = 0";
+            " where ID_Motoboy = 0" +
+            " and bairro = '" + param1 + "'";
 
         OperacaoBanco operacao = new OperacaoBanco();
         bool alterar = operacao.Update(strupdate);
+
+        if (alterar)
+        {
+            msg = "Ok. Aleluia";
+        }
+
         ConexaoBancoSQL.fecharConexao();
 
         return msg;

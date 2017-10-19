@@ -31,6 +31,8 @@
 
 <body style="margin-left: 2%; margin-right: 2%">
 
+    <br />
+
     <!-- GRID Roteiros Lançados por Bairro-->
     <div class="col-md-12 w3-border w3-padding w3-round w3-light-gray">
         <table id="MyTable" class="w3-table-all w3-hoverable">
@@ -45,7 +47,12 @@
         </table>
     </div>
 
+    <br />
+
     <div class="panel panel-success">
+         <div class="panel-heading text-center">
+            <h4 class="panel-title">Definir Motoboy</h4>
+        </div>
         <div class="panel-body">
             <form class="form-horizontal">
                 <fieldset>
@@ -89,12 +96,13 @@
 
                     $.ajax({
                         type: "POST",
-                        url: "wspainel.asmx/EditarCliente",
+                        url: "wspainel.asmx/Roteiro_Bairro_Motoboy",
                         data: '{param0: "' + idaux_2 + '", param1: "' + aux_bairro + '"}',
                         contentType: "application/json; charset=utf-8",
                         dataType: "json",
                         success: function (response) {
                             atualizados++;
+
                         },
                         failure: function (response) {
                             alert("Problemas ao tentar definir Motoboys");
