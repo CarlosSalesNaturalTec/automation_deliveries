@@ -711,7 +711,7 @@ public class wspainel : System.Web.Services.WebService
     [WebMethod]
     public string Roteiro_Motoboy_Setting(string[] param0, string param1)
     {
-        string msg = "Aleluia, deu certo!";
+        string msg = "Aleluia!";
 
         string[] idsAux = param0;
 
@@ -722,9 +722,23 @@ public class wspainel : System.Web.Services.WebService
         {
             alterar = operacao.Update("update Tbl_Entregas set ID_Motoboy = " + param0);
             ConexaoBancoSQL.fecharConexao();
-
         }
 
+        return msg;
+    }
+
+    [WebMethod]
+    public string Roteiro_Bairro_Motoboy(string param0, string param1)
+    {
+        string msg = "Aleluia";
+        string strupdate = "update Tbl_Entregas set " +
+            " ID_Motoboy = " + param0 +
+            " where bairro = ''" + param1 + "'" +
+            " and ID_Motoboy = 0";
+
+        OperacaoBanco operacao = new OperacaoBanco();
+        bool alterar = operacao.Update(strupdate);
+        ConexaoBancoSQL.fecharConexao();
 
         return msg;
     }

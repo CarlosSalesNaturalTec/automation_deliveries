@@ -40,10 +40,11 @@ public partial class Roteiros_Bairros : System.Web.UI.Page
 
     private void Grid_Roteiros()
     {
-        string stringSelect = "select Bairro , Count(Bairro) as quantB " +
+        string stringSelect = "select Tbl_Entregas.Bairro , Tbl_Clientes.Nome, Count(Tbl_Entregas.Bairro) as quantB " +
           " from Tbl_Entregas " +
-          " where Status_Entrega = 'EM ABERTO'" +
-          " group by Bairro";
+          " inner join Tbl_Clientes on Tbl_Entregas.ID_Cliente = Tbl_Clientes.ID_Cliente " +
+          " where Tbl_Entregas.ID_Motoboy = 0" +
+          " group by Tbl_Entregas.Bairro, Tbl_Clientes.Nome ";
         OperacaoBanco operacaoUsers = new OperacaoBanco();
         System.Data.SqlClient.SqlDataReader rcrdsetUsers = operacaoUsers.Select(stringSelect);
 
@@ -60,6 +61,9 @@ public partial class Roteiros_Bairros : System.Web.UI.Page
             str.Append(ScriptDados);
 
             ScriptDados = "<td>" + bt1 + Convert.ToString(rcrdsetUsers[0]) + "</td>";
+            str.Append(ScriptDados);
+
+            ScriptDados = "<td>" + Convert.ToString(rcrdsetUsers[2]) + "</td>";
             str.Append(ScriptDados);
 
             ScriptDados = "<td>" + Convert.ToString(rcrdsetUsers[1]) + "</td>";

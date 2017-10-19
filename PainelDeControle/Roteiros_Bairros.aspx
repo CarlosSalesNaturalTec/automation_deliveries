@@ -31,31 +31,31 @@
 
 <body style="margin-left: 2%; margin-right: 2%">
 
-    <br />
+    <!-- GRID Roteiros Lançados por Bairro-->
+    <div class="col-md-12 w3-border w3-padding w3-round w3-light-gray">
+        <table id="MyTable" class="w3-table-all w3-hoverable">
+            <thead>
+                <tr class="w3-grey">
+                    <th>Bairro</th>
+                    <th>Quant. Entregas</th>
+                    <th>Cliente</th>
+                </tr>
+            </thead>
+            <asp:Literal ID="Literal_grid" runat="server"></asp:Literal>
+        </table>
+    </div>
 
     <div class="panel panel-success">
-        <br />
-        <div class="panel-heading text-center">
-            <h4 class="panel-title">Definir Motoboy</h4>
-        </div>
         <div class="panel-body">
             <form class="form-horizontal">
                 <fieldset>
                     <div class="form-group">
-                        <label for="select_motoboy" class="col-md-1 control-label">Motoboy</label>
                         <div class="col-md-3">
                             <asp:Literal ID="Literal_Motoboy" runat="server"></asp:Literal>
                         </div>
                         <div class="col-md-3">
-
-                            <button type="button" class="w3-btn w3-round w3-border w3-light-blue w3-hover-blue btcontroles" onclick="voltar()">
-                                <i class="fa fa-undo" aria-hidden="true"></i>&nbsp;Voltar&nbsp;</button>
-
-                            <button id="btselectmotoboy" type="button" class="w3-btn w3-round w3-border w3-light-green w3-hover-green btcontroles" onclick="">
+                            <button id="btselectmotoboy" type="button" class="w3-btn w3-round w3-border w3-light-green w3-hover-green btcontroles" onclick="definir_motoboy()">
                                 Definir&nbsp;<i class="fa fa-check-square-o" aria-hidden="true"></i></button>
-
-                            <i style="display: none" class="aguarde fa-2x fa fa-cog fa-spin fa-fw w3-text-green w3-right"></i>
-
                         </div>
                     </div>
                 </fieldset>
@@ -63,34 +63,58 @@
         </div>
     </div>
 
-    <!-- GRID Roteiros Lançados por Bairro-->
-    <div class="form-group">
-        <div class="col-md-12 w3-border w3-padding w3-round w3-light-gray">
-            <table id="MyTable" class="w3-table-all w3-hoverable">
-                <thead>
-                    <tr class="w3-grey">
-                        <th>Bairro</th>
-                        <th>Quant. Entregas</th>
-                    </tr>
-                </thead>
-                <asp:Literal ID="Literal_grid" runat="server"></asp:Literal>
-            </table>
-        </div>
-    </div>
-
     <!-- Auxiliares -->
     <script type="text/javascript">
 
-        function voltar() {
-            window.location.href = "Roteiros_Clientes1.aspx";
+        function definir_motoboy() {
+
+            var idaux_1 = document.getElementById("select_motoboy");
+            var idaux_2 = idaux_1.options[idaux_1.selectedIndex].value;
+            if (idaux_2 == "0") { alert("Selecione um Motoboy"); return }
+
+            $("body").css("cursor", "progress");
+            document.getElementById("btselectmotoboy").disabled = true;
+
+            var registros = document.getElementsByName("chkselecao");
+            var registros_len = registros.length;
+            var marcados = 0;
+            var atualizados = 0;
+            var aux_bairro = "";
+
+            for (var i = 0; i < registros_len; i++) {
+                if (registros[i].checked) {
+
+                    marcados++;
+                    aux_bairro = registros[i].value;
+
+                    $.ajax({
+                        type: "POST",
+                        url: "wspainel.asmx/EditarCliente",
+                        data: '{param0: "' + idaux_2 + '", param1: "' + aux_bairro + '"}',
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        success: function (response) {
+                            atualizados++;
+                        },
+                        failure: function (response) {
+                            alert("Problemas ao tentar definir Motoboys");
+                        }
+                    });
+                }
+            }
+
+            if (marcados == 0) { alert("Selecione um Bairro"); return }
+
+            if (atualizados != 0) {
+                var linkurl = "Roteiros_Bairros.aspx";
+                window.location.href = linkurl;
+            }
+
         }
-
     </script>
-
 
     <!-- Script Paginação  -->
     <script type="text/javascript" src="Scripts/codePaginacaoX.js"></script>
-
 
 </body>
 </html>

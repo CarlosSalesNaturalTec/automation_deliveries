@@ -42,9 +42,6 @@
                             <asp:Literal ID="Literal_Empresa" runat="server"></asp:Literal>
                         </div>
                         <div class="col-md-3">
-                            <button type="button" class="w3-btn w3-round w3-border w3-light-blue w3-hover-blue btcontroles" onclick="Roteiros_Cancelar()">
-                                <i class="fa fa-undo" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Voltar&nbsp;&nbsp;&nbsp;</button>
-
                             <button id="btnext" type="button" class="w3-btn w3-round w3-border w3-light-green w3-hover-green btcontroles" onclick="Roteiros_Avançar()">
                                 Avançar&nbsp;<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
 
