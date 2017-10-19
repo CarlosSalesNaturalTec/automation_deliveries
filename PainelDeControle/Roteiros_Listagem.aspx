@@ -1,11 +1,11 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Roteiros_Bairros.aspx.cs" Inherits="Roteiros_Bairros" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Roteiros_Listagem.aspx.cs" Inherits="Roteiros_Listagem" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 
-    <title>Lançamento de Roteiros - Definição de Motoboys</title>
+    <title>Listagem de Entregas à Realizar</title>
 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -33,17 +33,29 @@
 
     <br />
 
-    <!-- GRID Roteiros Lançados por Bairro-->
-    <div class="col-md-12 w3-border w3-padding w3-round w3-light-gray">
-        <table id="MyTable" class="w3-table-all w3-hoverable">
+    <div class="panel panel-success">
+        <div class="panel-heading text-center">
+            <h4 class="panel-title">Listagem de Entregas a Realizar</h4>
+        </div>
+    </div>
+
+    <br />
+
+    <!-- GRID Roteiros Lançados -->
+    <div class="w3-container w3-border w3-round w3-padding-16 w3-light-gray w3-small">
+        <table id="tabela" class="w3-table-all w3-hoverable">
             <thead>
-                <tr class="w3-grey">
-                    <th>Bairro</th>
-                    <th>Quant. Entregas</th>
+                <tr class="w3-gray">
                     <th>Cliente</th>
+                    <th>Motoboy</th>
+                    <th>Destinatário</th>
+                    <th>End/Num</th>
+                    <th>Bairro</th>
+                    <th>Cidade</th>
+                    <th>Status</th>
                 </tr>
             </thead>
-            <asp:Literal ID="Literal_grid" runat="server"></asp:Literal>
+            <asp:Literal ID="Literal2" runat="server"></asp:Literal>
         </table>
     </div>
 
@@ -70,8 +82,36 @@
         </div>
     </div>
 
-    <!-- Auxiliares -->
+    <!-- Script Paginação  -->
+    <script type="text/javascript" src="Scripts/codePaginacao.js"></script>
+
     <script type="text/javascript">
+
+        function Excluir(r, idadux) {
+
+            var conf = confirm("Confirma Exclusão ?");
+            if (conf == false) { return; }
+
+            $("body").css("cursor", "progress");
+
+            $.ajax({
+                type: "POST",
+                url: "wspainel.asmx/Roteiro_Excluir",
+                data: '{param1: "' + idadux + '"}',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                    // excluir linha do Table
+                    var i = r.parentNode.parentNode.rowIndex;
+                    document.getElementById("tabela").deleteRow(i);
+                    $("body").css("cursor", "default");
+                },
+                failure: function (response) {
+                    alert(response.d);
+                }
+            });
+
+        }
 
         function definir_motoboy() {
 
@@ -85,24 +125,20 @@
             var registros = document.getElementsByName("chkselecao");
             var registros_len = registros.length;
             var marcados = 0;
-            var atualizados = 0;
-            var aux_bairro = "";
+            var aux_idEntrega = "";
 
             for (var i = 0; i < registros_len; i++) {
                 if (registros[i].checked) {
 
                     marcados++;
-                    aux_bairro = registros[i].value;
+                    aux_idEntrega = registros[i].value;
 
                     $.ajax({
                         type: "POST",
-                        url: "wspainel.asmx/Roteiro_Bairro_Motoboy",
-                        data: '{param0: "' + idaux_2 + '", param1: "' + aux_bairro + '"}',
+                        url: "wspainel.asmx/Roteiro_Alterar",
+                        data: '{param0: "' + idaux_2 + '", param1: "' + aux_idEntrega + '"}',
                         contentType: "application/json; charset=utf-8",
                         dataType: "json",
-                        success: function (response) {
-                            atualizados++;
-                        },
                         failure: function (response) {
                             alert("Problemas ao tentar definir Motoboys");
                         }
@@ -110,16 +146,22 @@
                 }
             }
 
-            if (marcados == 0) { alert("Selecione um Bairro"); return }
+            if (marcados == 0) { alert("Selecione uma entrega"); return }
 
-            var linkurl = "Roteiros_Bairros.aspx";
+            mensagem();
+
+        }
+
+        function mensagem() {
+            alert("Ok. Atualizado");
+            var linkurl = "Roteiros_Listagem.aspx";
             window.location.href = linkurl;
 
         }
+
+
+
+
     </script>
-
-    <!-- Script Paginação  -->
-    <script type="text/javascript" src="Scripts/codePaginacaoX.js"></script>
-
 </body>
 </html>

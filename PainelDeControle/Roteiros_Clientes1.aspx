@@ -36,18 +36,22 @@
             <br />
             <form class="form-horizontal">
                 <fieldset>
+
                     <div class="form-group">
                         <label for="select_empresa" class="col-md-1 control-label">Cliente</label>
                         <div class="col-md-3">
                             <asp:Literal ID="Literal_Empresa" runat="server"></asp:Literal>
                         </div>
-                        <div class="col-md-3">
-                            <button id="btnext" type="button" class="w3-btn w3-round w3-border w3-light-green w3-hover-green btcontroles" onclick="Roteiros_Avançar()">
-                                Avançar&nbsp;<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
+                    </div>
 
-                            <i style="display: none" class="aguarde fa-2x fa fa-cog fa-spin fa-fw w3-text-green w3-right"></i>
+                    <div class="form-group">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-3">
+                            <button id="btnext" type="button" class="w3-btn w3-round w3-border w3-light-green w3-hover-green w3-block" onclick="Roteiros_Avançar()">
+                                Lançar Entregas&nbsp;<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
                         </div>
                     </div>
+
                 </fieldset>
             </form>
         </div>
@@ -55,16 +59,23 @@
 
     <div class="panel panel-success">
         <div class="panel-heading text-center">
-            <h4 class="panel-title">Definir Motoboys</h4>
+            <h4 class="panel-title">Outras Operações</h4>
         </div>
         <div class="panel-body">
             <br />
             <form class="form-horizontal">
                 <fieldset>
                     <div class="form-group">
-                        <label class="col-md-1 control-label">Motoboy</label>
-                        <div class="col-md-6">
-                            <button type="button" class="w3-btn w3-round w3-border w3-light-green w3-hover-green btcontroles" onclick="Roteiros_Bairro()">Definir Motoboys&nbsp;&nbsp;<i class="fa fa-check-square-o" aria-hidden="true"></i></button>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-3">
+                            <button type="button" class="w3-btn w3-round w3-border w3-light-green w3-hover-green w3-block" onclick="Roteiros_Bairro()">
+                                Roteirizar por Bairro&nbsp;&nbsp;<i class="fa fa-map-signs" aria-hidden="true"></i></button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-3">
+                            <button type="button" class="w3-btn w3-round w3-border w3-light-green w3-hover-green w3-block" onclick="Roteiros_Listagem()">Entregas a Realizar&nbsp;&nbsp;<i class="fa fa-check-square-o" aria-hidden="true"></i></button>
                         </div>
                     </div>
                 </fieldset>

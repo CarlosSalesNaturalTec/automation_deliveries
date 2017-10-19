@@ -738,16 +738,24 @@ public class wspainel : System.Web.Services.WebService
 
         OperacaoBanco operacao = new OperacaoBanco();
         bool alterar = operacao.Update(strupdate);
-
-        if (alterar)
-        {
-            msg = "Ok. Aleluia";
-        }
-
         ConexaoBancoSQL.fecharConexao();
-
         return msg;
     }
+
+    [WebMethod]
+    public string Roteiro_Alterar(string param0, string param1)
+    {
+        string msg = "Aleluia";
+        string strupdate = "update Tbl_Entregas set " +
+            " ID_Motoboy = " + param0 +
+            " where ID_Entrega = '" + param1 + "'";
+
+        OperacaoBanco operacao = new OperacaoBanco();
+        bool alterar = operacao.Update(strupdate);
+        ConexaoBancoSQL.fecharConexao();
+        return msg;
+    }
+
 
 
 }

@@ -50,6 +50,7 @@
                     <th>Cliente</th>
                     <th>Motoboy</th>
                     <th>Destinatário</th>
+                    <th>End/Num</th>
                     <th>Bairro</th>
                     <th>Cidade</th>
                     <th>Status</th>

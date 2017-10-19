@@ -62,6 +62,7 @@
                         <div class="col-md-3">
                             <input type="text" class="form-control" id="input_bairro" />
                         </div>
+
                     </div>
 
                     <div class="form-group">
@@ -75,13 +76,9 @@
                             <input type="text" class="form-control" id="input_cli" disabled />
                         </div>
 
-                        <div class="col-md-3">
-                            <button type="button" class="w3-btn w3-round w3-border w3-light-blue w3-hover-blue btcontroles" onclick="voltar()">
-                                <i class="fa fa-undo" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Voltar&nbsp;&nbsp;&nbsp;</button>
-
-                            <button id="btSalvar" type="button" class="w3-btn w3-round w3-border w3-light-green w3-hover-green btcontroles" onclick="Adicionar()">
-                                Adicionar&nbsp;<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
-                            <i style="display: none" class="aguarde fa-2x fa fa-cog fa-spin fa-fw w3-text-green w3-right"></i>
+                        <div class="col-md-2">
+                            <button id="btSalvar" type="button" class="w3-btn w3-round w3-border w3-light-green w3-hover-green w3-block" onclick="Adicionar()">
+                                Adicionar&nbsp;&nbsp;<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
                         </div>
 
                     </div>
