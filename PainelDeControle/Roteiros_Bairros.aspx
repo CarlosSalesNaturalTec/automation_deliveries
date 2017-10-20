@@ -112,10 +112,19 @@
 
             if (marcados == 0) { alert("Selecione um Bairro"); return }
 
+            mensagem();
+
+        }
+
+        function mensagem() {
+
+            alert("Ok");
+
             var linkurl = "Roteiros_Bairros.aspx";
             window.location.href = linkurl;
 
         }
+
     </script>
 
     <!-- Script Paginação  -->

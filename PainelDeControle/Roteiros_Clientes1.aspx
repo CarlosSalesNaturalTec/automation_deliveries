@@ -42,9 +42,6 @@
                         <div class="col-md-3">
                             <asp:Literal ID="Literal_Empresa" runat="server"></asp:Literal>
                         </div>
-                    </div>
-
-                    <div class="form-group">
                         <div class="col-md-1"></div>
                         <div class="col-md-3">
                             <button id="btnext" type="button" class="w3-btn w3-round w3-border w3-light-green w3-hover-green w3-block" onclick="Roteiros_Avançar()">
@@ -65,19 +62,26 @@
             <br />
             <form class="form-horizontal">
                 <fieldset>
+
                     <div class="form-group">
                         <div class="col-md-1"></div>
                         <div class="col-md-3">
                             <button type="button" class="w3-btn w3-round w3-border w3-light-green w3-hover-green w3-block" onclick="Roteiros_Bairro()">
                                 Roteirizar por Bairro&nbsp;&nbsp;<i class="fa fa-map-signs" aria-hidden="true"></i></button>
                         </div>
-                    </div>
-                    <div class="form-group">
+
                         <div class="col-md-1"></div>
                         <div class="col-md-3">
-                            <button type="button" class="w3-btn w3-round w3-border w3-light-green w3-hover-green w3-block" onclick="Roteiros_Listagem()">Entregas a Realizar&nbsp;&nbsp;<i class="fa fa-check-square-o" aria-hidden="true"></i></button>
+                            <button type="button" class="w3-btn w3-round w3-border w3-light-blue w3-hover-blue w3-block" onclick="Roteiros_Listagem()">Entregas a Realizar&nbsp;&nbsp;<i class="fa fa-calendar-check-o" aria-hidden="true"></i></button>
                         </div>
+
+                        <div class="col-md-1"></div>
+                        <div class="col-md-3">
+                            <button type="button" class="w3-btn w3-round w3-border w3-light-green w3-hover-green w3-block" onclick="Roteiros_Pcontas()">Prestação de Contas&nbsp;&nbsp;<i class="fa fa-calculator" aria-hidden="true"></i></button>
+                        </div>
+
                     </div>
+
                 </fieldset>
             </form>
         </div>

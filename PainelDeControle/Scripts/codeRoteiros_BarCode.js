@@ -62,7 +62,8 @@ function RoteiroInsertLinha(idEntrega) {
     var e = document.getElementById("select_Cidade")
     var col3 = e.options[e.selectedIndex].text   //cidade
 
-    var col4 = document.getElementById('input_valor').value;
+    var col4 = "0";     // ID do motoboy
+    var col5 = document.getElementById('input_valor').value;
 
     var table = document.getElementById("MyTable");
 
@@ -71,11 +72,13 @@ function RoteiroInsertLinha(idEntrega) {
     var cell2 = row.insertCell(1);
     var cell3 = row.insertCell(2);
     var cell4 = row.insertCell(3);
+    var cell5 = row.insertCell(4);
 
     cell1.innerHTML = col1;
     cell2.innerHTML = col2;
     cell3.innerHTML = col3;
     cell4.innerHTML = col4;
+    cell5.innerHTML = col5;
 
     //apaga formulario
     document.getElementById("input_valor").value = "";

@@ -11,7 +11,7 @@
     document.getElementById("btnext").style.cursor = "progress";
     document.getElementById("btnext").disabled = true;
 
-    var urlLink = "Roteiro_BarCode.aspx?p1=" + idaux_2 + "&p2=" + idaux_3;
+    var urlLink = "Roteiros_BarCode.aspx?p1=" + idaux_2 + "&p2=" + idaux_3;
     window.location.href = urlLink;
 }
 
@@ -29,4 +29,8 @@ function Roteiros_Bairro() {
 
 function Roteiros_Listagem() {
     window.location.href = "Roteiros_Listagem.aspx";
+}
+
+function Roteiros_Pcontas() {
+    window.location.href = "Roteiros_Pcontas.aspx";
 }

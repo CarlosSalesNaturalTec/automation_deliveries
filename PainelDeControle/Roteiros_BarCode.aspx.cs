@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 
-public partial class Roteiro_BarCode : System.Web.UI.Page
+public partial class Roteiros_BarCode : System.Web.UI.Page
 {
     StringBuilder str = new StringBuilder();
 
@@ -63,7 +63,7 @@ public partial class Roteiro_BarCode : System.Web.UI.Page
 
     private void Grid_Roteiros(string idaux)
     {
-        string stringSelect = "select ID_Entrega, Endereco, Bairro , Cidade, valor_Cliente " +
+        string stringSelect = "select ID_Entrega, Endereco, Bairro , Cidade, valor_Cliente, ID_Motoboy " +
           " from Tbl_Entregas " +
           " where ID_Cliente = " + idaux +
           " and Status_Entrega = 'EM ABERTO'" +
@@ -90,6 +90,9 @@ public partial class Roteiro_BarCode : System.Web.UI.Page
             str.Append(ScriptDados);
 
             ScriptDados = "<td>" + Convert.ToString(rcrdsetUsers[3]) + "</td>";
+            str.Append(ScriptDados);
+
+            ScriptDados = "<td>" + Convert.ToString(rcrdsetUsers[5]) + "</td>";
             str.Append(ScriptDados);
 
             ScriptDados = "<td>" + Convert.ToString(rcrdsetUsers[4]) + "</td>";

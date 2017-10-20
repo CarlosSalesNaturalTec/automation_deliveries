@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Roteiro_BarCode.aspx.cs" Inherits="Roteiro_BarCode" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Roteiros_BarCode.aspx.cs" Inherits="Roteiros_BarCode" %>
 
 <!DOCTYPE html>
 
@@ -103,6 +103,7 @@
                         <th>Nº Entrega</th>
                         <th>Bairro</th>
                         <th>Cidade</th>
+                        <th>ID Motoboy</th>
                         <th>Valor Cliente</th>
                     </tr>
                 </thead>
