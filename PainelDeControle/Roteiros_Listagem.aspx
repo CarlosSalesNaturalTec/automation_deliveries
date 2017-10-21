@@ -52,6 +52,7 @@
                     <th>End/Num</th>
                     <th>Bairro</th>
                     <th>Cidade</th>
+                    <th>Valor Cliente</th>
                     <th>Status</th>
                 </tr>
             </thead>

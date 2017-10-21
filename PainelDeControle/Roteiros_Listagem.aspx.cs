@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Text;
 
 public partial class Roteiros_Listagem : System.Web.UI.Page
@@ -45,7 +46,7 @@ public partial class Roteiros_Listagem : System.Web.UI.Page
         string datastatus = DateTime.Now.ToString("yyyy-MM-dd");
 
         string stringSelect = "SELECT Tbl_Entregas.ID_Entrega, Tbl_Entregas.Nome_Destinatario, Tbl_Entregas.Bairro , Tbl_Entregas.Cidade , Tbl_Entregas.Status_Entrega, " +
-            "Tbl_Clientes.Nome, Tbl_Motoboys.Nome, Tbl_Entregas.Endereco " +
+            "Tbl_Clientes.Nome, Tbl_Motoboys.Nome, Tbl_Entregas.Endereco, Tbl_Entregas.valor_Cliente " +
             "FROM ((Tbl_Entregas " +
             "INNER JOIN Tbl_Clientes ON Tbl_Entregas.ID_Cliente = Tbl_Clientes.ID_Cliente) " +
             "INNER JOIN Tbl_Motoboys ON Tbl_Entregas.ID_Motoboy = Tbl_Motoboys.ID_Motoboy) " +
@@ -89,6 +90,9 @@ public partial class Roteiros_Listagem : System.Web.UI.Page
             bt1 = "<input type='checkbox'class='w3-check' name='chkselecao' value='" + idaux + "' />&nbsp;&nbsp;&nbsp;";
             bt2 = "<a class='w3-btn w3-round w3-hover-red w3-text-green' onclick='Excluir(this," + idaux + ")'><i class='fa fa-trash-o' aria-hidden='true'></i></a>&nbsp;&nbsp;";
 
+            //valorcliente
+            decimal valor = Convert.ToDecimal(rcrdsetUsers[8]);
+
             ScriptDados = "<tr>";
             str.Append(ScriptDados);
 
@@ -108,6 +112,9 @@ public partial class Roteiros_Listagem : System.Web.UI.Page
             str.Append(ScriptDados);
 
             ScriptDados = "<td>" + Convert.ToString(rcrdsetUsers[3]) + "</td>";
+            str.Append(ScriptDados);
+
+            ScriptDados = "<td>" + "R$ " + valor.ToString("N", CultureInfo.CreateSpecificCulture("pt-BR")) + "</td>";
             str.Append(ScriptDados);
 
             ScriptDados = "<td class='" + corStatus + "'>" + Convert.ToString(rcrdsetUsers[4]) + "</td>";

@@ -1,6 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Roteiros_Clientes1.aspx.cs" Inherits="Roteiros_Clientes1" %>
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
@@ -26,28 +24,31 @@
 
     <br />
 
-    <!-- Lançar Nova Entrega -->
     <div class="panel panel-success">
+
         <div class="panel-heading text-center">
             <h4 class="panel-title">Lançar Entregas</h4>
         </div>
+
         <div class="panel-body">
             <br />
-             <div class="w3-card-4 col-md-3">
+
+            <div class="w3-card-4 col-md-3">
                 <br />
                 <div class="w3-container w3-center">
+                    <p><asp:Literal ID="Literal_Empresa" runat="server"></asp:Literal></p>
                     <p><i class="fa fa-5x fa-plus" aria-hidden="true"></i></p>
                 </div>
+
                 <footer class="w3-container w3-center">
-                    <p><asp:Literal ID="Literal_Empresa" runat="server"></asp:Literal></p>
                     <button id="btnext" type="button" class="w3-btn w3-round w3-border w3-light-green w3-hover-green w3-block" onclick="Roteiros_Avançar()">Lançar Entregas</button>
                 </footer>
                 <br />
             </div>
+
         </div>
     </div>
 
-    <!-- Outras Operações -->
     <div class="panel panel-success">
         <div class="panel-heading text-center">
             <h4 class="panel-title">Outras Operações</h4>
@@ -56,48 +57,48 @@
         <div class="panel-body">
             <br />
 
-            <!-- Bairro -->
             <div class="w3-card-4 col-md-3">
                 <br />
                 <div class="w3-container w3-center">
                     <p><i class="fa fa-5x fa-map-signs" aria-hidden="true"></i>&nbsp;&nbsp;</p>
-                    <p><asp:Literal ID="Literal_quadro1" runat="server"></asp:Literal></p>
+                    <p>(150)</p>
                 </div>
+
                 <footer class="w3-container w3-center">
-                    <button type="button" class="w3-btn w3-round w3-border w3-light-green w3-hover-green w3-block" onclick="Roteiros_Bairro()">Não Roteirizadas</button>
+                    <button type="button" class="w3-btn w3-round w3-border w3-light-green w3-hover-green w3-block" onclick="Roteiros_Bairro()">Roteirizar por Bairro</button>
                 </footer>
                 <br />
             </div>
 
-            <!-- Entregas a Realizar -->
             <div class="col-md-1"></div>
             <div class="w3-card-4 col-md-3">
                 <br />
                 <div class="w3-container w3-center">
                     <p><i class="fa fa-5x fa-calendar-o" aria-hidden="true"></i></p>
-                    <p><asp:Literal ID="Literal_quadro2" runat="server"></asp:Literal></p>
+                    <p>(0)</p>
                 </div>
+
                 <footer class="w3-container w3-center">
-                    <button type="button" class="w3-btn w3-round w3-border w3-light-blue w3-hover-blue w3-block" onclick="Roteiros_Listagem()">Listagem Roteiro</button>
+                    <button type="button" class="w3-btn w3-round w3-border w3-light-blue w3-hover-blue w3-block" onclick="Roteiros_Listagem()">Entregas a Realizar</button>
                 </footer>
                 <br />
             </div>
 
-            <!-- Prestação de Contas -->
             <div class="col-md-1"></div>
             <div class="w3-card-4 col-md-3">
                 <br />
                 <div class="w3-container w3-center">
                     <p><i class="fa fa-5x fa-calculator" aria-hidden="true"></i></p>
-                    <p><asp:Literal ID="Literal_quadro3" runat="server"></asp:Literal></p>
+                    <p>R$ 3.500,00</p>
                 </div>
+
                 <footer class="w3-container w3-center">
                     <button type="button" class="w3-btn w3-round w3-border w3-light-green w3-hover-green w3-block" onclick="Roteiros_Pcontas()">Prestação de Contas</button>
                 </footer>
                 <br />
             </div>
         </div>
-        
+
     </div>
 
     <!-- Auxiliares -->

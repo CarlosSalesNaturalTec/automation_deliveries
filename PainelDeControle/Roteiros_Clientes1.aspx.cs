@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Text;
 
 public partial class Roteiros_Clientes1 : System.Web.UI.Page
@@ -9,6 +10,9 @@ public partial class Roteiros_Clientes1 : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         Preenche_Empresas();
+        Entregas_Bairro();
+        Entregas_Realizar();
+        Entregas_Pcontas();
     }
 
     private void Preenche_Empresas()
@@ -34,6 +38,61 @@ public partial class Roteiros_Clientes1 : System.Web.UI.Page
         scrNome = "</select>";
         str.Append(scrNome);
         Literal_Empresa.Text = str.ToString();
+
+    }
+
+    private void Entregas_Bairro()
+    {
+        string stringSelect = "select count(ID_Entrega) as quant from Tbl_Entregas where ID_Motoboy = 0 ";
+        OperacaoBanco operacao = new OperacaoBanco();
+        System.Data.SqlClient.SqlDataReader rcrdset = operacao.Select(stringSelect);
+
+        string quantTotal = "0";
+
+        while (rcrdset.Read())
+        {
+            quantTotal = Convert.ToString(rcrdset[0]);
+        }
+        ConexaoBancoSQL.fecharConexao();
+
+        Literal_quadro1.Text = "(" + quantTotal + ")";
+
+    }
+
+    private void Entregas_Realizar()
+    {
+        string stringSelect = "select count(ID_Entrega) as quant from Tbl_Entregas where Status_Entrega = 'EM ABERTO' and Encerrada = 0 ";
+        OperacaoBanco operacao = new OperacaoBanco();
+        System.Data.SqlClient.SqlDataReader rcrdset = operacao.Select(stringSelect);
+
+        string quantTotal = "0";
+
+        while (rcrdset.Read())
+        {
+            quantTotal = Convert.ToString(rcrdset[0]);
+        }
+        ConexaoBancoSQL.fecharConexao();
+
+        Literal_quadro2.Text = "(" + quantTotal + ")";
+
+    }
+
+    private void Entregas_Pcontas()
+    {
+        string stringSelect = "select sum(valor_Cliente) as valorT from Tbl_Entregas where Pcontas = 0 and Status_Entrega = 'ENTREGA REALIZADA'";
+        OperacaoBanco operacao = new OperacaoBanco();
+        System.Data.SqlClient.SqlDataReader rcrdset = operacao.Select(stringSelect);
+
+        string valortotal = "0";
+
+        while (rcrdset.Read())
+        {
+            decimal valor = Convert.ToDecimal(rcrdset[0]);
+            valortotal = "R$ " + valor.ToString("N", CultureInfo.CreateSpecificCulture("pt-BR"));          
+        }
+        ConexaoBancoSQL.fecharConexao();
+
+        Literal_quadro3.Text = "(" + valortotal + ")";
 
     }
 
