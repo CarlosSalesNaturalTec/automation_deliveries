@@ -50,7 +50,7 @@ public partial class Roteiros_Listagem : System.Web.UI.Page
             "FROM ((Tbl_Entregas " +
             "INNER JOIN Tbl_Clientes ON Tbl_Entregas.ID_Cliente = Tbl_Clientes.ID_Cliente) " +
             "INNER JOIN Tbl_Motoboys ON Tbl_Entregas.ID_Motoboy = Tbl_Motoboys.ID_Motoboy) " +
-            "where Status_Entrega = 'EM ABERTO' " +
+            "where Status_Entrega <> 'ENTREGA REALIZADA' " +
             "order by Tbl_Clientes.Nome, Tbl_Motoboys.Nome  ;";
 
         OperacaoBanco operacaoUsers = new OperacaoBanco();

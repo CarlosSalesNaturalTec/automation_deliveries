@@ -9,10 +9,13 @@ public partial class Roteiros_Clientes1 : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        Preenche_Empresas();
-        Entregas_Bairro();
-        Entregas_Realizar();
-        Entregas_Pcontas();
+        if (!IsPostBack)
+        {
+            Preenche_Empresas();
+            Entregas_Bairro();
+            Entregas_Realizar();
+            Entregas_Pcontas();
+        }
     }
 
     private void Preenche_Empresas()
@@ -61,7 +64,7 @@ public partial class Roteiros_Clientes1 : System.Web.UI.Page
 
     private void Entregas_Realizar()
     {
-        string stringSelect = "select count(ID_Entrega) as quant from Tbl_Entregas where Status_Entrega = 'EM ABERTO' and Encerrada = 0 ";
+        string stringSelect = "select count(ID_Entrega) as quant from Tbl_Entregas where Status_Entrega = 'EM ABERTO' and Encerrada = 0 and ID_Motoboy <> 0 ";
         OperacaoBanco operacao = new OperacaoBanco();
         System.Data.SqlClient.SqlDataReader rcrdset = operacao.Select(stringSelect);
 
@@ -87,12 +90,11 @@ public partial class Roteiros_Clientes1 : System.Web.UI.Page
 
         while (rcrdset.Read())
         {
-            decimal valor = Convert.ToDecimal(rcrdset[0]);
-            valortotal = "R$ " + valor.ToString("N", CultureInfo.CreateSpecificCulture("pt-BR"));          
+            valortotal = Convert.ToString(rcrdset[0]);
         }
         ConexaoBancoSQL.fecharConexao();
 
-        Literal_quadro3.Text = "(" + valortotal + ")";
+        Literal_quadro3.Text = "(R$ " + valortotal + ")";
 
     }
 

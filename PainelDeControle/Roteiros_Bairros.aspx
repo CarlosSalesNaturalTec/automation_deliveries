@@ -60,7 +60,12 @@
                         <div class="col-md-3">
                             <asp:Literal ID="Literal_Motoboy" runat="server"></asp:Literal>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-6">
+                            <button id="btvoltar" type="button" class="w3-btn w3-round w3-border w3-light-gray w3-hover-gray btcontroles" onclick="voltar()">
+                                Voltar&nbsp;<i class="fa fa-undo" aria-hidden="true"></i></button>
+
+                            &nbsp;&nbsp;&nbsp;
+
                             <button id="btselectmotoboy" type="button" class="w3-btn w3-round w3-border w3-light-green w3-hover-green btcontroles" onclick="definir_motoboy()">
                                 Definir&nbsp;<i class="fa fa-check-square-o" aria-hidden="true"></i></button>
                         </div>
@@ -117,12 +122,14 @@
         }
 
         function mensagem() {
-
             alert("Ok");
-
             var linkurl = "Roteiros_Bairros.aspx";
             window.location.href = linkurl;
+        }
 
+        function voltar() {
+            var linkurl = "Roteiros_Clientes1.aspx";
+            window.location.href = linkurl;
         }
 
     </script>

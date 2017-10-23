@@ -63,6 +63,11 @@
                             <input type="text" class="form-control" id="input_bairro" />
                         </div>
 
+                        <div class="col-md-2">
+                            <button id="btSalvar" type="button" class="w3-btn w3-round w3-border w3-light-gray w3-hover-gray w3-block" onclick="voltar()">
+                                Voltar&nbsp;&nbsp;<i class="fa fa-undo" aria-hidden="true"></i></button>
+                        </div>
+
                     </div>
 
                     <div class="form-group">
@@ -77,7 +82,7 @@
                         </div>
 
                         <div class="col-md-2">
-                            <button id="btSalvar" type="button" class="w3-btn w3-round w3-border w3-light-green w3-hover-green w3-block" onclick="Adicionar()">
+                            <button id="btvoltar" type="button" class="w3-btn w3-round w3-border w3-light-green w3-hover-green w3-block" onclick="Adicionar()">
                                 Adicionar&nbsp;&nbsp;<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
                         </div>
 

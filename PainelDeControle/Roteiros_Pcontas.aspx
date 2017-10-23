@@ -53,33 +53,14 @@
         </div>
     </div>
 
-    <!-- GRID Entregas Não Realizadas-->
-    <br />
-    <div class="panel panel-success">
-        <div class="panel-heading text-center">
-            <h4 class="panel-title">Prestação de Contas - NÃO REALIZADAS</h4>
-        </div>
-        <div class="panel-body">
-            <!-- GRID Roteiros Lançados -->
-            <div class="w3-container w3-border w3-round w3-padding-16 w3-light-gray w3-small">
-                <table id="tabela1" class="w3-table-all w3-hoverable">
-                    <thead>
-                        <tr class="w3-gray">
-                            <th>Motoboy</th>
-                            <th>Quant. Total</th>
-                            <th>Valor Total</th>
-                        </tr>
-                    </thead>
-                    <asp:Literal ID="Literal_grid2" runat="server"></asp:Literal>
-                </table>
-           </div>
+    <div class="w3-container">
+        <div class="col-md-3">
+            <button id="btvoltar" type="button" class="w3-btn w3-round w3-border w3-light-gray w3-hover-gray btcontroles" onclick="window.location.href ='Roteiros_Clientes1.aspx';">
+                Voltar&nbsp;<i class="fa fa-undo" aria-hidden="true"></i></button>
         </div>
     </div>
-    <br />
-
     <!-- Script Paginação  -->
     <script type="text/javascript" src="Scripts/codePaginacao.js"></script>
-
 
 </body>
 </html>

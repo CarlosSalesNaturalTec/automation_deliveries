@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 
-    <title>Listagem de Entregas à Realizar</title>
+    <title>Listagem de Roteiros</title>
 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -35,7 +35,7 @@
 
     <div class="panel panel-success">
         <div class="panel-heading text-center">
-            <h4 class="panel-title">Listagem de Entregas a Realizar</h4>
+            <h4 class="panel-title">Listagem de Roteiro</h4>
         </div>
     </div>
 
@@ -64,7 +64,7 @@
 
     <div class="panel panel-success">
          <div class="panel-heading text-center">
-            <h4 class="panel-title">Definir Motoboy</h4>
+            <h4 class="panel-title">Alterar Motoboy</h4>
         </div>
         <div class="panel-body">
             <form class="form-horizontal">
@@ -73,9 +73,16 @@
                         <div class="col-md-3">
                             <asp:Literal ID="Literal_Motoboy" runat="server"></asp:Literal>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-6">
+
+                            <button id="btvoltar" type="button" class="w3-btn w3-round w3-border w3-light-gray w3-hover-gray btcontroles" onclick="voltar()">
+                                Voltar&nbsp;<i class="fa fa-undo" aria-hidden="true"></i></button>
+
+                            &nbsp;&nbsp;&nbsp;
+
                             <button id="btselectmotoboy" type="button" class="w3-btn w3-round w3-border w3-light-green w3-hover-green btcontroles" onclick="definir_motoboy()">
                                 Definir&nbsp;<i class="fa fa-check-square-o" aria-hidden="true"></i></button>
+
                         </div>
                     </div>
                 </fieldset>
@@ -147,7 +154,12 @@
                 }
             }
 
-            if (marcados == 0) { alert("Selecione uma entrega"); return }
+            if (marcados == 0) {
+                alert("Selecione uma entrega");
+                $("body").css("cursor", "default");
+                document.getElementById("btselectmotoboy").disabled = false;
+                return
+            }
 
             mensagem();
 
@@ -160,8 +172,9 @@
 
         }
 
-
-
+        function voltar() {
+            window.location.href = "Roteiros_Clientes1.aspx";
+        }
 
     </script>
 </body>

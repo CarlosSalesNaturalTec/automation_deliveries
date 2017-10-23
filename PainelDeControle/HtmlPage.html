@@ -2,8 +2,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-
-    <title>Lançamento de Roteiros - Selecione Cliente</title>
+    <title>Prestação de Contas</title>
 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -19,90 +18,33 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 
 </head>
-
-<body style="margin-left: 2%; margin-right: 2%">
+<body>
 
     <br />
 
     <div class="panel panel-success">
-
         <div class="panel-heading text-center">
-            <h4 class="panel-title">Lançar Entregas</h4>
-        </div>
-
-        <div class="panel-body">
-            <br />
-
-            <div class="w3-card-4 col-md-3">
-                <br />
-                <div class="w3-container w3-center">
-                    <p><asp:Literal ID="Literal_Empresa" runat="server"></asp:Literal></p>
-                    <p><i class="fa fa-5x fa-plus" aria-hidden="true"></i></p>
-                </div>
-
-                <footer class="w3-container w3-center">
-                    <button id="btnext" type="button" class="w3-btn w3-round w3-border w3-light-green w3-hover-green w3-block" onclick="Roteiros_Avançar()">Lançar Entregas</button>
-                </footer>
-                <br />
-            </div>
-
+            <h4 class="panel-title">Prestação de Contas</h4>
         </div>
     </div>
 
-    <div class="panel panel-success">
-        <div class="panel-heading text-center">
-            <h4 class="panel-title">Outras Operações</h4>
-        </div>
+    <br />
 
-        <div class="panel-body">
-            <br />
-
-            <div class="w3-card-4 col-md-3">
-                <br />
-                <div class="w3-container w3-center">
-                    <p><i class="fa fa-5x fa-map-signs" aria-hidden="true"></i>&nbsp;&nbsp;</p>
-                    <p>(150)</p>
-                </div>
-
-                <footer class="w3-container w3-center">
-                    <button type="button" class="w3-btn w3-round w3-border w3-light-green w3-hover-green w3-block" onclick="Roteiros_Bairro()">Roteirizar por Bairro</button>
-                </footer>
-                <br />
-            </div>
-
-            <div class="col-md-1"></div>
-            <div class="w3-card-4 col-md-3">
-                <br />
-                <div class="w3-container w3-center">
-                    <p><i class="fa fa-5x fa-calendar-o" aria-hidden="true"></i></p>
-                    <p>(0)</p>
-                </div>
-
-                <footer class="w3-container w3-center">
-                    <button type="button" class="w3-btn w3-round w3-border w3-light-blue w3-hover-blue w3-block" onclick="Roteiros_Listagem()">Entregas a Realizar</button>
-                </footer>
-                <br />
-            </div>
-
-            <div class="col-md-1"></div>
-            <div class="w3-card-4 col-md-3">
-                <br />
-                <div class="w3-container w3-center">
-                    <p><i class="fa fa-5x fa-calculator" aria-hidden="true"></i></p>
-                    <p>R$ 3.500,00</p>
-                </div>
-
-                <footer class="w3-container w3-center">
-                    <button type="button" class="w3-btn w3-round w3-border w3-light-green w3-hover-green w3-block" onclick="Roteiros_Pcontas()">Prestação de Contas</button>
-                </footer>
-                <br />
-            </div>
-        </div>
-
+    <!-- GRID Roteiros Lançados -->
+    <div class="w3-container w3-border w3-round w3-padding-16 w3-light-gray w3-small">
+        <table id="tabela" class="w3-table-all w3-hoverable">
+            <thead>
+                <tr class="w3-gray">
+                    <th>Cliente</th>
+                    <th>Destinatário</th>
+                    <th>End/Num</th>
+                    <th>Bairro</th>
+                    <th>Cidade</th>
+                    <th>Valor Cliente</th>
+                </tr>
+            </thead>
+        </table>
     </div>
-
-    <!-- Auxiliares -->
-    <script type="text/javascript" src="Scripts/codeRoteiros_Clientes1.js"></script>
 
 </body>
 </html>

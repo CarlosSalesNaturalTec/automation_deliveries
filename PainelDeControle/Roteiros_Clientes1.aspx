@@ -78,13 +78,12 @@
                     <p><asp:Literal ID="Literal_quadro2" runat="server"></asp:Literal></p>
                 </div>
                 <footer class="w3-container w3-center">
-                    <button type="button" class="w3-btn w3-round w3-border w3-light-blue w3-hover-blue w3-block" onclick="Roteiros_Listagem()">Listagem Roteiro</button>
+                    <button type="button" class="w3-btn w3-round w3-border w3-light-blue w3-hover-blue w3-block" onclick="Roteiros_Listagem()">Roteiro</button>
                 </footer>
                 <br />
             </div>
 
             <!-- Prestação de Contas -->
-            <div class="col-md-1"></div>
             <div class="w3-card-4 col-md-3">
                 <br />
                 <div class="w3-container w3-center">
