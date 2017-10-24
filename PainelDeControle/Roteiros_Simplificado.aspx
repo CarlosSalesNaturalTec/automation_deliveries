@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Roteiros_BarCode.aspx.cs" Inherits="Roteiros_BarCode" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Roteiros_Simplificado.aspx.cs" Inherits="Roteiros_Simplificado" %>
 
 <!DOCTYPE html>
 
@@ -6,7 +6,7 @@
 
 <head runat="server">
 
-    <title>Lançamento de Roteiros por Número da Entrega</title>
+    <title>Lançamento de Entrega Simples</title>
 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -41,21 +41,16 @@
     <div class="panel panel-success">
 
         <div class="panel-heading text-center">
-            <h4 class="panel-title">Coleta de Valores</h4>
+            <h4 class="panel-title">Lançamento de Entrega Simples</h4>
         </div>
 
         <div class="panel-body">
             <form class="form-horizontal">
                 <fieldset>
                     <div class="form-group">
-                        <label for="input_end" class="col-md-1 control-label">Nº Entrega</label>
-                        <div class="col-md-1">
+                        <label for="input_end" class="col-md-1 control-label">Endereço</label>
+                        <div class="col-md-3">
                             <input type="text" class="form-control" id="input_end" />
-                        </div>
-
-                        <label for="input_valor" class="col-md-1 control-label">Valor</label>
-                        <div class="col-md-1">
-                            <input type="number" class="form-control" id="input_valor" />
                         </div>
 
                         <label for="input_bairro" class="col-md-1 control-label">Bairro</label>
@@ -105,11 +100,10 @@
             <table id="MyTable" class="w3-table-all w3-hoverable">
                 <thead>
                     <tr class="w3-grey">
-                        <th>Nº Entrega</th>
+                        <th>Endereço</th>
                         <th>Bairro</th>
                         <th>Cidade</th>
                         <th>ID Motoboy</th>
-                        <th>Valor Cliente</th>
                     </tr>
                 </thead>
                 <asp:Literal ID="Literal2" runat="server"></asp:Literal>
@@ -126,7 +120,7 @@
 
     <!-- Script Paginação  -->
     <script type="text/javascript" src="Scripts/codePaginacaoX.js"></script>
-    <script type="text/javascript" src="Scripts/codeRoteiros_BarCode.js"></script>
+    <script type="text/javascript" src="Scripts/codeRoteiros_Simplificado.js"></script>
 
 </body>
 </html>

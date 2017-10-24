@@ -6,6 +6,7 @@ public partial class Roteiros_Clientes1 : System.Web.UI.Page
 {
 
     StringBuilder str = new StringBuilder();
+    StringBuilder str_2 = new StringBuilder();
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -25,22 +26,31 @@ public partial class Roteiros_Clientes1 : System.Web.UI.Page
         System.Data.SqlClient.SqlDataReader rcrdset = operacao.Select(stringSelect);
 
         str.Clear();
+        str_2.Clear();
+
         string scrNome = "<select class=\"form-control\" id=\"select_empresa\">";
         str.Append(scrNome);
+        scrNome = "<select class=\"form-control\" id=\"select_empresa2\">";
+        str_2.Append(scrNome);
 
         scrNome = "<option value=\"0\">Selecione um Cliente</option>";
         str.Append(scrNome);
+        str_2.Append(scrNome);
 
         while (rcrdset.Read())
         {
             scrNome = "<option value=\"" + Convert.ToString(rcrdset[0]) + "\">" + Convert.ToString(rcrdset[1]) + "</option>";
             str.Append(scrNome);
+            str_2.Append(scrNome);
         }
         ConexaoBancoSQL.fecharConexao();
 
         scrNome = "</select>";
         str.Append(scrNome);
+        str_2.Append(scrNome);
+
         Literal_Empresa.Text = str.ToString();
+        Literal_Empresa1.Text = str_2.ToString();
 
     }
 

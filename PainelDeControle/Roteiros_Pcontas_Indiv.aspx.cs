@@ -40,9 +40,12 @@ public partial class Roteiros_Pcontas_Indiv : System.Web.UI.Page
             string Coluna3 = Convert.ToString(dados[2]);
             string Coluna4 = Convert.ToString(dados[3]);
             string Coluna5 = Convert.ToString(dados[4]);
+
             string Coluna6 = Convert.ToString(dados[5]);
+            decimal Coluna6a = Convert.ToDecimal(dados[5]);
 
             totalPconta = totalPconta + Convert.ToDecimal(dados[5]);
+
 
             // <!--*******Customização*******-->
             string stringcomaspas = "<tr>" +
@@ -51,7 +54,7 @@ public partial class Roteiros_Pcontas_Indiv : System.Web.UI.Page
                 "<td>" + Coluna3 + "</td>" +
                 "<td>" + Coluna4 + "</td>" +
                 "<td>" + Coluna5 + "</td>" +
-                "<td>" + Coluna6 + "</td>" +
+                "<td>" + Coluna6a.ToString("N", CultureInfo.CreateSpecificCulture("pt-BR")) + "</td>" +
                 "</tr>";
 
             str.Append(stringcomaspas);
@@ -60,13 +63,14 @@ public partial class Roteiros_Pcontas_Indiv : System.Web.UI.Page
 
         literal_realizadas.Text = str.ToString();
 
-        lbl_totalPconta.Text = "R$ " +  totalPconta.ToString("N", CultureInfo.CreateSpecificCulture("pt-BR"));
+        lbl_totalPconta.Text = " Total : R$ " +  totalPconta.ToString("N", CultureInfo.CreateSpecificCulture("pt-BR"));
     }
 
 
     private void grid_nao_realizadas(string param1)
     {
-        string stringselect = "select Tbl_Clientes.Nome, Tbl_Entregas.Nome_Destinatario, Tbl_Entregas.Endereco, Tbl_Entregas.Bairro , Tbl_Entregas.Cidade, Tbl_Entregas.valor_Cliente  " +
+        string stringselect = "select Tbl_Clientes.Nome, Tbl_Entregas.Nome_Destinatario, Tbl_Entregas.Endereco, Tbl_Entregas.Bairro , " +
+                "Tbl_Entregas.Cidade, Tbl_Entregas.valor_Cliente, Tbl_Entregas.Status_Entrega " +
                 "from Tbl_Entregas " +
                 "inner join Tbl_Clientes ON Tbl_Entregas.ID_Cliente = Tbl_Clientes.ID_Cliente " +
                 "where Tbl_Entregas.ID_Motoboy = " + param1 + " and " +
@@ -75,6 +79,8 @@ public partial class Roteiros_Pcontas_Indiv : System.Web.UI.Page
 
         OperacaoBanco operacao = new OperacaoBanco();
         System.Data.SqlClient.SqlDataReader dados = operacao.Select(stringselect);
+
+        str.Clear();
 
         while (dados.Read())
         {
@@ -85,6 +91,7 @@ public partial class Roteiros_Pcontas_Indiv : System.Web.UI.Page
             string Coluna4 = Convert.ToString(dados[3]);
             string Coluna5 = Convert.ToString(dados[4]);
             string Coluna6 = Convert.ToString(dados[5]);
+            string Coluna7 = Convert.ToString(dados[6]);
 
             // <!--*******Customização*******-->
             string stringcomaspas = "<tr>" +
@@ -94,6 +101,7 @@ public partial class Roteiros_Pcontas_Indiv : System.Web.UI.Page
                 "<td>" + Coluna4 + "</td>" +
                 "<td>" + Coluna5 + "</td>" +
                 "<td>" + Coluna6 + "</td>" +
+                "<td>" + Coluna7 + "</td>" +
                 "</tr>";
 
             str.Append(stringcomaspas);

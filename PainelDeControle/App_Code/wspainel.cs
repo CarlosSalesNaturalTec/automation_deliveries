@@ -709,6 +709,53 @@ public class wspainel : System.Web.Services.WebService
     }
 
     [WebMethod]
+    public string Roteiro_Salvar_3(string param1, string param2, string param3, string param4, string param5)
+    {
+        string url = "";
+        string stringinsert = "INSERT INTO Tbl_Entregas (" +
+                    "ID_Cliente, " +
+                    "Endereco, " +
+                    "Bairro, " +
+                    "Cidade, " +
+                    "valor_Encomenda , " +
+                    "Data_Encomenda " +
+                    ") VALUES (" +
+                    param1 + "," +
+                    "'" + param2 + "'," +
+                    "'" + param3 + "'," +
+                    "'" + param4 + "'," +
+                    param5 + " ," +
+                    "getdate()" +
+                    ")";
+        OperacaoBanco operacao = new OperacaoBanco();
+        bool inserir = operacao.Insert(stringinsert);
+        ConexaoBancoSQL.fecharConexao();
+
+        if (inserir == true)
+        {
+            string stringSelect = "select ID_Entrega " +
+           " from Tbl_Entregas " +
+           " where ( ID_Cliente = " + param1 +
+           " and Endereco = '" + param2 + "'" +
+           " and Bairro = '" + param3 + "')";
+
+            operacao = new OperacaoBanco();
+            System.Data.SqlClient.SqlDataReader rcrdset = operacao.Select(stringSelect);
+            while (rcrdset.Read())
+            {
+                url = rcrdset[0].ToString();
+            }
+            ConexaoBancoSQL.fecharConexao();
+        }
+        else
+        {
+            url = "Sorry.aspx";
+        }
+
+        return url;
+    }
+
+    [WebMethod]
     public string Roteiro_Motoboy_Setting(string[] param0, string param1)
     {
         string msg = "Aleluia!";
@@ -745,7 +792,7 @@ public class wspainel : System.Web.Services.WebService
     [WebMethod]
     public string Roteiro_Alterar(string param0, string param1)
     {
-        string msg = "Aleluia";
+        string msg = "Ok";
         string strupdate = "update Tbl_Entregas set " +
             " ID_Motoboy = " + param0 +
             " where ID_Entrega = '" + param1 + "'";
@@ -756,6 +803,19 @@ public class wspainel : System.Web.Services.WebService
         return msg;
     }
 
+    [WebMethod]
+    public string Roteiro_Alterar_Status(string param0, string param1)
+    {
+        string msg = "Ok";
 
+        string strupdate = "update Tbl_Entregas set " +
+           "Status_Entrega = '" + param0 + "' " +
+           "where ID_Entrega = '" + param1 + "'";
+
+        OperacaoBanco operacao = new OperacaoBanco();
+        bool alterar = operacao.Update(strupdate);
+        ConexaoBancoSQL.fecharConexao();
+        return msg;
+    }
 
 }

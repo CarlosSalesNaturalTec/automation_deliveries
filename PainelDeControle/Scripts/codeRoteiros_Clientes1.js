@@ -15,6 +15,23 @@
     window.location.href = urlLink;
 }
 
+function Roteiros_Avançar_2() {
+
+    var idaux_1 = document.getElementById("select_empresa2");
+    var idaux_2 = idaux_1.options[idaux_1.selectedIndex].value;     //ID do cliente
+    var idaux_3 = idaux_1.options[idaux_1.selectedIndex].text;     //Nom do cliente
+
+    //validacoes
+    if (idaux_2 == "0") { alert("Selecione um Cliente"); return }
+
+    $("body").css("cursor", "progress");
+    document.getElementById("btnext2").style.cursor = "progress";
+    document.getElementById("btnext2").disabled = true;
+
+    var urlLink = "Roteiros_Simplificado.aspx?p1=" + idaux_2 + "&p2=" + idaux_3;
+    window.location.href = urlLink;
+}
+
 function Roteiros_Cancelar() {
     window.location.href = "Home.aspx";
 }

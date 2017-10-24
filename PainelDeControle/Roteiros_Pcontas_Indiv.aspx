@@ -20,18 +20,20 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 
 </head>
-<body>
+
+<body style="margin-left: 2%; margin-right: 2%">
 
     <br />
     <!-- GRID eNTREGAS eFETUADAS-->
     <div class="panel panel-success">
         <div class="panel-heading text-center">
-            <h4 class="panel-title">Prestação de Contas</h4>
+            <h4 class="panel-title">Entregas Realizadas</h4>
         </div>
+
+        <h4>&nbsp;&nbsp;&nbsp;<asp:Literal ID="lbl_motoboy" runat="server"></asp:Literal></h4>
+
         <div class="panel-body">
             <div class="w3-container w3-border w3-round w3-padding-16 w3-light-gray w3-small">
-
-                <h4><asp:Literal ID="lbl_motoboy" runat="server"></asp:Literal></h4>
 
                 <table id="tabela" class="w3-table-all w3-hoverable">
                     <thead>

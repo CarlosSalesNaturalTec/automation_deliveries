@@ -33,17 +33,37 @@
         </div>
         <div class="panel-body">
             <br />
-             <div class="w3-card-4 col-md-3">
+            
+            <!-- Coleta de Valores -->
+            <div class="w3-card-4 col-md-3">
+                <br />
+                <div class="w3-container w3-center">
+                    <p><i class="fa fa-5x fa-usd" aria-hidden="true"></i></p>
+                </div>
+                <footer class="w3-container w3-center">
+                    <p>
+                        <asp:Literal ID="Literal_Empresa" runat="server"></asp:Literal></p>
+                    <button id="btnext" type="button" class="w3-btn w3-round w3-border w3-light-green w3-hover-green w3-block" onclick="Roteiros_Avançar()">Coleta de Valores</button>
+                </footer>
+                <br />
+            </div>
+
+            <!-- Entrega Simples-->
+            <div class="col-md-1"></div>
+            <div class="w3-card-4 col-md-3">
                 <br />
                 <div class="w3-container w3-center">
                     <p><i class="fa fa-5x fa-plus" aria-hidden="true"></i></p>
                 </div>
                 <footer class="w3-container w3-center">
-                    <p><asp:Literal ID="Literal_Empresa" runat="server"></asp:Literal></p>
-                    <button id="btnext" type="button" class="w3-btn w3-round w3-border w3-light-green w3-hover-green w3-block" onclick="Roteiros_Avançar()">Lançar Entregas</button>
+                    <p>
+                        <asp:Literal ID="Literal_Empresa1" runat="server"></asp:Literal></p>
+                    <button id="btnext2" type="button" class="w3-btn w3-round w3-border w3-light-blue w3-hover-blue w3-block" onclick="Roteiros_Avançar_2()">Entrega Simples</button>
                 </footer>
                 <br />
             </div>
+            
+
         </div>
     </div>
 
@@ -61,7 +81,8 @@
                 <br />
                 <div class="w3-container w3-center">
                     <p><i class="fa fa-5x fa-map-signs" aria-hidden="true"></i>&nbsp;&nbsp;</p>
-                    <p><asp:Literal ID="Literal_quadro1" runat="server"></asp:Literal></p>
+                    <p>
+                        <asp:Literal ID="Literal_quadro1" runat="server"></asp:Literal></p>
                 </div>
                 <footer class="w3-container w3-center">
                     <button type="button" class="w3-btn w3-round w3-border w3-light-green w3-hover-green w3-block" onclick="Roteiros_Bairro()">Não Roteirizadas</button>
@@ -75,7 +96,8 @@
                 <br />
                 <div class="w3-container w3-center">
                     <p><i class="fa fa-5x fa-calendar-o" aria-hidden="true"></i></p>
-                    <p><asp:Literal ID="Literal_quadro2" runat="server"></asp:Literal></p>
+                    <p>
+                        <asp:Literal ID="Literal_quadro2" runat="server"></asp:Literal></p>
                 </div>
                 <footer class="w3-container w3-center">
                     <button type="button" class="w3-btn w3-round w3-border w3-light-blue w3-hover-blue w3-block" onclick="Roteiros_Listagem()">Roteiro</button>
@@ -88,7 +110,8 @@
                 <br />
                 <div class="w3-container w3-center">
                     <p><i class="fa fa-5x fa-calculator" aria-hidden="true"></i></p>
-                    <p><asp:Literal ID="Literal_quadro3" runat="server"></asp:Literal></p>
+                    <p>
+                        <asp:Literal ID="Literal_quadro3" runat="server"></asp:Literal></p>
                 </div>
                 <footer class="w3-container w3-center">
                     <button type="button" class="w3-btn w3-round w3-border w3-light-green w3-hover-green w3-block" onclick="Roteiros_Pcontas()">Prestação de Contas</button>
@@ -96,7 +119,7 @@
                 <br />
             </div>
         </div>
-        
+
     </div>
 
     <!-- Auxiliares -->
