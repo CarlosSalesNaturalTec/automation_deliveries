@@ -10,17 +10,21 @@ public partial class Roteiros_Pcontas_Indiv : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            grid_realizadas(Request.QueryString["p1"]);
-            grid_nao_realizadas(Request.QueryString["p1"]);
+            string idAux = Request.QueryString["p1"];
+            string nomeAux = Request.QueryString["p2"];
+            PreencheCampos(idAux, nomeAux);
 
-            lbl_motoboy.Text = "Motoboy: " + Request.QueryString["p2"];
+            grid_realizadas(idAux);
+            grid_nao_realizadas(idAux);
+            lbl_motoboy.Text = "Motoboy: " + nomeAux;
 
         }
     }
 
-    private void grid_realizadas( string param1)
+    private void grid_realizadas(string param1)
     {
-        string stringselect = "select Tbl_Clientes.Nome, Tbl_Entregas.Nome_Destinatario, Tbl_Entregas.Endereco, Tbl_Entregas.Bairro , Tbl_Entregas.Cidade, Tbl_Entregas.valor_Cliente  " +
+        string stringselect = "select Tbl_Clientes.Nome, Tbl_Entregas.Nome_Destinatario, Tbl_Entregas.Endereco, " +
+                "Tbl_Entregas.Bairro , Tbl_Entregas.Cidade, Tbl_Entregas.valor_Cliente, Tbl_Entregas.ID_Entrega " +
                 "from Tbl_Entregas " +
                 "inner join Tbl_Clientes ON Tbl_Entregas.ID_Cliente = Tbl_Clientes.ID_Cliente " +
                 "where Tbl_Entregas.ID_Motoboy = " + param1 + " and " +
@@ -46,10 +50,11 @@ public partial class Roteiros_Pcontas_Indiv : System.Web.UI.Page
 
             totalPconta = totalPconta + Convert.ToDecimal(dados[5]);
 
+            string bt1 = "<input type='checkbox'class='w3-check' name='chkselecao' value='" + Convert.ToString(dados[6]) + "' />&nbsp;&nbsp;&nbsp;";
 
             // <!--*******Customização*******-->
             string stringcomaspas = "<tr>" +
-                "<td>" + Coluna1 + "</td>" +
+                "<td>" + bt1 + Coluna1 + "</td>" +
                 "<td>" + Coluna2 + "</td>" +
                 "<td>" + Coluna3 + "</td>" +
                 "<td>" + Coluna4 + "</td>" +
@@ -63,9 +68,8 @@ public partial class Roteiros_Pcontas_Indiv : System.Web.UI.Page
 
         literal_realizadas.Text = str.ToString();
 
-        lbl_totalPconta.Text = " Total : R$ " +  totalPconta.ToString("N", CultureInfo.CreateSpecificCulture("pt-BR"));
+        lbl_totalPconta.Text = "Valor Total : R$ " + totalPconta.ToString("N", CultureInfo.CreateSpecificCulture("pt-BR"));
     }
-
 
     private void grid_nao_realizadas(string param1)
     {
@@ -110,5 +114,15 @@ public partial class Roteiros_Pcontas_Indiv : System.Web.UI.Page
 
         literal_nao_Realizadas.Text = str.ToString();
 
+    }
+
+    private void PreencheCampos(string ID, string AuxNome)
+    {
+        string ScriptDados = "<script type=\"text/javascript\">" +
+            "document.getElementById('idAuxHidden').value = \"" + ID + "\";" +
+            "document.getElementById('nomeAuxHidden').value = \"" + AuxNome + "\";" +
+            "</script>";
+
+        Literal_Aux.Text = ScriptDados;
     }
 }

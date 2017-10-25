@@ -2,8 +2,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-
-    <title>Listagem de Roteiros</title>
+    <title>Prestação de Contas</title>
 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -12,12 +11,6 @@
     <!-- Jquery-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-    <!-- Styles: W3, BootsStrap, Font-Awesome -->
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-
     <!-- Paginação -->
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
@@ -25,170 +18,119 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" />
 
+    <!-- Styles: W3, BootsStrap, Font-Awesome -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
 </head>
 
 <body style="margin-left: 2%; margin-right: 2%">
 
     <br />
-
+    <!-- GRID eNTREGAS eFETUADAS-->
     <div class="panel panel-success">
         <div class="panel-heading text-center">
-            <h4 class="panel-title">Listagem de Roteiro</h4>
+            <h4 class="panel-title">Entregas Realizadas</h4>
+        </div>
+
+        <div class="w3-container">
+            <div class="w3-left">
+                <h4>&nbsp;&nbsp;&nbsp;<asp:Literal ID="lbl_motoboy" runat="server"></asp:Literal></h4>
+            </div>
+        </div>
+
+        <div class="panel-body">
+            <div class="w3-container w3-border w3-round w3-padding-16 w3-light-gray w3-small">
+                <table id="tabela" class="w3-table-all w3-hoverable">
+                    <thead>
+                        <tr class="w3-gray">
+                            <th>Cliente</th>
+                            <th>Destinatário</th>
+                            <th>End/Num</th>
+                            <th>Bairro</th>
+                            <th>Cidade</th>
+                            <th>Valor Cliente</th>
+                        </tr>
+                    </thead>
+                    <asp:Literal ID="literal_realizadas" runat="server"></asp:Literal>
+                </table>
+                <br />
+                <div class="w3-container">
+                    <div>
+                        <div class="col-md-3">
+                            <select class="form-control" id="selectStatus">
+                                <option selected value="0">Selecione um Status</option>
+                                <option value="EM ABERTO">EM ABERTO</option>
+                                <option value="ENTREGA REALIZADA">ENTREGA REALIZADA</option>
+                                <option value="MUDOU-SE">MUDOU-SE</option>
+                                <option value="AUSENTE">AUSENTE</option>
+                                <option value="NÃO QUIZ RECEBER">NÃO QUIZ RECEBER</option>
+                                <option value="ÁREA DE RISCO">ÁREA DE RISCO</option>
+                                <option value="ENDEREÇO INSUFICIENTE">ENDEREÇO INSUFICIENTE</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-2">
+                            <button id="btstatus" type="button" class="w3-btn w3-round w3-border w3-light-green w3-hover-green btcontroles" onclick="">Alterar Status&nbsp;<i class="fa fa-check-square-o" aria-hidden="true"></i></button>
+                        </div>
+
+
+                    </div>
+                    <div class="w3-right">
+                        <button id="bt_arquivar" type="button" class="w3-btn w3-round w3-border w3-light-blue w3-hover-blue btcontroles" onclick="">ARQUIVAR&nbsp;<i class="fa fa-floppy-o" aria-hidden="true"></i></button>
+                        <h4><asp:Literal ID="lbl_totalPconta" runat="server"></asp:Literal>
+                        </h4>
+                    </div>
+
+                </div>
+            </div>
         </div>
     </div>
 
     <br />
-
-    <!-- GRID Roteiros Lançados -->
-    <div class="w3-container w3-border w3-round w3-padding-16 w3-light-gray w3-small">
-        <table id="tabela" class="w3-table-all w3-hoverable">
-            <thead>
-                <tr class="w3-gray">
-                    <th>Cliente</th>
-                    <th>Motoboy</th>
-                    <th>Destinatário</th>
-                    <th>End/Num</th>
-                    <th>Bairro</th>
-                    <th>Cidade</th>
-                    <th>Valor Cliente</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-            <asp:Literal ID="Literal2" runat="server"></asp:Literal>
-        </table>
-    </div>
-
-    <!-- GRID Roteiros Lançados -->
+    <!-- GRID ENTREGAS NÃO EFETUADAS-->
     <div class="panel panel-success">
         <div class="panel-heading text-center">
-            <h4 class="panel-title">Alterações</h4>
+            <h4 class="panel-title">Entregas não Realizadas</h4>
         </div>
         <div class="panel-body">
-            <form class="form-horizontal">
-                <fieldset>
-                    <div class="form-group">
-                        <div class="col-md-3">
-                            <asp:Literal ID="Literal_Motoboy" runat="server"></asp:Literal>
-                        </div>
-                        <div class="col-md-2">
-                            <button id="btselectmotoboy" type="button" class="w3-btn w3-round w3-border w3-light-green w3-hover-green btcontroles" onclick="definir_motoboy()">
-                                Alterar Motoboy&nbsp;<i class="fa fa-check-square-o" aria-hidden="true"></i>
-                            </button>
-                        </div>
+            <div class="w3-container w3-border w3-round w3-padding-16 w3-light-gray w3-small">
+                <table id="MyTable" class="w3-table-all w3-hoverable">
+                    <thead>
+                        <tr class="w3-gray">
+                            <th>Cliente</th>
+                            <th>Destinatário</th>
+                            <th>End/Num</th>
+                            <th>Bairro</th>
+                            <th>Cidade</th>
+                            <th>Valor Cliente</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <asp:Literal ID="literal_nao_Realizadas" runat="server"></asp:Literal>
+                </table>
 
-                        <div class="col-md-3">
-                            <select class="form-control" id="selectStatus">
-                                <option selected value="0">Selecione o Status</option>
-                                <option value="1">EM ABERTO</option>
-                                <option value="2">ENTREGA EFETUADA</option>
-                                <option value="2">MUDOU-SE</option>
-                                <option value="2">AUSENTE</option>
-                                <option value="2">NÃO QUIZ RECEBER</option>
-                                <option value="2">ÁREA DE RISCO</option>
-                                <option value="2">ENDEREÇO INSUFICIENTE</option>
-                            </select>
-                        </div>
+                <br />
 
-                        <div class="col-md-4">
-                            <button id="btstatus" type="button" class="w3-btn w3-round w3-border w3-light-green w3-hover-green btcontroles" onclick="definir_Status()">
-                                Alterar Status&nbsp;<i class="fa fa-check-square-o" aria-hidden="true"></i>
-                            </button>
-                        </div>
+                <div class="w3-container">
 
+                    <div class="w3-left">
+                        <button id="bt_reagendar" type="button" class="w3-btn w3-round w3-border w3-light-blue w3-hover-blue btcontroles" onclick="">
+                            Reagendamento&nbsp;<i class="fa fa-undo" aria-hidden="true"></i>
+                        </button>
                     </div>
+                </div>
 
-                </fieldset>
-            </form>
+            </div>
         </div>
     </div>
 
-    <!-- Script Paginação  -->
+    <!-- Paginação -->
     <script type="text/javascript" src="Scripts/codePaginacao.js"></script>
+    <script type="text/javascript" src="Scripts/codePaginacaoX.js"></script>
 
-    <!-- Scripts Diversos-->
-    <script type="text/javascript">
 
-        function Excluir(r, idadux) {
-
-            var conf = confirm("Confirma Exclusão ?");
-            if (conf == false) { return; }
-
-            $("body").css("cursor", "progress");
-
-            $.ajax({
-                type: "POST",
-                url: "wspainel.asmx/Roteiro_Excluir",
-                data: '{param1: "' + idadux + '"}',
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: function (response) {
-                    // excluir linha do Table
-                    var i = r.parentNode.parentNode.rowIndex;
-                    document.getElementById("tabela").deleteRow(i);
-                    $("body").css("cursor", "default");
-                },
-                failure: function (response) {
-                    alert(response.d);
-                }
-            });
-
-        }
-
-        function definir_motoboy() {
-
-            var idaux_1 = document.getElementById("select_motoboy");
-            var idaux_2 = idaux_1.options[idaux_1.selectedIndex].value;
-            if (idaux_2 == "0") { alert("Selecione um Motoboy"); return }
-
-            $("body").css("cursor", "progress");
-            document.getElementById("btselectmotoboy").disabled = true;
-
-            var registros = document.getElementsByName("chkselecao");
-            var registros_len = registros.length;
-            var marcados = 0;
-            var aux_idEntrega = "";
-
-            for (var i = 0; i < registros_len; i++) {
-                if (registros[i].checked) {
-
-                    marcados++;
-                    aux_idEntrega = registros[i].value;
-
-                    $.ajax({
-                        type: "POST",
-                        url: "wspainel.asmx/Roteiro_Alterar",
-                        data: '{param0: "' + idaux_2 + '", param1: "' + aux_idEntrega + '"}',
-                        contentType: "application/json; charset=utf-8",
-                        dataType: "json",
-                        failure: function (response) {
-                            alert("Problemas ao tentar definir Motoboys");
-                        }
-                    });
-                }
-            }
-
-            if (marcados == 0) {
-                alert("Selecione uma entrega");
-                $("body").css("cursor", "default");
-                document.getElementById("btselectmotoboy").disabled = false;
-                return
-            }
-
-            mensagem();
-
-        }
-
-        function mensagem() {
-            alert("Ok. Atualizado");
-            var linkurl = "Roteiros_Listagem.aspx";
-            window.location.href = linkurl;
-
-        }
-
-        function voltar() {
-            window.location.href = "Roteiros_Clientes1.aspx";
-        }
-
-    </script>
 </body>
 </html>
