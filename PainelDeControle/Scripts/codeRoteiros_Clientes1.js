@@ -32,6 +32,16 @@ function Roteiros_Avançar_2() {
     window.location.href = urlLink;
 }
 
+function Outras_Entregas() {
+    var urlLink = "Roteiros_Clientes.aspx";
+    window.location.href = urlLink;
+}
+
+function Roteiros_Status() {
+    var urlLink = "Roteiros_Status.aspx";
+    window.location.href = urlLink;
+}
+
 function Roteiros_Cancelar() {
     window.location.href = "Home.aspx";
 }

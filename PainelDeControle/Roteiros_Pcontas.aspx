@@ -35,7 +35,7 @@
     <br />
     <div class="panel panel-success">
         <div class="panel-heading text-center">
-            <h4 class="panel-title">Prestação de Contas - Entreges</h4>
+            <h4 class="panel-title">Prestação de Contas</h4>
         </div>
         <div class="panel-body">
             <div class="w3-container w3-border w3-round w3-padding-16 w3-light-gray w3-small">
@@ -59,6 +59,7 @@
                 Voltar&nbsp;<i class="fa fa-undo" aria-hidden="true"></i></button>
         </div>
     </div>
+
     <!-- Script Paginação  -->
     <script type="text/javascript" src="Scripts/codePaginacao.js"></script>
 

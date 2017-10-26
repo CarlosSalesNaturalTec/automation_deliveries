@@ -26,7 +26,7 @@
 
     <br />
 
-    <!-- Lançar Nova Entrega -->
+    <!-- Lançar Entregas -->
     <div class="panel panel-success">
         <div class="panel-heading text-center">
             <h4 class="panel-title">Lançar Entregas</h4>
@@ -59,6 +59,20 @@
                     <p>
                         <asp:Literal ID="Literal_Empresa1" runat="server"></asp:Literal></p>
                     <button id="btnext2" type="button" class="w3-btn w3-round w3-border w3-light-blue w3-hover-blue w3-block" onclick="Roteiros_Avançar_2()">Entrega Simples</button>
+                </footer>
+                <br />
+            </div>
+
+            <!-- Outras Entregas -->
+            <div class="col-md-1"></div>
+            <div class="w3-card-4 col-md-3">
+                <br />
+                <div class="w3-container w3-center">
+                    <p><i class="fa fa-5x fa-map-marker" aria-hidden="true"></i></p>
+                </div>
+                <footer class="w3-container w3-center">
+                    <hr />
+                    <button id="btoutras" type="button" class="w3-btn w3-round w3-border w3-light-green w3-hover-green w3-block" onclick="Outras_Entregas();">Outras Entregas</button>
                 </footer>
                 <br />
             </div>
@@ -106,6 +120,7 @@
             </div>
 
             <!-- Prestação de Contas -->
+            <div class="col-md-1"></div>
             <div class="w3-card-4 col-md-3">
                 <br />
                 <div class="w3-container w3-center">
@@ -121,6 +136,65 @@
         </div>
 
     </div>
+
+
+
+
+    <!-- Status & Resumo-->
+    <div class="panel panel-success">
+        <div class="panel-heading text-center">
+            <h4 class="panel-title">Status e Arquivo</h4>
+        </div>
+
+        <div class="panel-body">
+            <br />
+
+            <!-- Status Atual -->
+            <div class="w3-card-4 col-md-3">
+                <br />
+                <div class="w3-container w3-center">
+                    <p><i class="fa fa-5x fa-clock-o" aria-hidden="true"></i>&nbsp;&nbsp;</p>
+                    <hr />
+                </div>
+                <footer class="w3-container w3-center">
+                    <button type="button" class="w3-btn w3-round w3-border w3-light-green w3-hover-green w3-block" onclick="Roteiros_Status()">Status Atual</button>
+                </footer>
+                <br />
+            </div>
+
+            <!-- Arquivo -->
+            <div class="col-md-1"></div>
+            <div class="w3-card-4 col-md-3">
+                <br />
+                <div class="w3-container w3-center">
+                    <p><i class="fa fa-5x fa-file-archive-o" aria-hidden="true"></i></p>
+                    <hr />
+                </div>
+                <footer class="w3-container w3-center">
+                    <button type="button" class="w3-btn w3-round w3-border w3-light-blue w3-hover-blue w3-block" onclick="">Arquivo</button>
+                </footer>
+                <br />
+            </div>
+
+            <!-- P.COntas Cliente -->
+            <div class="col-md-1"></div>
+            <div class="w3-card-4 col-md-3">
+                <br />
+                <div class="w3-container w3-center">
+                    <p><i class="fa fa-5x fa-calculator" aria-hidden="true"></i></p>
+                    <hr />
+                </div>
+                <footer class="w3-container w3-center">
+                    <button type="button" class="w3-btn w3-round w3-border w3-light-green w3-hover-green w3-block" onclick="">P. Contas Cliente</button>
+                </footer>
+                <br />
+            </div>
+        </div>
+
+    </div>
+
+
+
 
     <!-- Auxiliares -->
     <script type="text/javascript" src="Scripts/codeRoteiros_Clientes1.js"></script>

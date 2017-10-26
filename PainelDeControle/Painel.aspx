@@ -28,14 +28,7 @@
                 </div>
             </div>
 
-            <div class="w3-dropdown-hover w3-right">
-                <button class="w3-btn w3-hover-green"><i class="fa fa-map-signs"></i>&nbsp;Roteiros</button>
-                <div class="w3-dropdown-content w3-bar-block w3-card-4">
-                    <a href="Roteiros_Clientes.aspx" target="iframe" class="w3-bar-item w3-button">Por Cliente/Motoboy</a>
-                    <a href="Roteiros_Clientes1.aspx" target="iframe" class="w3-bar-item w3-button">Por Entrega</a>
-                    <a href="Roteiros_Status.aspx" target="iframe" class="w3-bar-item w3-button">Status Atual</a>
-                </div>
-            </div>
+            <a href="Roteiros_Clientes1.aspx" target="iframe" class="w3-bar-item w3-btn w3-hover-green w3-right"><i class="fa fa-map-signs"></i>&nbsp;Roteiros</a>
 
             <div class="w3-dropdown-hover w3-right">
                 <button class="w3-btn w3-hover-green"><i class="fa fa-truck"></i>&nbsp;Abastecimentos</button>

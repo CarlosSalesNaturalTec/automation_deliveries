@@ -18,7 +18,7 @@ public partial class Roteiros_Pcontas : System.Web.UI.Page
         string stringselect = "select Tbl_Motoboys.ID_Motoboy, Tbl_Motoboys.Nome , count(Tbl_Entregas.ID_Entrega) as quant1, sum(Tbl_Entregas.valor_Cliente) as valor1 " +
                 "from Tbl_Entregas " +
                 "inner join Tbl_Motoboys on Tbl_Entregas.ID_Motoboy = Tbl_Motoboys.ID_Motoboy " +
-                "where Tbl_Entregas.Status_Entrega = 'ENTREGA REALIZADA' and Tbl_Entregas.Pcontas = 0 " +
+                "where Tbl_Entregas.Pcontas = 0 " +
                 "group by Tbl_Motoboys.ID_Motoboy, Tbl_Motoboys.Nome ";
 
         OperacaoBanco operacao = new OperacaoBanco();

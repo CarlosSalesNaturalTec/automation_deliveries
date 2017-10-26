@@ -24,8 +24,8 @@ public partial class Home : System.Web.UI.Page
         Bloco2_MontaInfo();
         Bloco2_MontaLink(link, textolink);
 
-        link = "Roteiros_Status.aspx";
-        textolink = "Ver Status Atual";
+        link = "Roteiros_Clientes1.aspx";
+        textolink = "Detalhes";
         Bloco3_MontaLink(link, textolink);
 
     }
