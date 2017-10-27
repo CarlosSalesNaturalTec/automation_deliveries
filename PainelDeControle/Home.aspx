@@ -75,11 +75,8 @@
                 </div>
 
                 <div class="panel-body text-center w3-text-black">
-                    <a href="Roteiros_Clientes1.aspx"><h1><i class="fa fa-map-signs" aria-hidden="true"></i><asp:Literal ID="Bloco3_Info" runat="server"></asp:Literal></h1></a>
-                </div>
-
-                <div class="panel-footer text-center">
-                    <p class="w3-small"><asp:Literal ID="Bloco3_Link" runat="server"></asp:Literal></p>
+                    <h1><i class="fa fa-map-signs" aria-hidden="true" onclick="window.location.href ='Roteiros_Clientes1.aspx'" ></i></h1>
+                    <h1><asp:Literal ID="Bloco3_Info" runat="server"></asp:Literal></h1>
                 </div>
 
             </div>

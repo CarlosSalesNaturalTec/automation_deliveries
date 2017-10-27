@@ -181,7 +181,7 @@
             <div class="w3-card-4 col-md-3">
                 <br />
                 <div class="w3-container w3-center">
-                    <p><i class="fa fa-5x fa-calculator" aria-hidden="true"></i></p>
+                    <p><i class="fa fa-5x fa-building" aria-hidden="true"></i></p>
                     <hr />
                 </div>
                 <footer class="w3-container w3-center">
@@ -192,9 +192,6 @@
         </div>
 
     </div>
-
-
-
 
     <!-- Auxiliares -->
     <script type="text/javascript" src="Scripts/codeRoteiros_Clientes1.js"></script>
