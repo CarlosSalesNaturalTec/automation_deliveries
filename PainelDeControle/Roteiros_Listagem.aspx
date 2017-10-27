@@ -55,6 +55,7 @@
                         <th>Cidade</th>
                         <th>Valor Cliente</th>
                         <th>Status</th>
+                        <th>Reagendamentos</th>
                     </tr>
                 </thead>
                 <asp:Literal ID="Literal2" runat="server"></asp:Literal>

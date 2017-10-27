@@ -48,7 +48,7 @@
             <div class="w3-third">
                 <button id="bt_arquivar" type="button" class="w3-btn w3-round w3-border w3-light-blue w3-hover-red w3-right"
                     onclick="arquivar();">
-                    ARQUIVAR&nbsp;<i class="fa fa-file-archive-o" aria-hidden="true"></i>
+                    &nbsp;&nbsp;ARQUIVAR&nbsp;<i class="fa fa-file-archive-o" aria-hidden="true"></i>
                 </button>
             </div>
         </div>
@@ -81,7 +81,7 @@
 
         <div class="w3-container">
             <br />
-            <button id="bt_reagendar" type="button" class="w3-btn w3-round w3-border w3-light-blue w3-hover-blue w3-right" onclick="">
+            <button id="bt_reagendar" type="button" class="w3-btn w3-round w3-border w3-light-blue w3-hover-blue w3-right" onclick="reagendar()">
                 REAGENDAR&nbsp;<i class="fa fa-undo" aria-hidden="true"></i>
             </button>
         </div>
@@ -93,11 +93,12 @@
                         <tr class="w3-gray">
                             <th>Cliente</th>
                             <th>Destinatário</th>
-                            <th>End/Num</th>
+                            <th>End/ID</th>
                             <th>Bairro</th>
                             <th>Cidade</th>
                             <th>Valor Cliente</th>
                             <th>Status</th>
+                            <th>Reagendamentos</th>
                         </tr>
                     </thead>
                     <asp:Literal ID="literal_nao_Realizadas" runat="server"></asp:Literal>
@@ -142,8 +143,34 @@
                     alert(response.d);
                 }
             });
+        }
+
+        function reagendar(){
+            var conf = confirm("Confirma Reagendamento das entregas Não Realizadas ?");
+            if (conf == false) { return; }
+
+            var v1 = document.getElementById('idAuxHidden').value;
+
+            $("body").css("cursor", "progress");
+            document.getElementById("bt_reagendar").disabled = true;
+
+            $.ajax({
+                type: "POST",
+                url: "wspainel.asmx/Roteiro_Reagendar",
+                data: '{param1: "' + v1 + '"}',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                    $("body").css("cursor", "default");
+                    alert("Ok. Re-agendados");
+                },
+                failure: function (response) {
+                    alert(response.d);
+                }
+            });
 
         }
+
     </script>
 
     <asp:Literal ID="Literal_Aux" runat="server"></asp:Literal>

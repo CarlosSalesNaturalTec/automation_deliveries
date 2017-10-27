@@ -46,11 +46,11 @@ public partial class Roteiros_Listagem : System.Web.UI.Page
         string datastatus = DateTime.Now.ToString("yyyy-MM-dd");
 
         string stringSelect = "SELECT Tbl_Entregas.ID_Entrega, Tbl_Entregas.Nome_Destinatario, Tbl_Entregas.Bairro , Tbl_Entregas.Cidade , Tbl_Entregas.Status_Entrega, " +
-            "Tbl_Clientes.Nome, Tbl_Motoboys.Nome, Tbl_Entregas.Endereco, Tbl_Entregas.valor_Cliente " +
+            "Tbl_Clientes.Nome, Tbl_Motoboys.Nome, Tbl_Entregas.Endereco, Tbl_Entregas.valor_Cliente, Tbl_Entregas.Reagendamentos " +
             "FROM ((Tbl_Entregas " +
             "INNER JOIN Tbl_Clientes ON Tbl_Entregas.ID_Cliente = Tbl_Clientes.ID_Cliente) " +
             "INNER JOIN Tbl_Motoboys ON Tbl_Entregas.ID_Motoboy = Tbl_Motoboys.ID_Motoboy) " +
-            "where Status_Entrega <> 'ENTREGA REALIZADA' " +
+            "where Tbl_Entregas.Pcontas = 0 " +
             "order by Tbl_Clientes.Nome, Tbl_Motoboys.Nome  ;";
 
         OperacaoBanco operacaoUsers = new OperacaoBanco();
@@ -118,6 +118,9 @@ public partial class Roteiros_Listagem : System.Web.UI.Page
             str.Append(ScriptDados);
 
             ScriptDados = "<td class='" + corStatus + "'>" + Convert.ToString(rcrdsetUsers[4]) + "</td>";
+            str.Append(ScriptDados);
+
+            ScriptDados = "<td>" + Convert.ToString(rcrdsetUsers[9]) + "</td>";
             str.Append(ScriptDados);
 
             ScriptDados = "</tr>";

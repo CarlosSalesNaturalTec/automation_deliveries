@@ -74,8 +74,8 @@
                     <h4 class="panel-title w3-small">Roteiros</h4>
                 </div>
 
-                <div class="panel-body text-center w3-text-black">
-                    <h1><i class="fa fa-map-signs" aria-hidden="true" onclick="window.location.href ='Roteiros_Clientes1.aspx'" ></i></h1>
+                <div class="panel-body text-center">
+                    <h1><i class="fa fa-map-signs" aria-hidden="true" style="cursor:pointer" onclick="window.location.href ='Roteiros_Clientes1.aspx'" ></i></h1>
                     <h1><asp:Literal ID="Bloco3_Info" runat="server"></asp:Literal></h1>
                 </div>
 

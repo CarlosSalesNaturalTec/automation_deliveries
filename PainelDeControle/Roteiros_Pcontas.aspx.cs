@@ -15,10 +15,10 @@ public partial class Roteiros_Pcontas : System.Web.UI.Page
     private void Grid_Realizadas()
     {
 
-        string stringselect = "select Tbl_Motoboys.ID_Motoboy, Tbl_Motoboys.Nome , count(Tbl_Entregas.ID_Entrega) as quant1, sum(Tbl_Entregas.valor_Cliente) as valor1 " +
+        string stringselect = "select Tbl_Motoboys.ID_Motoboy, Tbl_Motoboys.Nome, count(Tbl_Entregas.ID_Entrega) as quant1 " +
                 "from Tbl_Entregas " +
                 "inner join Tbl_Motoboys on Tbl_Entregas.ID_Motoboy = Tbl_Motoboys.ID_Motoboy " +
-                "where Tbl_Entregas.Pcontas = 0 " +
+                "where Tbl_Entregas.Pcontas = 0 and Status_Entrega <> 'EM ABERTO' " +
                 "group by Tbl_Motoboys.ID_Motoboy, Tbl_Motoboys.Nome ";
 
         OperacaoBanco operacao = new OperacaoBanco();
@@ -26,18 +26,16 @@ public partial class Roteiros_Pcontas : System.Web.UI.Page
 
         while (dados.Read())
         {
+            
             string Coluna1 = "<a href = \"Roteiros_Pcontas_Indiv.aspx?p1=" + Convert.ToString(dados[0]) + 
                 "&p2=" + Convert.ToString(dados[1]) +
                 "\">" + Convert.ToString(dados[1]) + "</a>";
-            string Coluna2 = Convert.ToString(dados[2]);
 
-            decimal valor = Convert.ToDecimal(dados[3]);
-            string Coluna3 = "R$ " + valor.ToString("N", CultureInfo.CreateSpecificCulture("pt-BR"));
+            string Coluna2 = Convert.ToString(dados[2]);
 
             string stringcomaspas = "<tr>" +
                 "<td>" + Coluna1 + "</td>" +
                 "<td>" + Coluna2 + "</td>" +
-                "<td>" + Coluna3 + "</td>" +
                 "</tr>";
 
             str.Append(stringcomaspas);

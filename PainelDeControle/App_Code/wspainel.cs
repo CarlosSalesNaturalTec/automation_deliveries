@@ -838,4 +838,27 @@ public class wspainel : System.Web.Services.WebService
         return msg;
     }
 
+    [WebMethod]
+    public string Roteiro_Reagendar(string param1)
+    {
+        string msg = "XX";
+
+        string strupdate = "update Tbl_Entregas " +
+           "set Status_Entrega = 'EM ABERTO', Reagendamentos = Reagendamentos + 1 " +
+           "where ID_Motoboy = " + param1 + " and " +
+           "Status_Entrega <> 'ENTREGA REALIZADA' " +
+           "and Status_Entrega <> 'EM ABERTO'" +
+           "and Pcontas = 0 ";
+
+        OperacaoBanco operacao = new OperacaoBanco();
+        bool alterar = operacao.Update(strupdate);
+        ConexaoBancoSQL.fecharConexao();
+        if (alterar == true)
+        {
+            msg = "Aleluia";
+        }
+
+        return msg;
+    }
+
 }

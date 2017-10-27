@@ -17,7 +17,7 @@
 
     <!-- Menu -->
     <div>
-        <div class="w3-bar w3-red">
+        <div class="w3-bar w3-gray">
 
             <a href="#" class="w3-bar-item w3-btn w3-hover-green w3-right" onclick="sair()">Sair <i class="fa fa-sign-out"></i></a>
 

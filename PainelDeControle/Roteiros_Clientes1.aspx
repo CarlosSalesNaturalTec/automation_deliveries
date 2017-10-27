@@ -84,7 +84,7 @@
     <!-- Outras Operações -->
     <div class="panel panel-success">
         <div class="panel-heading text-center">
-            <h4 class="panel-title">Outras Operações</h4>
+            <h4 class="panel-title">Roteiro</h4>
         </div>
 
         <div class="panel-body">

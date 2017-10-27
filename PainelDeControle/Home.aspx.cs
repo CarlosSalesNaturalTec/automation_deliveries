@@ -9,19 +9,9 @@ public partial class Home : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-
-        string link, textolink;
-
-        // Monta Blocos
-        //===========================================
-        link = "Abastecimento_Planilha.aspx";
         Bloco1_MontaInfo();
-
-        link = "Abastecimento_Local_Listagem.aspx";
         Bloco2_MontaInfo();
-
-        link = "Roteiros_Clientes1.aspx";
-
+        Bloco3_MontaInfo();
     }
 
     private void Bloco1_MontaInfo()
@@ -78,5 +68,24 @@ public partial class Home : System.Web.UI.Page
 
     }
 
-   
+
+    private void Bloco3_MontaInfo()
+    {
+        string stringSelect = "select count(ID_Entrega) as quant from Tbl_Entregas where Status_Entrega = 'EM ABERTO' and Encerrada = 0 and ID_Motoboy <> 0 ";
+        OperacaoBanco operacao = new OperacaoBanco();
+        System.Data.SqlClient.SqlDataReader rcrdset = operacao.Select(stringSelect);
+
+        string quantTotal = "0";
+
+        while (rcrdset.Read())
+        {
+            quantTotal = Convert.ToString(rcrdset[0]);
+        }
+        ConexaoBancoSQL.fecharConexao();
+
+        Bloco3_Info.Text = "<span class=\"small\">(" + quantTotal + ")</span>";
+
+    }
+
+
 }

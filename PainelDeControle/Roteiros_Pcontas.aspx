@@ -39,16 +39,17 @@
         </div>
         <div class="panel-body">
             <div class="w3-container w3-border w3-round w3-padding-16 w3-light-gray w3-small">
-                <table id="tabela" class="w3-table-all w3-hoverable">
-                    <thead>
-                        <tr class="w3-gray">
-                            <th>Motoboy</th>
-                            <th>Quant. Total</th>
-                            <th>Valor Total</th>
-                        </tr>
-                    </thead>
-                    <asp:Literal ID="Literal_grid1" runat="server"></asp:Literal>
-                </table>
+                <div class="table-responsive">
+                    <table id="tabela" class="w3-table-all w3-hoverable">
+                        <thead>
+                            <tr class="w3-gray">
+                                <th>Motoboy</th>
+                                <th>Quant. Entregas</th>
+                            </tr>
+                        </thead>
+                        <asp:Literal ID="Literal_grid1" runat="server"></asp:Literal>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
