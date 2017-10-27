@@ -17,7 +17,7 @@
 
     <!-- Menu -->
     <div>
-        <div class="w3-bar w3-black">
+        <div class="w3-bar w3-red">
 
             <a href="#" class="w3-bar-item w3-btn w3-hover-green w3-right" onclick="sair()">Sair <i class="fa fa-sign-out"></i></a>
 
@@ -49,7 +49,7 @@
                 </div>
             </div>
 
-            <a href="Home.aspx" target="iframe" class="w3-bar-item w3-btn w3-hover-green w3-right"><i class="fa fa-home"></i>&nbsp;Home</a>
+            <a href="Home.aspx" target="iframe" class="w3-bar-item w3-btn w3-hover-green w3-right"><i class="fa fa-home"></i>&nbsp;Inicio</a>
 
         </div>
     </div>

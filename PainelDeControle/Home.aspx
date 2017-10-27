@@ -45,11 +45,8 @@
                 </div>
 
                 <div class="panel-body text-center">
-                    <h1><i class="fa fa-car" aria-hidden="true"></i><asp:Literal ID="Bloco1_Info" runat="server"></asp:Literal></h1>
-                </div>
-
-                <div class="panel-footer text-center">
-                    <p class="w3-small"><asp:Literal ID="Bloco1_Link" runat="server"></asp:Literal></p>
+                    <h1><i class="fa fa-car" aria-hidden="true"></i></h1>
+                    <h1><asp:Literal ID="Bloco1_Info" runat="server"></asp:Literal></h1>
                 </div>
 
             </div>
@@ -63,11 +60,8 @@
                 </div>
 
                 <div class="panel-body text-center">
-                    <h1><i class="fa fa-credit-card" aria-hidden="true"></i><asp:Literal ID="Bloco2_Info" runat="server"></asp:Literal></h1>
-                </div>
-
-                <div class="panel-footer text-center">
-                    <p class="w3-small"><asp:Literal ID="Bloco2_Link" runat="server"></asp:Literal></p>
+                    <h1><i class="fa fa-credit-card" aria-hidden="true"></i></h1>
+                    <h1><asp:Literal ID="Bloco2_Info" runat="server"></asp:Literal></h1>
                 </div>
 
             </div>
