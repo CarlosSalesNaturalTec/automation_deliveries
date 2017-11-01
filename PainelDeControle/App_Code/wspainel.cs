@@ -537,7 +537,8 @@ public class wspainel : System.Web.Services.WebService
 
 
     [WebMethod]
-    public string Roteiro_Salvar(string param1, string param2, string param3, string param4, string param5, string param6, string param7, string param8, string param9, string param10, string param11)
+    public string Roteiro_Salvar(string param1, string param2, string param3, string param4, string param5, string param6, 
+        string param7, string param8, string param9, string param10, string param11, string param12)
     {
         string url = "";
         string stringinsert = "INSERT INTO Tbl_Entregas (" +
@@ -552,7 +553,8 @@ public class wspainel : System.Web.Services.WebService
                     "Telefone, " +
                     "Data_Encomenda, " +
                     "Latitude, " +
-                    "Longitude " +
+                    "Longitude, " +
+                    "valor_Cliente " +
                     ") VALUES (" +
                     param1 + "," +
                     param2 + "," +
@@ -565,7 +567,8 @@ public class wspainel : System.Web.Services.WebService
                     "'" + param9 + "'," +
                     "getdate()," +
                     "'" + param10 + "'," +
-                    "'" + param11 + "'" +
+                    "'" + param11 + "'," +
+                    param12 + 
                     ")";
         OperacaoBanco operacao = new OperacaoBanco();
         bool inserir = operacao.Insert(stringinsert);

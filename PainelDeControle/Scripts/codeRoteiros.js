@@ -79,11 +79,14 @@ function Roteiros_Salvar() {
     var v10 = latPonto1;
     var v11 = lngPonto1;
 
+    var v12 = document.getElementById("input_valor").value;
+
     $.ajax({
         type: "POST",
         url: "wspainel.asmx/Roteiro_Salvar",
         data: '{param1: "' + v1 + '", param2: "' + v2 + '", param3: "' + v3 + '", param4: "' + v4 + '", param5: "' + v5 +
-            '", param6: "' + v6 + '", param7: "' + v7 + '", param8: "' + v8 + '", param9: "' + v9 + '", param10: "' + v10 + '", param11: "' + v11 + '"}',
+            '", param6: "' + v6 + '", param7: "' + v7 + '", param8: "' + v8 + '", param9: "' + v9 + '", param10: "' + v10 +
+            '", param11: "' + v11 + '", param12: "' + v12 + '"}',
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (response) {

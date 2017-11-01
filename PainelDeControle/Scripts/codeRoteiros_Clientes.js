@@ -9,7 +9,7 @@
 
     //validacoes
     if (idaux_2 == "0") { alert("Selecione um Cliente"); return }
-    if (id2aux_2 == "0") { alert("Selecione um Motoboy"); return }
+    //if (id2aux_2 == "0") { alert("Selecione um Motoboy"); return }
     
     var urlLink = "Roteiros.aspx?v1=" + idaux_2 + "&v2=" + id2aux_2 + "&v3=" + aux3 + "&v4=" + aux4;
     window.location.href = urlLink;

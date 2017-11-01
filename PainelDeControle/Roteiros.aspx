@@ -114,6 +114,13 @@
                         </div>
                     </div>
 
+                    <div class="form-group">
+                        <label for="input_pref" class="col-md-1 control-label">Valor:</label>
+                        <div class="col-md-4">
+                            <input type="number" class="form-control" id="input_valor" />
+                        </div>
+                    </div>
+
                 </fieldset>
             </form>
         </div>
