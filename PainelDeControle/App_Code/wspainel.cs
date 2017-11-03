@@ -812,7 +812,8 @@ public class wspainel : System.Web.Services.WebService
         string msg = "Ok";
 
         string strupdate = "update Tbl_Entregas set " +
-           "Status_Entrega = '" + param0 + "' " +
+           "Status_Entrega = '" + param0 + "', " +
+           "Entregue = 1 " +
            "where ID_Entrega = '" + param1 + "'";
 
         OperacaoBanco operacao = new OperacaoBanco();

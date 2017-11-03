@@ -243,3 +243,5 @@ C:\Users\Sergio\Source\Repos\automation_deliveries2\delivcli\bin\Microsoft.AspNe
 C:\Users\Sergio\Source\Repos\automation_deliveries2\delivcli\obj\Release\delivcli.csprojResolveAssemblyReference.cache
 C:\Users\Sergio\Source\Repos\automation_deliveries2\delivcli\obj\Release\delivcli.dll
 C:\Users\Sergio\Source\Repos\automation_deliveries2\delivcli\obj\Release\delivcli.pdb
+C:\Users\Sergio\Source\Repos\automation_deliveries\delivcli\bin\itextsharp.dll
+C:\Users\Sergio\Source\Repos\automation_deliveries\delivcli\bin\itextsharp.xml

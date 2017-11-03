@@ -2,7 +2,14 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     
-    <br />
-    <h1>Seção expirada! Conecte-se novamente.</h1>
+      <div class="w3-container w3-center w3-text-grey">
+
+        <p><i class="fa fa-3x fa-check-square-o" aria-hidden="true"></i></p>
+        <h3>Seção expirada! Faça Login novamente.</h3>
+
+        <a href="http://loglogin.azurewebsites.net/" target="_parent" class="w3-button w3-border w3-round w3-green">Login</a>
+
+    </div>
+
 
 </asp:Content>

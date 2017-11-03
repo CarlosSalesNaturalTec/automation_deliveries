@@ -108,4 +108,29 @@ public partial class Roteiros_Clientes1 : System.Web.UI.Page
 
     }
 
+    private void Aviso_Offline()
+    {
+        
+        string stringselect = "";
+        stringselect = @"select ID_Motoboy, Nome, DATEDIFF(MINUTE, GeoDataLoc, getdate()) AS Intervalo from Tbl_Motoboys ";
+
+        OperacaoBanco operacao = new OperacaoBanco();
+        System.Data.SqlClient.SqlDataReader dados = operacao.Select(stringselect);
+        
+        while (dados.Read())
+        {
+            int min1 = Convert.ToInt32(dados[1]);  // diferença em minutos (180 de fuso hrário + 5 minutos de tolerância desde a ultima atualização)
+
+            if (min1 > 185)
+            {
+                //stringComAspas = "<p class=\"list-group-item-text\">Off-Line à: " + TempoOff(min1) + "</p></a>";
+            }
+            else
+            {
+                //stringComAspas = "<p class=\"list-group-item-text\">" + StatusDirecao(Convert.ToString(dados[2])) + "</p></a>";
+            }
+
+        }
+        ConexaoBancoSQL.fecharConexao();
+    }
 }
